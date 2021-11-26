@@ -22,23 +22,23 @@ import appointment.Appointment;
 public final class AppointmentInteracter {
 
 	public static List<Appointment> getAppointments() {
-		return getAppointments(AppointmentEditor.WITH_APPOINTMENTS);
+		return getAppointments(Editor.WITH_APPOINTMENTS);
 	}
 
 	public static void add(final Appointment toAdd) {
-		add(toAdd, AppointmentEditor.WITH_APPOINTMENTS);
+		add(toAdd, Editor.WITH_APPOINTMENTS);
 	}
 
 	public static void remove(final Appointment toAdd) {
-		remove(toAdd, AppointmentEditor.WITH_APPOINTMENTS);
+		remove(toAdd, Editor.WITH_APPOINTMENTS);
 	}
 
 	public static boolean contains(final Appointment toTest) {
-		return contains(toTest, AppointmentEditor.WITH_APPOINTMENTS);
+		return contains(toTest, Editor.WITH_APPOINTMENTS);
 	}
 
 	public static void updateAppointment(final Appointment toUpdate) {
-		updateAppointment(toUpdate, AppointmentEditor.WITH_APPOINTMENTS);
+		updateAppointment(toUpdate, Editor.WITH_APPOINTMENTS);
 	}
 
 	public static List<Appointment> getAppointments(final File withAppointments) {

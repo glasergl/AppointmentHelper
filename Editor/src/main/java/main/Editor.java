@@ -8,7 +8,7 @@ import javax.swing.SwingUtilities;
 import standard.settings.Colors;
 import ui.EditorMainFrame;
 
-public class AppointmentEditor {
+public class Editor {
 
 	public static final File WITH_APPOINTMENTS = new File("appointments.json");
 	
