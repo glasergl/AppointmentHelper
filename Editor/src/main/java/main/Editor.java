@@ -11,7 +11,7 @@ import ui.EditorMainFrame;
 public class Editor {
 
 	public static final File WITH_APPOINTMENTS = new File("..\\appointments.json");
-	
+
 	public static void main(String[] args) {
 		Colors.setDarkModeEnabled(false);
 		if (!WITH_APPOINTMENTS.exists()) {

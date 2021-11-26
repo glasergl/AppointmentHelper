@@ -2,7 +2,6 @@ package ui.dateInput;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import appointment.SimpleDate;

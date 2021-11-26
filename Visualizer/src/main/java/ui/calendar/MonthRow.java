@@ -4,7 +4,6 @@ import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPanel;
-
 import standard.implementations.MyLabel;
 import standard.settings.Colors;
 

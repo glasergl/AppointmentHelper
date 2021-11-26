@@ -6,7 +6,6 @@ import java.util.Optional;
 import javax.swing.JPanel;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-
 import appointment.Appointment;
 import appointment.SimpleDate;
 import main.AppointmentInteracter;

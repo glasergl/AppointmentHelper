@@ -1,7 +1,6 @@
 package ui;
 
 import java.awt.Dimension;
-
 import complex.LineOfJComponent;
 import standard.implementations.MyButton;
 import standard.settings.Colors;
