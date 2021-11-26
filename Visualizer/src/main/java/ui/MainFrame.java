@@ -22,41 +22,41 @@ import ui.calendar.VisualCalendar;
  */
 public final class MainFrame extends MyFrame {
 
-    private static final Image ICON = SwingFunctions.getImage("Icon.png", MainFrame.class);
+	private static final Image ICON = SwingFunctions.getImage("Icon.png", MainFrame.class);
 
-    private final AppointmentOutput withAllBirthdays;
-    private final VisualCalendar visualisedAppointments;
-    private final MyButton visabilityChanger = new MyButton("Kalender anzeigen");
+	private final AppointmentOutput withAllBirthdays;
+	private final VisualCalendar visualisedAppointments;
+	private final MyButton visabilityChanger = new MyButton("Kalender anzeigen");
 
-    public MainFrame(final List<Appointment> appointmentsToRespect) {
-	super("TerminHelfer", ICON);
-	visualisedAppointments = new VisualCalendar(appointmentsToRespect);
-	withAllBirthdays = new AppointmentOutput(appointmentsToRespect);
-	setupComponents();
-	if (appointmentsToRespect.stream().anyMatch((appointment) -> {
-	    return appointment.isToday() || appointment.isTomorrow();
-	})) {
-	    start();
+	public MainFrame(final List<Appointment> appointmentsToRespect) {
+		super("TerminHelfer", ICON);
+		visualisedAppointments = new VisualCalendar(appointmentsToRespect);
+		withAllBirthdays = new AppointmentOutput(appointmentsToRespect);
+		setupComponents();
+		if (appointmentsToRespect.stream().anyMatch((appointment) -> {
+			return appointment.isToday() || appointment.isTomorrow();
+		})) {
+			start();
+		}
 	}
-    }
 
-    private void setupComponents() {
-	setupVisabilityButton();
-	final JPanel filler = new JPanel(new FlowLayout(FlowLayout.RIGHT, 0, 0));
-	filler.setBackground(Colors.getBackground(1));
-	filler.add(visabilityChanger);
-	add(withAllBirthdays, BorderLayout.NORTH);
-	add(filler, BorderLayout.CENTER);
-	add(visualisedAppointments, BorderLayout.SOUTH);
-    }
+	private void setupComponents() {
+		setupVisabilityButton();
+		final JPanel filler = new JPanel(new FlowLayout(FlowLayout.RIGHT, 0, 0));
+		filler.setBackground(Colors.getBackground(1));
+		filler.add(visabilityChanger);
+		add(withAllBirthdays, BorderLayout.NORTH);
+		add(filler, BorderLayout.CENTER);
+		add(visualisedAppointments, BorderLayout.SOUTH);
+	}
 
-    private void setupVisabilityButton() {
-	visabilityChanger.addActionListener((click) -> {
-	    visualisedAppointments.setVisible(!visualisedAppointments.isVisible());
-	    visabilityChanger.setText(visualisedAppointments.isVisible() ? "Kalender verbergen" : "Kalender anzeigen");
-	    pack();
-	    setLocationRelativeTo(null);
-	});
-    }
+	private void setupVisabilityButton() {
+		visabilityChanger.addActionListener((click) -> {
+			visualisedAppointments.setVisible(!visualisedAppointments.isVisible());
+			visabilityChanger.setText(visualisedAppointments.isVisible() ? "Kalender verbergen" : "Kalender anzeigen");
+			pack();
+			setLocationRelativeTo(null);
+		});
+	}
 
 }

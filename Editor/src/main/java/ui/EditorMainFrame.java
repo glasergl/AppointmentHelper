@@ -9,25 +9,25 @@ import standard.SwingFunctions;
 
 public class EditorMainFrame extends MyFrame {
 
-    private static final Image ICON = SwingFunctions.getImage("Icon.png", EditorMainFrame.class);
+	private static final Image ICON = SwingFunctions.getImage("Icon.png", EditorMainFrame.class);
 
-    private final AllAppointments allAppointments;
-    private final Header header;
-    private final Footer footer;
+	private final AllAppointments allAppointments;
+	private final Header header;
+	private final Footer footer;
 
-    public EditorMainFrame(final List<Appointment> toRespect) {
-	super("TerminEditor", ICON);
-	this.allAppointments = new AllAppointments(toRespect);
-	this.header = new Header(allAppointments);
-	this.footer = new Footer(allAppointments);
-	setupComponents();
-	start();
-    }
+	public EditorMainFrame(final List<Appointment> toRespect) {
+		super("TerminEditor", ICON);
+		this.allAppointments = new AllAppointments(toRespect);
+		this.header = new Header(allAppointments);
+		this.footer = new Footer(allAppointments);
+		setupComponents();
+		start();
+	}
 
-    private void setupComponents() {
-	add(header, BorderLayout.NORTH);
-	add(allAppointments, BorderLayout.CENTER);
-	add(footer, BorderLayout.SOUTH);
-    }
+	private void setupComponents() {
+		add(header, BorderLayout.NORTH);
+		add(allAppointments, BorderLayout.CENTER);
+		add(footer, BorderLayout.SOUTH);
+	}
 
 }

@@ -9,24 +9,24 @@ import standard.settings.Fonts;
 
 public class Footer extends LineOfJComponent {
 
-    private final AllAppointments allAppointments;
+	private final AllAppointments allAppointments;
 
-    private final MyButton addAppointments = new MyButton("+");
+	private final MyButton addAppointments = new MyButton("+");
 
-    public Footer(final AllAppointments allAppointments) {
-	super();
-	this.allAppointments = allAppointments;
-	setup();
-    }
+	public Footer(final AllAppointments allAppointments) {
+		super();
+		this.allAppointments = allAppointments;
+		setup();
+	}
 
-    private void setup() {
-	setBackground(Colors.getBackground(2));
-	addAppointments.setFont(Fonts.resizedStandard(50.0f));
-	addAppointments.setPreferredSize(new Dimension(100, (int) addAppointments.getPreferredSize().getHeight()));
-	addAppointments.addActionListener((event) -> {
-	    allAppointments.addEmpty();
-	});
-	addToRight(addAppointments);
-    }
+	private void setup() {
+		setBackground(Colors.getBackground(2));
+		addAppointments.setFont(Fonts.resizedStandard(50.0f));
+		addAppointments.setPreferredSize(new Dimension(100, (int) addAppointments.getPreferredSize().getHeight()));
+		addAppointments.addActionListener((event) -> {
+			allAppointments.addEmpty();
+		});
+		addToRight(addAppointments);
+	}
 
 }

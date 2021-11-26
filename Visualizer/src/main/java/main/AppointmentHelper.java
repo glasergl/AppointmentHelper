@@ -13,18 +13,18 @@ import ui.VisualErrors;
  */
 public final class AppointmentHelper {
 
-    public static final File WITH_APPOINTMENTS = new File("appointments.json");
+	public static final File WITH_APPOINTMENTS = new File("appointments.json");
 
-    public static void main(final String[] args) {
-	Colors.setDarkModeEnabled(false);
-	if (!WITH_APPOINTMENTS.exists()) {
-	    VisualErrors.showCouldntFindAppointmentFileError();
-	} else {
-	    SwingUtilities.invokeLater(() -> {
-		new MainFrame(AppointmentInteracter.getAppointments());
-	    });
+	public static void main(final String[] args) {
+		Colors.setDarkModeEnabled(false);
+		if (!WITH_APPOINTMENTS.exists()) {
+			VisualErrors.showCouldntFindAppointmentFileError();
+		} else {
+			SwingUtilities.invokeLater(() -> {
+				new MainFrame(AppointmentInteracter.getAppointments());
+			});
 
+		}
 	}
-    }
 
 }
