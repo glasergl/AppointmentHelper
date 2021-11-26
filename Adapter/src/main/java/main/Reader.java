@@ -6,8 +6,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import appointments.Appointment;
-import appointments.SimpleDate;
+import appointment.Appointment;
+import appointment.SimpleDate;
 
 public final class Reader {
 

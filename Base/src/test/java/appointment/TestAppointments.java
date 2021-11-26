@@ -1,4 +1,4 @@
-package appointments;
+package appointment;
 
 import static org.junit.Assert.*;
 import org.json.JSONObject;

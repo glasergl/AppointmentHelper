@@ -9,7 +9,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
-import appointments.Appointment;
+import appointment.Appointment;
 import standard.settings.Colors;
 
 public class AllAppointments extends JPanel {

@@ -5,7 +5,7 @@ import java.awt.FlowLayout;
 import java.awt.Image;
 import java.util.List;
 import javax.swing.JPanel;
-import appointments.Appointment;
+import appointment.Appointment;
 import standard.MyFrame;
 import standard.SwingFunctions;
 import standard.implementations.MyButton;

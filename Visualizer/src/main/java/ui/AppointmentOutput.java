@@ -5,7 +5,7 @@ import java.awt.Font;
 import java.util.List;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
-import appointments.Appointment;
+import appointment.Appointment;
 import standard.settings.Colors;
 import standard.settings.Fonts;
 

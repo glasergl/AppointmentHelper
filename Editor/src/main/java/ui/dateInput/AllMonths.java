@@ -5,7 +5,7 @@ import java.awt.Dimension;
 
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import appointments.SimpleDate;
+import appointment.SimpleDate;
 import complex.LineOfJComponent;
 import standard.implementations.MySimpleButton;
 import standard.settings.Colors;

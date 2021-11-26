@@ -3,7 +3,7 @@ package ui.calendar;
 import java.awt.BorderLayout;
 import java.util.List;
 import javax.swing.JPanel;
-import appointments.Appointment;
+import appointment.Appointment;
 
 /**
  * Representation of a visual calendar which depicts all days of the current

@@ -16,7 +16,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>glasergl</groupId>
-			<artifactId>AppointmentHelper</artifactId>
+			<artifactId>Base</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 

@@ -1,4 +1,4 @@
-package appointments;
+package main;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -11,7 +11,7 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
-import main.AppointmentHelper;
+import appointment.Appointment;
 
 /**
  * Class which contains methods to interact with a File of appointments.
@@ -22,23 +22,23 @@ import main.AppointmentHelper;
 public final class AppointmentInteracter {
 
 	public static List<Appointment> getAppointments() {
-		return getAppointments(AppointmentHelper.WITH_APPOINTMENTS);
+		return getAppointments(AppointmentEditor.WITH_APPOINTMENTS);
 	}
 
 	public static void add(final Appointment toAdd) {
-		add(toAdd, AppointmentHelper.WITH_APPOINTMENTS);
+		add(toAdd, AppointmentEditor.WITH_APPOINTMENTS);
 	}
 
 	public static void remove(final Appointment toAdd) {
-		remove(toAdd, AppointmentHelper.WITH_APPOINTMENTS);
+		remove(toAdd, AppointmentEditor.WITH_APPOINTMENTS);
 	}
 
 	public static boolean contains(final Appointment toTest) {
-		return contains(toTest, AppointmentHelper.WITH_APPOINTMENTS);
+		return contains(toTest, AppointmentEditor.WITH_APPOINTMENTS);
 	}
 
 	public static void updateAppointment(final Appointment toUpdate) {
-		updateAppointment(toUpdate, AppointmentHelper.WITH_APPOINTMENTS);
+		updateAppointment(toUpdate, AppointmentEditor.WITH_APPOINTMENTS);
 	}
 
 	public static List<Appointment> getAppointments(final File withAppointments) {

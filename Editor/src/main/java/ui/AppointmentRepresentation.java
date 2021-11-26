@@ -7,9 +7,9 @@ import javax.swing.JPanel;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
-import appointments.Appointment;
-import appointments.AppointmentInteracter;
-import appointments.SimpleDate;
+import appointment.Appointment;
+import appointment.SimpleDate;
+import main.AppointmentInteracter;
 import standard.implementations.MyButton;
 import standard.implementations.MyCheckBox;
 import standard.implementations.MyHintTextField;

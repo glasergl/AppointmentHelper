@@ -3,7 +3,7 @@ package ui;
 import java.awt.BorderLayout;
 import java.awt.Image;
 import java.util.List;
-import appointments.Appointment;
+import appointment.Appointment;
 import standard.MyFrame;
 import standard.SwingFunctions;
 

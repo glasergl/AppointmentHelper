@@ -4,8 +4,8 @@ import static org.junit.Assert.*;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.Test;
-import appointments.Appointment;
-import appointments.SimpleDate;
+import appointment.Appointment;
+import appointment.SimpleDate;
 
 public class TestAppointmentOutputText {
 

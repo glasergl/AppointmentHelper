@@ -1,4 +1,4 @@
-package appointments;
+package appointment;
 
 import java.util.ArrayList;
 import java.util.Random;

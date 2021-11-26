@@ -4,8 +4,8 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.util.List;
 import javax.swing.JPanel;
-import appointments.Appointment;
-import appointments.SimpleDate;
+import appointment.Appointment;
+import appointment.SimpleDate;
 import standard.implementations.MyLabel;
 import standard.settings.Colors;
 

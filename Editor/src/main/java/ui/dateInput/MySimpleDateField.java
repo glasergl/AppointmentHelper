@@ -1,6 +1,6 @@
 package ui.dateInput;
 
-import appointments.SimpleDate;
+import appointment.SimpleDate;
 import complex.PointingBorder;
 import standard.helper.PopUpOnHoverController;
 import standard.helper.enums.StartMouseEvent;

@@ -3,8 +3,8 @@ package ui;
 import static org.junit.Assert.*;
 import java.util.List;
 import org.junit.Test;
-import appointments.Appointment;
-import appointments.SimpleDate;
+import appointment.Appointment;
+import appointment.SimpleDate;
 import ui.calendar.CalendarCell;
 
 public class TestCalendarCell {

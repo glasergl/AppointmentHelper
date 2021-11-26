@@ -1,4 +1,4 @@
-package appointments;
+package appointment;
 
 import org.json.JSONObject;
 

@@ -5,10 +5,9 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-import appointments.SimpleDate;
+import appointment.SimpleDate;
 import standard.implementations.MyLabel;
 import standard.implementations.MySimplePopUp;
 import standard.implementations.MySimpleButton;
