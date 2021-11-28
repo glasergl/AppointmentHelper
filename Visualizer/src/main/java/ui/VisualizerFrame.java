@@ -13,12 +13,12 @@ import standard.settings.Colors;
 import ui.calendar.VisualCalendar;
 
 /**
- * JFrame which depicts the appointments and birthdays of today and tomorrow.
+ * Frame which depicts the appointments and birthdays of today and tomorrow.
  * Furthermore, there is a visual calendar which shows all entered appointments
  * and birthdays.
  * 
  * @author Gabriel Glaser
- * @version 21.11.2021
+ * @version 28.11.2021
  */
 public final class VisualizerFrame extends MyFrame {
 
