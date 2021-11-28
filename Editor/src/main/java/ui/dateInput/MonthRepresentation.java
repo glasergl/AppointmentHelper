@@ -9,22 +9,18 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import appointment.SimpleDate;
 import standard.implementations.MyLabel;
-import standard.implementations.MySimplePopUp;
 import standard.implementations.MySimpleButton;
 import standard.settings.Colors;
 
 public final class MonthRepresentation extends JPanel {
 
-	private final MySimplePopUp toCloseWhenDayPicked;
 	private final MySimpleDateField toSetSelectedDateOf;
 	private final int monthToDepict;
 	private final MyLabel nameOfMonth;
 	private final JPanel days = new JPanel(new GridLayout(5, 7, 2, 2));
 
-	public MonthRepresentation(final MySimplePopUp toCloseWhenDayPicked, final MySimpleDateField toSetSelectedDateOf,
-			final int monthToDepict) {
+	public MonthRepresentation(final MySimpleDateField toSetSelectedDateOf, final int monthToDepict) {
 		super(new BorderLayout());
-		this.toCloseWhenDayPicked = toCloseWhenDayPicked;
 		this.toSetSelectedDateOf = toSetSelectedDateOf;
 		this.monthToDepict = monthToDepict;
 		this.nameOfMonth = new MyLabel(getMonthName());
@@ -93,7 +89,7 @@ public final class MonthRepresentation extends JPanel {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			toCloseWhenDayPicked.setVisible(false);
+			toSetSelectedDateOf.getMonthPopUp().setVisible(false);
 			toSetSelectedDateOf.setDate(representedByTheButton);
 		}
 

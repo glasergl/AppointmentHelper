@@ -27,8 +27,7 @@ public class AllMonths extends JPanel {
 		super(new BorderLayout());
 		this.toSetSelectedDateOf = toSetSelectedDateOf;
 		this.currentMonth = initialDate.getMonth();
-		this.displayOfCurrentMonth = new MonthRepresentation(toSetSelectedDateOf.getMonthPopUp(), toSetSelectedDateOf,
-				currentMonth);
+		this.displayOfCurrentMonth = new MonthRepresentation(toSetSelectedDateOf, currentMonth);
 		setupButtons();
 		updateDisplayedMonth();
 	}
@@ -81,8 +80,7 @@ public class AllMonths extends JPanel {
 
 	private void updateDisplayedMonth() {
 		remove(displayOfCurrentMonth);
-		displayOfCurrentMonth = new MonthRepresentation(toSetSelectedDateOf.getMonthPopUp(), toSetSelectedDateOf,
-				currentMonth);
+		displayOfCurrentMonth = new MonthRepresentation(toSetSelectedDateOf, currentMonth);
 		add(displayOfCurrentMonth, BorderLayout.SOUTH);
 		revalidate();
 	}
