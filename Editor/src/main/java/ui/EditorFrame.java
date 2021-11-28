@@ -7,19 +7,25 @@ import appointment.Appointment;
 import standard.MyFrame;
 import standard.SwingFunctions;
 
-public class EditorMainFrame extends MyFrame {
+/**
+ * Main Frame for the Editor.
+ * 
+ * @author Gabriel Glaser
+ * @version 28.11.2021
+ */
+public class EditorFrame extends MyFrame {
 
-	private static final Image ICON = SwingFunctions.getImage("Icon.png", EditorMainFrame.class);
+	private static final Image ICON = SwingFunctions.getImage("Icon.png", EditorFrame.class);
 
 	private final AllAppointments allAppointments;
 	private final Header header;
 	private final Footer footer;
 
-	public EditorMainFrame(final List<Appointment> toRespect) {
+	public EditorFrame(final List<Appointment> toRespect) {
 		super("TerminEditor", ICON);
-		this.allAppointments = new AllAppointments(toRespect);
-		this.header = new Header(allAppointments);
-		this.footer = new Footer(allAppointments);
+		allAppointments = new AllAppointments(toRespect);
+		header = new Header(allAppointments);
+		footer = new Footer(allAppointments);
 		setupComponents();
 		start();
 	}

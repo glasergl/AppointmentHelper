@@ -2,7 +2,7 @@ package main;
 
 import javax.swing.SwingUtilities;
 import standard.settings.Colors;
-import ui.MainFrame;
+import ui.VisualizerFrame;
 import ui.VisualErrors;
 
 /**
@@ -17,7 +17,7 @@ public final class Visualizer {
 			VisualErrors.showCouldntFindAppointmentFileError();
 		} else {
 			SwingUtilities.invokeLater(() -> {
-				new MainFrame(AppointmentInteracter.getAppointments());
+				new VisualizerFrame(AppointmentInteracter.getAppointments());
 			});
 		}
 	}

@@ -6,7 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import javax.swing.SwingUtilities;
 import standard.settings.Colors;
-import ui.EditorMainFrame;
+import ui.EditorFrame;
 
 public class Editor {
 
@@ -18,7 +18,7 @@ public class Editor {
 			createEmptyAppointmentsFile();
 		}
 		SwingUtilities.invokeLater(() -> {
-			new EditorMainFrame(AppointmentInteracter.getAppointments());
+			new EditorFrame(AppointmentInteracter.getAppointments());
 		});
 	}
 

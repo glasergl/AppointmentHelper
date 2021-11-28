@@ -20,15 +20,15 @@ import ui.calendar.VisualCalendar;
  * @author Gabriel Glaser
  * @version 21.11.2021
  */
-public final class MainFrame extends MyFrame {
+public final class VisualizerFrame extends MyFrame {
 
-	private static final Image ICON = SwingFunctions.getImage("Icon.png", MainFrame.class);
+	private static final Image ICON = SwingFunctions.getImage("Icon.png", VisualizerFrame.class);
 
 	private final AppointmentOutput withAllBirthdays;
 	private final VisualCalendar visualisedAppointments;
 	private final MyButton visabilityChanger = new MyButton("Kalender anzeigen");
 
-	public MainFrame(final List<Appointment> appointmentsToRespect) {
+	public VisualizerFrame(final List<Appointment> appointmentsToRespect) {
 		super("TerminHelfer", ICON);
 		visualisedAppointments = new VisualCalendar(appointmentsToRespect);
 		withAllBirthdays = new AppointmentOutput(appointmentsToRespect);

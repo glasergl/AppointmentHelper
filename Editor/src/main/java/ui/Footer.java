@@ -6,6 +6,14 @@ import standard.implementations.MyButton;
 import standard.settings.Colors;
 import standard.settings.Fonts;
 
+/**
+ * Footer for the whole frame.
+ * 
+ * Contains a button to add an empty appointment.
+ * 
+ * @author Gabriel Glaser
+ * @version 28.11.2021
+ */
 public class Footer extends LineOfJComponent {
 
 	private final AllAppointments allAppointments;
