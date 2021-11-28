@@ -1,13 +1,7 @@
-cd Base
-call mvn install
 
-cd ../Adapter
-call mvn install
-
-cd ../Editor
-call mvn install
-
-cd ../Visualizer
-call mvn install
+call mvn install -f Base/
+call mvn install -f Adapter/
+call mvn install -f Editor/
+call mvn install -f Visualizer/
 
 pause
