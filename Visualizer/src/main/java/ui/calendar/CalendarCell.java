@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import appointment.Appointment;
 import appointment.SimpleDate;
-import complex.ListOfJComponent;
+import complex.LineOfJComponent;
 import complex.PointingBorder;
 import standard.helper.PopUpOnHoverController;
 import standard.helper.BackgroundChangerOnHover;
@@ -83,7 +83,8 @@ public final class CalendarCell extends MyLabel {
 	}
 
 	private MySimplePopUp getPopUpComponent() {
-		final ListOfJComponent names = new ListOfJComponent(Alignment.VERTICAL, getNamesAsLabels(atDate), 0);
+		//TODO java.awt.List
+		final LineOfJComponent names = new LineOfJComponent(Alignment.VERTICAL, getNamesAsLabels(atDate), 0);
 		names.setBackground(Colors.getGray(1));
 		names.setBorder(new PointingBorder(Colors.getGray(1), Colors.ofText()));
 		final MySimplePopUp popUp = new MySimplePopUp(names, this);

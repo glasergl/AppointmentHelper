@@ -6,15 +6,15 @@ import java.awt.Dimension;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import appointment.SimpleDate;
-import complex.LineOfJComponent;
+import complex.RowOfJComponent;
 import standard.implementations.MyTextButton;
 import standard.settings.Colors;
 
 public class AllMonths extends JPanel {
 
 	private final MySimpleDateField toSetSelectedDateOf;
-	private final LineOfJComponent top = new LineOfJComponent();
-	private final LineOfJComponent bottom = new LineOfJComponent(7, 7);
+	private final RowOfJComponent top = new RowOfJComponent();
+	private final RowOfJComponent bottom = new RowOfJComponent(7, 7);
 	private final MyTextButton close = new MyTextButton("x");
 	private final MyTextButton goLeft = new MyTextButton("<<");
 	private final MyTextButton goRight = new MyTextButton(">>");
@@ -46,8 +46,8 @@ public class AllMonths extends JPanel {
 		bottom.addToRight(goRight);
 		bottom.addToRight(goRightEdge);
 
-		bottom.setBackgroundForSubComponents(Colors.getGray(1));
-		bottom.setBorderForSubComponents(new EmptyBorder(2, 2, 2, 2));
+		bottom.setBackgroundOfChildren(Colors.getGray(1));
+		bottom.setBorderOfChildren(new EmptyBorder(2, 2, 2, 2));
 
 		close.setPreferredSize(new Dimension(40, (int) close.getPreferredSize().getHeight()));
 		close.setBackground(Color.RED);

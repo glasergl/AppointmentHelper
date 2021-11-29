@@ -3,7 +3,7 @@ package ui;
 import java.awt.Dimension;
 import javax.swing.BorderFactory;
 import javax.swing.border.BevelBorder;
-import complex.LineOfJComponent;
+import complex.RowOfJComponent;
 import standard.implementations.MyTextButton;
 import standard.settings.Colors;
 import standard.settings.Fonts;
@@ -16,7 +16,7 @@ import standard.settings.Fonts;
  * @author Gabriel Glaser
  * @version 28.11.2021
  */
-public class Footer extends LineOfJComponent {
+public class Footer extends RowOfJComponent {
 
 	private final AllAppointments allAppointments;
 

@@ -2,7 +2,7 @@ package ui;
 
 import javax.swing.BorderFactory;
 import javax.swing.border.BevelBorder;
-import complex.LineOfJComponent;
+import complex.RowOfJComponent;
 import standard.implementations.MyTextButton;
 import standard.settings.Colors;
 
@@ -14,7 +14,7 @@ import standard.settings.Colors;
  * @author Gabriel Glaser
  * @version 28.11.2021
  */
-public class Header extends LineOfJComponent {
+public class Header extends RowOfJComponent {
 
 	private final AllAppointments appointments;
 	private final MyTextButton save = new MyTextButton("Save All");
