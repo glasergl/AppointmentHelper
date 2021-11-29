@@ -19,6 +19,12 @@
 			<artifactId>AppointmentBase</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>glasergl</groupId>
+			<artifactId>AppointmentFileInteraction</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 
 		<dependency>
 			<groupId>glasergl</groupId>
@@ -32,6 +38,7 @@
 			<version>4.13.2</version>
 			<scope>test</scope>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.json</groupId>
 			<artifactId>json</artifactId>

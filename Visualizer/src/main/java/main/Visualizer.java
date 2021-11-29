@@ -1,6 +1,7 @@
 package main;
 
 import javax.swing.SwingUtilities;
+import fileInteraction.AppointmentInteracter;
 import standard.settings.Colors;
 import ui.VisualizerFrame;
 import ui.VisualErrors;
@@ -13,7 +14,7 @@ public final class Visualizer {
 
 	public static void main(final String[] args) {
 		Colors.setDarkModeEnabled(false);
-		if (!Editor.WITH_APPOINTMENTS.exists()) {
+		if (!AppointmentInteracter.WITH_APPOINTMENTS.exists()) {
 			VisualErrors.showCouldntFindAppointmentFileError();
 		} else {
 			SwingUtilities.invokeLater(() -> {

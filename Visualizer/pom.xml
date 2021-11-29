@@ -14,12 +14,7 @@
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>glasergl</groupId>
-			<artifactId>StandardSwing</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		
+
 		<dependency>
 			<groupId>glasergl</groupId>
 			<artifactId>AppointmentBase</artifactId>
@@ -28,7 +23,13 @@
 
 		<dependency>
 			<groupId>glasergl</groupId>
-			<artifactId>AppointmentEditor</artifactId>
+			<artifactId>AppointmentFileInteraction</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>glasergl</groupId>
+			<artifactId>StandardSwing</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 

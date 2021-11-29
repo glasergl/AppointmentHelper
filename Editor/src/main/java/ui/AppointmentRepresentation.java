@@ -8,7 +8,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import appointment.Appointment;
 import appointment.SimpleDate;
-import main.AppointmentInteracter;
+import fileInteraction.AppointmentInteracter;
 import standard.implementations.MyTextButton;
 import standard.implementations.MyCheckBox;
 import standard.implementations.MyHintTextField;
