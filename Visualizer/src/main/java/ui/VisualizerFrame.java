@@ -43,7 +43,7 @@ public final class VisualizerFrame extends MyFrame {
 	private void setupComponents() {
 		setupVisabilityButton();
 		final JPanel filler = new JPanel(new FlowLayout(FlowLayout.RIGHT, 0, 0));
-		filler.setBackground(Colors.getBackground(1));
+		filler.setBackground(Colors.getGray(0));
 		filler.add(visabilityChanger);
 		add(withAllBirthdays, BorderLayout.NORTH);
 		add(filler, BorderLayout.CENTER);

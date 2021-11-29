@@ -27,7 +27,7 @@ public class Footer extends LineOfJComponent {
 	}
 
 	private void setup() {
-		setBackground(Colors.getBackground(2));
+		setBackground(Colors.getGray(1));
 		addAppointments.setFont(Fonts.resizedStandard(50.0f));
 		addAppointments.setPreferredSize(new Dimension(100, (int) addAppointments.getPreferredSize().getHeight()));
 		addAppointments.addActionListener((event) -> {

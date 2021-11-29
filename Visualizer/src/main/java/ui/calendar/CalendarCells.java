@@ -23,7 +23,7 @@ public final class CalendarCells extends JPanel {
 		super();
 		this.toRepresent = toAdd;
 		setLayout(new GridLayout(31, 12, 1, 1));
-		setBackground(Colors.getBackground(2));
+		setBackground(Colors.getGray(1));
 		addCells();
 	}
 
@@ -36,7 +36,7 @@ public final class CalendarCells extends JPanel {
 					final CalendarCell cell = new CalendarCell(new SimpleDate(day, month), toRepresent);
 					add(cell);
 					if (date.isToday()) {
-						cell.setBackground(Colors.getBackground(5));
+						cell.setBackground(Colors.getGray(4));
 					}
 				} else {
 					final MyLabel empty = new MyLabel();

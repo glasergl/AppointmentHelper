@@ -52,12 +52,13 @@ public class AppointmentRepresentation extends JPanel {
 
 	private void setup() {
 		setLayout(new FlowLayout(FlowLayout.CENTER, 10, 20));
-		setBackground(Colors.getBackground(2));
+		setBackground(Colors.getGray(1));
 		setupSubcomponents();
 	}
 
 	private void setupSubcomponents() {
 		message.setPreferredSize(new Dimension(20, 20));
+		message.setBackground(getBackground());
 		name.setColumns(16);
 		description.setColumns(40);
 		isABirthday.setBackground(getBackground());

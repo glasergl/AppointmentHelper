@@ -23,12 +23,12 @@ public class MySimpleDateField extends MySimpleButton {
 		this.ofThis = ofThis;
 		currentlySelected = initialDate;
 		setText(initialDate.toStringWithLeadingZeros());
-		setBackground(Colors.getBackground(2));
+		setBackground(Colors.getGray(1));
 		setFont(Fonts.resizedStandard(23.0f));
 		months = new AllMonths(this, initialDate);
 		monthPopUp = new MySimplePopUp(months, this);
 		monthPopUp.setPopUpComponent(months);
-		monthPopUp.setBorderOfSubComponent(new PointingBorder(Colors.getBackground(2), Colors.ofText()));
+		monthPopUp.setBorderOfSubComponent(new PointingBorder(Colors.getGray(1), Colors.ofText()));
 		addMouseListener(new PopUpOnHoverController(monthPopUp, StartMouseEvent.CLICK));
 	}
 

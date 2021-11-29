@@ -24,7 +24,7 @@ public class Header extends LineOfJComponent {
 	}
 
 	private void setup() {
-		setBackground(Colors.getBackground(1));
+		setBackground(Colors.getGray(0));
 		save.addActionListener(click -> {
 			appointments.save();
 		});

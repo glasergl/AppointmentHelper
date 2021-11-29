@@ -14,7 +14,7 @@ public final class MonthRow extends JPanel {
 	public MonthRow() {
 		super();
 		setLayout(new GridLayout(1, 12, 1, 1));
-		setBackground(Colors.getBackground(2));
+		setBackground(Colors.getGray(1));
 		addMonths();
 	}
 

@@ -37,19 +37,19 @@ public class AllMonths extends JPanel {
 	}
 
 	private void setupButtons() {
-		top.setBackground(Colors.getBackground(2));
-		bottom.setBackground(Colors.getBackground(2));
+		top.setBackground(Colors.getGray(1));
+		bottom.setBackground(Colors.getGray(1));
 		top.addToRight(close);
 		bottom.addToLeft(goLeftEdge);
 		bottom.addToLeft(goLeft);
 		bottom.addToRight(goRight);
 		bottom.addToRight(goRightEdge);
 
-		bottom.setBackgroundForSubComponents(Colors.getBackground(2));
+		bottom.setBackgroundForSubComponents(Colors.getGray(1));
 		bottom.setBorderForSubComponents(new EmptyBorder(2, 2, 2, 2));
 
 		close.setPreferredSize(new Dimension(40, (int) close.getPreferredSize().getHeight()));
-		close.setBackground(Colors.getBackground(2));
+		close.setBackground(Colors.getGray(1));
 
 		setupActionListeners();
 		add(top, BorderLayout.NORTH);

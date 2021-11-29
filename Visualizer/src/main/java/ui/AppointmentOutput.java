@@ -26,7 +26,7 @@ public final class AppointmentOutput extends JPanel {
 		this.tomorrow = new AppointmentOutputText("Morgen", Appointment::isTomorrow, birthdaysToRespect);
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		setFont(Fonts.big());
-		setBackground(Colors.getBackground(1));
+		setBackground(Colors.getGray(0));
 		add(today);
 		add(tomorrow);
 	}

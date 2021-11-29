@@ -35,7 +35,7 @@ public final class CalendarCell extends MyLabel {
 		this.atDate = toRespect.stream().filter(appointment -> appointment.isAt(date)).collect(Collectors.toList());
 		setText(calculateTextForDate());
 		setFont(Fonts.mediumSmall());
-		setBackground(Colors.getBackground(3));
+		setBackground(Colors.getGray(2));
 		addMouseListener(new BackgroundChangerOnHover(Colors.ofFocus()));
 		if (atDate.size() > 1 || (atDate.size() == 1 && atDate.get(0).getName().length() > MAXIMUM_NAME_LENGTH)) {
 			addMouseListener(new PopUpOnHoverController(getPopUpComponent()));
@@ -84,8 +84,8 @@ public final class CalendarCell extends MyLabel {
 
 	private MySimplePopUp getPopUpComponent() {
 		final ListOfJComponent names = new ListOfJComponent(Alignment.VERTICAL, getNamesAsLabels(atDate), 0);
-		names.setBackground(Colors.getBackground(2));
-		names.setBorder(new PointingBorder(Colors.getBackground(2), Colors.ofText()));
+		names.setBackground(Colors.getGray(1));
+		names.setBorder(new PointingBorder(Colors.getGray(1), Colors.ofText()));
 		final MySimplePopUp popUp = new MySimplePopUp(names, this);
 		return popUp;
 	}

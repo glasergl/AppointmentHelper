@@ -28,7 +28,7 @@ public final class MonthRepresentation extends JPanel {
 	}
 
 	private void setup() {
-		days.setBackground(Colors.getBackground(2));
+		days.setBackground(Colors.getGray(1));
 		nameOfMonth.setHorizontalAlignment(SwingConstants.CENTER);
 		addDays();
 		add(nameOfMonth, BorderLayout.NORTH);

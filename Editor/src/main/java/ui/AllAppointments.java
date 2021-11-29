@@ -35,7 +35,7 @@ public class AllAppointments extends JPanel {
 
 	private void setupAllAppointments(final List<Appointment> toDepict) {
 		allAppointments.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
-		allAppointments.setBackground(Colors.getBackground(2));
+		allAppointments.setBackground(Colors.getGray(1));
 		for (final Appointment toAdd : toDepict) {
 			final AppointmentRepresentation appointment = new AppointmentRepresentation(this, toAdd);
 			appointments.add(appointment);
