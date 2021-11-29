@@ -21,7 +21,7 @@ import appointment.Appointment;
  */
 public final class AppointmentInteracter {
 
-	public static final File WITH_APPOINTMENTS = new File("..\\appointments.json");
+	public static final File WITH_APPOINTMENTS = new File("appointments.json");
 
 	public static List<Appointment> getAppointments() {
 		return getAppointments(WITH_APPOINTMENTS);
