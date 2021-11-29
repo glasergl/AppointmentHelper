@@ -1,7 +1,9 @@
 package ui;
 
+import javax.swing.BorderFactory;
+import javax.swing.border.BevelBorder;
 import complex.LineOfJComponent;
-import standard.implementations.MyButton;
+import standard.implementations.MyTextButton;
 import standard.settings.Colors;
 
 /**
@@ -15,7 +17,7 @@ import standard.settings.Colors;
 public class Header extends LineOfJComponent {
 
 	private final AllAppointments appointments;
-	private final MyButton save = new MyButton("Save All");
+	private final MyTextButton save = new MyTextButton("Save All");
 
 	public Header(final AllAppointments appointments) {
 		super();
@@ -25,6 +27,7 @@ public class Header extends LineOfJComponent {
 
 	private void setup() {
 		setBackground(Colors.getGray(0));
+		save.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
 		save.addActionListener(click -> {
 			appointments.save();
 		});

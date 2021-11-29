@@ -4,11 +4,15 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.Image;
 import java.util.List;
+
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
+import javax.swing.border.BevelBorder;
+
 import appointment.Appointment;
 import standard.MyFrame;
 import standard.SwingFunctions;
-import standard.implementations.MyButton;
+import standard.implementations.MyTextButton;
 import standard.settings.Colors;
 import ui.calendar.VisualCalendar;
 
@@ -26,7 +30,7 @@ public final class VisualizerFrame extends MyFrame {
 
 	private final AppointmentOutput withAllBirthdays;
 	private final VisualCalendar visualisedAppointments;
-	private final MyButton visabilityChanger = new MyButton("Kalender anzeigen");
+	private final MyTextButton visabilityChanger = new MyTextButton("Kalender anzeigen");
 
 	public VisualizerFrame(final List<Appointment> appointmentsToRespect) {
 		super("TerminHelfer", ICON);
@@ -51,6 +55,7 @@ public final class VisualizerFrame extends MyFrame {
 	}
 
 	private void setupVisabilityButton() {
+		visabilityChanger.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
 		visabilityChanger.addActionListener((click) -> {
 			visualisedAppointments.setVisible(!visualisedAppointments.isVisible());
 			visabilityChanger.setText(visualisedAppointments.isVisible() ? "Kalender verbergen" : "Kalender anzeigen");

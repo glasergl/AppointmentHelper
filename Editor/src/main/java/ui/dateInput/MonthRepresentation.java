@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import appointment.SimpleDate;
 import standard.implementations.MyLabel;
-import standard.implementations.MySimpleButton;
+import standard.implementations.MyTextButton;
 import standard.settings.Colors;
 
 public final class MonthRepresentation extends JPanel {
@@ -38,7 +38,7 @@ public final class MonthRepresentation extends JPanel {
 	private void addDays() {
 		final int dayOfMonth = monthToDepict == 2 ? 29 : SimpleDate.daysOfMonth(monthToDepict);
 		for (int day = 1; day <= dayOfMonth; day++) {
-			final MySimpleButton visualizedDay = new MySimpleButton(String.valueOf(day));
+			final MyTextButton visualizedDay = new MyTextButton(String.valueOf(day));
 			visualizedDay.setPreferredSize(new Dimension(40, 40));
 			visualizedDay.addActionListener(new DayButtonController(new SimpleDate(day, monthToDepict)));
 			days.add(visualizedDay);

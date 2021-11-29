@@ -1,12 +1,13 @@
 package ui.dateInput;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import appointment.SimpleDate;
 import complex.LineOfJComponent;
-import standard.implementations.MySimpleButton;
+import standard.implementations.MyTextButton;
 import standard.settings.Colors;
 
 public class AllMonths extends JPanel {
@@ -14,11 +15,11 @@ public class AllMonths extends JPanel {
 	private final MySimpleDateField toSetSelectedDateOf;
 	private final LineOfJComponent top = new LineOfJComponent();
 	private final LineOfJComponent bottom = new LineOfJComponent(7, 7);
-	private final MySimpleButton close = new MySimpleButton("x");
-	private final MySimpleButton goLeft = new MySimpleButton("<<");
-	private final MySimpleButton goRight = new MySimpleButton(">>");
-	private final MySimpleButton goLeftEdge = new MySimpleButton("I<<");
-	private final MySimpleButton goRightEdge = new MySimpleButton(">>I");
+	private final MyTextButton close = new MyTextButton("x");
+	private final MyTextButton goLeft = new MyTextButton("<<");
+	private final MyTextButton goRight = new MyTextButton(">>");
+	private final MyTextButton goLeftEdge = new MyTextButton("I<<");
+	private final MyTextButton goRightEdge = new MyTextButton(">>I");
 
 	private int currentMonth;
 	private MonthRepresentation displayOfCurrentMonth;;
@@ -49,7 +50,7 @@ public class AllMonths extends JPanel {
 		bottom.setBorderForSubComponents(new EmptyBorder(2, 2, 2, 2));
 
 		close.setPreferredSize(new Dimension(40, (int) close.getPreferredSize().getHeight()));
-		close.setBackground(Colors.getGray(1));
+		close.setBackground(Color.RED);
 
 		setupActionListeners();
 		add(top, BorderLayout.NORTH);

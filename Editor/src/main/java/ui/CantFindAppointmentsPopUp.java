@@ -6,7 +6,7 @@ import java.awt.FlowLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
-import standard.implementations.MyButton;
+import standard.implementations.MyTextButton;
 import standard.implementations.MyLabel;
 import standard.settings.Fonts;
 
@@ -15,8 +15,8 @@ public class CantFindAppointmentsPopUp extends JPanel {
 	private final JPanel container = new JPanel(new BorderLayout());
 	private final String message = "<html><body>\"appointments.json\" konnte nicht gefunden werden.<br>Sie können eine neue, leere Datei erstellen lassen oder das Programm beenden.<br>(Die Datei landet im selben Verzeichnis, wie der TerminEditor)</body></html>";
 	private final MyLabel displayOfMessage = new MyLabel(message);
-	private final MyButton yes = new MyButton("Ja und das Programm starten");
-	private final MyButton no = new MyButton("Nein und das Programm beenden");
+	private final MyTextButton yes = new MyTextButton("Ja und das Programm starten");
+	private final MyTextButton no = new MyTextButton("Nein und das Programm beenden");
 
 	public CantFindAppointmentsPopUp() {
 		super();

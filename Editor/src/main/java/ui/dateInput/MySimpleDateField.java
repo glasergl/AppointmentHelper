@@ -4,13 +4,13 @@ import appointment.SimpleDate;
 import complex.PointingBorder;
 import standard.helper.PopUpOnHoverController;
 import standard.helper.enums.StartMouseEvent;
-import standard.implementations.MySimpleButton;
+import standard.implementations.MyTextButton;
 import standard.settings.Colors;
 import standard.settings.Fonts;
 import ui.AppointmentRepresentation;
 import standard.implementations.MySimplePopUp;
 
-public class MySimpleDateField extends MySimpleButton {
+public class MySimpleDateField extends MyTextButton {
 
 	private final MySimplePopUp monthPopUp;
 	private final AllMonths months;
@@ -19,14 +19,13 @@ public class MySimpleDateField extends MySimpleButton {
 	private SimpleDate currentlySelected;
 
 	public MySimpleDateField(final SimpleDate initialDate, final AppointmentRepresentation ofThis) {
-		super();
+		super(initialDate.toStringWithLeadingZeros());
 		this.ofThis = ofThis;
-		currentlySelected = initialDate;
-		setText(initialDate.toStringWithLeadingZeros());
-		setBackground(Colors.getGray(1));
-		setFont(Fonts.resizedStandard(23.0f));
+		this.currentlySelected = initialDate;
 		months = new AllMonths(this, initialDate);
 		monthPopUp = new MySimplePopUp(months, this);
+		setBackground(Colors.getGray(1));
+		setFont(Fonts.resizedStandard(23.0f));
 		monthPopUp.setPopUpComponent(months);
 		monthPopUp.setBorderOfSubComponent(new PointingBorder(Colors.getGray(1), Colors.ofText()));
 		addMouseListener(new PopUpOnHoverController(monthPopUp, StartMouseEvent.CLICK));

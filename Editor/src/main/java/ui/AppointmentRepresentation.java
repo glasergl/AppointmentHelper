@@ -9,7 +9,7 @@ import javax.swing.event.DocumentListener;
 import appointment.Appointment;
 import appointment.SimpleDate;
 import main.AppointmentInteracter;
-import standard.implementations.MyButton;
+import standard.implementations.MyTextButton;
 import standard.implementations.MyCheckBox;
 import standard.implementations.MyHintTextField;
 import standard.implementations.MyLabel;
@@ -24,8 +24,8 @@ public class AppointmentRepresentation extends JPanel {
 	private final MyHintTextField name = new MyHintTextField("Name");
 	private final MyHintTextField description = new MyHintTextField("Beschreibung");
 	private final MyCheckBox isABirthday = new MyCheckBox("ist Geburtstag");
-	private final MyButton cancel = new MyButton("Cancel");
-	private final MyButton delete = new MyButton("Delete");
+	private final MyTextButton cancel = new MyTextButton("Cancel");
+	private final MyTextButton delete = new MyTextButton("Delete");
 
 	private Optional<Appointment> currentlyStored = Optional.empty();
 

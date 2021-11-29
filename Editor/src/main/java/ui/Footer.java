@@ -1,8 +1,10 @@
 package ui;
 
 import java.awt.Dimension;
+import javax.swing.BorderFactory;
+import javax.swing.border.BevelBorder;
 import complex.LineOfJComponent;
-import standard.implementations.MyButton;
+import standard.implementations.MyTextButton;
 import standard.settings.Colors;
 import standard.settings.Fonts;
 
@@ -18,7 +20,7 @@ public class Footer extends LineOfJComponent {
 
 	private final AllAppointments allAppointments;
 
-	private final MyButton addAppointments = new MyButton("+");
+	private final MyTextButton addAppointments = new MyTextButton("+");
 
 	public Footer(final AllAppointments allAppointments) {
 		super();
@@ -29,6 +31,7 @@ public class Footer extends LineOfJComponent {
 	private void setup() {
 		setBackground(Colors.getGray(1));
 		addAppointments.setFont(Fonts.resizedStandard(50.0f));
+		addAppointments.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
 		addAppointments.setPreferredSize(new Dimension(100, (int) addAppointments.getPreferredSize().getHeight()));
 		addAppointments.addActionListener((event) -> {
 			allAppointments.addEmpty();
