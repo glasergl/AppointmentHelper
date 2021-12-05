@@ -1,7 +1,5 @@
 package ui.dateInput;
 
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import appointment.SimpleDate;
 import standard.helper.listeners.PopUpDisplayerOnClick;
 import standard.implementations.MySiblingPopUp;
