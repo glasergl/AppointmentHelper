@@ -7,11 +7,12 @@ import appointment.Appointment;
 import appointment.SimpleDate;
 import complex.LineOfJComponent;
 import complex.PointingBorder;
-import standard.helper.PopUpOnHoverController;
-import standard.helper.BackgroundChangerOnHover;
+import main.Visualizer;
 import standard.helper.enums.Alignment;
+import standard.helper.listeners.BackgroundChangerOnHover;
+import standard.helper.listeners.PopUpDisplayerOnHover;
 import standard.implementations.MyLabel;
-import standard.implementations.MySimplePopUp;
+import standard.implementations.MySiblingPopUp;
 import standard.settings.Colors;
 import standard.settings.Fonts;
 
@@ -38,7 +39,7 @@ public final class CalendarCell extends MyLabel {
 		setBackground(Colors.getGray(2));
 		addMouseListener(new BackgroundChangerOnHover(Colors.ofFocus()));
 		if (atDate.size() > 1 || (atDate.size() == 1 && atDate.get(0).getName().length() > MAXIMUM_NAME_LENGTH)) {
-			addMouseListener(new PopUpOnHoverController(getPopUpComponent()));
+			addMouseListener(new PopUpDisplayerOnHover(getPopUpComponent()));
 		}
 	}
 
@@ -82,12 +83,12 @@ public final class CalendarCell extends MyLabel {
 		return ending.toString();
 	}
 
-	private MySimplePopUp getPopUpComponent() {
+	private MySiblingPopUp getPopUpComponent() {
 		//TODO java.awt.List
 		final LineOfJComponent names = new LineOfJComponent(Alignment.VERTICAL, getNamesAsLabels(atDate), 0);
 		names.setBackground(Colors.getGray(1));
 		names.setBorder(new PointingBorder(Colors.getGray(1), Colors.ofText()));
-		final MySimplePopUp popUp = new MySimplePopUp(names, this);
+		final MySiblingPopUp popUp = new MySiblingPopUp(names, Visualizer.getFrame(), this);
 		return popUp;
 	}
 

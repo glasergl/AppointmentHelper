@@ -38,6 +38,7 @@ public class AllMonths extends JPanel {
 	}
 
 	private void setupButtons() {
+		setBackground(Colors.getGray(1));
 		top.setBackground(Colors.getGray(1));
 		bottom.setBackground(Colors.getGray(1));
 		top.addToRight(close);

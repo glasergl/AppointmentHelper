@@ -1,18 +1,19 @@
 package ui.dateInput;
 
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import appointment.SimpleDate;
-import complex.PointingBorder;
-import standard.helper.PopUpOnHoverController;
-import standard.helper.enums.StartMouseEvent;
+import standard.helper.listeners.PopUpDisplayerOnClick;
+import standard.implementations.MySiblingPopUp;
 import standard.implementations.MyTextButton;
 import standard.settings.Colors;
 import standard.settings.Fonts;
 import ui.AppointmentRepresentation;
-import standard.implementations.MySimplePopUp;
+import main.Editor;
 
 public class MySimpleDateField extends MyTextButton {
 
-	private final MySimplePopUp monthPopUp;
+	private final MySiblingPopUp monthPopUp;
 	private final AllMonths months;
 	private final AppointmentRepresentation ofThis;
 
@@ -23,12 +24,10 @@ public class MySimpleDateField extends MyTextButton {
 		this.ofThis = ofThis;
 		this.currentlySelected = initialDate;
 		months = new AllMonths(this, initialDate);
-		monthPopUp = new MySimplePopUp(months, this);
+		monthPopUp = new MySiblingPopUp(months, Editor.getFrame(), this);
 		setBackground(Colors.getGray(1));
 		setFont(Fonts.resizedStandard(23.0f));
-		monthPopUp.setPopUpComponent(months);
-		monthPopUp.setBorderOfSubComponent(new PointingBorder(Colors.getGray(1), Colors.ofText()));
-		addMouseListener(new PopUpOnHoverController(monthPopUp, StartMouseEvent.CLICK));
+		addMouseListener(new PopUpDisplayerOnClick(monthPopUp));
 	}
 
 	public MySimpleDateField(final AppointmentRepresentation ofThis) {
@@ -45,7 +44,7 @@ public class MySimpleDateField extends MyTextButton {
 		return currentlySelected;
 	}
 
-	public MySimplePopUp getMonthPopUp() {
+	public MySiblingPopUp getMonthPopUp() {
 		return monthPopUp;
 	}
 
