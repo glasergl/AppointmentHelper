@@ -10,11 +10,9 @@ import java.util.stream.Collectors;
 import javax.swing.JPanel;
 import appointment.Appointment;
 import complex.PointingBorder;
-import main.Visualizer;
 import standard.helper.listeners.BackgroundChangerOnHover;
-import standard.helper.listeners.PopUpDisplayerOnHover;
+import standard.helper.listeners.SiblingPopUpDisplayerOnHover;
 import standard.implementations.MyLabel;
-import standard.implementations.MySiblingPopUp;
 import standard.settings.Colors;
 
 public final class AppointmentOutputText extends JPanel {
@@ -101,7 +99,7 @@ public final class AppointmentOutputText extends JPanel {
 		final MyLabel withDescription = new MyLabel(description);
 		withDescription.setBorder(new PointingBorder(withDescription.getBackground(), Colors.ofText()));
 		if (!description.equals("")) {
-			appointmentName.addMouseListener(new PopUpDisplayerOnHover(new MySiblingPopUp(withDescription, Visualizer.getFrame(), appointmentName)));
+			new SiblingPopUpDisplayerOnHover(withDescription, appointmentName);
 		}
 	}
 

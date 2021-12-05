@@ -1,6 +1,5 @@
 package ui;
 
-import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.util.Optional;
 import javax.swing.JPanel;
@@ -12,14 +11,13 @@ import fileInteraction.AppointmentInteracter;
 import standard.implementations.MyTextButton;
 import standard.implementations.MyCheckBox;
 import standard.implementations.MyHintTextField;
-import standard.implementations.MyLabel;
 import standard.settings.Colors;
 import ui.dateInput.MySimpleDateField;
 
 public class AppointmentRepresentation extends JPanel {
 
 	private final AllAppointments parent;
-	private final MyLabel message = new MyLabel();
+	private final AppointmentRepresentationStateDisplayer stateDisplayer = new AppointmentRepresentationStateDisplayer();
 	private final MySimpleDateField date;
 	private final MyHintTextField name = new MyHintTextField("Name");
 	private final MyHintTextField description = new MyHintTextField("Beschreibung");
@@ -45,7 +43,7 @@ public class AppointmentRepresentation extends JPanel {
 		this.parent = parent;
 		this.currentlyStored = Optional.empty();
 		this.date = new MySimpleDateField(this);
-		message.setText("*");
+		stateDisplayer.toUnsaved();
 		isABirthday.setSelected(true);
 		setup();
 	}
@@ -57,8 +55,7 @@ public class AppointmentRepresentation extends JPanel {
 	}
 
 	private void setupSubcomponents() {
-		message.setPreferredSize(new Dimension(20, 20));
-		message.setBackground(getBackground());
+		stateDisplayer.setBackground(getBackground());
 		name.setColumns(16);
 		description.setColumns(40);
 		isABirthday.setBackground(getBackground());
@@ -98,7 +95,7 @@ public class AppointmentRepresentation extends JPanel {
 	}
 
 	private void addComponents() {
-		add(message);
+		add(stateDisplayer);
 		add(date);
 		add(name);
 		add(description);
@@ -113,9 +110,9 @@ public class AppointmentRepresentation extends JPanel {
 			if (currentlyStored.getDate().equals(date.getDate()) && currentlyStored.getName().equals(name.getText())
 					&& currentlyStored.getDescription().equals(description.getText())
 					&& currentlyStored.isABirthday() == isABirthday.isSelected()) {
-				message.setText("");
+				stateDisplayer.toNothing();
 			} else {
-				message.setText("*");
+				stateDisplayer.toUnsaved();
 			}
 		}
 	}
@@ -139,7 +136,7 @@ public class AppointmentRepresentation extends JPanel {
 	public void save() {
 		final String name = this.name.getText();
 		if (name.length() != 0) {
-			message.setText("");
+			stateDisplayer.toNothing();
 			final Appointment currentContent;
 			if (currentlyStored.isPresent()) {
 				currentContent = new Appointment(date.getDate(), name, description.getText(), isABirthday.isSelected(),
@@ -151,12 +148,12 @@ public class AppointmentRepresentation extends JPanel {
 			}
 			currentlyStored = Optional.of(currentContent);
 		} else {
-			message.setText("!");
+			stateDisplayer.toError();
 		}
 	}
 
-	public String getMessage() {
-		return message.getText();
+	public AppointmentRepresentationStateDisplayer.State getState() {
+		return stateDisplayer.getState();
 	}
 
 	public void setDate(final SimpleDate newDate) {
