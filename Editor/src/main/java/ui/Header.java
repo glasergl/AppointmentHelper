@@ -16,21 +16,21 @@ import standard.settings.Colors;
  */
 public class Header extends RowOfJComponent {
 
-	private final AllAppointments appointments;
-	private final MyTextButton save = new MyTextButton("Save All");
+    private final AllAppointments appointments;
+    private final MyTextButton save = new MyTextButton("Save All");
 
-	public Header(final AllAppointments appointments) {
-		super();
-		this.appointments = appointments;
-		setup();
-	}
+    public Header(final AllAppointments appointments) {
+	super();
+	this.appointments = appointments;
+	setup();
+    }
 
-	private void setup() {
-		setBackground(Colors.getGray(0));
-		save.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
-		save.addActionListener(click -> {
-			appointments.save();
-		});
-		addToRight(save);
-	}
+    private void setup() {
+	setBackground(Colors.getGray(0));
+	save.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+	save.addActionListener(click -> {
+	    appointments.save();
+	});
+	addToRight(save);
+    }
 }

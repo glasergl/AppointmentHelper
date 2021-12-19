@@ -18,25 +18,25 @@ import standard.settings.Fonts;
  */
 public class Footer extends RowOfJComponent {
 
-	private final AllAppointments allAppointments;
+    private final AllAppointments allAppointments;
 
-	private final MyTextButton addAppointments = new MyTextButton("+");
+    private final MyTextButton addAppointments = new MyTextButton("+");
 
-	public Footer(final AllAppointments allAppointments) {
-		super();
-		this.allAppointments = allAppointments;
-		setup();
-	}
+    public Footer(final AllAppointments allAppointments) {
+	super();
+	this.allAppointments = allAppointments;
+	setup();
+    }
 
-	private void setup() {
-		setBackground(Colors.getGray(1));
-		addAppointments.setFont(Fonts.resizedStandard(50.0f));
-		addAppointments.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
-		addAppointments.setPreferredSize(new Dimension(100, (int) addAppointments.getPreferredSize().getHeight()));
-		addAppointments.addActionListener((event) -> {
-			allAppointments.addEmpty();
-		});
-		addToRight(addAppointments);
-	}
+    private void setup() {
+	setBackground(Colors.getGray(1));
+	addAppointments.setFont(Fonts.resizedStandard(50.0f));
+	addAppointments.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+	addAppointments.setPreferredSize(new Dimension(100, (int) addAppointments.getPreferredSize().getHeight()));
+	addAppointments.addActionListener((event) -> {
+	    allAppointments.addEmpty();
+	});
+	addToRight(addAppointments);
+    }
 
 }

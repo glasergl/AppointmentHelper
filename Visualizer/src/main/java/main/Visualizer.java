@@ -14,19 +14,19 @@ import ui.VisualizerMainFrame;
  */
 public final class Visualizer {
 
-	public static void main(final String[] args) {
-		Colors.setDarkModeEnabled(false);
-		if (!AppointmentInteracter.WITH_APPOINTMENTS.exists()) {
-			VisualErrors.showCouldntFindAppointmentFileError();
-		} else {
-			createAndShowGUI(AppointmentInteracter.getAppointments());
-		}
+    public static void main(final String[] args) {
+	Colors.setDarkModeEnabled(false);
+	if (!AppointmentInteracter.WITH_APPOINTMENTS.exists()) {
+	    VisualErrors.showCouldntFindAppointmentFileError();
+	} else {
+	    createAndShowGUI(AppointmentInteracter.getAppointments());
 	}
+    }
 
-	private static void createAndShowGUI(final List<Appointment> toConsider) {
-		SwingUtilities.invokeLater(() -> {
-			new VisualizerMainFrame(toConsider);
-		});
-	}
+    private static void createAndShowGUI(final List<Appointment> toConsider) {
+	SwingUtilities.invokeLater(() -> {
+	    new VisualizerMainFrame(toConsider);
+	});
+    }
 
 }

@@ -17,36 +17,36 @@ import standard.settings.Fonts;
  */
 public final class AppointmentOutput extends JPanel {
 
-	private final AppointmentOutputText today;
-	private final AppointmentOutputText tomorrow;
+    private final AppointmentOutputText today;
+    private final AppointmentOutputText tomorrow;
 
-	public AppointmentOutput(final List<Appointment> birthdaysToRespect) {
-		super();
-		this.today = new AppointmentOutputText("Heute", Appointment::isToday, birthdaysToRespect);
-		this.tomorrow = new AppointmentOutputText("Morgen", Appointment::isTomorrow, birthdaysToRespect);
-		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-		setFont(Fonts.big());
-		setBackground(Colors.getGray(0));
-		add(today);
-		add(tomorrow);
-	}
+    public AppointmentOutput(final List<Appointment> birthdaysToRespect) {
+	super();
+	this.today = new AppointmentOutputText("Heute", Appointment::isToday, birthdaysToRespect);
+	this.tomorrow = new AppointmentOutputText("Morgen", Appointment::isTomorrow, birthdaysToRespect);
+	setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+	setFont(Fonts.big());
+	setBackground(Colors.getGray(0));
+	add(today);
+	add(tomorrow);
+    }
 
-	@Override
-	public void setFont(final Font newFontOfOutputTexts) {
-		super.setFont(newFontOfOutputTexts);
-		if (today != null && tomorrow != null) {
-			today.setFont(newFontOfOutputTexts);
-			tomorrow.setFont(newFontOfOutputTexts);
-		}
+    @Override
+    public void setFont(final Font newFontOfOutputTexts) {
+	super.setFont(newFontOfOutputTexts);
+	if (today != null && tomorrow != null) {
+	    today.setFont(newFontOfOutputTexts);
+	    tomorrow.setFont(newFontOfOutputTexts);
 	}
+    }
 
-	@Override
-	public void setBackground(final Color newBackground) {
-		super.setBackground(newBackground);
-		if (today != null && tomorrow != null) {
-			today.setBackground(newBackground);
-			tomorrow.setBackground(newBackground);
-		}
+    @Override
+    public void setBackground(final Color newBackground) {
+	super.setBackground(newBackground);
+	if (today != null && tomorrow != null) {
+	    today.setBackground(newBackground);
+	    tomorrow.setBackground(newBackground);
 	}
+    }
 
 }

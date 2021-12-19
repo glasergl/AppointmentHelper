@@ -13,28 +13,28 @@ import appointment.Appointment;
  * @version 29.9.2021
  */
 public final class VisualCalendar extends JPanel {
-	private final MonthRow months = new MonthRow();
-	private final CalendarCells cells;
+    private final MonthRow months = new MonthRow();
+    private final CalendarCells cells;
 
-	public VisualCalendar(final List<Appointment> toRespect) {
-		super();
-		cells = new CalendarCells(toRespect);
-		setup();
+    public VisualCalendar(final List<Appointment> toRespect) {
+	super();
+	cells = new CalendarCells(toRespect);
+	setup();
 
-	}
+    }
 
-	private void setup() {
-		setLayout(new BorderLayout());
-		setVisible(false);
-		add(months, BorderLayout.NORTH);
-		add(cells, BorderLayout.CENTER);
-	}
+    private void setup() {
+	setLayout(new BorderLayout());
+	setVisible(false);
+	add(months, BorderLayout.NORTH);
+	add(cells, BorderLayout.CENTER);
+    }
 
-	@Override
-	public void setVisible(final boolean shouldBeVisible) {
-		super.setVisible(shouldBeVisible);
-		months.setVisible(shouldBeVisible);
-		cells.setVisible(shouldBeVisible);
-	}
+    @Override
+    public void setVisible(final boolean shouldBeVisible) {
+	super.setVisible(shouldBeVisible);
+	months.setVisible(shouldBeVisible);
+	cells.setVisible(shouldBeVisible);
+    }
 
 }

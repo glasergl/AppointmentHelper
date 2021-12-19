@@ -11,16 +11,16 @@ import java.util.Random;
  */
 public class ID {
 
-	private static final ArrayList<Integer> ALREADY_USED_IDS = new ArrayList<>();
+    private static final ArrayList<Integer> ALREADY_USED_IDS = new ArrayList<>();
 
-	public static int getNext() {
-		final Random randomGenerator = new Random();
-		int randomID = randomGenerator.nextInt();
-		while (ALREADY_USED_IDS.contains(randomID)) {
-			randomID = randomGenerator.nextInt();
-		}
-		ALREADY_USED_IDS.add(randomID);
-		return randomID;
+    public static int getNext() {
+	final Random randomGenerator = new Random();
+	int randomID = randomGenerator.nextInt();
+	while (ALREADY_USED_IDS.contains(randomID)) {
+	    randomID = randomGenerator.nextInt();
 	}
+	ALREADY_USED_IDS.add(randomID);
+	return randomID;
+    }
 
 }

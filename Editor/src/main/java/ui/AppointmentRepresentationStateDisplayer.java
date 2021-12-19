@@ -12,46 +12,46 @@ import standard.implementations.MyLabel;
  */
 public class AppointmentRepresentationStateDisplayer extends MyLabel {
 
-	private State current = State.NOTHING;
+    private State current = State.NOTHING;
 
-	public AppointmentRepresentationStateDisplayer() {
-		super();
-		setPreferredSize(new Dimension(20, 20));
-	}
+    public AppointmentRepresentationStateDisplayer() {
+	super();
+	setPreferredSize(new Dimension(20, 20));
+    }
 
-	public void toNothing() {
-		changeState(State.NOTHING);
-	}
+    public void toNothing() {
+	changeState(State.NOTHING);
+    }
 
-	public void toUnsaved() {
-		changeState(State.UNSAVED);
-	}
+    public void toUnsaved() {
+	changeState(State.UNSAVED);
+    }
 
-	public void toError() {
-		changeState(State.ERROR);
-	}
-	
-	public State getState() {
-		return current;
-	}
+    public void toError() {
+	changeState(State.ERROR);
+    }
 
-	private void changeState(final State newState) {
-		current = newState;
-		displayCurrentState();
-	}
+    public State getState() {
+	return current;
+    }
 
-	private void displayCurrentState() {
-		if (current == State.NOTHING) {
-			setText("");
-		} else if (current == State.UNSAVED) {
-			setText("*");
-		} else {
-			setText("!");
-		}
-	}
+    private void changeState(final State newState) {
+	current = newState;
+	displayCurrentState();
+    }
 
-	public enum State {
-		NOTHING, UNSAVED, ERROR;
+    private void displayCurrentState() {
+	if (current == State.NOTHING) {
+	    setText("");
+	} else if (current == State.UNSAVED) {
+	    setText("*");
+	} else {
+	    setText("!");
 	}
+    }
+
+    public enum State {
+	NOTHING, UNSAVED, ERROR;
+    }
 
 }
