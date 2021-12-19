@@ -9,8 +9,8 @@ import appointment.Appointment;
 import appointment.SimpleDate;
 import fileInteraction.AppointmentInteracter;
 import standard.implementations.MyTextButton;
+import standard.implementations.MyTextField;
 import standard.implementations.MyCheckBox;
-import standard.implementations.MyHintTextField;
 import standard.settings.Colors;
 import ui.dateInput.MySimpleDateField;
 
@@ -19,8 +19,8 @@ public class AppointmentRepresentation extends JPanel {
 	private final AllAppointments parent;
 	private final AppointmentRepresentationStateDisplayer stateDisplayer = new AppointmentRepresentationStateDisplayer();
 	private final MySimpleDateField date;
-	private final MyHintTextField name = new MyHintTextField("Name");
-	private final MyHintTextField description = new MyHintTextField("Beschreibung");
+	private final MyTextField name = new MyTextField();
+	private final MyTextField description = new MyTextField();
 	private final MyCheckBox isABirthday = new MyCheckBox("ist Geburtstag");
 	private final MyTextButton cancel = new MyTextButton("Cancel");
 	private final MyTextButton delete = new MyTextButton("Delete");
