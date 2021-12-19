@@ -15,11 +15,11 @@ public class AllMonths extends JPanel {
     private final MySimpleDateField toSetSelectedDateOf;
     private final RowOfJComponent top = new RowOfJComponent();
     private final RowOfJComponent bottom = new RowOfJComponent(7, 7);
-    private final MyTextButton close = new MyTextButton("x");
-    private final MyTextButton goLeft = new MyTextButton("<<");
-    private final MyTextButton goRight = new MyTextButton(">>");
-    private final MyTextButton goLeftEdge = new MyTextButton("I<<");
-    private final MyTextButton goRightEdge = new MyTextButton(">>I");
+    private final MyTextButton close = new MyTextButton("x", false);
+    private final MyTextButton goLeft = new MyTextButton("<<", false);
+    private final MyTextButton goRight = new MyTextButton(">>", false);
+    private final MyTextButton goLeftEdge = new MyTextButton("I<<", false);
+    private final MyTextButton goRightEdge = new MyTextButton(">>I", false);
 
     private int currentMonth;
     private MonthRepresentation displayOfCurrentMonth;;

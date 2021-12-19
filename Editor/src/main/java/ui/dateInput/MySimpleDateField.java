@@ -17,7 +17,7 @@ public class MySimpleDateField extends MyTextButton {
     private SimpleDate currentlySelected;
 
     public MySimpleDateField(final SimpleDate initialDate, final AppointmentRepresentation ofThis) {
-	super(initialDate.toStringWithLeadingZeros());
+	super(initialDate.toStringWithLeadingZeros(), false);
 	this.ofThis = ofThis;
 	this.currentlySelected = initialDate;
 	months = new AllMonths(this, initialDate);

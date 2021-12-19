@@ -1,8 +1,6 @@
 package ui;
 
-import java.awt.Dimension;
-import javax.swing.BorderFactory;
-import javax.swing.border.BevelBorder;
+import javax.swing.border.EmptyBorder;
 import complex.RowOfJComponent;
 import standard.implementations.MyTextButton;
 import standard.settings.Colors;
@@ -31,8 +29,7 @@ public class Footer extends RowOfJComponent {
     private void setup() {
 	setBackground(Colors.getGray(1));
 	addAppointments.setFont(Fonts.resizedStandard(50.0f));
-	addAppointments.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
-	addAppointments.setPreferredSize(new Dimension(100, (int) addAppointments.getPreferredSize().getHeight()));
+	addAppointments.setBorder(new EmptyBorder(10, 40, 10, 40));
 	addAppointments.addActionListener((event) -> {
 	    allAppointments.addEmpty();
 	});

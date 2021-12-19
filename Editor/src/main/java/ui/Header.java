@@ -1,7 +1,5 @@
 package ui;
 
-import javax.swing.BorderFactory;
-import javax.swing.border.BevelBorder;
 import complex.RowOfJComponent;
 import standard.implementations.MyTextButton;
 import standard.settings.Colors;
@@ -20,14 +18,13 @@ public class Header extends RowOfJComponent {
     private final MyTextButton save = new MyTextButton("Save All");
 
     public Header(final AllAppointments appointments) {
-	super();
+	super(5, 5);
 	this.appointments = appointments;
 	setup();
     }
 
     private void setup() {
 	setBackground(Colors.getGray(0));
-	save.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
 	save.addActionListener(click -> {
 	    appointments.save();
 	});

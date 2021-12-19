@@ -38,7 +38,7 @@ public final class MonthRepresentation extends JPanel {
     private void addDays() {
 	final int dayOfMonth = monthToDepict == 2 ? 29 : SimpleDate.daysOfMonth(monthToDepict);
 	for (int day = 1; day <= dayOfMonth; day++) {
-	    final MyTextButton visualizedDay = new MyTextButton(String.valueOf(day));
+	    final MyTextButton visualizedDay = new MyTextButton(String.valueOf(day), false);
 	    visualizedDay.setPreferredSize(new Dimension(40, 40));
 	    visualizedDay.addActionListener(new DayButtonController(new SimpleDate(day, monthToDepict)));
 	    days.add(visualizedDay);
