@@ -13,12 +13,12 @@ import appointment.Appointment;
 import standard.settings.Colors;
 
 public class AllAppointments extends JPanel {
-
+	//TODO Header Datum, Name, Beschreibung, istGeburtstag
 	private final List<AppointmentRepresentation> appointments = new ArrayList<>();
 	private final JPanel allAppointments = new JPanel();
 	private final JScrollPane whichContainsAllAppointments;
 
-	private static final int MAX_NUMBER_OF_SHOWN_APPOINTMENTS = 10;
+	private static final int MAX_NUMBER_OF_SHOWN_APPOINTMENTS = 8;
 
 	public AllAppointments(final List<Appointment> toDepict) {
 		super(new BorderLayout());
