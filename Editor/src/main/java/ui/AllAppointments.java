@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import appointment.Appointment;
-import standard.settings.Colors;
+import settings.Colors;
 
 public class AllAppointments extends JPanel {
     // TODO Header Datum, Name, Beschreibung, istGeburtstag

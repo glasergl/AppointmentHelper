@@ -5,8 +5,8 @@ import java.awt.Container;
 import java.awt.Image;
 import java.util.List;
 import appointment.Appointment;
-import standard.MyFrame;
-import standard.SwingFunctions;
+import container.MyFrame;
+import general.SwingFunctions;
 
 public class EditorFrame extends MyFrame {
 

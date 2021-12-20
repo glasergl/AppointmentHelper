@@ -6,14 +6,14 @@ import java.util.stream.Collectors;
 import javax.swing.JComponent;
 import appointment.Appointment;
 import appointment.SimpleDate;
-import complex.LineOfJComponent;
-import complex.PointingBorder;
-import standard.helper.enums.Alignment;
-import standard.helper.listeners.BackgroundChangerOnHover;
-import standard.helper.listeners.SiblingPopUpDisplayerOnHover;
-import standard.implementations.MyLabel;
-import standard.settings.Colors;
-import standard.settings.Fonts;
+import border.PointingBorder;
+import container.LineOfJComponent;
+import entity.Alignment;
+import eventListener.BackgroundChangerOnHover;
+import eventListener.SiblingPopUpDisplayerOnHover;
+import myComponent.MyLabel;
+import settings.Colors;
+import settings.Fonts;
 
 /**
  * Representation of a single calendar cell which represents a date and a

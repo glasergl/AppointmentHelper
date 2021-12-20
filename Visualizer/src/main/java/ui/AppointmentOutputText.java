@@ -9,11 +9,11 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import javax.swing.JPanel;
 import appointment.Appointment;
-import complex.PointingBorder;
-import standard.helper.listeners.BackgroundChangerOnHover;
-import standard.helper.listeners.SiblingPopUpDisplayerOnHover;
-import standard.implementations.MyLabel;
-import standard.settings.Colors;
+import border.PointingBorder;
+import eventListener.BackgroundChangerOnHover;
+import eventListener.SiblingPopUpDisplayerOnHover;
+import myComponent.MyLabel;
+import settings.Colors;
 
 public final class AppointmentOutputText extends JPanel {
 

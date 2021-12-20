@@ -1,11 +1,11 @@
 package ui.dateInput;
 
 import appointment.SimpleDate;
-import standard.helper.listeners.SiblingPopUpDisplayerOnClick;
-import standard.implementations.MySiblingPopUp;
-import standard.implementations.MyTextButton;
-import standard.settings.Colors;
-import standard.settings.Fonts;
+import eventListener.SiblingPopUpDisplayerOnClick;
+import myComponent.MySiblingPopUp;
+import myComponent.MyTextButton;
+import settings.Colors;
+import settings.Fonts;
 import ui.AppointmentRepresentation;
 
 public class MySimpleDateField extends MyTextButton {

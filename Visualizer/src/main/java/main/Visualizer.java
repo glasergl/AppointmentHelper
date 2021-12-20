@@ -4,7 +4,7 @@ import java.util.List;
 import javax.swing.SwingUtilities;
 import appointment.Appointment;
 import fileInteraction.AppointmentInteracter;
-import standard.settings.Colors;
+import settings.Colors;
 import ui.VisualErrors;
 import ui.VisualizerMainFrame;
 

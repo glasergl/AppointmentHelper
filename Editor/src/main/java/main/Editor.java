@@ -6,9 +6,9 @@ import java.io.IOException;
 import java.util.List;
 import javax.swing.SwingUtilities;
 import appointment.Appointment;
-import standard.settings.Colors;
 import ui.EditorFrame;
 import fileInteraction.AppointmentInteracter;
+import settings.Colors;
 
 public class Editor {
 

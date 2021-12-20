@@ -8,9 +8,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import appointment.SimpleDate;
-import standard.implementations.MyLabel;
-import standard.implementations.MyTextButton;
-import standard.settings.Colors;
+import myComponent.MyLabel;
+import myComponent.MyTextButton;
+import settings.Colors;
 
 public final class MonthRepresentation extends JPanel {
 

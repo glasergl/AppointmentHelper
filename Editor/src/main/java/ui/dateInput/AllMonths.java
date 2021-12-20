@@ -6,9 +6,9 @@ import java.awt.Dimension;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import appointment.SimpleDate;
-import complex.RowOfJComponent;
-import standard.implementations.MyTextButton;
-import standard.settings.Colors;
+import container.RowOfJComponent;
+import myComponent.MyTextButton;
+import settings.Colors;
 
 public class AllMonths extends JPanel {
 

@@ -1,10 +1,10 @@
 package ui;
 
 import javax.swing.border.EmptyBorder;
-import complex.RowOfJComponent;
-import standard.implementations.MyTextButton;
-import standard.settings.Colors;
-import standard.settings.Fonts;
+import container.RowOfJComponent;
+import myComponent.MyTextButton;
+import settings.Colors;
+import settings.Fonts;
 
 /**
  * Footer for the whole frame.

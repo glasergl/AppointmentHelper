@@ -1,8 +1,7 @@
 package ui;
 
 import java.awt.Dimension;
-
-import standard.implementations.MyLabel;
+import myComponent.MyLabel;
 
 /**
  * Label which represents the current state of

@@ -8,10 +8,10 @@ import javax.swing.event.DocumentListener;
 import appointment.Appointment;
 import appointment.SimpleDate;
 import fileInteraction.AppointmentInteracter;
-import standard.implementations.MyTextButton;
-import standard.implementations.MyTextField;
-import standard.implementations.MyCheckBox;
-import standard.settings.Colors;
+import myComponent.MyCheckBox;
+import myComponent.MyTextButton;
+import myComponent.MyTextField;
+import settings.Colors;
 import ui.dateInput.MySimpleDateField;
 
 public class AppointmentRepresentation extends JPanel {

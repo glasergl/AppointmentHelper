@@ -6,8 +6,8 @@ import java.util.List;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import appointment.Appointment;
-import standard.settings.Colors;
-import standard.settings.Fonts;
+import settings.Colors;
+import settings.Fonts;
 
 /**
  * An instance of this class depicts all birthdays.
