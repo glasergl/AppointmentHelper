@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 import javax.swing.JComponent;
 import appointment.Appointment;
 import appointment.SimpleDate;
-import border.PointingBorder;
 import container.LineOfJComponent;
 import entity.Alignment;
 import eventListener.BackgroundChangerOnHover;
@@ -86,7 +85,6 @@ public final class CalendarCell extends MyLabel {
 	// TODO java.awt.List
 	final LineOfJComponent names = new LineOfJComponent(Alignment.VERTICAL, getNamesAsLabels(atDate), 0);
 	names.setBackground(Colors.getGray(1));
-	names.setBorder(new PointingBorder(Colors.getGray(1), Colors.ofText()));
 	return names;
     }
 

@@ -9,7 +9,6 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import javax.swing.JPanel;
 import appointment.Appointment;
-import border.PointingBorder;
 import eventListener.BackgroundChangerOnHover;
 import eventListener.SiblingPopUpDisplayerOnHover;
 import myComponent.MyLabel;
@@ -94,7 +93,6 @@ public final class AppointmentOutputText extends JPanel {
 	appointmentName.addMouseListener(new BackgroundChangerOnHover(Colors.ofFocus()));
 	final String description = appointment.getDescription();
 	final MyLabel withDescription = new MyLabel(description);
-	withDescription.setBorder(new PointingBorder(withDescription.getBackground(), Colors.ofText()));
 	if (!description.equals("")) {
 	    new SiblingPopUpDisplayerOnHover(withDescription, appointmentName);
 	}
