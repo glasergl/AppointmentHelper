@@ -6,7 +6,7 @@ import appointment.Appointment;
 import fileInteraction.AppointmentInteracter;
 import settings.Colors;
 import ui.VisualErrors;
-import ui.VisualizerMainFrame;
+import ui.VisualizerFrame;
 
 /**
  * @author Gabriel Glaser
@@ -25,7 +25,7 @@ public final class Visualizer {
 
     private static void createAndShowGUI(final List<Appointment> toConsider) {
 	SwingUtilities.invokeLater(() -> {
-	    new VisualizerMainFrame(toConsider);
+	    new VisualizerFrame(toConsider);
 	});
     }
 

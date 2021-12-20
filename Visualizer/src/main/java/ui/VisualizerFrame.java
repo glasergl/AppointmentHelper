@@ -13,7 +13,7 @@ import myComponent.MyTextButton;
 import ui.calendar.VisualCalendar;
 import settings.Colors;
 
-public class VisualizerMainFrame extends MyFrame {
+public class VisualizerFrame extends MyFrame {
 
     private static final Image ICON = SwingFunctions.getImage("Icon.png", Visualizer.class);
 
@@ -21,7 +21,7 @@ public class VisualizerMainFrame extends MyFrame {
     private final AppointmentOutput withAllBirthdays;
     private final VisualCalendar visualisedAppointments;
 
-    public VisualizerMainFrame(final List<Appointment> toConsider) {
+    public VisualizerFrame(final List<Appointment> toConsider) {
 	super("TerminHelfer", ICON);
 	this.withAllBirthdays = new AppointmentOutput(toConsider);
 	this.visualisedAppointments = new VisualCalendar(toConsider);
