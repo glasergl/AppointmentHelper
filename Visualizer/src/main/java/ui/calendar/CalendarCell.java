@@ -8,7 +8,7 @@ import appointment.Appointment;
 import appointment.SimpleDate;
 import container.LineOfJComponent;
 import entity.Alignment;
-import eventListener.BackgroundChangerOnHover;
+import eventListener.ColorChangerOnHover;
 import eventListener.SiblingPopUpDisplayerOnHover;
 import myComponent.MyLabel;
 import settings.Colors;
@@ -35,7 +35,7 @@ public final class CalendarCell extends MyLabel {
 	setText(calculateTextForDate());
 	setFont(Fonts.mediumSmall());
 	setBackground(Colors.getGray(2));
-	addMouseListener(new BackgroundChangerOnHover(Colors.ofFocus()));
+	addMouseListener(new ColorChangerOnHover(Colors.ofFocus(), getForeground()));
 	if (atDate.size() > 1 || (atDate.size() == 1 && atDate.get(0).getName().length() > MAXIMUM_NAME_LENGTH)) {
 	    new SiblingPopUpDisplayerOnHover(getPopUpComponent(), this);
 	}
