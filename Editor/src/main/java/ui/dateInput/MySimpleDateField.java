@@ -23,6 +23,7 @@ public class MySimpleDateField extends MyTextButton {
 	months = new AllMonths(this, initialDate);
 	monthPopUpController = new SiblingPopUpDisplayerOnClick(months, this);
 	setBackground(Colors.getGray(1));
+	setBackgroundWhileMouseHovered(Colors.getGray(2));
 	setFont(Fonts.resizedStandard(23.0f));
     }
 

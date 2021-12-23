@@ -41,6 +41,7 @@ public class AllMonths extends JPanel {
 	setBackground(Colors.getGray(1));
 	top.setBackground(Colors.getGray(1));
 	bottom.setBackground(Colors.getGray(1));
+	
 	top.addToRight(close);
 	bottom.addToLeft(goLeftEdge);
 	bottom.addToLeft(goLeft);
@@ -51,9 +52,12 @@ public class AllMonths extends JPanel {
 	bottom.setBorderOfChildren(new EmptyBorder(2, 2, 2, 2));
 
 	close.setPreferredSize(new Dimension(40, (int) close.getPreferredSize().getHeight()));
-	close.setBackground(Color.RED);
+	close.setBackground(getBackground());
+	close.setBackgroundWhileMouseHovered(Color.RED);
+	close.setTextColorWhileMouseHovered(Color.WHITE);
 
 	setupActionListeners();
+	
 	add(top, BorderLayout.NORTH);
 	add(bottom, BorderLayout.CENTER);
     }

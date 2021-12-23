@@ -41,6 +41,8 @@ public final class MonthRepresentation extends JPanel {
 	    final MyTextButton visualizedDay = new MyTextButton(String.valueOf(day), false);
 	    visualizedDay.setPreferredSize(new Dimension(40, 40));
 	    visualizedDay.addActionListener(new DayButtonController(new SimpleDate(day, monthToDepict)));
+	    visualizedDay.setBackground(Colors.getGray(2));
+	    visualizedDay.setBackgroundWhileMouseHovered(Colors.getGray(3));
 	    days.add(visualizedDay);
 	}
 	for (int filler = dayOfMonth + 1; filler <= 35; filler++) {
