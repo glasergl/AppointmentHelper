@@ -53,8 +53,12 @@ public class AllMonths extends JPanel {
 
 	close.setPreferredSize(new Dimension(40, (int) close.getPreferredSize().getHeight()));
 	close.setBackground(getBackground());
-	close.setBackgroundWhileMouseHovered(Color.RED);
-	close.setTextColorWhileMouseHovered(Color.WHITE);
+	close.setBackgroundWhileMouseHovered(new Color(209, 63, 52));
+	close.setTextColorWhileMouseHovered(new Color(230,230,230));
+	goLeft.setBackgroundWhileMouseHovered(Colors.getGray(2));
+	goLeftEdge.setBackgroundWhileMouseHovered(Colors.getGray(2));
+	goRight.setBackgroundWhileMouseHovered(Colors.getGray(2));
+	goRightEdge.setBackgroundWhileMouseHovered(Colors.getGray(2));
 
 	setupActionListeners();
 	
