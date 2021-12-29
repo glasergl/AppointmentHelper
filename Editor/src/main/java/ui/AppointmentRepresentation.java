@@ -10,7 +10,7 @@ import appointment.SimpleDate;
 import fileInteraction.AppointmentInteracter;
 import myComponent.MyCheckBox;
 import myComponent.MyTextButton;
-import myComponent.MyTextField;
+import myComponent.textField.MyTextField;
 import settings.Colors;
 import ui.dateInput.MySimpleDateField;
 

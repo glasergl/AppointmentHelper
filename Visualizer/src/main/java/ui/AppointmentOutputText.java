@@ -9,6 +9,7 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import javax.swing.JPanel;
 import appointment.Appointment;
+import entity.ColorType;
 import eventListener.ColorChangerOnHover;
 import eventListener.SiblingPopUpDisplayerOnHover;
 import myComponent.MyLabel;
@@ -90,7 +91,7 @@ public final class AppointmentOutputText extends JPanel {
     }
 
     private void setupAppointmentLabel(final MyLabel appointmentName, final Appointment appointment) {
-	appointmentName.addMouseListener(new ColorChangerOnHover(Colors.ofFocus(), appointmentName.getForeground()));
+	appointmentName.addMouseListener(new ColorChangerOnHover(Colors.ofFocus(), ColorType.BACKGROUND));
 	final String description = appointment.getDescription();
 	final MyLabel withDescription = new MyLabel(description);
 	if (!description.equals("")) {
