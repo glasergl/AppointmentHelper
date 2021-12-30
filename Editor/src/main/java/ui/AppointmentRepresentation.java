@@ -81,8 +81,8 @@ public class AppointmentRepresentation extends JPanel {
 		updateSavedState();
 	    }
 	};
-	name.addDocumentListener(forChanges);
-	description.addDocumentListener(forChanges);
+	name.getBaseImplementation().getDocument().addDocumentListener(forChanges);
+	description.getBaseImplementation().getDocument().addDocumentListener(forChanges);
     }
 
     private void setupActionListeners() {
