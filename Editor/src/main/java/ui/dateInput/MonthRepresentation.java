@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import appointment.SimpleDate;
 import myComponent.MyLabel;
-import myComponent.MyTextButton;
+import myComponent.button.MyTextButton;
 import settings.Colors;
 
 public final class MonthRepresentation extends JPanel {

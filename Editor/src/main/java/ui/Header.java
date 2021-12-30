@@ -1,7 +1,7 @@
 package ui;
 
 import container.RowOfJComponent;
-import myComponent.MyTextButton;
+import myComponent.button.MyTextButton;
 import settings.Colors;
 
 /**

@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import appointment.SimpleDate;
 import container.RowOfJComponent;
-import myComponent.MyTextButton;
+import myComponent.button.MyTextButton;
 import settings.Colors;
 
 public class AllMonths extends JPanel {

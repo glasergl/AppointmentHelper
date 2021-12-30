@@ -3,7 +3,7 @@ package ui.dateInput;
 import appointment.SimpleDate;
 import eventListener.SiblingPopUpDisplayerOnClick;
 import myComponent.MySiblingPopUp;
-import myComponent.MyTextButton;
+import myComponent.button.MyTextButton;
 import settings.Colors;
 import settings.Fonts;
 import ui.AppointmentRepresentation;

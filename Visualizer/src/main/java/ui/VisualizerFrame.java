@@ -9,7 +9,7 @@ import container.JPanelFactory;
 import container.MyFrame;
 import general.SwingFunctions;
 import main.Visualizer;
-import myComponent.MyTextButton;
+import myComponent.button.MyTextButton;
 import ui.calendar.VisualCalendar;
 import settings.Colors;
 

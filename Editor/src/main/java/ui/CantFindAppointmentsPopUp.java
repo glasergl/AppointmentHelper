@@ -7,7 +7,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 import myComponent.MyLabel;
-import myComponent.MyTextButton;
+import myComponent.button.MyTextButton;
 import settings.Fonts;
 
 public class CantFindAppointmentsPopUp extends JPanel {

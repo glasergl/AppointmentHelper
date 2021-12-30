@@ -3,7 +3,7 @@ package ui;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import container.RowOfJComponent;
-import myComponent.MyTextButton;
+import myComponent.button.MyTextButton;
 import settings.Colors;
 import settings.Fonts;
 
