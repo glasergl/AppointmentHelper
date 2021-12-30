@@ -23,6 +23,7 @@ public class EditorFrame extends MyFrame {
 	footer = new Footer(appointmentsDisplay);
 	addComponents();
 	start();
+	footer.requestFocusForAddButton();
     }
 
     private void addComponents() {
