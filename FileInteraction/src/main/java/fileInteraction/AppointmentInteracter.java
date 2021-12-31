@@ -6,7 +6,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -17,92 +16,184 @@ import appointment.Appointment;
  * Class which contains methods to interact with a File of appointments.
  * 
  * @author Gabriel Glaser
- * @version 10.9.2021
+ * @version 31.12.2021
  */
 public final class AppointmentInteracter {
 
-    public static final File WITH_APPOINTMENTS = new File("appointments.json");
+    private static final String DEFAULT_APPOINTMENT_FILE_PATH = "appointments.json";
+    private static final File FILE_WITH_APPOINTMENTS = new File("appointments.json");
+
+    private AppointmentInteracter() {
+    }
+
+    /**
+     * Adds the given Appointment to the standard Appointment-File.
+     * 
+     * @param appointmentToAdd
+     * @throws IllegalArgumentException - if the standard Appointment-File already
+     *                                  contains the given Appointment.
+     */
+    public static void add(final Appointment appointmentToAdd) throws IllegalArgumentException {
+	add(appointmentToAdd, FILE_WITH_APPOINTMENTS);
+    }
+
+    /**
+     * Removes the given Appointment from the standard Appointment-File.
+     * 
+     * @param appointmentToRemove
+     * @throws IllegalArgumentException - if the standard Appointment-File already
+     *                                  contains the given Appointment.
+     */
+    public static void remove(final Appointment appointmentToRemove) throws IllegalArgumentException {
+	remove(appointmentToRemove, FILE_WITH_APPOINTMENTS);
+    }
+
+    /**
+     * Tests if the standard Appointment-File contains the specified Appointment.
+     * 
+     * @param appointmentToTest
+     * @return True if the standard Appointment-File contains the specified
+     *         Appointment.
+     */
+    public static boolean contains(final Appointment appointmentToTest) {
+	return contains(appointmentToTest, FILE_WITH_APPOINTMENTS);
+    }
+
+    /**
+     * Adds the given Appointment to the given Appointment-File.
+     * 
+     * @param appointmentToAdd
+     * @param fileWithAppointments
+     * @throws IllegalArgumentException - if the given Appointment-File already
+     *                                  contains the given Appointment.
+     */
+    public static void add(final Appointment appointmentToAdd, final File fileWithAppointments) throws IllegalArgumentException {
+	if (contains(appointmentToAdd, fileWithAppointments)) {
+	    throw new IllegalArgumentException("Appointment " + appointmentToAdd + " already exists.");
+	}
+	final List<Appointment> appointments = getAppointments(fileWithAppointments);
+	appointments.add(appointmentToAdd);
+	storeAppointments(appointments, fileWithAppointments);
+    }
+
+    /**
+     * Removes the given Appointment from the given Appointment-File.
+     * 
+     * @param appointmentToRemove
+     * @param fileWithAppointments
+     * @throws IllegalArgumentException - if the given Appointment-File doesn't
+     *                                  contain the given Appointment
+     */
+    public static void remove(final Appointment appointmentToRemove, final File fileWithAppointments) throws IllegalArgumentException {
+	if (!contains(appointmentToRemove, fileWithAppointments)) {
+	    throw new IllegalArgumentException("The given File doesn't contain the Appointment " + appointmentToRemove);
+	}
+	final List<Appointment> appointments = getAppointments(fileWithAppointments);
+	appointments.add(appointmentToRemove);
+	storeAppointments(appointments, fileWithAppointments);
+    }
+
+    /**
+     * Tests if the given Appointment-File contains the given Appointment.
+     * 
+     * @param appointment
+     * @param fileWithAppointments
+     * @return True, if the given appointment is already stored in the given File.
+     */
+    public static boolean contains(final Appointment appointment, final File fileWithAppointments) {
+	final List<Appointment> appointments = getAppointments(fileWithAppointments);
+	return appointments.contains(appointment);
+    }
 
     public static List<Appointment> getAppointments() {
-	return getAppointments(WITH_APPOINTMENTS);
+	return getAppointments(FILE_WITH_APPOINTMENTS);
     }
 
-    public static void add(final Appointment toAdd) {
-	add(toAdd, WITH_APPOINTMENTS);
-    }
-
-    public static void remove(final Appointment toAdd) {
-	remove(toAdd, WITH_APPOINTMENTS);
-    }
-
-    public static boolean contains(final Appointment toTest) {
-	return contains(toTest, WITH_APPOINTMENTS);
-    }
-
-    public static void updateAppointment(final Appointment toUpdate) {
-	updateAppointment(toUpdate, WITH_APPOINTMENTS);
-    }
-
-    public static List<Appointment> getAppointments(final File withAppointments) {
-	final JSONArray appointmentsAsJSON = getJSONArrayOfAppointments(withAppointments);
-	final List<Appointment> appointments = new ArrayList<>();
-	for (int i = 0; i < appointmentsAsJSON.length(); i++) {
-	    final JSONObject appointment = appointmentsAsJSON.getJSONObject(i);
-	    appointments.add(Appointment.jsonToAppointment(appointment));
+    /**
+     * Calculates the List of Appointments represented by the given
+     * Appointment-File.
+     * 
+     * @param fileWithAppointments
+     * @return List of all Appointments represented by the given Appointment-File.
+     */
+    public static List<Appointment> getAppointments(final File fileWithAppointments) {
+	final List<Appointment> appointmentsAsList = new ArrayList<>();
+	final JSONArray appointmentsAsJSONArray = getJSONArrayOfAppointments(fileWithAppointments);
+	for (int i = 0; i < appointmentsAsJSONArray.length(); i++) {
+	    final JSONObject appointment = appointmentsAsJSONArray.getJSONObject(i);
+	    appointmentsAsList.add(JSONTransformer.jsonToAppointment(appointment));
 	}
-	return appointments;
+	return appointmentsAsList;
     }
 
-    public static void add(final Appointment toAdd, final File withAppointments) {
-	final List<Appointment> appointments = getAppointments(withAppointments);
-	appointments.add(toAdd);
-	updateAppointments(appointments, withAppointments);
-    }
-
-    public static void remove(final Appointment toAdd, final File withAppointments) {
-	final List<Appointment> appointments = getAppointments(withAppointments);
-	appointments.remove(toAdd);
-	updateAppointments(appointments, withAppointments);
-    }
-
-    public static boolean contains(final Appointment toTest, final File withAppointments) {
-	final List<Appointment> appointments = getAppointments(withAppointments);
-	return appointments.contains(toTest);
-    }
-
-    public static void updateAppointment(final Appointment toUpdate, final File withAppointments) {
-	final List<Appointment> appointments = getAppointments(withAppointments);
-	for (int i = 0; i < appointments.size(); i++) {
-	    final Appointment appointment = appointments.get(i);
-	    if (appointment.getID() == toUpdate.getID()) {
-		appointments.remove(appointment);
-		appointments.add(toUpdate);
-	    }
+    /**
+     * Stores and sorts the given Appointments to the given File.
+     * 
+     * @param appointmentsToStore
+     * @param fileToStoreAt
+     */
+    private static void storeAppointments(final List<Appointment> appointmentsToStore, final File fileToStoreAt) {
+	appointmentsToStore.sort((a1, a2) -> {
+	    return a1.compareTo(a2);
+	});
+	final JSONArray appointmentsAsJSONArray = new JSONArray();
+	for (final Appointment appointment : appointmentsToStore) {
+	    appointmentsAsJSONArray.put(JSONTransformer.appointmentToJSON(appointment));
 	}
-	updateAppointments(appointments, withAppointments);
+	storeJSONArrayOfAppointments(appointmentsAsJSONArray, fileToStoreAt);
     }
 
-    private static void updateAppointments(final List<Appointment> newListOfAppointmentsToStore, final File withAppointments) {
-	try (final BufferedWriter writer = new BufferedWriter(new FileWriter(withAppointments));) {
-	    withAppointments.delete();
-	    Collections.sort(newListOfAppointmentsToStore);
-	    final JSONArray appointmentsAsJSON = new JSONArray();
-	    for (final Appointment toAdd : newListOfAppointmentsToStore) {
-		appointmentsAsJSON.put(toAdd.toJSON());
-	    }
-	    writer.write(appointmentsAsJSON.toString(1));
-	} catch (IOException e) {
-	    e.printStackTrace();
-	}
-    }
-
-    private static JSONArray getJSONArrayOfAppointments(final File withAppointments) {
-	try (final FileReader reader = new FileReader(withAppointments);) {
+    /**
+     * Calculates the JSONArray represented by the given File.
+     * 
+     * @param fileWithAppointments
+     * @return JSONArray represented by the content of the given File.
+     */
+    private static JSONArray getJSONArrayOfAppointments(final File fileWithAppointments) {
+	try (final FileReader reader = new FileReader(fileWithAppointments);) {
 	    final JSONTokener parser = new JSONTokener(reader);
 	    return new JSONArray(parser);
-	} catch (IOException e) {
-	    e.printStackTrace();
-	    throw new RuntimeException();
+	} catch (final IOException e) {
+	    throw new RuntimeException("Couldn't read Appointment-File");
 	}
+    }
+
+    /**
+     * Stores the given JSONArray in the given File.
+     * 
+     * @param appointmentsToStore
+     * @param fileToStoreAt
+     */
+    private static void storeJSONArrayOfAppointments(final JSONArray appointmentsToStore, final File fileToStoreAt) {
+	try (final BufferedWriter writer = new BufferedWriter(new FileWriter(fileToStoreAt))) {
+	    writer.write(appointmentsToStore.toString());
+	} catch (IOException e) {
+	    throw new RuntimeException("Couldn't write to Appointment-File");
+	}
+    }
+
+    /**
+     * Creates an empty, syntactically correct Appointment-File at the default path.
+     */
+    public static void createAppointmentFile() {
+	createAppointmentFile(DEFAULT_APPOINTMENT_FILE_PATH);
+    }
+
+    /**
+     * Creates an empty, syntactically correct Appointment-File at the given path.
+     * 
+     * @param path
+     */
+    public static void createAppointmentFile(final String path) {
+	final File emptyAppointmentFile = new File(path);
+	try (final BufferedWriter writer = new BufferedWriter(new FileWriter(emptyAppointmentFile))) {
+	    writer.write("[]");
+	} catch (IOException e) {
+	    throw new RuntimeException("Couldn't create empty Appointment-File at" + path);
+	}
+    }
+
+    public static File getAppointmentFile() {
+	return FILE_WITH_APPOINTMENTS;
     }
 }

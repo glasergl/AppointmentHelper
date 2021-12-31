@@ -16,7 +16,7 @@ public final class Visualizer {
 
     public static void main(final String[] args) {
 	Colors.setDarkModeEnabled(false);
-	if (!AppointmentInteracter.WITH_APPOINTMENTS.exists()) {
+	if (!AppointmentInteracter.getAppointmentFile().exists()) {
 	    VisualErrors.showCouldntFindAppointmentFileError();
 	} else {
 	    createAndShowGUI(AppointmentInteracter.getAppointments());

@@ -1,8 +1,6 @@
 package appointment;
 
 import static org.junit.Assert.*;
-
-import org.json.JSONObject;
 import org.junit.Test;
 
 /**
@@ -94,35 +92,6 @@ public class TestSimpleDate {
 	assertFalse(SimpleDate.isSwitchingYear(2801));
 	assertFalse(SimpleDate.isSwitchingYear(3263));
 	assertFalse(SimpleDate.isSwitchingYear(3202));
-    }
-
-    @Test
-    public void testToJSON() {
-	SimpleDate d = new SimpleDate(12, 3);
-	JSONObject jsonOfA = d.toJSON();
-	assertTrue(jsonOfA.has("day"));
-	assertTrue(jsonOfA.has("month"));
-	assertEquals(12, jsonOfA.getInt("day"));
-	assertEquals(3, jsonOfA.getInt("month"));
-    }
-
-    @Test
-    public void testRepresentsAppointment() {
-	JSONObject json = new JSONObject();
-	json.put("day", 10);
-	assertFalse(SimpleDate.representsSimpleDate(json));
-	json.put("month", 11);
-	assertTrue(SimpleDate.representsSimpleDate(json));
-    }
-
-    @Test
-    public void testJSONToAppointment() {
-	JSONObject json = new JSONObject();
-	json.put("day", 10);
-	json.put("month", 11);
-	SimpleDate d = SimpleDate.jsonToDate(json);
-	assertEquals(10, d.getDay());
-	assertEquals(11, d.getMonth());
     }
 
 }

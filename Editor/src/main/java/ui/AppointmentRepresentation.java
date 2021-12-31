@@ -138,8 +138,9 @@ public class AppointmentRepresentation extends JPanel {
 	    stateDisplayer.toNothing();
 	    final Appointment currentContent;
 	    if (currentlyStored.isPresent()) {
-		currentContent = new Appointment(date.getDate(), name, description.getText(), isABirthday.isSelected(), currentlyStored.get().getID());
-		AppointmentInteracter.updateAppointment(currentContent);
+		AppointmentInteracter.remove(currentlyStored.get());
+		currentContent = new Appointment(date.getDate(), name, description.getText(), isABirthday.isSelected());
+		AppointmentInteracter.add(currentContent);
 	    } else {
 		currentContent = new Appointment(date.getDate(), name, description.getText(), isABirthday.isSelected());
 		AppointmentInteracter.add(currentContent);

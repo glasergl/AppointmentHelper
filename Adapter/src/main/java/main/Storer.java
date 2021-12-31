@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.List;
 import org.json.JSONArray;
 import appointment.Appointment;
+import fileInteraction.JSONTransformer;
 
 public final class Storer {
 
@@ -15,7 +16,7 @@ public final class Storer {
     public Storer(final List<Appointment> toStore) {
 	super();
 	for (final Appointment appointment : toStore) {
-	    appointments.put(appointment.toJSON());
+	    appointments.put(JSONTransformer.appointmentToJSON(appointment));
 	}
     }
 

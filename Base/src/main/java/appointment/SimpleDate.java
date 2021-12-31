@@ -1,7 +1,6 @@
 package appointment;
 
 import java.util.Calendar;
-import org.json.JSONObject;
 
 /**
  * Immutable class to store a simple date with the format: dd.MM.
@@ -28,13 +27,6 @@ public final class SimpleDate implements Comparable<SimpleDate> {
 
     public boolean isTomorrow() {
 	return equals(getTomorrow());
-    }
-
-    public JSONObject toJSON() {
-	final JSONObject json = new JSONObject(5);
-	json.put("day", day);
-	json.put("month", month);
-	return json;
     }
 
     @Override
@@ -180,18 +172,6 @@ public final class SimpleDate implements Comparable<SimpleDate> {
 
     public static SimpleDate calendarToDate(final Calendar toTransform) {
 	return new SimpleDate(toTransform.get(Calendar.DAY_OF_MONTH), toTransform.get(Calendar.MONTH) + 1);
-    }
-
-    public static SimpleDate jsonToDate(final JSONObject json) {
-	if (!representsSimpleDate(json)) {
-	    throw new IllegalArgumentException(json + " doesnt represent a date.");
-	} else {
-	    return new SimpleDate(json.getInt("day"), json.getInt("month"));
-	}
-    }
-
-    public static boolean representsSimpleDate(final JSONObject toTest) {
-	return toTest.has("day") && toTest.has("month");
     }
 
 }

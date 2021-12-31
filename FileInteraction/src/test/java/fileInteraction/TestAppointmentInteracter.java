@@ -68,23 +68,6 @@ public class TestAppointmentInteracter {
 	testRemove.delete();
     }
 
-    @Test
-    public void testUpdateAppointment() {
-	File testUpdate = createEmptyTestFile("testUpdate.json");
-	AppointmentInteracter.add(testAppointment1, testUpdate);
-	Appointment updated = new Appointment(testAppointment1.getDate(), "New Name", testAppointment1.getDescription(), true, testAppointment1.getID());
-	AppointmentInteracter.updateAppointment(updated, testUpdate);
-	List<Appointment> appointments = AppointmentInteracter.getAppointments(testUpdate);
-	assertEquals(1, appointments.size());
-	Appointment appointment = appointments.get(0);
-	assertEquals(testAppointment1.getDate(), appointment.getDate());
-	assertEquals("New Name", appointment.getName());
-	assertEquals(testAppointment1.getDescription(), appointment.getDescription());
-	assertTrue(appointment.isABirthday());
-	assertEquals(testAppointment1.getID(), appointment.getID());
-	testUpdate.delete();
-    }
-
     private static File createEmptyTestFile(final String name) {
 	try {
 	    final File test = new File(name);
