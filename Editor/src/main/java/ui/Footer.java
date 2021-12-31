@@ -22,20 +22,20 @@ public class Footer extends RowOfJComponent {
     private final MyTextButton addAppointments = new MyTextButton("+");
 
     public Footer(final AllAppointments allAppointments) {
-	super();
+	super(5, 5);
 	this.allAppointments = allAppointments;
 	setup();
 	addAppointments.requestFocus();
     }
 
     private void setup() {
-	setBackground(Colors.getGray(1));
+	setBackground(Colors.getGray(0));
 	addAppointments.setFont(Fonts.resizedStandard(50.0f));
-	addAppointments.setBorder(new CompoundBorder(addAppointments.getBorder(), new EmptyBorder(0, 20, 0, 20)));
+	addAppointments.setBorder(new CompoundBorder(addAppointments.getBorder(), new EmptyBorder(0, 100, 0, 100)));
 	addAppointments.addActionListener((event) -> {
 	    allAppointments.addEmpty();
 	});
-	addToRight(addAppointments);
+	addToMiddle(addAppointments);
     }
 
     public void requestFocusForAddButton() {
