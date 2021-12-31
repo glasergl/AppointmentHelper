@@ -3,10 +3,10 @@ package appointment;
 import java.util.Calendar;
 
 /**
- * Immutable class to store a simple date with the format: dd.MM.
+ * Immutable class to store a simple date with just day and month.
  * 
  * @author Gabriel Glaser
- * @version 10.9.2021
+ * @version 31.12.2021
  */
 public final class SimpleDate implements Comparable<SimpleDate> {
 
@@ -30,12 +30,12 @@ public final class SimpleDate implements Comparable<SimpleDate> {
     }
 
     @Override
-    public int compareTo(final SimpleDate zuVergleichen) {
-	final int vergleichsWertVonMonat = Integer.compare(month, zuVergleichen.getMonth());
-	if (vergleichsWertVonMonat != 0) {
-	    return vergleichsWertVonMonat;
+    public int compareTo(final SimpleDate toCompare) {
+	final int monthCompareValue = Integer.compare(month, toCompare.getMonth());
+	if (monthCompareValue != 0) {
+	    return monthCompareValue;
 	} else {
-	    return Integer.compare(day, zuVergleichen.getDay());
+	    return Integer.compare(day, toCompare.getDay());
 	}
     }
 
