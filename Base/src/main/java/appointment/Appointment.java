@@ -79,9 +79,38 @@ public class Appointment implements Comparable<Appointment> {
 	return date.equals(toTest);
     }
 
+    /**
+     * Calculates the order of this in comparison to toCompare.
+     * 
+     * It is sorted by the compareTo() results of date>name>description>isABirthday
+     * 
+     * @param toCompare
+     * @return The value representing the order of this and toCompare.
+     */
     @Override
     public int compareTo(final Appointment toCompare) {
-	return date.compareTo(toCompare.date);
+	final int dateCompareValue = date.compareTo(toCompare.date);
+	if (dateCompareValue != 0) {
+	    return dateCompareValue;
+	} else {
+	    final int nameCompareValue = name.compareTo(toCompare.name);
+	    if (nameCompareValue != 0) {
+		return nameCompareValue;
+	    } else {
+		final int descriptionCompareValue = description.compareTo(toCompare.description);
+		if (descriptionCompareValue != 0) {
+		    return descriptionCompareValue;
+		} else {
+		    if (isABirthday && !toCompare.isABirthday) {
+			return 1;
+		    } else if (!isABirthday && toCompare.isABirthday) {
+			return -1;
+		    } else {
+			return 0;
+		    }
+		}
+	    }
+	}
     }
 
     @Override
