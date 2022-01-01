@@ -58,7 +58,18 @@ public class Appointment implements Comparable<Appointment> {
     }
 
     /**
-     * Constructor with default date (today), empty description and is a Birthday.
+     * Constructor with default empty description and is a birthday.
+     * 
+     * @param date
+     * @param name
+     * @throws IllegalArgumentException - If the name is an empty String.
+     */
+    public Appointment(final SimpleDate date, final String name) throws IllegalArgumentException {
+	this(date, name, DEFAULT_IS_A_BIRTHDAY);
+    }
+
+    /**
+     * Constructor with default date (today), empty description and is a birthday.
      * 
      * @param name
      * @throws IllegalArgumentException - If the given name is an empty String.
