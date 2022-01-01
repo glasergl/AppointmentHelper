@@ -1,12 +1,13 @@
-package fileInteraction;
+package fileInteraction.test;
 
 import static org.junit.Assert.*;
 import org.json.JSONObject;
 import org.junit.Test;
 import appointment.Appointment;
 import date.SimpleDate;
+import fileInteraction.JSONTransformer;
 
-public class TestMyJSONTransformerForAppointment {
+public class TestJSONTransformerForAppointment {
 
     SimpleDate testDate = new SimpleDate(15, 6);
 

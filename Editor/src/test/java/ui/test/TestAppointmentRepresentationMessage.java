@@ -1,9 +1,12 @@
-package ui;
+package ui.test;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
 import appointment.Appointment;
-import appointment.SimpleDate;
+import date.SimpleDate;
+import ui.AllAppointments;
+import ui.AppointmentRepresentation;
+import ui.AppointmentRepresentationStateDisplayer;
 
 public class TestAppointmentRepresentationMessage {
 

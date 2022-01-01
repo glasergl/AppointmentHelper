@@ -1,4 +1,4 @@
-package ui;
+package ui.test;
 
 import static org.junit.Assert.*;
 import java.util.Arrays;
@@ -7,6 +7,7 @@ import org.junit.Test;
 import appointment.Appointment;
 import date.SimpleDate;
 import date.SimpleDates;
+import ui.AppointmentOutputText;
 
 public class TestAppointmentOutputText {
 

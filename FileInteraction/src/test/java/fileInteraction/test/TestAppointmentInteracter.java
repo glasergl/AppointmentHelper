@@ -1,9 +1,10 @@
-package fileInteraction;
+package fileInteraction.test;
 
 import static org.junit.Assert.*;
 import org.junit.*;
 import appointment.Appointment;
 import date.SimpleDate;
+import fileInteraction.AppointmentInteracter;
 
 import java.io.BufferedWriter;
 import java.io.File;

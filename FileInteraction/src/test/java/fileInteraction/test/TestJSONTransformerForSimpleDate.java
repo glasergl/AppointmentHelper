@@ -1,4 +1,4 @@
-package fileInteraction;
+package fileInteraction.test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -7,8 +7,9 @@ import org.json.JSONObject;
 import org.junit.Test;
 
 import date.SimpleDate;
+import fileInteraction.JSONTransformer;
 
-public class TestMyJSONTransformerForSimpleDate {
+public class TestJSONTransformerForSimpleDate {
 
     @Test
     public void testRepresentsSimpleDate() {
