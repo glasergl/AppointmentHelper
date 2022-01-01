@@ -14,7 +14,7 @@ public final class Adapter {
     private static final File GEBURTSTAGE = new File("Geburtstage.txt");
     private static final File APPOINTMENTS = new File("appointments.json");
 
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
 	final AppointmentReader reader = new AppointmentReader(GEBURTSTAGE);
 	new AppointmentStorer(reader.getAdapted(), APPOINTMENTS);
     }

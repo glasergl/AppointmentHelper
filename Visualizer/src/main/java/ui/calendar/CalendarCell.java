@@ -69,7 +69,7 @@ public final class CalendarCell extends MyLabel {
 
     private String calculateTextForEnding() {
 	final StringBuilder ending = new StringBuilder();
-	final boolean allBirthdays = atDate.stream().allMatch(Appointment::isABirthday);
+	final boolean allBirthdays = atDate.stream().allMatch(Appointment::isBirthday);
 	if (atDate.size() == 1) {
 	    final Appointment one = atDate.get(0);
 	    final String nameOfOne = one.getName();

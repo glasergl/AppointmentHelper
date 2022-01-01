@@ -43,38 +43,38 @@ public class TestSimpleDate {
 
     @Test
     public void testNormalCorrectDateValues() {
-	assertTrue(SimpleDates.isACorrectDate(19, 5));
-	assertTrue(SimpleDates.isACorrectDate(30, 6));
-	assertTrue(SimpleDates.isACorrectDate(31, 10));
-	assertTrue(SimpleDates.isACorrectDate(31, 8));
+	assertTrue(SimpleDates.isValidDate(19, 5));
+	assertTrue(SimpleDates.isValidDate(30, 6));
+	assertTrue(SimpleDates.isValidDate(31, 10));
+	assertTrue(SimpleDates.isValidDate(31, 8));
     }
 
     @Test
     public void testExtremeCorrectDateValues() {
-	assertTrue(SimpleDates.isACorrectDate(31, 3));
-	assertTrue(SimpleDates.isACorrectDate(1, 2));
-	assertTrue(SimpleDates.isACorrectDate(31, 7));
-	assertTrue(SimpleDates.isACorrectDate(31, 8));
-	assertTrue(SimpleDates.isACorrectDate(30, 9));
-	assertTrue(SimpleDates.isACorrectDate(29, 2));
+	assertTrue(SimpleDates.isValidDate(31, 3));
+	assertTrue(SimpleDates.isValidDate(1, 2));
+	assertTrue(SimpleDates.isValidDate(31, 7));
+	assertTrue(SimpleDates.isValidDate(31, 8));
+	assertTrue(SimpleDates.isValidDate(30, 9));
+	assertTrue(SimpleDates.isValidDate(29, 2));
     }
 
     @Test
     public void testNormalFalseDateValues() {
-	assertFalse(SimpleDates.isACorrectDate(120, 21));
-	assertFalse(SimpleDates.isACorrectDate(-1212, 21));
-	assertFalse(SimpleDates.isACorrectDate(120, -31));
-	assertFalse(SimpleDates.isACorrectDate(-12, -333));
+	assertFalse(SimpleDates.isValidDate(120, 21));
+	assertFalse(SimpleDates.isValidDate(-1212, 21));
+	assertFalse(SimpleDates.isValidDate(120, -31));
+	assertFalse(SimpleDates.isValidDate(-12, -333));
     }
 
     @Test
     public void testExtremeFalseDateValues() {
-	assertFalse(SimpleDates.isACorrectDate(31, 4));
-	assertFalse(SimpleDates.isACorrectDate(30, 2));
-	assertFalse(SimpleDates.isACorrectDate(31, 2));
-	assertFalse(SimpleDates.isACorrectDate(31, 9));
-	assertFalse(SimpleDates.isACorrectDate(31, 11));
-	assertFalse(SimpleDates.isACorrectDate(32, 12));
+	assertFalse(SimpleDates.isValidDate(31, 4));
+	assertFalse(SimpleDates.isValidDate(30, 2));
+	assertFalse(SimpleDates.isValidDate(31, 2));
+	assertFalse(SimpleDates.isValidDate(31, 9));
+	assertFalse(SimpleDates.isValidDate(31, 11));
+	assertFalse(SimpleDates.isValidDate(32, 12));
     }
 
     @Test

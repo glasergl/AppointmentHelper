@@ -26,8 +26,8 @@ public final class AppointmentOutputText extends JPanel {
 
     public AppointmentOutputText(final String timeDescription, final Predicate<Appointment> timeCondition, final List<Appointment> toRespect) {
 	this.timeDescription = timeDescription;
-	this.birthdaysAtTimeDescription = toRespect.stream().filter(timeCondition).filter(a -> a.isABirthday()).collect(Collectors.toList());
-	this.nonBirthdaysAtTimeDescription = toRespect.stream().filter(timeCondition).filter(a -> !a.isABirthday()).collect(Collectors.toList());
+	this.birthdaysAtTimeDescription = toRespect.stream().filter(timeCondition).filter(a -> a.isBirthday()).collect(Collectors.toList());
+	this.nonBirthdaysAtTimeDescription = toRespect.stream().filter(timeCondition).filter(a -> !a.isBirthday()).collect(Collectors.toList());
 	this.birthdayLabels = getNameLabels(birthdaysAtTimeDescription);
 	this.nonBirthdayLabels = getNameLabels(nonBirthdaysAtTimeDescription);
 	setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));

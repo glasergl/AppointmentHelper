@@ -27,18 +27,19 @@ public final class AppointmentReader {
     }
 
     private List<Appointment> calculateAdapted() {
-	final List<Appointment> adapted = new ArrayList<>();
+	final List<Appointment> adaptedAppointments = new ArrayList<>();
 	try (final BufferedReader reader = new BufferedReader(new FileReader(fileToRead))) {
 	    String currentLine;
 	    while ((currentLine = reader.readLine()) != null) {
 		if (!currentLine.equals("") && currentLine.charAt(0) != '#') {
-		    adapted.add(extractAppointmentFromLine(currentLine));
+		    adaptedAppointments.add(extractAppointmentFromLine(currentLine));
 		}
 	    }
-	} catch (IOException e) {
+	} catch (final IOException e) {
 	    e.printStackTrace();
+	    throw new RuntimeException("Couldn't extract line from Geburtstage.txt");
 	}
-	return adapted;
+	return adaptedAppointments;
     }
 
     private Appointment extractAppointmentFromLine(final String line) {

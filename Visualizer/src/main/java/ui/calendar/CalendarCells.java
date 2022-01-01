@@ -31,7 +31,7 @@ public final class CalendarCells extends JPanel {
     private void addCells() {
 	for (int day = 1; day <= 31; day++) {
 	    for (int month = 1; month <= 12; month++) {
-		if (SimpleDates.isACorrectDate(day, month) && !(day == 29 && month == 2 && !SimpleDates.isSwitchingYear())) {
+		if (SimpleDates.isValidDate(day, month) && !(day == 29 && month == 2 && !SimpleDates.isSwitchingYear())) {
 		    final SimpleDate date = new SimpleDate(day, month);
 		    final CalendarCell cell = new CalendarCell(new SimpleDate(day, month), toRepresent);
 		    add(cell);

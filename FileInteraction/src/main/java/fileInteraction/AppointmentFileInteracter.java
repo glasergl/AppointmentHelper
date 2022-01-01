@@ -18,12 +18,12 @@ import appointment.Appointment;
  * @author Gabriel Glaser
  * @version 31.12.2021
  */
-public final class AppointmentInteracter {
+public final class AppointmentFileInteracter {
 
     private static final String DEFAULT_APPOINTMENT_FILE_PATH = "appointments.json";
-    private static final File FILE_WITH_APPOINTMENTS = new File("appointments.json");
+    private static final File FILE_WITH_APPOINTMENTS = new File(DEFAULT_APPOINTMENT_FILE_PATH);
 
-    private AppointmentInteracter() {
+    private AppointmentFileInteracter() {
     }
 
     /**
@@ -183,14 +183,16 @@ public final class AppointmentInteracter {
      * Creates an empty, syntactically correct Appointment-File at the given path.
      * 
      * @param path
+     * @return The created Appointment-File.
      */
-    public static void createAppointmentFile(final String path) {
+    public static File createAppointmentFile(final String path) {
 	final File emptyAppointmentFile = new File(path);
 	try (final BufferedWriter writer = new BufferedWriter(new FileWriter(emptyAppointmentFile))) {
 	    writer.write("[]");
 	} catch (IOException e) {
 	    throw new RuntimeException("Couldn't create empty Appointment-File at" + path);
 	}
+	return emptyAppointmentFile;
     }
 
     public static File getAppointmentFile() {

@@ -7,7 +7,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import appointment.Appointment;
 import date.SimpleDate;
-import fileInteraction.AppointmentInteracter;
+import fileInteraction.AppointmentFileInteracter;
 import myComponent.MyCheckBox;
 import myComponent.button.MyTextButton;
 import myComponent.textField.MyTextField;
@@ -34,7 +34,7 @@ public class AppointmentRepresentation extends JPanel {
 	this.date = new MySimpleDateField(toDisplay.getDate(), this);
 	name.setText(toDisplay.getName());
 	description.setText(toDisplay.getDescription());
-	isABirthday.setSelected(toDisplay.isABirthday());
+	isABirthday.setSelected(toDisplay.isBirthday());
 	setup();
     }
 
@@ -108,7 +108,7 @@ public class AppointmentRepresentation extends JPanel {
 	if (currentlyStored.isPresent()) {
 	    final Appointment currentlyStored = this.currentlyStored.get();
 	    if (currentlyStored.getDate().equals(date.getDate()) && currentlyStored.getName().equals(name.getText()) && currentlyStored.getDescription().equals(description.getText())
-		    && currentlyStored.isABirthday() == isABirthday.isSelected()) {
+		    && currentlyStored.isBirthday() == isABirthday.isSelected()) {
 		stateDisplayer.toNothing();
 	    } else {
 		stateDisplayer.toUnsaved();
@@ -121,14 +121,14 @@ public class AppointmentRepresentation extends JPanel {
 	    date.setDate(currentlyStored.get().getDate());
 	    name.setText(currentlyStored.get().getName());
 	    description.setText(currentlyStored.get().getDescription());
-	    isABirthday.setSelected(currentlyStored.get().isABirthday());
+	    isABirthday.setSelected(currentlyStored.get().isBirthday());
 	}
     }
 
     private void delete() {
 	parent.removeAppointment(this);
 	if (currentlyStored.isPresent()) {
-	    AppointmentInteracter.remove(currentlyStored.get());
+	    AppointmentFileInteracter.remove(currentlyStored.get());
 	}
     }
 
@@ -138,12 +138,12 @@ public class AppointmentRepresentation extends JPanel {
 	    stateDisplayer.toNothing();
 	    final Appointment currentContent;
 	    if (currentlyStored.isPresent()) {
-		AppointmentInteracter.remove(currentlyStored.get());
+		AppointmentFileInteracter.remove(currentlyStored.get());
 		currentContent = new Appointment(date.getDate(), name, description.getText(), isABirthday.isSelected());
-		AppointmentInteracter.add(currentContent);
+		AppointmentFileInteracter.add(currentContent);
 	    } else {
 		currentContent = new Appointment(date.getDate(), name, description.getText(), isABirthday.isSelected());
-		AppointmentInteracter.add(currentContent);
+		AppointmentFileInteracter.add(currentContent);
 	    }
 	    currentlyStored = Optional.of(currentContent);
 	} else {

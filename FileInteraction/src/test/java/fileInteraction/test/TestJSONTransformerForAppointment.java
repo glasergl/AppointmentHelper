@@ -15,13 +15,16 @@ public class TestJSONTransformerForAppointment {
     public void testAppointmentToJSON() {
 	Appointment appointment = new Appointment(testDate, "TestName", "TestDescription", true);
 	JSONObject jsonOfA = JSONTransformer.appointmentToJSON(appointment);
+
 	assertTrue(jsonOfA.has("date"));
 	assertTrue(jsonOfA.has("isABirthday"));
 	assertTrue(jsonOfA.has("name"));
 	assertTrue(jsonOfA.has("description"));
+
 	assertEquals("TestName", jsonOfA.getString("name"));
 	assertEquals("TestDescription", jsonOfA.getString("description"));
 	assertEquals(testDate, JSONTransformer.jsonToSimpleDate(jsonOfA.getJSONObject("date")));
+
 	assertTrue(jsonOfA.getBoolean("isABirthday"));
     }
 
@@ -31,6 +34,7 @@ public class TestJSONTransformerForAppointment {
 	json.put("date", JSONTransformer.simpleDateToJSON(testDate));
 	json.put("name", "TestName");
 	json.put("description", "TestDescription");
+
 	assertFalse(JSONTransformer.representsAppointment(json));
 	json.put("isABirthday", false);
 	assertTrue(JSONTransformer.representsAppointment(json));
@@ -44,10 +48,12 @@ public class TestJSONTransformerForAppointment {
 	json.put("description", "TestDescription");
 	json.put("isABirthday", false);
 	Appointment appointment = JSONTransformer.jsonToAppointment(json);
+
 	assertEquals(testDate, appointment.getDate());
 	assertEquals("TestName", appointment.getName());
 	assertEquals("TestDescription", appointment.getDescription());
-	assertFalse(appointment.isABirthday());
+
+	assertFalse(appointment.isBirthday());
     }
 
 }

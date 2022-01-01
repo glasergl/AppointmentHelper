@@ -4,17 +4,17 @@ import java.util.List;
 import javax.swing.SwingUtilities;
 import appointment.Appointment;
 import ui.EditorFrame;
-import fileInteraction.AppointmentInteracter;
+import fileInteraction.AppointmentFileInteracter;
 import settings.Colors;
 
 public class Editor {
 
     public static void main(String[] args) {
 	Colors.setDarkModeEnabled(false);
-	if (!AppointmentInteracter.getAppointmentFile().exists()) {
-	    AppointmentInteracter.createAppointmentFile();
+	if (!AppointmentFileInteracter.getAppointmentFile().exists()) {
+	    AppointmentFileInteracter.createAppointmentFile();
 	}
-	createAndShowGUI(AppointmentInteracter.getAppointments());
+	createAndShowGUI(AppointmentFileInteracter.getAppointments());
     }
 
     private static void createAndShowGUI(final List<Appointment> initial) {

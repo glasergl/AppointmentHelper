@@ -3,7 +3,7 @@ package main;
 import java.util.List;
 import javax.swing.SwingUtilities;
 import appointment.Appointment;
-import fileInteraction.AppointmentInteracter;
+import fileInteraction.AppointmentFileInteracter;
 import settings.Colors;
 import ui.VisualErrors;
 import ui.VisualizerFrame;
@@ -16,10 +16,10 @@ public final class Visualizer {
 
     public static void main(final String[] args) {
 	Colors.setDarkModeEnabled(false);
-	if (!AppointmentInteracter.getAppointmentFile().exists()) {
+	if (!AppointmentFileInteracter.getAppointmentFile().exists()) {
 	    VisualErrors.showCouldntFindAppointmentFileError();
 	} else {
-	    createAndShowGUI(AppointmentInteracter.getAppointments());
+	    createAndShowGUI(AppointmentFileInteracter.getAppointments());
 	}
     }
 

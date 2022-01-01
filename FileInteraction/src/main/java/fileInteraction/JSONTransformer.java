@@ -52,7 +52,7 @@ public final class JSONTransformer {
 	json.put("date", simpleDateToJSON(appointmentToTransform.getDate()));
 	json.put("name", appointmentToTransform.getName());
 	json.put("description", appointmentToTransform.getDescription());
-	json.put("isABirthday", appointmentToTransform.isABirthday());
+	json.put("isABirthday", appointmentToTransform.isBirthday());
 	return json;
     }
 

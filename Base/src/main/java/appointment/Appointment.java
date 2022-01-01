@@ -7,34 +7,34 @@ import date.SimpleDates;
  * Immutable class which contains all necessary attributes for an appointment.
  * 
  * @author Gabriel Glaser
- * @version 31.12.2021
+ * @version 1.1.2022
  */
-public class Appointment implements Comparable<Appointment> {
+public final class Appointment implements Comparable<Appointment> {
 
     private static final String DEFAULT_DESCRIPTION = "";
     private static final SimpleDate DEFAULT_DATE = SimpleDates.getToday();
-    private static final boolean DEFAULT_IS_A_BIRTHDAY = true;
+    private static final boolean DEFAULT_IS_BIRTHDAY = true;
 
     private final SimpleDate date;
     private final String name;
     private final String description;
-    private final boolean isABirthday;
+    private final boolean isBirthday;
 
     /**
      * @param date
      * @param name
      * @param description
-     * @param isABirthday
-     * @throws IllegalArgumentException - If the name is an empty String.
+     * @param isBirthday
+     * @throws IllegalArgumentException - If name is an empty String.
      */
-    public Appointment(final SimpleDate date, final String name, final String description, final boolean isABirthday) throws IllegalArgumentException {
+    public Appointment(final SimpleDate date, final String name, final String description, final boolean isBirthday) throws IllegalArgumentException {
 	if (name.length() == 0) {
 	    throw new IllegalArgumentException("The name has to contain atleast one character.");
 	}
 	this.date = date;
 	this.name = name;
 	this.description = description;
-	this.isABirthday = isABirthday;
+	this.isBirthday = isBirthday;
     }
 
     /**
@@ -42,22 +42,22 @@ public class Appointment implements Comparable<Appointment> {
      * 
      * @param date
      * @param name
-     * @param isABirthday
-     * @throws IllegalArgumentException - If the name is an empty String.
+     * @param isBirthday
+     * @throws IllegalArgumentException - If name is an empty String.
      */
-    public Appointment(final SimpleDate date, final String name, final boolean isABirthday) throws IllegalArgumentException {
-	this(date, name, DEFAULT_DESCRIPTION, isABirthday);
+    public Appointment(final SimpleDate date, final String name, final boolean isBirthday) throws IllegalArgumentException {
+	this(date, name, DEFAULT_DESCRIPTION, isBirthday);
     }
 
     /**
      * Constructor with default date (today) and empty description.
      * 
      * @param name
-     * @param isABirthday
-     * @throws IllegalArgumentException - If the name is an empty String.
+     * @param isBirthday
+     * @throws IllegalArgumentException - If name is an empty String.
      */
-    public Appointment(final String name, final boolean isABirthday) throws IllegalArgumentException {
-	this(DEFAULT_DATE, name, isABirthday);
+    public Appointment(final String name, final boolean isBirthday) throws IllegalArgumentException {
+	this(DEFAULT_DATE, name, isBirthday);
     }
 
     /**
@@ -65,20 +65,20 @@ public class Appointment implements Comparable<Appointment> {
      * 
      * @param date
      * @param name
-     * @throws IllegalArgumentException - If the name is an empty String.
+     * @throws IllegalArgumentException - If name is an empty String.
      */
     public Appointment(final SimpleDate date, final String name) throws IllegalArgumentException {
-	this(date, name, DEFAULT_IS_A_BIRTHDAY);
+	this(date, name, DEFAULT_IS_BIRTHDAY);
     }
 
     /**
      * Constructor with default date (today), empty description and is a birthday.
      * 
      * @param name
-     * @throws IllegalArgumentException - If the given name is an empty String.
+     * @throws IllegalArgumentException - If name is an empty String.
      */
     public Appointment(final String name) throws IllegalArgumentException {
-	this(name, DEFAULT_IS_A_BIRTHDAY);
+	this(name, DEFAULT_IS_BIRTHDAY);
     }
 
     public boolean isToday() {
@@ -94,9 +94,28 @@ public class Appointment implements Comparable<Appointment> {
     }
 
     /**
+     * @return date: name, description
+     */
+    @Override
+    public String toString() {
+	return date + ": " + name + ", " + description;
+    }
+
+    @Override
+    public boolean equals(final Object objectToCompare) {
+	if (!(objectToCompare instanceof Appointment)) {
+	    return false;
+	}
+	final Appointment appointmentToCompare = (Appointment) objectToCompare;
+	return date.equals(appointmentToCompare.date) && name.equals(appointmentToCompare.name) && description.equals(appointmentToCompare.description)
+		&& isBirthday == appointmentToCompare.isBirthday;
+    }
+
+    /**
      * Calculates the order of this in comparison to toCompare.
      * 
-     * It is sorted by the compareTo() results of date>name>description>isABirthday
+     * It is sorted by the compareTo() results of date > name > description >
+     * isBirthday
      * 
      * @param toCompare
      * @return The value representing the order of this and toCompare.
@@ -115,9 +134,9 @@ public class Appointment implements Comparable<Appointment> {
 		if (descriptionCompareValue != 0) {
 		    return descriptionCompareValue;
 		} else {
-		    if (isABirthday && !toCompare.isABirthday) {
+		    if (isBirthday && !toCompare.isBirthday) {
 			return 1;
-		    } else if (!isABirthday && toCompare.isABirthday) {
+		    } else if (!isBirthday && toCompare.isBirthday) {
 			return -1;
 		    } else {
 			return 0;
@@ -125,21 +144,6 @@ public class Appointment implements Comparable<Appointment> {
 		}
 	    }
 	}
-    }
-
-    @Override
-    public String toString() {
-	return date + ": " + name + ", " + description;
-    }
-
-    @Override
-    public boolean equals(final Object objectToCompare) {
-	if (!(objectToCompare instanceof Appointment)) {
-	    return false;
-	}
-	final Appointment appointmentToCompare = (Appointment) objectToCompare;
-	return date.equals(appointmentToCompare.date) && name.equals(appointmentToCompare.name) && description.equals(appointmentToCompare.description)
-		&& isABirthday == appointmentToCompare.isABirthday;
     }
 
     public SimpleDate getDate() {
@@ -154,8 +158,8 @@ public class Appointment implements Comparable<Appointment> {
 	return description;
     }
 
-    public boolean isABirthday() {
-	return isABirthday;
+    public boolean isBirthday() {
+	return isBirthday;
     }
 
 }

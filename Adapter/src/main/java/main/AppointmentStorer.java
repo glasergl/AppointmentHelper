@@ -17,17 +17,17 @@ import fileInteraction.JSONTransformer;
  */
 public final class AppointmentStorer {
 
-    public AppointmentStorer(final List<Appointment> toStore, final File toStoreAt) {
+    public AppointmentStorer(final List<Appointment> appointmentsToStore, final File fileToStoreAppointmentsAt) {
 	super();
-	storeAt(toStore, toStoreAt);
+	storeAt(appointmentsToStore, fileToStoreAppointmentsAt);
     }
 
-    private void storeAt(final List<Appointment> toStore, final File toStoreAt) {
+    private void storeAt(final List<Appointment> appointmentsToStore, final File fileToStoreAppointmentsAt) {
 	final JSONArray appointmentsAsJSON = new JSONArray();
-	for (final Appointment appointment : toStore) {
+	for (final Appointment appointment : appointmentsToStore) {
 	    appointmentsAsJSON.put(JSONTransformer.appointmentToJSON(appointment));
 	}
-	try (final BufferedWriter writer = new BufferedWriter(new FileWriter(toStoreAt))) {
+	try (final BufferedWriter writer = new BufferedWriter(new FileWriter(fileToStoreAppointmentsAt))) {
 	    writer.write(appointmentsAsJSON.toString());
 	} catch (final IOException e) {
 	    e.printStackTrace();

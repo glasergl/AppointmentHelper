@@ -35,6 +35,11 @@ public class TestAdapter {
 	}
     }
 
+    @AfterClass
+    public static void deleteBirthdayFile() {
+	birthdayFile.delete();
+    }
+
     @Test
     public void testReader() {
 	AppointmentReader appointmentReader = new AppointmentReader(birthdayFile);
@@ -58,11 +63,6 @@ public class TestAdapter {
 	} finally {
 	    result.delete();
 	}
-    }
-
-    @AfterClass
-    public static void deleteBirthdayFile() {
-	birthdayFile.delete();
     }
 
 }
