@@ -1,5 +1,8 @@
 package appointment;
 
+import date.SimpleDate;
+import date.SimpleDates;
+
 /**
  * Immutable class which contains all necessary attributes for an appointment.
  * 
@@ -9,7 +12,7 @@ package appointment;
 public class Appointment implements Comparable<Appointment> {
 
     private static final String DEFAULT_DESCRIPTION = "";
-    private static final SimpleDate DEFAULT_DATE = SimpleDate.getToday();
+    private static final SimpleDate DEFAULT_DATE = SimpleDates.getToday();
     private static final boolean DEFAULT_IS_A_BIRTHDAY = true;
 
     private final SimpleDate date;

@@ -3,7 +3,8 @@ package fileInteraction;
 import static org.junit.Assert.*;
 import org.junit.*;
 import appointment.Appointment;
-import appointment.SimpleDate;
+import date.SimpleDate;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;

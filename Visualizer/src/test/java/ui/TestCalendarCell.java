@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 import java.util.List;
 import org.junit.Test;
 import appointment.Appointment;
-import appointment.SimpleDate;
+import date.SimpleDate;
 import ui.calendar.CalendarCell;
 
 public class TestCalendarCell {

@@ -12,7 +12,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import appointment.Appointment;
-import appointment.SimpleDate;
+import date.SimpleDate;
 import main.AppointmentReader;
 import main.AppointmentStorer;
 

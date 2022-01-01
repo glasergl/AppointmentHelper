@@ -6,7 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import appointment.Appointment;
-import appointment.SimpleDate;
+import date.SimpleDate;
 import fileInteraction.AppointmentInteracter;
 import myComponent.MyCheckBox;
 import myComponent.button.MyTextButton;

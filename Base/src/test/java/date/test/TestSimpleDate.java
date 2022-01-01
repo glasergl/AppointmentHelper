@@ -1,7 +1,10 @@
-package appointment;
+package date.test;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
+
+import date.SimpleDate;
+import date.SimpleDates;
 
 /**
  * @author Gabriel Glaser
@@ -40,58 +43,58 @@ public class TestSimpleDate {
 
     @Test
     public void testNormalCorrectDateValues() {
-	assertTrue(SimpleDate.isACorrectDate(19, 5));
-	assertTrue(SimpleDate.isACorrectDate(30, 6));
-	assertTrue(SimpleDate.isACorrectDate(31, 10));
-	assertTrue(SimpleDate.isACorrectDate(31, 8));
+	assertTrue(SimpleDates.isACorrectDate(19, 5));
+	assertTrue(SimpleDates.isACorrectDate(30, 6));
+	assertTrue(SimpleDates.isACorrectDate(31, 10));
+	assertTrue(SimpleDates.isACorrectDate(31, 8));
     }
 
     @Test
     public void testExtremeCorrectDateValues() {
-	assertTrue(SimpleDate.isACorrectDate(31, 3));
-	assertTrue(SimpleDate.isACorrectDate(1, 2));
-	assertTrue(SimpleDate.isACorrectDate(31, 7));
-	assertTrue(SimpleDate.isACorrectDate(31, 8));
-	assertTrue(SimpleDate.isACorrectDate(30, 9));
-	assertTrue(SimpleDate.isACorrectDate(29, 2));
+	assertTrue(SimpleDates.isACorrectDate(31, 3));
+	assertTrue(SimpleDates.isACorrectDate(1, 2));
+	assertTrue(SimpleDates.isACorrectDate(31, 7));
+	assertTrue(SimpleDates.isACorrectDate(31, 8));
+	assertTrue(SimpleDates.isACorrectDate(30, 9));
+	assertTrue(SimpleDates.isACorrectDate(29, 2));
     }
 
     @Test
     public void testNormalFalseDateValues() {
-	assertFalse(SimpleDate.isACorrectDate(120, 21));
-	assertFalse(SimpleDate.isACorrectDate(-1212, 21));
-	assertFalse(SimpleDate.isACorrectDate(120, -31));
-	assertFalse(SimpleDate.isACorrectDate(-12, -333));
+	assertFalse(SimpleDates.isACorrectDate(120, 21));
+	assertFalse(SimpleDates.isACorrectDate(-1212, 21));
+	assertFalse(SimpleDates.isACorrectDate(120, -31));
+	assertFalse(SimpleDates.isACorrectDate(-12, -333));
     }
 
     @Test
     public void testExtremeFalseDateValues() {
-	assertFalse(SimpleDate.isACorrectDate(31, 4));
-	assertFalse(SimpleDate.isACorrectDate(30, 2));
-	assertFalse(SimpleDate.isACorrectDate(31, 2));
-	assertFalse(SimpleDate.isACorrectDate(31, 9));
-	assertFalse(SimpleDate.isACorrectDate(31, 11));
-	assertFalse(SimpleDate.isACorrectDate(32, 12));
+	assertFalse(SimpleDates.isACorrectDate(31, 4));
+	assertFalse(SimpleDates.isACorrectDate(30, 2));
+	assertFalse(SimpleDates.isACorrectDate(31, 2));
+	assertFalse(SimpleDates.isACorrectDate(31, 9));
+	assertFalse(SimpleDates.isACorrectDate(31, 11));
+	assertFalse(SimpleDates.isACorrectDate(32, 12));
     }
 
     @Test
     public void testIsSwitchingYearForSwitchingYears() {
-	assertTrue(SimpleDate.isSwitchingYear(2020));
-	assertTrue(SimpleDate.isSwitchingYear(2604));
-	assertTrue(SimpleDate.isSwitchingYear(3200));
-	assertTrue(SimpleDate.isSwitchingYear(2028));
-	assertTrue(SimpleDate.isSwitchingYear(2400));
+	assertTrue(SimpleDates.isSwitchingYear(2020));
+	assertTrue(SimpleDates.isSwitchingYear(2604));
+	assertTrue(SimpleDates.isSwitchingYear(3200));
+	assertTrue(SimpleDates.isSwitchingYear(2028));
+	assertTrue(SimpleDates.isSwitchingYear(2400));
     }
 
     @Test
     public void testIsSwitchingYearForNonSwitchingYears() {
-	assertFalse(SimpleDate.isSwitchingYear(2019));
-	assertFalse(SimpleDate.isSwitchingYear(2500));
-	assertFalse(SimpleDate.isSwitchingYear(2600));
-	assertFalse(SimpleDate.isSwitchingYear(2601));
-	assertFalse(SimpleDate.isSwitchingYear(2801));
-	assertFalse(SimpleDate.isSwitchingYear(3263));
-	assertFalse(SimpleDate.isSwitchingYear(3202));
+	assertFalse(SimpleDates.isSwitchingYear(2019));
+	assertFalse(SimpleDates.isSwitchingYear(2500));
+	assertFalse(SimpleDates.isSwitchingYear(2600));
+	assertFalse(SimpleDates.isSwitchingYear(2601));
+	assertFalse(SimpleDates.isSwitchingYear(2801));
+	assertFalse(SimpleDates.isSwitchingYear(3263));
+	assertFalse(SimpleDates.isSwitchingYear(3202));
     }
 
 }

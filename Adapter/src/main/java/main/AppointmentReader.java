@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import appointment.Appointment;
-import appointment.SimpleDate;
+import date.SimpleDate;
 
 /**
  * Class to extract the appointments from an older version.

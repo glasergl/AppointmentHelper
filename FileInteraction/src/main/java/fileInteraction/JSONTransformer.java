@@ -2,7 +2,7 @@ package fileInteraction;
 
 import org.json.JSONObject;
 import appointment.Appointment;
-import appointment.SimpleDate;
+import date.SimpleDate;
 
 /**
  * @author Gabriel Glaser

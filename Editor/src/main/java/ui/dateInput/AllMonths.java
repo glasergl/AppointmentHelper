@@ -5,8 +5,9 @@ import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import appointment.SimpleDate;
 import container.RowOfJComponent;
+import date.SimpleDate;
+import date.SimpleDates;
 import myComponent.button.MyTextButton;
 import settings.Colors;
 
@@ -34,7 +35,7 @@ public class AllMonths extends JPanel {
     }
 
     public AllMonths(final MySimpleDateField toSetSelectedDateOf) {
-	this(toSetSelectedDateOf, SimpleDate.getToday());
+	this(toSetSelectedDateOf, SimpleDates.getToday());
     }
 
     private void setupButtons() {

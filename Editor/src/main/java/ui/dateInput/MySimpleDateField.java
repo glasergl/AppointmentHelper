@@ -1,12 +1,13 @@
 package ui.dateInput;
 
-import appointment.SimpleDate;
+import date.SimpleDate;
 import eventListener.SiblingPopUpDisplayerOnClick;
 import myComponent.MySiblingPopUp;
 import myComponent.button.MyTextButton;
 import settings.Colors;
 import settings.Fonts;
 import ui.AppointmentRepresentation;
+import date.SimpleDates;
 
 public class MySimpleDateField extends MyTextButton {
 
@@ -28,7 +29,7 @@ public class MySimpleDateField extends MyTextButton {
     }
 
     public MySimpleDateField(final AppointmentRepresentation ofThis) {
-	this(SimpleDate.getToday(), ofThis);
+	this(SimpleDates.getToday(), ofThis);
     }
 
     public void setDate(final SimpleDate toSet) {

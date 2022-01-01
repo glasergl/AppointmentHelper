@@ -5,7 +5,8 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import org.json.JSONObject;
 import org.junit.Test;
-import appointment.SimpleDate;
+
+import date.SimpleDate;
 
 public class TestMyJSONTransformerForSimpleDate {
 
