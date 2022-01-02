@@ -89,7 +89,7 @@ public final class AppointmentFileInteracter {
 	    throw new IllegalArgumentException("The given File doesn't contain the Appointment " + appointmentToRemove);
 	}
 	final List<Appointment> appointments = getAppointments(fileWithAppointments);
-	appointments.add(appointmentToRemove);
+	appointments.remove(appointmentToRemove);
 	storeAppointments(appointments, fileWithAppointments);
     }
 

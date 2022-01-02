@@ -6,6 +6,7 @@ import container.RowOfJComponent;
 import myComponent.button.MyTextButton;
 import settings.Colors;
 import settings.Fonts;
+import ui.appointmentInput.AllAppointments;
 
 /**
  * Footer for the whole frame.
@@ -13,33 +14,33 @@ import settings.Fonts;
  * Contains a button to add an empty appointment.
  * 
  * @author Gabriel Glaser
- * @version 28.11.2021
+ * @version 1.1.2022
  */
 public class Footer extends RowOfJComponent {
 
-    private final AllAppointments allAppointments;
+    private final AllAppointments appointmentInputFields;
 
-    private final MyTextButton addAppointments = new MyTextButton("+");
+    private final MyTextButton addAppointmentButton = new MyTextButton("+");
 
-    public Footer(final AllAppointments allAppointments) {
+    public Footer(final AllAppointments appointmentInputFields) {
 	super(5, 5);
-	this.allAppointments = allAppointments;
+	this.appointmentInputFields = appointmentInputFields;
 	setup();
-	addAppointments.requestFocus();
+	addAppointmentButton.requestFocus();
     }
 
     private void setup() {
 	setBackground(Colors.getGray(0));
-	addAppointments.setFont(Fonts.resizedStandard(50.0f));
-	addAppointments.setBorder(new CompoundBorder(addAppointments.getBorder(), new EmptyBorder(0, 100, 0, 100)));
-	addAppointments.addActionListener((event) -> {
-	    allAppointments.addEmpty();
+	addAppointmentButton.setFont(Fonts.resizedStandard(50.0f));
+	addAppointmentButton.setBorder(new CompoundBorder(addAppointmentButton.getBorder(), new EmptyBorder(0, 100, 0, 100)));
+	addAppointmentButton.addActionListener((event) -> {
+	    appointmentInputFields.addEmptyAppointmentInputField();
 	});
-	addToMiddle(addAppointments);
+	addToMiddle(addAppointmentButton);
     }
 
     public void requestFocusForAddButton() {
-	addAppointments.requestFocus();
+	addAppointmentButton.requestFocus();
     }
 
 }

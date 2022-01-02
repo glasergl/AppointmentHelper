@@ -1,21 +1,25 @@
-package ui;
+package ui.appointmentInput;
 
+import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.Graphics;
+
 import myComponent.MyLabel;
 
 /**
- * Label which represents the current state of
+ * MyLabel which represents the current state of an AppointmentField.
  * 
  * @author Gabriel
- * @version 05.12.2021
+ * @version 1.1.2022
  */
-public class AppointmentRepresentationStateDisplayer extends MyLabel {
+public class AppointmentFieldState extends MyLabel {
 
     private State current = State.NOTHING;
 
-    public AppointmentRepresentationStateDisplayer() {
+    public AppointmentFieldState() {
 	super();
 	setPreferredSize(new Dimension(20, 20));
+	setHorizontalAlignment(CENTER);
     }
 
     public void toNothing() {
@@ -34,6 +38,12 @@ public class AppointmentRepresentationStateDisplayer extends MyLabel {
 	return current;
     }
 
+    protected void paintComponent(final Graphics context) {
+	final Container parent = getParent();
+	setBackground(parent.getBackground());
+	super.paintComponent(context);
+    }
+
     private void changeState(final State newState) {
 	current = newState;
 	displayCurrentState();
@@ -49,7 +59,7 @@ public class AppointmentRepresentationStateDisplayer extends MyLabel {
 	}
     }
 
-    public enum State {
+    public static enum State {
 	NOTHING, UNSAVED, ERROR;
     }
 

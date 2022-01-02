@@ -4,37 +4,37 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import appointment.Appointment;
 import date.SimpleDate;
-import ui.AllAppointments;
-import ui.AppointmentRepresentation;
-import ui.AppointmentRepresentationStateDisplayer;
+import ui.appointmentInput.AppointmentFieldController;
+import ui.appointmentInput.AppointmentFieldPanel;
+import ui.appointmentInput.AppointmentFieldState;
 
 public class TestAppointmentRepresentationMessage {
 
-    static AllAppointments allAppointments = new AllAppointments();
+    static AppointmentFieldPanel allAppointments = new AppointmentFieldPanel();
     static Appointment testAppointment = new Appointment(new SimpleDate(10, 10), "Frodo", false);
 
-    static AppointmentRepresentationStateDisplayer.State nothing = AppointmentRepresentationStateDisplayer.State.NOTHING;
-    static AppointmentRepresentationStateDisplayer.State unsaved = AppointmentRepresentationStateDisplayer.State.UNSAVED;
-    static AppointmentRepresentationStateDisplayer.State error = AppointmentRepresentationStateDisplayer.State.ERROR;
+    static AppointmentFieldState.State nothing = AppointmentFieldState.State.NOTHING;
+    static AppointmentFieldState.State unsaved = AppointmentFieldState.State.UNSAVED;
+    static AppointmentFieldState.State error = AppointmentFieldState.State.ERROR;
 
     @Test
     public void testInitialMessage() {
-	AppointmentRepresentation testWithoutInitialAppointment = new AppointmentRepresentation(allAppointments);
+	AppointmentFieldController testWithoutInitialAppointment = new AppointmentFieldController(allAppointments);
 	assertEquals(unsaved, testWithoutInitialAppointment.getState());
-	AppointmentRepresentation testWithInitialAppointment = new AppointmentRepresentation(allAppointments, testAppointment);
+	AppointmentFieldController testWithInitialAppointment = new AppointmentFieldController(allAppointments, testAppointment);
 	assertEquals(nothing, testWithInitialAppointment.getState());
     }
 
     @Test
     public void testErrorMessageOnEmptyAppointmentRepresentation() {
-	AppointmentRepresentation testWithoutInitialAppointment = new AppointmentRepresentation(allAppointments);
+	AppointmentFieldController testWithoutInitialAppointment = new AppointmentFieldController(allAppointments);
 	testWithoutInitialAppointment.save();
 	assertEquals(error, testWithoutInitialAppointment.getState());
     }
 
     @Test
     public void testErrorMessageAppointmentRepresentationWithInitialAppointment() {
-	AppointmentRepresentation testWithInitialAppointment = new AppointmentRepresentation(allAppointments, testAppointment);
+	AppointmentFieldController testWithInitialAppointment = new AppointmentFieldController(allAppointments, testAppointment);
 	testWithInitialAppointment.setName("");
 	testWithInitialAppointment.save();
 	assertEquals(error, testWithInitialAppointment.getState());
@@ -42,7 +42,7 @@ public class TestAppointmentRepresentationMessage {
 
     @Test
     public void testUnsavedMessageDate() {
-	AppointmentRepresentation testWithInitialAppointment = new AppointmentRepresentation(allAppointments, testAppointment);
+	AppointmentFieldController testWithInitialAppointment = new AppointmentFieldController(allAppointments, testAppointment);
 	testWithInitialAppointment.setDate(new SimpleDate(15, 10));
 	assertEquals(unsaved, testWithInitialAppointment.getState());
 	testWithInitialAppointment.setDate(new SimpleDate(10, 10));
@@ -51,7 +51,7 @@ public class TestAppointmentRepresentationMessage {
 
     @Test
     public void testUnsavedMessageName() {
-	AppointmentRepresentation testWithInitialAppointment = new AppointmentRepresentation(allAppointments, testAppointment);
+	AppointmentFieldController testWithInitialAppointment = new AppointmentFieldController(allAppointments, testAppointment);
 	testWithInitialAppointment.setName("Sam");
 	assertEquals(unsaved, testWithInitialAppointment.getState());
 	testWithInitialAppointment.setName("Frodo");
@@ -60,7 +60,7 @@ public class TestAppointmentRepresentationMessage {
 
     @Test
     public void testUnsavedMessageDescription() {
-	AppointmentRepresentation testWithInitialAppointment = new AppointmentRepresentation(allAppointments, testAppointment);
+	AppointmentFieldController testWithInitialAppointment = new AppointmentFieldController(allAppointments, testAppointment);
 	testWithInitialAppointment.setDescription("Hello There");
 	assertEquals(unsaved, testWithInitialAppointment.getState());
 	testWithInitialAppointment.setDescription("");
@@ -69,10 +69,10 @@ public class TestAppointmentRepresentationMessage {
 
     @Test
     public void testUnsavedMessageIsABirthday() {
-	AppointmentRepresentation testWithInitialAppointment = new AppointmentRepresentation(allAppointments, testAppointment);
-	testWithInitialAppointment.setIsABirthday(true);
+	AppointmentFieldController testWithInitialAppointment = new AppointmentFieldController(allAppointments, testAppointment);
+	testWithInitialAppointment.setIsBirthday(true);
 	assertEquals(unsaved, testWithInitialAppointment.getState());
-	testWithInitialAppointment.setIsABirthday(false);
+	testWithInitialAppointment.setIsBirthday(false);
 	assertEquals(nothing, testWithInitialAppointment.getState());
     }
 
