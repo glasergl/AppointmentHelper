@@ -1,44 +1,71 @@
 package ui.appointmentField;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
+import javax.swing.JViewport;
 import javax.swing.border.EmptyBorder;
 import appointment.Appointment;
-import general.SwingFunctions;
 import settings.Colors;
 
+/**
+ * Top-Level Parent for all AppointmentFields which controls the JScrollPane.
+ * 
+ * @author Gabriel Glaser
+ * @version 3.1.2022
+ */
 public class AllAppointments extends JPanel {
 
-    private final AppointmentFieldPanel appointmentInputFields;
+    private static final Color BACKGROUND = Colors.isDarkMode() ? Color.BLACK : Color.WHITE;
+    private static final int SCROLL_SPEED = 20;
+
+    private final AppointmentFieldPanel appointmentFields;
     private final JScrollPane jScrollPane;
 
     public AllAppointments(final List<Appointment> initialAppointments) {
-	super(new BorderLayout());
-	appointmentInputFields = new AppointmentFieldPanel(initialAppointments);
-	jScrollPane = new JScrollPane(appointmentInputFields, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+	super();
+	appointmentFields = new AppointmentFieldPanel(initialAppointments);
+	jScrollPane = new JScrollPane(appointmentFields, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+	setup();
+    }
+
+    public void addEmptyAppointmentField() {
+	appointmentFields.addEmptyAppointmentField();
+	jScrollPane.validate();
+	final JScrollBar verticalScrollBar = jScrollPane.getVerticalScrollBar();
+	verticalScrollBar.setValue(verticalScrollBar.getMaximum());
+	jScrollPane.revalidate();
+	jScrollPane.repaint();
+    }
+
+    public void addAppointmentField(final Appointment appointmentToDisplay) {
+	appointmentFields.addAppointmentField(appointmentToDisplay);
+	jScrollPane.validate();
+	final JScrollBar verticalScrollBar = jScrollPane.getVerticalScrollBar();
+	verticalScrollBar.setValue(verticalScrollBar.getMaximum());
+	jScrollPane.revalidate();
+	jScrollPane.repaint();
+    }
+
+    public void saveAll() {
+	appointmentFields.saveAll();
+    }
+
+    private void setup() {
+	setLayout(new BorderLayout());
 	setupJScrollPane();
     }
 
     private void setupJScrollPane() {
-	jScrollPane.getViewport().setBackground(Colors.getGray(0));
-	jScrollPane.getVerticalScrollBar().setUnitIncrement(20);
 	jScrollPane.setBorder(new EmptyBorder(0, 0, 0, 0));
-	add(jScrollPane, BorderLayout.CENTER);
-    }
-
-    public void addEmptyAppointmentInputField() {
-	appointmentInputFields.addEmptyAppointmentInputField();
-	jScrollPane.validate();
+	final JViewport viewport = jScrollPane.getViewport();
+	viewport.setBackground(BACKGROUND);
 	final JScrollBar verticalScrollBar = jScrollPane.getVerticalScrollBar();
-	verticalScrollBar.setValue(verticalScrollBar.getMaximum());
-	SwingFunctions.updateJComponent(jScrollPane);
-    }
-
-    public void saveAll() {
-	appointmentInputFields.saveAll();
+	verticalScrollBar.setUnitIncrement(SCROLL_SPEED);
+	add(jScrollPane, BorderLayout.CENTER);
     }
 
 }

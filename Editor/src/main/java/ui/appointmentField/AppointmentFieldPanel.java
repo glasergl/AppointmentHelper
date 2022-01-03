@@ -21,8 +21,8 @@ import settings.Colors;
 public class AppointmentFieldPanel extends JPanel implements Scrollable {
 
     private static final int MAX_NUMBER_OF_SHOWN_APPOINTMENTS = 7;
-    private static final Color BACKGROUND1 = Colors.getGray(2);
-    private static final Color BACKGROUND2 = Colors.getGray(1);
+    private static final Color BACKGROUND1 = Colors.getGray(1);
+    private static final Color BACKGROUND2 = Colors.getGray(0);
 
     private final List<AppointmentFieldController> appointmentInputFields = new ArrayList<>();
 
@@ -49,14 +49,21 @@ public class AppointmentFieldPanel extends JPanel implements Scrollable {
 	}
     }
 
-    public void addEmptyAppointmentInputField() {
+    public void addEmptyAppointmentField() {
 	final AppointmentFieldController empty = new AppointmentFieldController(this);
 	appointmentInputFields.add(empty);
 	add(empty);
 	setSwitchingBackgroundsForAll();
     }
 
-    public void removeAppointmentInputField(final AppointmentFieldController toRemove) {
+    public void addAppointmentField(final Appointment appointmentToDisplay) {
+	final AppointmentFieldController controller = new AppointmentFieldController(this, appointmentToDisplay);
+	appointmentInputFields.add(controller);
+	add(controller);
+	setSwitchingBackgroundsForAll();
+    }
+
+    public void removeAppointmentField(final AppointmentFieldController toRemove) {
 	appointmentInputFields.remove(toRemove);
 	remove(toRemove);
 	setSwitchingBackgroundsForAll();

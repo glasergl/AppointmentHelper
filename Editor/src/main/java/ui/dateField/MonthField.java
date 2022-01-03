@@ -1,4 +1,4 @@
-package ui.dateInput;
+package ui.dateField;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -13,14 +13,14 @@ import myComponent.MyLabel;
 import myComponent.button.MyTextButton;
 import settings.Colors;
 
-public final class MonthRepresentation extends JPanel {
+public final class MonthField extends JPanel {
 
     private final MySimpleDateField toSetSelectedDateOf;
     private final int monthToDepict;
     private final MyLabel nameOfMonth;
     private final JPanel days = new JPanel(new GridLayout(5, 7, 2, 2));
 
-    public MonthRepresentation(final MySimpleDateField toSetSelectedDateOf, final int monthToDepict) {
+    public MonthField(final MySimpleDateField toSetSelectedDateOf, final int monthToDepict) {
 	super(new BorderLayout());
 	this.toSetSelectedDateOf = toSetSelectedDateOf;
 	this.monthToDepict = monthToDepict;

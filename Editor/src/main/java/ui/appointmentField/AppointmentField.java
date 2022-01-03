@@ -8,111 +8,112 @@ import date.SimpleDate;
 import myComponent.MyCheckBox;
 import myComponent.textField.MyTextField;
 import settings.Colors;
-import ui.dateInput.MySimpleDateField;
+import ui.dateField.MySimpleDateField;
 
 /**
- * InputField for an Appointment.
+ * Visual Input-Field for an Appointment.
  * 
  * @author Gabriel Glaser
- * @version 1.1.2022
+ * @version 3.1.2022
  */
 public class AppointmentField extends JPanel {
 
+    private static final Color DATE_FIELD_COLOR_WHILE_HOVERED = Colors.getGray(3);
     private static final int NAME_WIDTH = 16;
-    private static final int DESCRITPION_WIDTH = 30;
-    private static final int DISTANCE_BETWEEN = 10;
+    private static final int DESCRIPTION_WIDTH = 30;
+    private static final int DISTANCE_BETWEEN_SUB_COMPONENTS = 10;
 
-    private final MySimpleDateField dateInputField;
-    private final MyTextField nameInputField;
-    private final MyTextField descriptionInputField;
-    private final MyCheckBox isBirthdayInputField;
+    private final MySimpleDateField dateField;
+    private final MyTextField nameField;
+    private final MyTextField descriptionField;
+    private final MyCheckBox isBirthdayField;
 
     public AppointmentField(final Appointment initialDisplay) {
 	super();
-	this.dateInputField = new MySimpleDateField(initialDisplay.getDate());
-	this.nameInputField = new MyTextField("", initialDisplay.getName());
-	this.descriptionInputField = new MyTextField("", initialDisplay.getDescription());
-	this.isBirthdayInputField = new MyCheckBox("ist Geburtstag", initialDisplay.isBirthday());
+	this.dateField = new MySimpleDateField(initialDisplay.getDate());
+	this.nameField = new MyTextField("", initialDisplay.getName());
+	this.descriptionField = new MyTextField("", initialDisplay.getDescription());
+	this.isBirthdayField = new MyCheckBox("ist Geburtstag", initialDisplay.isBirthday());
 	setup();
     }
 
     public AppointmentField() {
 	super();
-	this.dateInputField = new MySimpleDateField();
-	this.nameInputField = new MyTextField();
-	this.descriptionInputField = new MyTextField();
-	this.isBirthdayInputField = new MyCheckBox("ist Geburtstag", true);
+	this.dateField = new MySimpleDateField();
+	this.nameField = new MyTextField();
+	this.descriptionField = new MyTextField();
+	this.isBirthdayField = new MyCheckBox("ist Geburtstag", true);
 	setup();
     }
 
     private void setup() {
-	setLayout(new FlowLayout(FlowLayout.LEFT, DISTANCE_BETWEEN, 0));
-	nameInputField.setColumns(NAME_WIDTH);
-	descriptionInputField.setColumns(DESCRITPION_WIDTH);
-	add(dateInputField);
-	add(nameInputField);
-	add(descriptionInputField);
-	add(isBirthdayInputField);
+	setLayout(new FlowLayout(FlowLayout.LEFT, DISTANCE_BETWEEN_SUB_COMPONENTS, 0));
+	dateField.setBackgroundWhileMouseHovered(DATE_FIELD_COLOR_WHILE_HOVERED);
+	nameField.setColumns(NAME_WIDTH);
+	descriptionField.setColumns(DESCRIPTION_WIDTH);
+	add(dateField);
+	add(nameField);
+	add(descriptionField);
+	add(isBirthdayField);
     }
 
     public Appointment getAppointment() {
 	if (!representsValidAppointment()) {
-	    throw new IllegalStateException("Input-Field doesn't represent a valid Appointment");
+	    throw new IllegalStateException("Current input doesn't represent a valid Appointment");
 	}
 	return new Appointment(getDate(), getName(), getDescription(), isBirthday());
     }
 
-    public void setAppointment(final Appointment appointmentToSet) {
-	setDate(appointmentToSet.getDate());
-	setName(appointmentToSet.getName());
-	setDescription(appointmentToSet.getDescription());
-	setIsBirthday(appointmentToSet.isBirthday());
+    public void setAppointment(final Appointment newAppointment) {
+	setDate(newAppointment.getDate());
+	setName(newAppointment.getName());
+	setDescription(newAppointment.getDescription());
+	setIsBirthday(newAppointment.isBirthday());
     }
 
     public boolean representsValidAppointment() {
-	final String currentName = nameInputField.getText();
+	final String currentName = nameField.getText();
 	return currentName.length() > 0;
     }
 
     @Override
     public void setBackground(final Color newBackground) {
 	super.setBackground(newBackground);
-	if (dateInputField != null) {
-	    dateInputField.setBackground(newBackground);
-	    dateInputField.setBackgroundWhileMouseHovered(Colors.getGray(3));
+	if (dateField != null) {
+	    dateField.setBackground(newBackground);
 	}
     }
 
     public SimpleDate getDate() {
-	return dateInputField.getDate();
+	return dateField.getDate();
     }
 
     public String getName() {
-	return nameInputField.getText();
+	return nameField.getText();
     }
 
     public String getDescription() {
-	return descriptionInputField.getText();
+	return descriptionField.getText();
     }
 
     public boolean isBirthday() {
-	return isBirthdayInputField.isSelected();
+	return isBirthdayField.isSelected();
     }
 
-    public void setDate(final SimpleDate newSimpleDate) {
-	dateInputField.setDate(newSimpleDate);
+    public void setDate(final SimpleDate newDate) {
+	dateField.setDate(newDate);
     }
 
     public void setName(final String newName) {
-	nameInputField.setText(newName);
+	nameField.setText(newName);
     }
 
     public void setDescription(final String newDescription) {
-	descriptionInputField.setText(newDescription);
+	descriptionField.setText(newDescription);
     }
 
     public void setIsBirthday(final boolean newIsBirthday) {
-	isBirthdayInputField.setSelected(newIsBirthday);
+	isBirthdayField.setSelected(newIsBirthday);
     }
 
 }

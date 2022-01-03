@@ -9,15 +9,22 @@ import date.SimpleDate;
 import fileInteraction.AppointmentFileInteracter;
 import myComponent.button.MyTextButton;
 
+/**
+ * Class which controls an AppointmentField and its interaction with the
+ * Appointment-File.
+ * 
+ * @author Gabriel Glaser
+ * @version 3.1.2022
+ */
 public class AppointmentFieldController extends JPanel {
 
-    private static final int DISTANCE_BETWEEN = 20;
+    private static final int DISTANCE_BETWEEN_SUB_COMPONENTS = 20;
     private static final int VERTICAL_MARGIN = 20;
 
     private final AppointmentFieldPanel parent;
 
-    private final AppointmentFieldState stateDisplayer = new AppointmentFieldState();
-    private final AppointmentField appointmentInputField;
+    private final AppointmentFieldState stateDisplay = new AppointmentFieldState();
+    private final AppointmentField appointmentField;
     private final MyTextButton cancelButton = new MyTextButton("Cancel");
     private final MyTextButton deleteButton = new MyTextButton("Delete");
 
@@ -27,7 +34,7 @@ public class AppointmentFieldController extends JPanel {
 	super();
 	this.parent = parent;
 	this.currentlyStoredAppointment = Optional.of(initialDisplay);
-	this.appointmentInputField = new AppointmentField(initialDisplay);
+	this.appointmentField = new AppointmentField(initialDisplay);
 	setup();
     }
 
@@ -35,91 +42,99 @@ public class AppointmentFieldController extends JPanel {
 	super();
 	this.parent = parent;
 	this.currentlyStoredAppointment = Optional.empty();
-	this.appointmentInputField = new AppointmentField();
-	stateDisplayer.toUnsaved();
+	this.appointmentField = new AppointmentField();
+	stateDisplay.toUnsaved();
 	setup();
     }
 
     public void save() {
-	if (!appointmentInputField.representsValidAppointment()) {
-	    stateDisplayer.toError();
+	if (!appointmentField.representsValidAppointment()) {
+	    stateDisplay.toError();
 	} else {
 	    if (currentlyStoredAppointment.isPresent()) {
 		AppointmentFileInteracter.remove(currentlyStoredAppointment.get());
 	    }
-	    final Appointment currentContent = appointmentInputField.getAppointment();
+	    final Appointment currentContent = appointmentField.getAppointment();
 	    AppointmentFileInteracter.add(currentContent);
 	    currentlyStoredAppointment = Optional.of(currentContent);
-	    stateDisplayer.toNothing();
+	    stateDisplay.toNothing();
 	}
     }
 
+    public void cancel() {
+	if (currentlyStoredAppointment.isPresent()) {
+	    appointmentField.setAppointment(currentlyStoredAppointment.get());
+	}
+    }
+
+    public void delete() {
+	if (currentlyStoredAppointment.isPresent()) {
+	    AppointmentFileInteracter.remove(currentlyStoredAppointment.get());
+	}
+	parent.removeAppointmentField(this);
+    }
+
     private void setup() {
-	setLayout(new FlowLayout(FlowLayout.LEFT, DISTANCE_BETWEEN, VERTICAL_MARGIN));
+	setLayout(new FlowLayout(FlowLayout.LEFT, DISTANCE_BETWEEN_SUB_COMPONENTS, VERTICAL_MARGIN));
 	setupButtons();
-	add(stateDisplayer);
-	add(appointmentInputField);
+	add(stateDisplay);
+	add(appointmentField);
 	add(cancelButton);
 	add(deleteButton);
     }
 
     private void setupButtons() {
 	cancelButton.addActionListener((click) -> {
-	    if (currentlyStoredAppointment.isPresent()) {
-		appointmentInputField.setAppointment(currentlyStoredAppointment.get());
-	    }
+	    cancel();
 	});
 	deleteButton.addActionListener((click) -> {
-	    if (currentlyStoredAppointment.isPresent()) {
-		AppointmentFileInteracter.remove(currentlyStoredAppointment.get());
-	    }
-	    parent.removeAppointmentInputField(this);
+	    delete();
 	});
     }
 
     @Override
     public void setBackground(final Color newBackground) {
 	super.setBackground(newBackground);
-	if (stateDisplayer != null && appointmentInputField != null) {
-	    stateDisplayer.setBackground(newBackground);
-	    appointmentInputField.setBackground(newBackground);
+	if (stateDisplay != null && appointmentField != null) {
+	    stateDisplay.setBackground(newBackground);
+	    appointmentField.setBackground(newBackground);
 	}
     }
 
     public AppointmentFieldState.State getState() {
-	return stateDisplayer.getState();
+	return stateDisplay.getState();
     }
 
     public SimpleDate getDate() {
-	return appointmentInputField.getDate();
+	return appointmentField.getDate();
     }
 
     public String getName() {
-	return appointmentInputField.getName();
+	return appointmentField.getName();
     }
 
     public String getDescription() {
-	return appointmentInputField.getDescription();
+	return appointmentField.getDescription();
     }
 
     public boolean isBirthday() {
-	return appointmentInputField.isBirthday();
+	return appointmentField.isBirthday();
     }
 
-    public void setDate(final SimpleDate newSimpleDate) {
-	appointmentInputField.setDate(newSimpleDate);
+    public void setDate(final SimpleDate newDate) {
+	appointmentField.setDate(newDate);
     }
 
     public void setName(final String newName) {
-	appointmentInputField.setName(newName);
+	appointmentField.setName(newName);
     }
 
     public void setDescription(final String newDescription) {
-	appointmentInputField.setDescription(newDescription);
+	appointmentField.setDescription(newDescription);
     }
 
     public void setIsBirthday(final boolean newIsBirthday) {
-	appointmentInputField.setIsBirthday(newIsBirthday);
+	appointmentField.setIsBirthday(newIsBirthday);
     }
 
 }

@@ -34,7 +34,7 @@ public class Footer extends RowOfJComponent {
 	addAppointmentButton.setFont(Fonts.resizedStandard(50.0f));
 	addAppointmentButton.setBorder(new CompoundBorder(addAppointmentButton.getBorder(), new EmptyBorder(0, 100, 0, 100)));
 	addAppointmentButton.addActionListener((event) -> {
-	    appointmentInputFields.addEmptyAppointmentInputField();
+	    appointmentInputFields.addEmptyAppointmentField();
 	});
 	addToMiddle(addAppointmentButton);
     }

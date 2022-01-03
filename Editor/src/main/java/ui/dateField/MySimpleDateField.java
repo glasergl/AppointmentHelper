@@ -1,4 +1,4 @@
-package ui.dateInput;
+package ui.dateField;
 
 import date.SimpleDate;
 import eventListener.SiblingPopUpDisplayerOnClick;

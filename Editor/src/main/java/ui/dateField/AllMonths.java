@@ -1,4 +1,4 @@
-package ui.dateInput;
+package ui.dateField;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -23,13 +23,13 @@ public class AllMonths extends JPanel {
     private final MyTextButton goRightEdge = new MyTextButton(">>I", false);
 
     private int currentMonth;
-    private MonthRepresentation displayOfCurrentMonth;;
+    private MonthField displayOfCurrentMonth;;
 
     public AllMonths(final MySimpleDateField toSetSelectedDateOf, final SimpleDate initialDate) {
 	super(new BorderLayout());
 	this.toSetSelectedDateOf = toSetSelectedDateOf;
 	this.currentMonth = initialDate.getMonth();
-	this.displayOfCurrentMonth = new MonthRepresentation(toSetSelectedDateOf, currentMonth);
+	this.displayOfCurrentMonth = new MonthField(toSetSelectedDateOf, currentMonth);
 	setupButtons();
 	updateDisplayedMonth();
     }
@@ -91,7 +91,7 @@ public class AllMonths extends JPanel {
 
     private void updateDisplayedMonth() {
 	remove(displayOfCurrentMonth);
-	displayOfCurrentMonth = new MonthRepresentation(toSetSelectedDateOf, currentMonth);
+	displayOfCurrentMonth = new MonthField(toSetSelectedDateOf, currentMonth);
 	add(displayOfCurrentMonth, BorderLayout.SOUTH);
 	revalidate();
     }
