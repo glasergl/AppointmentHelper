@@ -2,6 +2,7 @@ package ui.appointmentField;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
@@ -9,10 +10,12 @@ import javax.swing.JScrollPane;
 import javax.swing.JViewport;
 import javax.swing.border.EmptyBorder;
 import appointment.Appointment;
+import myComponent.MyLabel;
 import settings.Colors;
 
 /**
- * Top-Level Parent for all AppointmentFields which controls the JScrollPane.
+ * Top-Level Parent for all AppointmentFields which controls the JScrollPane and
+ * the header.
  * 
  * @author Gabriel Glaser
  * @version 3.1.2022
@@ -23,6 +26,7 @@ public class AllAppointments extends JPanel {
     private static final int SCROLL_SPEED = 20;
 
     private final AppointmentFieldPanel appointmentFields;
+    private final ColumnDescription columnDescription = new ColumnDescription();
     private final JScrollPane jScrollPane;
 
     public AllAppointments(final List<Appointment> initialAppointments) {
@@ -57,6 +61,7 @@ public class AllAppointments extends JPanel {
     private void setup() {
 	setLayout(new BorderLayout());
 	setupJScrollPane();
+	add(columnDescription, BorderLayout.NORTH);
     }
 
     private void setupJScrollPane() {
@@ -66,6 +71,26 @@ public class AllAppointments extends JPanel {
 	final JScrollBar verticalScrollBar = jScrollPane.getVerticalScrollBar();
 	verticalScrollBar.setUnitIncrement(SCROLL_SPEED);
 	add(jScrollPane, BorderLayout.CENTER);
+    }
+
+    private final class ColumnDescription extends JPanel {
+	private final MyLabel date = new MyLabel("Datum");
+	private final MyLabel name = new MyLabel("Name");
+	private final MyLabel description = new MyLabel("Beschreibung");
+
+	public ColumnDescription() {
+	    super(new FlowLayout(FlowLayout.LEFT, 0, 0));
+	    setBackground(BACKGROUND);
+	    date.setOpaque(false);
+	    name.setOpaque(false);
+	    description.setOpaque(false);
+	    date.setBorder(new EmptyBorder(0, 70, 0, 0));
+	    name.setBorder(new EmptyBorder(0, 8, 0, 0));
+	    description.setBorder(new EmptyBorder(0, 240, 0, 0));
+	    add(date);
+	    add(name);
+	    add(description);
+	}
     }
 
 }
