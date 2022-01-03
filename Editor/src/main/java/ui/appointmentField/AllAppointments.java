@@ -1,4 +1,4 @@
-package ui.appointmentInput;
+package ui.appointmentField;
 
 import java.awt.BorderLayout;
 import java.util.List;

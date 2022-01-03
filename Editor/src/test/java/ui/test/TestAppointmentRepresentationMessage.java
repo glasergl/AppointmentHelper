@@ -4,9 +4,9 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import appointment.Appointment;
 import date.SimpleDate;
-import ui.appointmentInput.AppointmentFieldController;
-import ui.appointmentInput.AppointmentFieldPanel;
-import ui.appointmentInput.AppointmentFieldState;
+import ui.appointmentField.AppointmentFieldController;
+import ui.appointmentField.AppointmentFieldPanel;
+import ui.appointmentField.AppointmentFieldState;
 
 public class TestAppointmentRepresentationMessage {
 

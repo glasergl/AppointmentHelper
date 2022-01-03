@@ -3,7 +3,7 @@ package ui;
 import container.RowOfJComponent;
 import myComponent.button.MyTextButton;
 import settings.Colors;
-import ui.appointmentInput.AllAppointments;
+import ui.appointmentField.AllAppointments;
 
 /**
  * Header for the whole frame.

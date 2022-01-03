@@ -6,7 +6,7 @@ import container.RowOfJComponent;
 import myComponent.button.MyTextButton;
 import settings.Colors;
 import settings.Fonts;
-import ui.appointmentInput.AllAppointments;
+import ui.appointmentField.AllAppointments;
 
 /**
  * Footer for the whole frame.

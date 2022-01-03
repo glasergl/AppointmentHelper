@@ -1,4 +1,4 @@
-package ui.appointmentInput;
+package ui.appointmentField;
 
 import java.awt.Container;
 import java.awt.Dimension;

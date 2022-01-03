@@ -7,7 +7,7 @@ import java.util.List;
 import appointment.Appointment;
 import container.MyFrame;
 import general.SwingFunctions;
-import ui.appointmentInput.AllAppointments;
+import ui.appointmentField.AllAppointments;
 
 /**
  * Main-Frame for the Editor.
