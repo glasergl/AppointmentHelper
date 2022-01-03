@@ -85,8 +85,8 @@ public class AllAppointments extends JPanel {
 	    name.setOpaque(false);
 	    description.setOpaque(false);
 	    date.setBorder(new EmptyBorder(0, 70, 0, 0));
-	    name.setBorder(new EmptyBorder(0, 8, 0, 0));
-	    description.setBorder(new EmptyBorder(0, 240, 0, 0));
+	    name.setBorder(new EmptyBorder(0, 10, 0, 0));
+	    description.setBorder(new EmptyBorder(0, 238, 0, 0));
 	    add(date);
 	    add(name);
 	    add(description);
