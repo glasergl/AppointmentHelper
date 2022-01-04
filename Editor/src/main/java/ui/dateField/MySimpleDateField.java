@@ -1,5 +1,10 @@
 package ui.dateField;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import date.SimpleDate;
 import eventListener.SiblingPopUpDisplayerOnClick;
 import myComponent.MySiblingPopUp;
@@ -11,6 +16,7 @@ public class MySimpleDateField extends MyTextButton {
 
     private final SiblingPopUpDisplayerOnClick monthPopUpController;
     private final AllMonths months;
+    private final List<ChangeListener> changeListeners = new ArrayList<>();
 
     private SimpleDate currentlySelected;
 
@@ -26,9 +32,17 @@ public class MySimpleDateField extends MyTextButton {
 	this(SimpleDates.getToday());
     }
 
+    public void addChangeListener(final ChangeListener toAdd) {
+	changeListeners.add(toAdd);
+    }
+
     public void setDate(final SimpleDate toSet) {
 	currentlySelected = toSet;
 	setText(toSet.toStringWithLeadingZeros());
+	final ChangeEvent dateChange = new ChangeEvent(this);
+	for (final ChangeListener changeListener : changeListeners) {
+	    changeListener.stateChanged(dateChange);
+	}
     }
 
     public SimpleDate getDate() {

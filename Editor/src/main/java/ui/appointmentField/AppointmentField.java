@@ -84,6 +84,22 @@ public class AppointmentField extends JPanel {
 	}
     }
 
+    public MySimpleDateField getDateField() {
+	return dateField;
+    }
+
+    public MyTextField getNameField() {
+	return nameField;
+    }
+
+    public MyTextField getDescriptionField() {
+	return descriptionField;
+    }
+
+    public MyCheckBox getIsBirthdayField() {
+	return isBirthdayField;
+    }
+
     public SimpleDate getDate() {
 	return dateField.getDate();
     }

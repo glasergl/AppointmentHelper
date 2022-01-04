@@ -4,8 +4,11 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.util.Optional;
 import javax.swing.JPanel;
+import javax.swing.event.ChangeListener;
+
 import appointment.Appointment;
 import date.SimpleDate;
+import eventListener.emptyImplementation.MyDocumentListener;
 import fileInteraction.AppointmentFileInteracter;
 import myComponent.button.MyTextButton;
 
@@ -18,7 +21,7 @@ import myComponent.button.MyTextButton;
  */
 public class AppointmentFieldController extends JPanel {
 
-    private static final int DISTANCE_BETWEEN_SUB_COMPONENTS = 20;
+    private static final int MARGIN_OF_SUB_COMPONENTS = 20;
     private static final int VERTICAL_MARGIN = 20;
 
     private final AppointmentFieldPanel parent;
@@ -74,13 +77,42 @@ public class AppointmentFieldController extends JPanel {
 	parent.removeAppointmentField(this);
     }
 
+    public void updateSavedState() {
+	if (!appointmentField.representsValidAppointment()) {
+	    stateDisplay.toError();
+	} else {
+	    final Appointment currentInput = appointmentField.getAppointment();
+	    if (currentlyStoredAppointment.isPresent() && currentInput.equals(currentlyStoredAppointment.get())) {
+		stateDisplay.toNothing();
+	    } else {
+		stateDisplay.toUnsaved();
+	    }
+	}
+    }
+
     private void setup() {
-	setLayout(new FlowLayout(FlowLayout.LEFT, DISTANCE_BETWEEN_SUB_COMPONENTS, VERTICAL_MARGIN));
+	setLayout(new FlowLayout(FlowLayout.LEFT, MARGIN_OF_SUB_COMPONENTS, VERTICAL_MARGIN));
+	addListenersForSaveState();
 	setupButtons();
 	add(stateDisplay);
 	add(appointmentField);
 	add(cancelButton);
 	add(deleteButton);
+    }
+
+    private void addListenersForSaveState() {
+	final MyDocumentListener toUpdateSavedStateDocumentListener = new MyDocumentListener() {
+	    public void update() {
+		updateSavedState();
+	    }
+	};
+	final ChangeListener toUpdateSaveStateChangeListener = change -> {
+	    updateSavedState();
+	};
+	appointmentField.getDateField().addChangeListener(toUpdateSaveStateChangeListener);
+	appointmentField.getNameField().getBaseImplementation().getDocument().addDocumentListener(toUpdateSavedStateDocumentListener);
+	appointmentField.getDescriptionField().getBaseImplementation().getDocument().addDocumentListener(toUpdateSavedStateDocumentListener);
+	appointmentField.getIsBirthdayField().addChangeListener(toUpdateSaveStateChangeListener);
     }
 
     private void setupButtons() {
