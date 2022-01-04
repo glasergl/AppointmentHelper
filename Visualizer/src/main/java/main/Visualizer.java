@@ -1,5 +1,6 @@
 package main;
 
+import java.util.Arrays;
 import java.util.List;
 import javax.swing.SwingUtilities;
 import appointment.Appointment;
@@ -27,6 +28,11 @@ public final class Visualizer {
 	SwingUtilities.invokeLater(() -> {
 	    new VisualizerFrame(toConsider);
 	});
+    }
+
+    @SafeVarargs
+    public static <T> List<T> listOf(final T... elements) {
+	return Arrays.asList(elements);
     }
 
 }

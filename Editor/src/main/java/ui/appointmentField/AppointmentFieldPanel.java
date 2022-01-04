@@ -33,7 +33,7 @@ public class AppointmentFieldPanel extends JPanel implements Scrollable {
     }
 
     public AppointmentFieldPanel() {
-	this(List.of());
+	this(new ArrayList<>());
     }
 
     private void setup(final List<Appointment> initialAppointments) {

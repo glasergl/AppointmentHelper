@@ -1,10 +1,10 @@
 package ui.test;
 
 import static org.junit.Assert.*;
-import java.util.List;
 import org.junit.Test;
 import appointment.Appointment;
 import date.SimpleDate;
+import main.Visualizer;
 import ui.calendar.CalendarCell;
 
 public class TestCalendarCell {
@@ -14,7 +14,7 @@ public class TestCalendarCell {
 
     @Test
     public void testNoAppointments() {
-	CalendarCell c = new CalendarCell(d1, List.of());
+	CalendarCell c = new CalendarCell(d1, Visualizer.listOf());
 	assertEquals(getExpectedDateString(d1), c.toString());
     }
 
@@ -23,34 +23,34 @@ public class TestCalendarCell {
 	final Appointment a1 = new Appointment(d2, "Sam", "", true);
 	final Appointment a2 = new Appointment(d2, "Frodo", "", false);
 	final Appointment a3 = new Appointment(d2, "Gandalf", "", true);
-	CalendarCell c = new CalendarCell(d1, List.of(a1, a2, a3));
+	CalendarCell c = new CalendarCell(d1, Visualizer.listOf(a1, a2, a3));
 	assertEquals(getExpectedDateString(d1), c.toString());
     }
 
     @Test
     public void testWithOne() {
-	CalendarCell c = new CalendarCell(d1, List.of(new Appointment(d1, "Sam", "", true)));
+	CalendarCell c = new CalendarCell(d1, Visualizer.listOf(new Appointment(d1, "Sam", "", true)));
 	assertEquals(getExpectedCellString(d1, "Sam"), c.toString());
     }
 
     @Test
     public void testEdgeCaseOfNameLength() {
 	String edgeWord = getEdgeWord();
-	CalendarCell c = new CalendarCell(d1, List.of(new Appointment(d1, edgeWord, "", true)));
+	CalendarCell c = new CalendarCell(d1, Visualizer.listOf(new Appointment(d1, edgeWord, "", true)));
 	assertEquals(getExpectedCellString(d1, edgeWord), c.toString());
     }
 
     @Test
     public void testSpecialCaseOfNameLength() {
 	String specialCaseWord = getSpecialCaseWord();
-	CalendarCell c = new CalendarCell(d1, List.of(new Appointment(d1, specialCaseWord, "", true)));
+	CalendarCell c = new CalendarCell(d1, Visualizer.listOf(new Appointment(d1, specialCaseWord, "", true)));
 	assertEquals(getExpectedCellString(d1, "1 Geburtstag"), c.toString());
     }
 
     @Test
     public void testSpecialCaseWithoutBirthday() {
 	String specialCaseWord = getSpecialCaseWord();
-	CalendarCell c = new CalendarCell(d1, List.of(new Appointment(d1, specialCaseWord, "", false)));
+	CalendarCell c = new CalendarCell(d1, Visualizer.listOf(new Appointment(d1, specialCaseWord, "", false)));
 	assertEquals(getExpectedCellString(d1, "1 Termin"), c.toString());
     }
 
@@ -58,7 +58,7 @@ public class TestCalendarCell {
     public void testWithTwo() {
 	final Appointment a1 = new Appointment(d1, "Sam", "", true);
 	final Appointment a2 = new Appointment(d1, "Frodo", "", true);
-	CalendarCell c = new CalendarCell(d1, List.of(a1, a2));
+	CalendarCell c = new CalendarCell(d1, Visualizer.listOf(a1, a2));
 	assertEquals(getExpectedCellString(d1, "2 Geburtstage"), c.toString());
     }
 
@@ -66,7 +66,7 @@ public class TestCalendarCell {
     public void testWithTwoWithoutAllBirthdays() {
 	final Appointment a1 = new Appointment(d1, "Sam", "", false);
 	final Appointment a2 = new Appointment(d1, "Frodo", "", true);
-	CalendarCell c = new CalendarCell(d1, List.of(a1, a2));
+	CalendarCell c = new CalendarCell(d1, Visualizer.listOf(a1, a2));
 	assertEquals(getExpectedCellString(d1, "2 Termine"), c.toString());
     }
 
@@ -74,7 +74,7 @@ public class TestCalendarCell {
     public void testWithTwoButOnlyOneIsAt() {
 	final Appointment a1 = new Appointment(d1, "Sam", "", false);
 	final Appointment a2 = new Appointment(d2, "Frodo", "", true);
-	CalendarCell c = new CalendarCell(d1, List.of(a1, a2));
+	CalendarCell c = new CalendarCell(d1, Visualizer.listOf(a1, a2));
 	assertEquals(getExpectedCellString(d1, "Sam"), c.toString());
     }
 
@@ -83,7 +83,7 @@ public class TestCalendarCell {
 	final Appointment a1 = new Appointment(d1, "Sam", "", true);
 	final Appointment a2 = new Appointment(d1, "Frodo", "", true);
 	final Appointment a3 = new Appointment(d1, "Gandalf", "", true);
-	CalendarCell c = new CalendarCell(d1, List.of(a1, a2, a3));
+	CalendarCell c = new CalendarCell(d1, Visualizer.listOf(a1, a2, a3));
 	assertEquals(getExpectedCellString(d1, "3 Geburtstage"), c.toString());
     }
 
@@ -92,7 +92,7 @@ public class TestCalendarCell {
 	final Appointment a1 = new Appointment(d1, "Sam", "", false);
 	final Appointment a2 = new Appointment(d1, "Frodo", "", false);
 	final Appointment a3 = new Appointment(d1, "Gandalf", "", true);
-	CalendarCell c = new CalendarCell(d1, List.of(a1, a2, a3));
+	CalendarCell c = new CalendarCell(d1, Visualizer.listOf(a1, a2, a3));
 	assertEquals(getExpectedCellString(d1, "3 Termine"), c.toString());
     }
 
@@ -101,7 +101,7 @@ public class TestCalendarCell {
 	final Appointment a1 = new Appointment(d1, "Sam", "", false);
 	final Appointment a2 = new Appointment(d2, "Frodo", "", false);
 	final Appointment a3 = new Appointment(d1, "Gandalf", "", true);
-	CalendarCell c = new CalendarCell(d1, List.of(a1, a2, a3));
+	CalendarCell c = new CalendarCell(d1, Visualizer.listOf(a1, a2, a3));
 	assertEquals(getExpectedCellString(d1, "2 Termine"), c.toString());
     }
 
@@ -110,7 +110,7 @@ public class TestCalendarCell {
 	final Appointment a1 = new Appointment(d1, "Sam", "", true);
 	final Appointment a2 = new Appointment(d2, "Frodo", "", false);
 	final Appointment a3 = new Appointment(d1, "Gandalf", "", true);
-	CalendarCell c = new CalendarCell(d1, List.of(a1, a2, a3));
+	CalendarCell c = new CalendarCell(d1, Visualizer.listOf(a1, a2, a3));
 	assertEquals(getExpectedCellString(d1, "2 Geburtstage"), c.toString());
     }
 
@@ -119,7 +119,7 @@ public class TestCalendarCell {
 	final Appointment a1 = new Appointment(d2, "Sam", "", true);
 	final Appointment a2 = new Appointment(d2, "Frodo", "", false);
 	final Appointment a3 = new Appointment(d1, "Gandalf", "", true);
-	CalendarCell c = new CalendarCell(d1, List.of(a1, a2, a3));
+	CalendarCell c = new CalendarCell(d1, Visualizer.listOf(a1, a2, a3));
 	assertEquals(getExpectedCellString(d1, "Gandalf"), c.toString());
     }
 
