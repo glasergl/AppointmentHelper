@@ -12,6 +12,7 @@ import javax.swing.border.EmptyBorder;
 import appointment.Appointment;
 import myComponent.MyLabel;
 import settings.Colors;
+import settings.Fonts;
 
 /**
  * Top-Level Parent for all AppointmentFields which controls the JScrollPane and
@@ -80,13 +81,16 @@ public class AllAppointments extends JPanel {
 
 	public ColumnDescription() {
 	    super(new FlowLayout(FlowLayout.LEFT, 0, 0));
-	    setBackground(BACKGROUND);
+	    setBackground(Colors.getGray(0));
 	    date.setOpaque(false);
 	    name.setOpaque(false);
 	    description.setOpaque(false);
-	    date.setBorder(new EmptyBorder(0, 70, 0, 0));
-	    name.setBorder(new EmptyBorder(0, 10, 0, 0));
-	    description.setBorder(new EmptyBorder(0, 238, 0, 0));
+	    date.setFont(Fonts.resizedStandard(16.0f));
+	    name.setFont(Fonts.resizedStandard(16.0f));
+	    description.setFont(Fonts.resizedStandard(16.0f));
+	    date.setBorder(new EmptyBorder(0, 71, 0, 0));
+	    name.setBorder(new EmptyBorder(0, 20, 0, 0));
+	    description.setBorder(new EmptyBorder(0, 247, 0, 0));
 	    add(date);
 	    add(name);
 	    add(description);
