@@ -9,6 +9,7 @@ import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.Scrollable;
 import appointment.Appointment;
+import fileInteraction.AppointmentFileInteracter;
 import general.SwingFunctions;
 import settings.Colors;
 
@@ -57,10 +58,13 @@ public class AppointmentFieldPanel extends JPanel implements Scrollable {
     }
 
     public void addAppointmentField(final Appointment appointmentToDisplay) {
+	AppointmentFileInteracter.add(appointmentToDisplay);
 	final AppointmentFieldController controller = new AppointmentFieldController(this, appointmentToDisplay);
 	appointmentInputFields.add(controller);
 	add(controller);
 	setSwitchingBackgroundsForAll();
+	revalidate();
+	repaint();
     }
 
     public void removeAppointmentField(final AppointmentFieldController toRemove) {

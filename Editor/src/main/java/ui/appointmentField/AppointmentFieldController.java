@@ -3,9 +3,10 @@ package ui.appointmentField;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.util.Optional;
+import java.util.Stack;
+
 import javax.swing.JPanel;
 import javax.swing.event.ChangeListener;
-
 import appointment.Appointment;
 import date.SimpleDate;
 import eventListener.emptyImplementation.MyDocumentListener;
@@ -23,6 +24,7 @@ public class AppointmentFieldController extends JPanel {
 
     private static final int MARGIN_OF_SUB_COMPONENTS = 20;
     private static final int VERTICAL_MARGIN = 20;
+    private static final Stack<AppointmentFieldController> DELETED = new Stack<>();
 
     private final AppointmentFieldPanel parent;
 
@@ -73,6 +75,7 @@ public class AppointmentFieldController extends JPanel {
     public void delete() {
 	if (currentlyStoredAppointment.isPresent()) {
 	    AppointmentFileInteracter.remove(currentlyStoredAppointment.get());
+	    DELETED.add(this);
 	}
 	parent.removeAppointmentField(this);
     }
@@ -167,6 +170,13 @@ public class AppointmentFieldController extends JPanel {
 
     public void setIsBirthday(final boolean newIsBirthday) {
 	appointmentField.setIsBirthday(newIsBirthday);
+    }
+
+    public static void restoreLastDeleted() {
+	if (DELETED.size() > 0) {
+	    final AppointmentFieldController lastDeleted = DELETED.pop();
+	    lastDeleted.parent.addAppointmentField(lastDeleted.currentlyStoredAppointment.get());
+	}
     }
 
 }
