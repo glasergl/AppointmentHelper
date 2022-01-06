@@ -10,9 +10,10 @@ import appointment.Appointment;
  * year. Also, all appointments which should be respected are entered.
  * 
  * @author Gabriel Glaser
- * @version 29.9.2021
+ * @version 6.1.2022
  */
 public final class VisualCalendar extends JPanel {
+    
     private final MonthRow months = new MonthRow();
     private final CalendarCells cells;
 
