@@ -25,7 +25,7 @@ public class AppointmentFieldPanel extends JPanel implements Scrollable {
     private static final Color BACKGROUND1 = Colors.getGray(1);
     private static final Color BACKGROUND2 = Colors.getGray(0);
 
-    private final List<AppointmentFieldController> appointmentInputFields = new ArrayList<>();
+    private final List<AppointmentFieldController> appointmentFields = new ArrayList<>();
 
     public AppointmentFieldPanel(final List<Appointment> initialAppointments) {
 	super();
@@ -45,14 +45,14 @@ public class AppointmentFieldPanel extends JPanel implements Scrollable {
     private void setupAllAppointments(final List<Appointment> toDepict) {
 	for (final Appointment toAdd : toDepict) {
 	    final AppointmentFieldController appointment = new AppointmentFieldController(this, toAdd);
-	    appointmentInputFields.add(appointment);
+	    appointmentFields.add(appointment);
 	    add(appointment);
 	}
     }
 
     public void addEmptyAppointmentField() {
 	final AppointmentFieldController empty = new AppointmentFieldController(this);
-	appointmentInputFields.add(empty);
+	appointmentFields.add(empty);
 	add(empty);
 	setSwitchingBackgroundsForAll();
     }
@@ -60,7 +60,7 @@ public class AppointmentFieldPanel extends JPanel implements Scrollable {
     public void addAppointmentField(final Appointment appointmentToDisplay) {
 	AppointmentFileInteracter.add(appointmentToDisplay);
 	final AppointmentFieldController controller = new AppointmentFieldController(this, appointmentToDisplay);
-	appointmentInputFields.add(controller);
+	appointmentFields.add(controller);
 	add(controller);
 	setSwitchingBackgroundsForAll();
 	revalidate();
@@ -68,21 +68,21 @@ public class AppointmentFieldPanel extends JPanel implements Scrollable {
     }
 
     public void removeAppointmentField(final AppointmentFieldController toRemove) {
-	appointmentInputFields.remove(toRemove);
+	appointmentFields.remove(toRemove);
 	remove(toRemove);
 	setSwitchingBackgroundsForAll();
 	SwingFunctions.updateJComponent(this);
     }
 
     public void saveAll() {
-	for (final AppointmentFieldController appointmentInputField : appointmentInputFields) {
+	for (final AppointmentFieldController appointmentInputField : appointmentFields) {
 	    appointmentInputField.save();
 	}
     }
 
     private void setSwitchingBackgroundsForAll() {
-	for (int i = 0; i < appointmentInputFields.size(); i++) {
-	    final AppointmentFieldController current = appointmentInputFields.get(i);
+	for (int i = 0; i < appointmentFields.size(); i++) {
+	    final AppointmentFieldController current = appointmentFields.get(i);
 	    current.setBackground(i % 2 == 0 ? BACKGROUND1 : BACKGROUND2);
 	}
     }
@@ -121,6 +121,15 @@ public class AppointmentFieldPanel extends JPanel implements Scrollable {
     @Override
     public boolean getScrollableTracksViewportHeight() {
 	return false;
+    }
+
+    public boolean isSaved() {
+	for (final AppointmentFieldController appointmentField : appointmentFields) {
+	    if (!appointmentField.isSaved()) {
+		return false;
+	    }
+	}
+	return true;
     }
 
 }

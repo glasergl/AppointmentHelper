@@ -59,6 +59,10 @@ public class AllAppointments extends JPanel {
 	appointmentFields.saveAll();
     }
 
+    public boolean isSaved() {
+	return appointmentFields.isSaved();
+    }
+
     private void setup() {
 	setLayout(new BorderLayout());
 	setupJScrollPane();

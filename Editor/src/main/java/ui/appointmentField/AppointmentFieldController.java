@@ -80,6 +80,17 @@ public class AppointmentFieldController extends JPanel {
 	parent.removeAppointmentField(this);
     }
 
+    public boolean isSaved() {
+	if (!appointmentField.representsValidAppointment()) {
+	    return false;
+	} else if (currentlyStoredAppointment.isPresent()) {
+	    final Appointment currentInput = appointmentField.getAppointment();
+	    return currentInput.equals(currentlyStoredAppointment.get());
+	} else {
+	    return false;
+	}
+    }
+
     public void updateSavedState() {
 	if (!appointmentField.representsValidAppointment()) {
 	    stateDisplay.toError();
