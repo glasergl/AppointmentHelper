@@ -132,4 +132,10 @@ public class AppointmentFieldPanel extends JPanel implements Scrollable {
 	return true;
     }
 
+    public void cancelAll() {
+	for (final AppointmentFieldController appointmentField : appointmentFields) {
+	    appointmentField.cancel();
+	}
+    }
+
 }

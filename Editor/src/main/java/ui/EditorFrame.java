@@ -49,10 +49,10 @@ public final class EditorFrame extends MyFrame {
 		    JOptionPane.INFORMATION_MESSAGE);
 	    if (result == 0) {
 		appointmentsFields.saveAll();
+		super.dispose();
 	    } else if (result == 1) {
-		// TODO cancel
-	    } else {
-		// TODO dont dispose.
+		appointmentsFields.cancelAll();
+		super.dispose();
 	    }
 	} else {
 	    super.dispose();
