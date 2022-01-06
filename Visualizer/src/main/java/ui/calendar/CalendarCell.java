@@ -20,7 +20,7 @@ import settings.Fonts;
  * collection of appointments which are at the specified date.
  *
  * @author Gabriel Glaser
- * @version 28.09.2021
+ * @version 6.1.2022
  */
 public final class CalendarCell extends MyLabel {
 
@@ -83,7 +83,6 @@ public final class CalendarCell extends MyLabel {
     }
 
     private JComponent getPopUpComponent() {
-	// TODO java.awt.List
 	final LineOfJComponent names = new LineOfJComponent(Alignment.VERTICAL, getNamesAsLabels(atDate), 0);
 	names.setBackground(Colors.getGray(1));
 	return names;

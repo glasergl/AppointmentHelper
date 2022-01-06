@@ -1,51 +1,51 @@
 package ui;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.util.List;
-import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import appointment.Appointment;
 import settings.Colors;
 import settings.Fonts;
 
 /**
- * An instance of this class depicts all birthdays.
+ * Class which shows the appointments of today and tomorrow.
  * 
  * @author Gabriel Glaser
- * @version 10.9.2021
+ * @version 6.1.2021
  */
 public final class AppointmentOutput extends JPanel {
 
-    private final AppointmentOutputText today;
-    private final AppointmentOutputText tomorrow;
+    private final AppointmentOutputText outputOfToday;
+    private final AppointmentOutputText outputOfTomorrow;
 
-    public AppointmentOutput(final List<Appointment> birthdaysToRespect) {
+    public AppointmentOutput(final List<Appointment> appointmentsToConsider) {
 	super();
-	this.today = new AppointmentOutputText("Heute", Appointment::isToday, birthdaysToRespect);
-	this.tomorrow = new AppointmentOutputText("Morgen", Appointment::isTomorrow, birthdaysToRespect);
-	setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+	this.outputOfToday = new AppointmentOutputText("Heute", Appointment::isToday, appointmentsToConsider);
+	this.outputOfTomorrow = new AppointmentOutputText("Morgen", Appointment::isTomorrow, appointmentsToConsider);
+	setLayout(new BorderLayout());
 	setFont(Fonts.big());
 	setBackground(Colors.getGray(0));
-	add(today);
-	add(tomorrow);
+	add(outputOfToday, BorderLayout.NORTH);
+	add(outputOfTomorrow, BorderLayout.SOUTH);
     }
 
     @Override
     public void setFont(final Font newFontOfOutputTexts) {
 	super.setFont(newFontOfOutputTexts);
-	if (today != null && tomorrow != null) {
-	    today.setFont(newFontOfOutputTexts);
-	    tomorrow.setFont(newFontOfOutputTexts);
+	if (outputOfToday != null && outputOfTomorrow != null) {
+	    outputOfToday.setFont(newFontOfOutputTexts);
+	    outputOfTomorrow.setFont(newFontOfOutputTexts);
 	}
     }
 
     @Override
     public void setBackground(final Color newBackground) {
 	super.setBackground(newBackground);
-	if (today != null && tomorrow != null) {
-	    today.setBackground(newBackground);
-	    tomorrow.setBackground(newBackground);
+	if (outputOfToday != null && outputOfTomorrow != null) {
+	    outputOfToday.setBackground(newBackground);
+	    outputOfTomorrow.setBackground(newBackground);
 	}
     }
 

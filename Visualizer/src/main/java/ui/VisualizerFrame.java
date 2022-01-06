@@ -8,42 +8,57 @@ import appointment.Appointment;
 import container.JPanelFactory;
 import container.MyFrame;
 import general.SwingFunctions;
-import main.Visualizer;
 import myComponent.button.MyTextButton;
 import ui.calendar.VisualCalendar;
 import settings.Colors;
 
-public class VisualizerFrame extends MyFrame {
+/**
+ * Main Frame for the Visualizer.
+ * 
+ * @author Gabriel Glaser
+ * @version 6.1.2022
+ */
+public final class VisualizerFrame extends MyFrame {
 
-    private static final Image ICON = SwingFunctions.getImage("Icon.png", Visualizer.class);
+    private static final Image ICON = SwingFunctions.getImage("Icon.png", VisualizerFrame.class);
 
-    private final MyTextButton visabilityChanger = new MyTextButton("Kalender anzeigen");
-    private final AppointmentOutput withAllBirthdays;
-    private final VisualCalendar visualisedAppointments;
+    private final MyTextButton calendarVisabilityChangerButton = new MyTextButton("Kalender anzeigen");
+    private final AppointmentOutput appointmentOutput;
+    private final VisualCalendar calendarWithAppointments;
 
-    public VisualizerFrame(final List<Appointment> toConsider) {
+    public VisualizerFrame(final List<Appointment> appointmentsToConsider) {
 	super("TerminHelfer", ICON);
-	this.withAllBirthdays = new AppointmentOutput(toConsider);
-	this.visualisedAppointments = new VisualCalendar(toConsider);
-	addComponents();
-	if (toConsider.stream().anyMatch((appointment) -> {
-	    return appointment.isToday() || appointment.isTomorrow();
-	})) {
+	this.appointmentOutput = new AppointmentOutput(appointmentsToConsider);
+	this.calendarWithAppointments = new VisualCalendar(appointmentsToConsider);
+	setup();
+	if (anyIsTodayOrTomorrow(appointmentsToConsider)) {
 	    start();
 	}
+    }
 
-	visabilityChanger.addActionListener((click) -> {
-	    visualisedAppointments.setVisible(!visualisedAppointments.isVisible());
-	    visabilityChanger.setText(visualisedAppointments.isVisible() ? "Kalender verbergen" : "Kalender anzeigen");
+    private void setup() {
+	calendarVisabilityChangerButton.addActionListener(click -> {
+	    calendarWithAppointments.setVisible(!calendarWithAppointments.isVisible());
+	    calendarVisabilityChangerButton.setText(calendarWithAppointments.isVisible() ? "Kalender verbergen" : "Kalender anzeigen");
 	    pack();
 	    setLocationRelativeTo(null);
 	});
+	addComponents();
     }
 
     private void addComponents() {
-	add(withAllBirthdays, BorderLayout.NORTH);
-	add(JPanelFactory.create(new FlowLayout(FlowLayout.RIGHT, 0, 0), Colors.getGray(0), visabilityChanger), BorderLayout.CENTER);
-	add(visualisedAppointments, BorderLayout.SOUTH);
+	add(appointmentOutput, BorderLayout.NORTH);
+	add(JPanelFactory.create(new FlowLayout(FlowLayout.RIGHT, 0, 0), Colors.getGray(0), calendarVisabilityChangerButton), BorderLayout.CENTER);
+	add(calendarWithAppointments, BorderLayout.SOUTH);
+    }
+
+    private boolean anyIsTodayOrTomorrow(final List<Appointment> appointmentsToTest) {
+	for (final Appointment toTest : appointmentsToTest) {
+	    if (toTest.isToday() || toTest.isTomorrow()) {
+		return true;
+	    }
+	}
+	return false;
     }
 
 }
