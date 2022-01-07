@@ -53,7 +53,6 @@
 						<descriptorRef>jar-with-dependencies</descriptorRef>
 					</descriptorRefs>
 					<outputDirectory>../</outputDirectory>
-					<finalName>${project.artifactId}</finalName>
 				</configuration>
 				<executions>
 					<execution>
