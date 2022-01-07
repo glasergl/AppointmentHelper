@@ -21,42 +21,49 @@ import appointment.Appointment;
 public final class AppointmentFileInteracter {
 
     private static final String DEFAULT_APPOINTMENT_FILE_PATH = "appointments.json";
-    private static final File FILE_WITH_APPOINTMENTS = new File(DEFAULT_APPOINTMENT_FILE_PATH);
+    private static final File DEFAULT_FILE_WITH_APPOINTMENTS = new File(DEFAULT_APPOINTMENT_FILE_PATH);
 
     private AppointmentFileInteracter() {
     }
 
     /**
-     * Adds the given Appointment to the standard Appointment-File.
+     * Adds the given Appointment to the default Appointment-File.
      * 
      * @param appointmentToAdd
      * @throws IllegalArgumentException - if the standard Appointment-File already
      *                                  contains the given Appointment.
      */
     public static void add(final Appointment appointmentToAdd) throws IllegalArgumentException {
-	add(appointmentToAdd, FILE_WITH_APPOINTMENTS);
+	add(appointmentToAdd, DEFAULT_FILE_WITH_APPOINTMENTS);
     }
 
     /**
-     * Removes the given Appointment from the standard Appointment-File.
+     * Removes the given Appointment from the default Appointment-File.
      * 
      * @param appointmentToRemove
      * @throws IllegalArgumentException - if the standard Appointment-File already
      *                                  contains the given Appointment.
      */
     public static void remove(final Appointment appointmentToRemove) throws IllegalArgumentException {
-	remove(appointmentToRemove, FILE_WITH_APPOINTMENTS);
+	remove(appointmentToRemove, DEFAULT_FILE_WITH_APPOINTMENTS);
     }
 
     /**
-     * Tests if the standard Appointment-File contains the specified Appointment.
+     * Tests if the default Appointment-File contains the specified Appointment.
      * 
      * @param appointmentToTest
      * @return True if the standard Appointment-File contains the specified
      *         Appointment.
      */
     public static boolean contains(final Appointment appointmentToTest) {
-	return contains(appointmentToTest, FILE_WITH_APPOINTMENTS);
+	return contains(appointmentToTest, DEFAULT_FILE_WITH_APPOINTMENTS);
+    }
+
+    /**
+     * Sorts the appointments in the default Appointment-File.
+     */
+    public static void sortAppointments() {
+	sortAppointments(DEFAULT_FILE_WITH_APPOINTMENTS);
     }
 
     /**
@@ -106,7 +113,7 @@ public final class AppointmentFileInteracter {
     }
 
     public static List<Appointment> getAppointments() {
-	return getAppointments(FILE_WITH_APPOINTMENTS);
+	return getAppointments(DEFAULT_FILE_WITH_APPOINTMENTS);
     }
 
     /**
@@ -127,15 +134,25 @@ public final class AppointmentFileInteracter {
     }
 
     /**
+     * Sorts the appointments in the given File.
+     * 
+     * @param fileWithAppointments
+     */
+    public static void sortAppointments(final File fileWithAppointments) {
+	final List<Appointment> appointmentsToSort = getAppointments(fileWithAppointments);
+	appointmentsToSort.sort((a1, a2) -> {
+	    return a1.compareTo(a2);
+	});
+    }
+
+    /**
      * Stores and sorts the given Appointments to the given File.
      * 
      * @param appointmentsToStore
      * @param fileToStoreAt
      */
     private static void storeAppointments(final List<Appointment> appointmentsToStore, final File fileToStoreAt) {
-	appointmentsToStore.sort((a1, a2) -> {
-	    return a1.compareTo(a2);
-	});
+	sortAppointments(fileToStoreAt);
 	final JSONArray appointmentsAsJSONArray = new JSONArray();
 	for (final Appointment appointment : appointmentsToStore) {
 	    appointmentsAsJSONArray.put(JSONTransformer.appointmentToJSON(appointment));
@@ -196,6 +213,6 @@ public final class AppointmentFileInteracter {
     }
 
     public static File getAppointmentFile() {
-	return FILE_WITH_APPOINTMENTS;
+	return DEFAULT_FILE_WITH_APPOINTMENTS;
     }
 }

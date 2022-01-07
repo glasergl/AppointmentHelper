@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.List;
 import org.json.JSONArray;
 import appointment.Appointment;
+import fileInteraction.AppointmentFileInteracter;
 import fileInteraction.JSONTransformer;
 
 /**
@@ -20,6 +21,7 @@ public final class AppointmentStorer {
     public AppointmentStorer(final List<Appointment> appointmentsToStore, final File fileToStoreAppointmentsAt) {
 	super();
 	storeAt(appointmentsToStore, fileToStoreAppointmentsAt);
+	AppointmentFileInteracter.sortAppointments(fileToStoreAppointmentsAt);
     }
 
     private void storeAt(final List<Appointment> appointmentsToStore, final File fileToStoreAppointmentsAt) {
