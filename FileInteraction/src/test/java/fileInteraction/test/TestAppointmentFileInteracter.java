@@ -65,7 +65,7 @@ public class TestAppointmentFileInteracter {
     }
 
     private static File createEmptyTestFile(final String name) {
-	return AppointmentFileInteracter.createAppointmentFile(testPath + name);
+	return AppointmentFileInteracter.createEmptyAppointmentFile(testPath + name);
     }
 
 }

@@ -14,7 +14,7 @@ import ui.appointmentField.AllAppointments;
  * Main-Frame for the Editor.
  * 
  * @author Gabriel Glaser
- * @version 1.1.2022
+ * @version 7.1.2022
  */
 public final class EditorFrame extends MyFrame {
 
@@ -47,10 +47,10 @@ public final class EditorFrame extends MyFrame {
 	if (!appointmentsFields.isSaved()) {
 	    final int result = JOptionPane.showConfirmDialog(this, "Es gibt ungespeicherte Termine.\nSpeichern?", "Ungespeicherte Termine", JOptionPane.YES_NO_CANCEL_OPTION,
 		    JOptionPane.INFORMATION_MESSAGE);
-	    if (result == 0) {
+	    if (result == JOptionPane.YES_OPTION) {
 		appointmentsFields.saveAll();
 		super.dispose();
-	    } else if (result == 1) {
+	    } else if (result == JOptionPane.NO_OPTION) {
 		appointmentsFields.cancelAll();
 		super.dispose();
 	    }

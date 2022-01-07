@@ -16,7 +16,7 @@ import appointment.Appointment;
  * Class which contains methods to interact with a File of appointments.
  * 
  * @author Gabriel Glaser
- * @version 31.12.2021
+ * @version 7.1.2021
  */
 public final class AppointmentFileInteracter {
 
@@ -175,8 +175,8 @@ public final class AppointmentFileInteracter {
     /**
      * Creates an empty, syntactically correct Appointment-File at the default path.
      */
-    public static void createAppointmentFile() {
-	createAppointmentFile(DEFAULT_APPOINTMENT_FILE_PATH);
+    public static void createEmptyAppointmentFile() {
+	createEmptyAppointmentFile(DEFAULT_APPOINTMENT_FILE_PATH);
     }
 
     /**
@@ -185,7 +185,7 @@ public final class AppointmentFileInteracter {
      * @param path
      * @return The created Appointment-File.
      */
-    public static File createAppointmentFile(final String path) {
+    public static File createEmptyAppointmentFile(final String path) {
 	final File emptyAppointmentFile = new File(path);
 	try (final BufferedWriter writer = new BufferedWriter(new FileWriter(emptyAppointmentFile))) {
 	    writer.write("[]");
