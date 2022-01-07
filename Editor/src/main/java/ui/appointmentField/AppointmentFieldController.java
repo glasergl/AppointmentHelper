@@ -30,8 +30,8 @@ public class AppointmentFieldController extends JPanel {
 
     private final AppointmentFieldState stateDisplay = new AppointmentFieldState();
     private final AppointmentField appointmentField;
-    private final MyTextButton cancelButton = new MyTextButton("Cancel");
-    private final MyTextButton deleteButton = new MyTextButton("Delete");
+    private final MyTextButton cancelButton = new MyTextButton("Abbrechen");
+    private final MyTextButton deleteButton = new MyTextButton("Löschen");
 
     private Optional<Appointment> currentlyStoredAppointment = Optional.empty();
 

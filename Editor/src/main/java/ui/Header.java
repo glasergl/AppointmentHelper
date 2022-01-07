@@ -18,8 +18,8 @@ public class Header extends RowOfJComponent {
 
     private final AllAppointments appointmentInputFields;
 
-    private final MyTextButton saveButton = new MyTextButton("Save All");
-    private final MyTextButton restoreDeletedButton = new MyTextButton("Restore Last Deleted");
+    private final MyTextButton saveButton = new MyTextButton("Alle Speichern");
+    private final MyTextButton restoreDeletedButton = new MyTextButton("Zuletzt gelöscht wiederherstellen");
 
     public Header(final AllAppointments appointmentInputFields) {
 	super(5, 5);
