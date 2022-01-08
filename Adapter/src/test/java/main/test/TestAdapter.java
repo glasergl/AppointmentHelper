@@ -18,7 +18,7 @@ import main.AppointmentStorer;
 
 public class TestAdapter {
 
-    static File birthdayFile = new File("src\\test\\resources\\birthdays.txt");
+    static File birthdayFile = new File("birthdays.txt");
 
     @BeforeClass
     public static void addBirthdaysToBirthdayFile() {
@@ -51,7 +51,7 @@ public class TestAdapter {
 
     @Test
     public void testStorer() {
-	File result = new File("src\\test\\resources\\appointments.json");
+	File result = new File("appointments.json");
 	AppointmentReader appointmentReader = new AppointmentReader(birthdayFile);
 	new AppointmentStorer(appointmentReader.getAdapted(), result);
 	try (BufferedReader reader = new BufferedReader(new FileReader(result))) {
