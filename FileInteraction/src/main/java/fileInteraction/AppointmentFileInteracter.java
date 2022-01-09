@@ -60,13 +60,6 @@ public final class AppointmentFileInteracter {
     }
 
     /**
-     * Sorts the appointments in the default Appointment-File.
-     */
-    public static void sortAppointments() {
-	sortAppointments(DEFAULT_FILE_WITH_APPOINTMENTS);
-    }
-
-    /**
      * Adds the given Appointment to the given Appointment-File.
      * 
      * @param appointmentToAdd
@@ -134,14 +127,13 @@ public final class AppointmentFileInteracter {
     }
 
     /**
-     * Sorts the appointments in the given File.
+     * Sorts the given appointments by the standard comparator.
      * 
      * @param fileWithAppointments
      */
-    public static void sortAppointments(final File fileWithAppointments) {
-	final List<Appointment> appointmentsToSort = getAppointments(fileWithAppointments);
-	appointmentsToSort.sort((a1, a2) -> {
-	    return a1.compareTo(a2);
+    public static void sortAppointments(final List<Appointment> appointmentsToSort) {
+	appointmentsToSort.sort((appointment1, appointment2) -> {
+	    return appointment1.compareTo(appointment2);
 	});
     }
 
@@ -152,7 +144,7 @@ public final class AppointmentFileInteracter {
      * @param fileToStoreAt
      */
     private static void storeAppointments(final List<Appointment> appointmentsToStore, final File fileToStoreAt) {
-	sortAppointments(fileToStoreAt);
+	sortAppointments(appointmentsToStore);
 	final JSONArray appointmentsAsJSONArray = new JSONArray();
 	for (final Appointment appointment : appointmentsToStore) {
 	    appointmentsAsJSONArray.put(JSONTransformer.appointmentToJSON(appointment));

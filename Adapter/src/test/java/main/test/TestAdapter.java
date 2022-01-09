@@ -1,10 +1,8 @@
 package main.test;
 
 import static org.junit.Assert.*;
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
@@ -14,7 +12,6 @@ import org.junit.Test;
 import appointment.Appointment;
 import date.SimpleDate;
 import main.AppointmentReader;
-import main.AppointmentStorer;
 
 public class TestAdapter {
 
@@ -47,22 +44,6 @@ public class TestAdapter {
 	assertTrue(appointments.contains(new Appointment(new SimpleDate(12, 2), "TestPerson1", "", true)));
 	assertTrue(appointments.contains(new Appointment(new SimpleDate(5, 8), "TestPerson2", "", true)));
 	assertEquals(2, appointments.size());
-    }
-
-    @Test
-    public void testStorer() {
-	File result = new File("appointments.json");
-	AppointmentReader appointmentReader = new AppointmentReader(birthdayFile);
-	new AppointmentStorer(appointmentReader.getAdapted(), result);
-	try (BufferedReader reader = new BufferedReader(new FileReader(result))) {
-	    String appointmentsAsJSON = "[{\"date\":{\"month\":2,\"day\":12},\"isABirthday\":true,\"name\":\"TestPerson1\",\"description\":\"\"},{\"date\":{\"month\":8,\"day\":5},\"isABirthday\":true,\"name\":\"TestPerson2\",\"description\":\"\"}]";
-	    assertEquals(appointmentsAsJSON, reader.readLine());
-	} catch (IOException e) {
-	    e.printStackTrace();
-	    fail("Couldn't read result File");
-	} finally {
-	    result.delete();
-	}
     }
 
 }

@@ -1,6 +1,8 @@
 package main;
 
 import java.io.File;
+import appointment.Appointment;
+import fileInteraction.AppointmentFileInteracter;
 
 /**
  * Entry-Point of the Adapter program which transforms the File of the older
@@ -12,11 +14,13 @@ import java.io.File;
 public final class Adapter {
 
     private static final File GEBURTSTAGE = new File("Geburtstage.txt");
-    private static final File APPOINTMENTS = new File("appointments.json");
 
     public static void main(final String[] args) {
 	final AppointmentReader reader = new AppointmentReader(GEBURTSTAGE);
-	new AppointmentStorer(reader.getAdapted(), APPOINTMENTS);
+	AppointmentFileInteracter.createEmptyAppointmentFile();
+	for (final Appointment appointmentToStore : reader.getAdapted()) {
+	    AppointmentFileInteracter.add(appointmentToStore);
+	}
     }
 
 }
