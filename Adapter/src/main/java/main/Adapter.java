@@ -6,10 +6,10 @@ import fileInteraction.AppointmentFileInteracter;
 
 /**
  * Entry-Point of the Adapter program which transforms the File of the older
- * version "Geburtstage.txt" to the new version "appointments.json"
+ * version "Geburtstage.txt" to the new version "appointments.json".
  * 
  * @author Gabriel Glaser
- * @version 1.1.2022
+ * @version 9.1.2022
  */
 public final class Adapter {
 
