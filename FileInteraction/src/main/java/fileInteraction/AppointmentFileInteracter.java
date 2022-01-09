@@ -183,7 +183,7 @@ public final class AppointmentFileInteracter {
      */
     private static void storeJSONArrayOfAppointments(final JSONArray appointmentsToStore, final File fileToStoreAt) {
 	try (final BufferedWriter writer = new BufferedWriter(new FileWriter(fileToStoreAt))) {
-	    writer.write(appointmentsToStore.toString());
+	    writer.write(appointmentsToStore.toString(3));
 	} catch (IOException e) {
 	    throw new RuntimeException("Couldn't write to Appointment-File");
 	}
