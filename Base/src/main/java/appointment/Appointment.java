@@ -1,5 +1,7 @@
 package appointment;
 
+import java.util.List;
+
 import date.SimpleDate;
 import date.SimpleDates;
 
@@ -160,6 +162,17 @@ public final class Appointment implements Comparable<Appointment> {
 
     public boolean isBirthday() {
 	return isBirthday;
+    }
+
+    /**
+     * Sorts the given appointments by the standard comparator.
+     * 
+     * @param appointmentsToSort
+     */
+    public static void sortAppointments(final List<Appointment> appointmentsToSort) {
+	appointmentsToSort.sort((appointment1, appointment2) -> {
+	    return appointment1.compareTo(appointment2);
+	});
     }
 
 }

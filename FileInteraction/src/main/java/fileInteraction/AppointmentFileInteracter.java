@@ -16,12 +16,13 @@ import appointment.Appointment;
  * Class which contains methods to interact with a File of appointments.
  * 
  * @author Gabriel Glaser
- * @version 7.1.2021
+ * @version 16.1.2021
  */
 public final class AppointmentFileInteracter {
 
     private static final String DEFAULT_APPOINTMENT_FILE_PATH = "appointments.json";
     private static final File DEFAULT_FILE_WITH_APPOINTMENTS = new File(DEFAULT_APPOINTMENT_FILE_PATH);
+    private static final int APPOINTMENT_FILE_INDENT_SIZE = 3;
 
     private AppointmentFileInteracter() {
     }
@@ -57,6 +58,16 @@ public final class AppointmentFileInteracter {
      */
     public static boolean contains(final Appointment appointmentToTest) {
 	return contains(appointmentToTest, DEFAULT_FILE_WITH_APPOINTMENTS);
+    }
+
+    /**
+     * Calculates the List of Appointments represented by the default
+     * Appointment-File.
+     * 
+     * @return List of all Appointments represented by the default Appointment-File.
+     */
+    public static List<Appointment> getAppointments() {
+	return getAppointments(DEFAULT_FILE_WITH_APPOINTMENTS);
     }
 
     /**
@@ -105,10 +116,6 @@ public final class AppointmentFileInteracter {
 	return appointments.contains(appointment);
     }
 
-    public static List<Appointment> getAppointments() {
-	return getAppointments(DEFAULT_FILE_WITH_APPOINTMENTS);
-    }
-
     /**
      * Calculates the List of Appointments represented by the given
      * Appointment-File.
@@ -127,24 +134,13 @@ public final class AppointmentFileInteracter {
     }
 
     /**
-     * Sorts the given appointments by the standard comparator.
-     * 
-     * @param fileWithAppointments
-     */
-    public static void sortAppointments(final List<Appointment> appointmentsToSort) {
-	appointmentsToSort.sort((appointment1, appointment2) -> {
-	    return appointment1.compareTo(appointment2);
-	});
-    }
-
-    /**
-     * Stores and sorts the given Appointments to the given File.
+     * Sorts and stores the given Appointments to the given File.
      * 
      * @param appointmentsToStore
      * @param fileToStoreAt
      */
     private static void storeAppointments(final List<Appointment> appointmentsToStore, final File fileToStoreAt) {
-	sortAppointments(appointmentsToStore);
+	Appointment.sortAppointments(appointmentsToStore);
 	final JSONArray appointmentsAsJSONArray = new JSONArray();
 	for (final Appointment appointment : appointmentsToStore) {
 	    appointmentsAsJSONArray.put(JSONTransformer.appointmentToJSON(appointment));
@@ -159,6 +155,9 @@ public final class AppointmentFileInteracter {
      * @return JSONArray represented by the content of the given File.
      */
     private static JSONArray getJSONArrayOfAppointments(final File fileWithAppointments) {
+	if (!fileWithAppointments.exists()) {
+	    throw new IllegalArgumentException("The given Appointment-File doesn't exist.");
+	}
 	try (final FileReader reader = new FileReader(fileWithAppointments);) {
 	    final JSONTokener parser = new JSONTokener(reader);
 	    return new JSONArray(parser);
@@ -174,11 +173,18 @@ public final class AppointmentFileInteracter {
      * @param fileToStoreAt
      */
     private static void storeJSONArrayOfAppointments(final JSONArray appointmentsToStore, final File fileToStoreAt) {
+	if (!fileToStoreAt.exists()) {
+	    throw new IllegalArgumentException("The given Appointment-File doesn't exist.");
+	}
 	try (final BufferedWriter writer = new BufferedWriter(new FileWriter(fileToStoreAt))) {
-	    writer.write(appointmentsToStore.toString(3));
-	} catch (IOException e) {
+	    writer.write(appointmentsToStore.toString(APPOINTMENT_FILE_INDENT_SIZE));
+	} catch (final IOException e) {
 	    throw new RuntimeException("Couldn't write to Appointment-File");
 	}
+    }
+
+    public static File getAppointmentFile() {
+	return DEFAULT_FILE_WITH_APPOINTMENTS;
     }
 
     /**
@@ -196,15 +202,15 @@ public final class AppointmentFileInteracter {
      */
     public static File createEmptyAppointmentFile(final String path) {
 	final File emptyAppointmentFile = new File(path);
+	if (emptyAppointmentFile.exists()) {
+	    throw new IllegalArgumentException("Appointment-File at " + path + " already exists.");
+	}
 	try (final BufferedWriter writer = new BufferedWriter(new FileWriter(emptyAppointmentFile))) {
 	    writer.write("[]");
-	} catch (IOException e) {
-	    throw new RuntimeException("Couldn't create empty Appointment-File at" + path);
+	} catch (final IOException e) {
+	    e.printStackTrace();
+	    throw new RuntimeException("Couldn't create empty Appointment-File at " + path);
 	}
 	return emptyAppointmentFile;
-    }
-
-    public static File getAppointmentFile() {
-	return DEFAULT_FILE_WITH_APPOINTMENTS;
     }
 }
