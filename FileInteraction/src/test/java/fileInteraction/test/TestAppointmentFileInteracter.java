@@ -11,6 +11,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * @author Gabriel Glaser
+ * @version 19.01.2022
+ */
 public class TestAppointmentFileInteracter {
 
     static Appointment testAppointment1 = new Appointment(new SimpleDate(10, 2), "TestPerson1", "Description1", false);
@@ -18,19 +22,19 @@ public class TestAppointmentFileInteracter {
 
     @Test
     public void testCreateEmptyAppointmentFile() {
-        File emptyAppointmentFile = new File("src\\test\\resources\\emptyAppointmentTestFile.json");
-        assertFalse(emptyAppointmentFile.exists());
-        AppointmentFileInteracter.createEmptyAppointmentFile("src\\test\\resources\\emptyAppointmentTestFile.json");
-        assertTrue(emptyAppointmentFile.exists());
-        try (final BufferedReader reader = new BufferedReader(new FileReader(emptyAppointmentFile))) {
-            String testFileContent = reader.readLine();
-            assertEquals("[]", testFileContent);
-        } catch (IOException e) {
-            e.printStackTrace();
-            fail("Couldn't read emptyAppointmentTestFile");
-        } finally {
-            emptyAppointmentFile.delete();
-        }
+	File emptyAppointmentFile = new File("src\\test\\resources\\emptyAppointmentTestFile.json");
+	assertFalse(emptyAppointmentFile.exists());
+	AppointmentFileInteracter.createEmptyAppointmentFile("src\\test\\resources\\emptyAppointmentTestFile.json");
+	assertTrue(emptyAppointmentFile.exists());
+	try (final BufferedReader reader = new BufferedReader(new FileReader(emptyAppointmentFile))) {
+	    assertEquals("[", reader.readLine());
+	    assertEquals("", reader.readLine());
+	    assertEquals("]", reader.readLine());
+	} catch (IOException e) {
+	    fail("Couldn't read emptyAppointmentTestFile");
+	} finally {
+	    emptyAppointmentFile.delete();
+	}
     }
 
     @Test

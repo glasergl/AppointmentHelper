@@ -5,16 +5,21 @@ import org.json.JSONObject;
 import org.junit.Test;
 import appointment.Appointment;
 import date.SimpleDate;
-import fileInteraction.JSONTransformer;
+import fileInteraction.AppointmentJSONTransformer;
+import fileInteraction.SimpleDateJSONTransformer;
 
-public class TestJSONTransformerForAppointment {
+/**
+ * @author Gabriel Glaser
+ * @version 19.01.2022
+ */
+public class TestAppointmentJSONTransformer {
 
     SimpleDate testDate = new SimpleDate(15, 6);
 
     @Test
     public void testAppointmentToJSON() {
 	Appointment appointment = new Appointment(testDate, "TestName", "TestDescription", true);
-	JSONObject jsonOfA = JSONTransformer.appointmentToJSON(appointment);
+	JSONObject jsonOfA = AppointmentJSONTransformer.appointmentToJSON(appointment);
 
 	assertTrue(jsonOfA.has("date"));
 	assertTrue(jsonOfA.has("isABirthday"));
@@ -23,7 +28,7 @@ public class TestJSONTransformerForAppointment {
 
 	assertEquals("TestName", jsonOfA.getString("name"));
 	assertEquals("TestDescription", jsonOfA.getString("description"));
-	assertEquals(testDate, JSONTransformer.jsonToSimpleDate(jsonOfA.getJSONObject("date")));
+	assertEquals(testDate, SimpleDateJSONTransformer.jsonToSimpleDate(jsonOfA.getJSONObject("date")));
 
 	assertTrue(jsonOfA.getBoolean("isABirthday"));
     }
@@ -31,23 +36,23 @@ public class TestJSONTransformerForAppointment {
     @Test
     public void testRepresentsAppointment() {
 	JSONObject json = new JSONObject();
-	json.put("date", JSONTransformer.simpleDateToJSON(testDate));
+	json.put("date", SimpleDateJSONTransformer.simpleDateToJSON(testDate));
 	json.put("name", "TestName");
 	json.put("description", "TestDescription");
 
-	assertFalse(JSONTransformer.representsAppointment(json));
+	assertFalse(AppointmentJSONTransformer.representsAppointment(json));
 	json.put("isABirthday", false);
-	assertTrue(JSONTransformer.representsAppointment(json));
+	assertTrue(AppointmentJSONTransformer.representsAppointment(json));
     }
 
     @Test
     public void testJSONToAppointment() {
 	JSONObject json = new JSONObject();
-	json.put("date", JSONTransformer.simpleDateToJSON(testDate));
+	json.put("date", SimpleDateJSONTransformer.simpleDateToJSON(testDate));
 	json.put("name", "TestName");
 	json.put("description", "TestDescription");
 	json.put("isABirthday", false);
-	Appointment appointment = JSONTransformer.jsonToAppointment(json);
+	Appointment appointment = AppointmentJSONTransformer.jsonToAppointment(json);
 
 	assertEquals(testDate, appointment.getDate());
 	assertEquals("TestName", appointment.getName());

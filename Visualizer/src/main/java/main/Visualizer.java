@@ -20,7 +20,7 @@ public final class Visualizer {
 
     public static void main(final String[] args) {
 	Colors.setDarkModeEnabled(false);
-	final File appointmentFile = AppointmentFileInteracter.getAppointmentFile();
+	final File appointmentFile = AppointmentFileInteracter.getDefaultAppointmentFile();
 	if (!appointmentFile.exists()) {
 	    showCouldntFindAppointmentFileError();
 	} else {

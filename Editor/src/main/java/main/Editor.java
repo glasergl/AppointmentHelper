@@ -19,7 +19,7 @@ public class Editor {
 
     public static void main(String[] args) {
 	Colors.setDarkModeEnabled(false);
-	final File appointmentFile = AppointmentFileInteracter.getAppointmentFile();
+	final File appointmentFile = AppointmentFileInteracter.getDefaultAppointmentFile();
 	if (!appointmentFile.exists()) {
 	    final boolean userCreatedNewAppointmentFile = askUserToCreateNewAppointmentFile();
 	    if (userCreatedNewAppointmentFile) {
@@ -35,7 +35,7 @@ public class Editor {
 	final String message = "Die Datei \"appointments.json\" konnte nicht gefunden werden. Sie sollte im selben Verzeichnis wie die .jar liegen.\n" + "Möchten Sie eine neue, leere erstellen?";
 	final int answer = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE);
 	if (answer == JOptionPane.YES_OPTION) {
-	    AppointmentFileInteracter.createEmptyAppointmentFile();
+	    AppointmentFileInteracter.createDefaultAppointmentFile();
 	    return true;
 	} else {
 	    return false;

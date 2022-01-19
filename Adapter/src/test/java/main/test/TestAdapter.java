@@ -12,6 +12,7 @@ import org.junit.Test;
 import appointment.Appointment;
 import date.SimpleDate;
 import main.AppointmentReader;
+import main.IllegalFileFormatException;
 
 public class TestAdapter {
 
@@ -39,11 +40,15 @@ public class TestAdapter {
 
     @Test
     public void testReader() {
-	AppointmentReader appointmentReader = new AppointmentReader(birthdayFile);
-	List<Appointment> appointments = appointmentReader.getAdapted();
-	assertTrue(appointments.contains(new Appointment(new SimpleDate(12, 2), "TestPerson1", "", true)));
-	assertTrue(appointments.contains(new Appointment(new SimpleDate(5, 8), "TestPerson2", "", true)));
-	assertEquals(2, appointments.size());
+	try {
+	    AppointmentReader appointmentReader = new AppointmentReader(birthdayFile);
+	    List<Appointment> appointments = appointmentReader.getAdaptedAppointments();
+	    assertTrue(appointments.contains(new Appointment(new SimpleDate(12, 2), "TestPerson1", "", true)));
+	    assertTrue(appointments.contains(new Appointment(new SimpleDate(5, 8), "TestPerson2", "", true)));
+	    assertEquals(2, appointments.size());
+	} catch (final IllegalFileFormatException e) {
+	    fail("The test file with the birthdays doesn't have the correct format.");
+	}
     }
 
 }

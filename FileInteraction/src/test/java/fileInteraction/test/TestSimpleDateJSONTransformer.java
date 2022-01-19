@@ -6,24 +6,28 @@ import static org.junit.Assert.assertTrue;
 import org.json.JSONObject;
 import org.junit.Test;
 import date.SimpleDate;
-import fileInteraction.JSONTransformer;
+import fileInteraction.SimpleDateJSONTransformer;
 
-public class TestJSONTransformerForSimpleDate {
+/**
+ * @author Gabriel Glaser
+ * @version 19.01.2022
+ */
+public class TestSimpleDateJSONTransformer {
 
     @Test
     public void testRepresentsSimpleDate() {
 	JSONObject json = new JSONObject();
 	json.put("day", 10);
 
-	assertFalse(JSONTransformer.representsSimpleDate(json));
+	assertFalse(SimpleDateJSONTransformer.representsSimpleDate(json));
 	json.put("month", 11);
-	assertTrue(JSONTransformer.representsSimpleDate(json));
+	assertTrue(SimpleDateJSONTransformer.representsSimpleDate(json));
     }
 
     @Test
     public void testSimpleDateToJSON() {
 	SimpleDate date = new SimpleDate(12, 3);
-	JSONObject jsonOfA = JSONTransformer.simpleDateToJSON(date);
+	JSONObject jsonOfA = SimpleDateJSONTransformer.simpleDateToJSON(date);
 
 	assertTrue(jsonOfA.has("day"));
 	assertTrue(jsonOfA.has("month"));
@@ -37,7 +41,7 @@ public class TestJSONTransformerForSimpleDate {
 	JSONObject json = new JSONObject();
 	json.put("day", 10);
 	json.put("month", 11);
-	SimpleDate date = JSONTransformer.jsonToSimpleDate(json);
+	SimpleDate date = SimpleDateJSONTransformer.jsonToSimpleDate(json);
 
 	assertEquals(10, date.getDay());
 	assertEquals(11, date.getMonth());

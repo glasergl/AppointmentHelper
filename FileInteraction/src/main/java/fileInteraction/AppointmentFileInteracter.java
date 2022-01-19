@@ -5,18 +5,24 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 import appointment.Appointment;
 
 /**
- * Class which contains methods to interact with a File of appointments.
+ * Class which contains functions to interact with a File of Appointments.
+ * 
+ * Usually, you shouldn't give a File to the functions as an argument. The
+ * overloaded function exists for testing.
  * 
  * @author Gabriel Glaser
- * @version 16.1.2021
+ * @version 19.1.2022
  */
 public final class AppointmentFileInteracter {
 
@@ -31,10 +37,11 @@ public final class AppointmentFileInteracter {
      * Adds the given Appointment to the default Appointment-File.
      * 
      * @param appointmentToAdd
-     * @throws IllegalArgumentException - if the standard Appointment-File already
-     *                                  contains the given Appointment.
+     * @throws AppointmentAlreadyAddedException If the default Appointment-File
+     *                                          already contains the given
+     *                                          Appointment.
      */
-    public static void add(final Appointment appointmentToAdd) throws IllegalArgumentException {
+    public static void add(final Appointment appointmentToAdd) throws AppointmentAlreadyAddedException {
 	add(appointmentToAdd, DEFAULT_FILE_WITH_APPOINTMENTS);
     }
 
@@ -42,10 +49,10 @@ public final class AppointmentFileInteracter {
      * Removes the given Appointment from the default Appointment-File.
      * 
      * @param appointmentToRemove
-     * @throws IllegalArgumentException - if the standard Appointment-File already
-     *                                  contains the given Appointment.
+     * @throws NoSuchElementException If the standard Appointment-File already
+     *                                contains the given Appointment.
      */
-    public static void remove(final Appointment appointmentToRemove) throws IllegalArgumentException {
+    public static void remove(final Appointment appointmentToRemove) throws NoSuchElementException {
 	remove(appointmentToRemove, DEFAULT_FILE_WITH_APPOINTMENTS);
     }
 
@@ -75,12 +82,13 @@ public final class AppointmentFileInteracter {
      * 
      * @param appointmentToAdd
      * @param fileWithAppointments
-     * @throws IllegalArgumentException - if the given Appointment-File already
-     *                                  contains the given Appointment.
+     * @throws AppointmentAlreadyAddedException If the given Appointment-File
+     *                                          already contains the given
+     *                                          Appointment.
      */
-    public static void add(final Appointment appointmentToAdd, final File fileWithAppointments) throws IllegalArgumentException {
+    public static void add(final Appointment appointmentToAdd, final File fileWithAppointments) throws AppointmentAlreadyAddedException {
 	if (contains(appointmentToAdd, fileWithAppointments)) {
-	    throw new IllegalArgumentException("Appointment " + appointmentToAdd + " already exists.");
+	    throw new AppointmentAlreadyAddedException(appointmentToAdd);
 	}
 	final List<Appointment> appointments = getAppointments(fileWithAppointments);
 	appointments.add(appointmentToAdd);
@@ -92,12 +100,12 @@ public final class AppointmentFileInteracter {
      * 
      * @param appointmentToRemove
      * @param fileWithAppointments
-     * @throws IllegalArgumentException - if the given Appointment-File doesn't
-     *                                  contain the given Appointment
+     * @throws NoSuchElementException If the given Appointment-File doesn't contain
+     *                                the given Appointment
      */
-    public static void remove(final Appointment appointmentToRemove, final File fileWithAppointments) throws IllegalArgumentException {
+    public static void remove(final Appointment appointmentToRemove, final File fileWithAppointments) throws NoSuchElementException {
 	if (!contains(appointmentToRemove, fileWithAppointments)) {
-	    throw new IllegalArgumentException("The given File doesn't contain the Appointment " + appointmentToRemove);
+	    throw new NoSuchElementException("The given File doesn't contain the Appointment " + appointmentToRemove);
 	}
 	final List<Appointment> appointments = getAppointments(fileWithAppointments);
 	appointments.remove(appointmentToRemove);
@@ -128,7 +136,7 @@ public final class AppointmentFileInteracter {
 	final JSONArray appointmentsAsJSONArray = getJSONArrayOfAppointments(fileWithAppointments);
 	for (int i = 0; i < appointmentsAsJSONArray.length(); i++) {
 	    final JSONObject appointment = appointmentsAsJSONArray.getJSONObject(i);
-	    appointmentsAsList.add(JSONTransformer.jsonToAppointment(appointment));
+	    appointmentsAsList.add(AppointmentJSONTransformer.jsonToAppointment(appointment));
 	}
 	return appointmentsAsList;
     }
@@ -143,7 +151,7 @@ public final class AppointmentFileInteracter {
 	Appointment.sortAppointments(appointmentsToStore);
 	final JSONArray appointmentsAsJSONArray = new JSONArray();
 	for (final Appointment appointment : appointmentsToStore) {
-	    appointmentsAsJSONArray.put(JSONTransformer.appointmentToJSON(appointment));
+	    appointmentsAsJSONArray.put(AppointmentJSONTransformer.appointmentToJSON(appointment));
 	}
 	storeJSONArrayOfAppointments(appointmentsAsJSONArray, fileToStoreAt);
     }
@@ -158,7 +166,7 @@ public final class AppointmentFileInteracter {
 	if (!fileWithAppointments.exists()) {
 	    throw new IllegalArgumentException("The given Appointment-File doesn't exist.");
 	}
-	try (final FileReader reader = new FileReader(fileWithAppointments);) {
+	try (final FileReader reader = new FileReader(fileWithAppointments, StandardCharsets.UTF_8);) {
 	    final JSONTokener parser = new JSONTokener(reader);
 	    return new JSONArray(parser);
 	} catch (final IOException e) {
@@ -176,40 +184,42 @@ public final class AppointmentFileInteracter {
 	if (!fileToStoreAt.exists()) {
 	    throw new IllegalArgumentException("The given Appointment-File doesn't exist.");
 	}
-	try (final BufferedWriter writer = new BufferedWriter(new FileWriter(fileToStoreAt))) {
+	try (final BufferedWriter writer = new BufferedWriter(new FileWriter(fileToStoreAt, StandardCharsets.UTF_8))) {
 	    writer.write(appointmentsToStore.toString(APPOINTMENT_FILE_INDENT_SIZE));
 	} catch (final IOException e) {
 	    throw new RuntimeException("Couldn't write to Appointment-File");
 	}
     }
 
-    public static File getAppointmentFile() {
+    public static File getDefaultAppointmentFile() {
 	return DEFAULT_FILE_WITH_APPOINTMENTS;
     }
 
     /**
      * Creates an empty, syntactically correct Appointment-File at the default path.
      */
-    public static void createEmptyAppointmentFile() {
+    public static void createDefaultAppointmentFile() {
 	createEmptyAppointmentFile(DEFAULT_APPOINTMENT_FILE_PATH);
     }
 
     /**
      * Creates an empty, syntactically correct Appointment-File at the given path.
      * 
-     * @param path
+     * @param pathOfTheNewAppointmentFile
      * @return The created Appointment-File.
      */
-    public static File createEmptyAppointmentFile(final String path) {
-	final File emptyAppointmentFile = new File(path);
+    public static File createEmptyAppointmentFile(final String pathOfTheNewAppointmentFile) {
+	final File emptyAppointmentFile = new File(pathOfTheNewAppointmentFile);
 	if (emptyAppointmentFile.exists()) {
-	    throw new IllegalArgumentException("Appointment-File at " + path + " already exists.");
+	    throw new IllegalArgumentException("Appointment-File at " + pathOfTheNewAppointmentFile + " already exists.");
 	}
-	try (final BufferedWriter writer = new BufferedWriter(new FileWriter(emptyAppointmentFile))) {
-	    writer.write("[]");
+	try (final BufferedWriter writer = new BufferedWriter(new FileWriter(emptyAppointmentFile, StandardCharsets.UTF_8))) {
+	    writer.write("[");
+	    writer.newLine();
+	    writer.newLine();
+	    writer.write("]");
 	} catch (final IOException e) {
-	    e.printStackTrace();
-	    throw new RuntimeException("Couldn't create empty Appointment-File at " + path);
+	    throw new RuntimeException("Couldn't write initial text to Appointment-File at " + pathOfTheNewAppointmentFile);
 	}
 	return emptyAppointmentFile;
     }
