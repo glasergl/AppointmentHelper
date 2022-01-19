@@ -6,7 +6,7 @@ import date.SimpleDate;
 
 /**
  * @author Gabriel Glaser
- * @version 13.10.2020
+ * @version 19.1.2022
  */
 public class TestSimpleDate {
 
