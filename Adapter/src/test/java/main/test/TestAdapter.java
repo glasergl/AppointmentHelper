@@ -28,11 +28,29 @@ public class TestAdapter {
 	    assertTrue(appointments.contains(new Appointment(new SimpleDate(12, 2), "TestPerson1", "", true)));
 	    assertTrue(appointments.contains(new Appointment(new SimpleDate(5, 8), "TestPerson2", "", true)));
 	    assertEquals(2, appointments.size());
-	} catch (final IllegalFileFormatException e) {
+	} catch (IllegalFileFormatException e) {
 	    fail("The test file with the birthdays doesn't have the correct format, but should have.");
 	} finally {
 	    testBirthdayFile.delete();
 	}
+    }
+
+    @Test
+    public void testReaderWithEmptyFile() {
+	File emptyTestBirthdayFile = new File("TestGeburtstage.txt");
+	try {
+	    emptyTestBirthdayFile.createNewFile();
+	    AppointmentReader appointmentReader = new AppointmentReader(emptyTestBirthdayFile);
+	    List<Appointment> appointments = appointmentReader.getAdaptedAppointments();
+	    assertEquals(0, appointments.size());
+	} catch (IOException e) {
+	    fail("Couldn't create an empty Test-Geburtstage File.");
+	} catch (IllegalFileFormatException e) {
+	    fail("The test file with the birthdays doesn't have the correct format, but should have.");
+	} finally {
+	    emptyTestBirthdayFile.delete();
+	}
+
     }
 
     @Test(expected = IllegalFileFormatException.class)
@@ -55,14 +73,14 @@ public class TestAdapter {
      * Adds a correct version of the old version to the given File.
      */
     private void addCorrectFormatText(final File fileToAddTextTo) {
-	try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileToAddTextTo))) {
+	try (final BufferedWriter writer = new BufferedWriter(new FileWriter(fileToAddTextTo))) {
 	    writer.write("TestPerson1.12.2");
 	    writer.newLine();
 	    writer.write("# test");
 	    writer.newLine();
 	    writer.newLine();
 	    writer.write("TestPerson2.5.8");
-	} catch (IOException e) {
+	} catch (final IOException e) {
 	    fail("Couldn't write to correct Test-Birthday-File");
 	}
     }
@@ -71,7 +89,7 @@ public class TestAdapter {
      * Writes a random String which should not be able to be interpreted.
      */
     private void addWrongFormatText1(final File fileToAddTextTo) {
-	try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileToAddTextTo))) {
+	try (final BufferedWriter writer = new BufferedWriter(new FileWriter(fileToAddTextTo))) {
 	    writer.write("TestPerson1.12.2");
 	    writer.newLine();
 	    writer.write("# test");
@@ -80,7 +98,7 @@ public class TestAdapter {
 	    writer.write("TestPerson2.5.8");
 	    writer.newLine();
 	    writer.write("dsafdsfaawaw");
-	} catch (IOException e) {
+	} catch (final IOException e) {
 	    fail("Couldn't write to wrong Test-Birthday-File1");
 	}
     }
@@ -89,14 +107,14 @@ public class TestAdapter {
      * Writes the 31.2 as date of a test person.
      */
     private void addWrongFormatText2(final File fileToAddTextTo) {
-	try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileToAddTextTo))) {
+	try (final BufferedWriter writer = new BufferedWriter(new FileWriter(fileToAddTextTo))) {
 	    writer.write("TestPerson1.31.2");
 	    writer.newLine();
 	    writer.write("# test");
 	    writer.newLine();
 	    writer.newLine();
 	    writer.write("TestPerson2.5.8");
-	} catch (IOException e) {
+	} catch (final IOException e) {
 	    fail("Couldn't write to wrong Test-Birthday-File2");
 	}
     }
