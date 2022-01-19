@@ -8,6 +8,10 @@ import ui.appointmentField.AppointmentFieldController;
 import ui.appointmentField.AppointmentFieldPanel;
 import ui.appointmentField.AppointmentFieldState;
 
+/**
+ * @author Gabriel Glaser
+ * @version 19.01.2022
+ */
 public class TestAppointmentRepresentationMessage {
 
     static AppointmentFieldPanel allAppointments = new AppointmentFieldPanel();

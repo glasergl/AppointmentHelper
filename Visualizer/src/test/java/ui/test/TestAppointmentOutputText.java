@@ -8,6 +8,10 @@ import date.SimpleDate;
 import date.SimpleDates;
 import ui.AppointmentOutputText;
 
+/**
+ * @author Gabriel Glaser
+ * @version 19.01.2022
+ */
 public class TestAppointmentOutputText {
 
     @Test

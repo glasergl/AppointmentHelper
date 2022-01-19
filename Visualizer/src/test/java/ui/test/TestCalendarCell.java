@@ -7,6 +7,10 @@ import date.SimpleDate;
 import ui.calendar.CalendarCell;
 import java.util.List;
 
+/**
+ * @author Gabriel Glaser
+ * @version 19.01.2022
+ */
 public class TestCalendarCell {
 
     static SimpleDate testDate1 = new SimpleDate(14, 7);
