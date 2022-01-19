@@ -40,7 +40,7 @@ public final class Adapter {
 		    AppointmentFileInteracter.add(appointmentToStore);
 		}
 	    } catch (final IllegalFileFormatException e) {
-		final String errorTitle = "Fehler in \"Geburtstage.txt\"";
+		final String errorTitle = "Format-Fehler in \"Geburtstage.txt\"";
 		final String errorMessage = "\"Geburtstage.txt\" hat nicht das richtige Format. Sie kann nicht zu JSON adaptiert werden.";
 		JOptionPane.showMessageDialog(null, errorMessage, errorTitle, JOptionPane.ERROR_MESSAGE);
 	    } catch (final IllegalArgumentException e) {
@@ -48,10 +48,11 @@ public final class Adapter {
 		final String errorMessage = "Die Datei \"appointments.json\" existiert bereits und wird deswegen nicht überschrieben.";
 		JOptionPane.showMessageDialog(null, errorMessage, errorTitle, JOptionPane.INFORMATION_MESSAGE);
 	    } catch (final AppointmentAlreadyAddedException e) {
-		final String errorTitle = "Duplikat in \"Geburtstage.txt\"";
-		final String errorMessage = "Die Datei \"Geburtstage.txt\" enthält mindestens zwei identische Geburtstage, das ist in der neuen Version nicht erlaubt.\n"
-			+ "Bevor Sie fortfahren müssen sie alle Duplikate entfernen.";
-		JOptionPane.showMessageDialog(null, errorMessage, errorTitle, JOptionPane.INFORMATION_MESSAGE);
+		AppointmentFileInteracter.getDefaultAppointmentFile().delete();
+		final String errorTitle = "Duplikate in \"Geburtstage.txt\"";
+		final String errorMessage = "Die Datei \"Geburtstage.txt\" enthält mindestens zwei identische Geburtstage. Das ist in der neuen Version nicht erlaubt.\n"
+			+ "Bevor Sie das Programm erneut ausführen können, müssen alle Duplikate entfernt worden sein.";
+		JOptionPane.showMessageDialog(null, errorMessage, errorTitle, JOptionPane.ERROR_MESSAGE);
 	    }
 	}
     }
