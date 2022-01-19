@@ -185,7 +185,11 @@ public final class AppointmentFileInteracter {
 	    throw new IllegalArgumentException("The given Appointment-File doesn't exist.");
 	}
 	try (final BufferedWriter writer = new BufferedWriter(new FileWriter(fileToStoreAt, StandardCharsets.UTF_8))) {
-	    writer.write(appointmentsToStore.toString(APPOINTMENT_FILE_INDENT_SIZE));
+	    final String[] jsonLines = appointmentsToStore.toString(APPOINTMENT_FILE_INDENT_SIZE).split("\n");
+	    for (final String line : jsonLines) {
+		writer.write(line);
+		writer.newLine();
+	    }
 	} catch (final IOException e) {
 	    throw new RuntimeException("Couldn't write to Appointment-File");
 	}
