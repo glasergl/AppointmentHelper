@@ -18,7 +18,7 @@ import ui.appointmentField.AllAppointments;
  */
 public final class EditorFrame extends MyFrame {
 
-    private static final Image ICON = SwingFunctions.getImage("Icon.png", EditorFrame.class);
+    private static final Image ICON = SwingFunctions.getImage("EditorIcon.png", EditorFrame.class);
 
     private final AllAppointments appointmentsFields;
     private final Header header;

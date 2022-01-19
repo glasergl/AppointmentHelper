@@ -20,7 +20,7 @@ import settings.Colors;
  */
 public final class VisualizerFrame extends MyFrame {
 
-    private static final Image ICON = SwingFunctions.getImage("Icon.png", VisualizerFrame.class);
+    private static final Image ICON = SwingFunctions.getImage("VisualizerIcon.png", VisualizerFrame.class);
 
     private final MyTextButton calendarVisabilityChangerButton = new MyTextButton("Kalender anzeigen");
     private final AppointmentOutput appointmentOutput;
