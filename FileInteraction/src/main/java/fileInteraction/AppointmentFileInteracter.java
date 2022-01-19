@@ -197,8 +197,11 @@ public final class AppointmentFileInteracter {
 
     /**
      * Creates an empty, syntactically correct Appointment-File at the default path.
+     * 
+     * @throws IllegalArgumentException If the default path already represents an
+     *                                  existing File.
      */
-    public static void createDefaultAppointmentFile() {
+    public static void createDefaultAppointmentFile() throws IllegalArgumentException {
 	createEmptyAppointmentFile(DEFAULT_APPOINTMENT_FILE_PATH);
     }
 
@@ -206,9 +209,11 @@ public final class AppointmentFileInteracter {
      * Creates an empty, syntactically correct Appointment-File at the given path.
      * 
      * @param pathOfTheNewAppointmentFile
+     * @throws IllegalArgumentException If the given path already represents an
+     *                                  existing File.
      * @return The created Appointment-File.
      */
-    public static File createEmptyAppointmentFile(final String pathOfTheNewAppointmentFile) {
+    public static File createEmptyAppointmentFile(final String pathOfTheNewAppointmentFile) throws IllegalArgumentException {
 	final File emptyAppointmentFile = new File(pathOfTheNewAppointmentFile);
 	if (emptyAppointmentFile.exists()) {
 	    throw new IllegalArgumentException("Appointment-File at " + pathOfTheNewAppointmentFile + " already exists.");
