@@ -6,7 +6,7 @@ import java.util.Calendar;
  * Class which contains methods about simple dates.
  * 
  * @author Gabriel Glaser
- * @version 1.1.2022
+ * @version 20.1.2022
  */
 public final class SimpleDates {
 
