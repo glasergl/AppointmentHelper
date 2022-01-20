@@ -10,8 +10,8 @@ import javax.swing.JPanel;
 import javax.swing.Scrollable;
 import appointment.Appointment;
 import fileInteraction.AppointmentFileInteracter;
-import general.SwingFunctions;
-import settings.Colors;
+import standardSwing.general.SwingFunctions;
+import standardSwing.settings.Colors;
 
 /**
  * Depiction of all AppointmentInputFields.

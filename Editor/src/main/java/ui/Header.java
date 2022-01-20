@@ -2,9 +2,9 @@ package ui;
 
 import java.awt.Color;
 
-import container.RowOfJComponent;
-import myComponent.button.MyTextButton;
-import settings.Colors;
+import standardSwing.container.RowOfJComponent;
+import standardSwing.myComponent.button.MyTextButton;
+import standardSwing.settings.Colors;
 import ui.appointmentField.AllAppointments;
 import ui.appointmentField.AppointmentFieldController;
 

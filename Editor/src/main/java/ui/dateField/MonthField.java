@@ -8,9 +8,9 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import date.SimpleDate;
 import date.SimpleDates;
-import myComponent.MyLabel;
-import myComponent.button.MyTextButton;
-import settings.Colors;
+import standardSwing.myComponent.MyLabel;
+import standardSwing.myComponent.button.MyTextButton;
+import standardSwing.settings.Colors;
 
 /**
  * Representation of a Month with each respective day.

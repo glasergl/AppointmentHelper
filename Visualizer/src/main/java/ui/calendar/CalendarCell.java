@@ -5,15 +5,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 import javax.swing.JComponent;
 import appointment.Appointment;
-import container.LineOfJComponent;
+import standardSwing.container.LineOfJComponent;
 import date.SimpleDate;
-import entity.Alignment;
-import entity.ColorType;
-import eventListener.ColorChangerOnHover;
-import eventListener.SiblingPopUpDisplayerOnHover;
-import myComponent.MyLabel;
-import settings.Colors;
-import settings.Fonts;
+import standardSwing.entity.Alignment;
+import standardSwing.entity.ColorType;
+import standardSwing.eventListener.ColorChangerOnHover;
+import standardSwing.eventListener.SiblingPopUpDisplayerOnHover;
+import standardSwing.myComponent.MyLabel;
+import standardSwing.settings.Colors;
+import standardSwing.settings.Fonts;
 
 /**
  * Representation of a single calendar cell which represents a date and a

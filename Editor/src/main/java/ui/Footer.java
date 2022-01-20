@@ -3,10 +3,10 @@ package ui;
 import java.awt.Color;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
-import container.RowOfJComponent;
-import myComponent.button.MyTextButton;
-import settings.Colors;
-import settings.Fonts;
+import standardSwing.container.RowOfJComponent;
+import standardSwing.myComponent.button.MyTextButton;
+import standardSwing.settings.Colors;
+import standardSwing.settings.Fonts;
 import ui.appointmentField.AllAppointments;
 
 /**

@@ -9,11 +9,11 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import javax.swing.JPanel;
 import appointment.Appointment;
-import entity.ColorType;
-import eventListener.ColorChangerOnHover;
-import eventListener.SiblingPopUpDisplayerOnHover;
-import myComponent.MyLabel;
-import settings.Colors;
+import standardSwing.entity.ColorType;
+import standardSwing.eventListener.ColorChangerOnHover;
+import standardSwing.eventListener.SiblingPopUpDisplayerOnHover;
+import standardSwing.myComponent.MyLabel;
+import standardSwing.settings.Colors;
 
 /**
  * Class which calculates the sentence which contains the appointments of today

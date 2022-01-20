@@ -6,8 +6,8 @@ import java.awt.Image;
 import java.util.List;
 import javax.swing.JOptionPane;
 import appointment.Appointment;
-import container.MyFrame;
-import general.SwingFunctions;
+import standardSwing.container.MyFrame;
+import standardSwing.general.SwingFunctions;
 import ui.appointmentField.AllAppointments;
 
 /**

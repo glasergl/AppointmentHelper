@@ -5,9 +5,9 @@ import java.awt.FlowLayout;
 import javax.swing.JPanel;
 import appointment.Appointment;
 import date.SimpleDate;
-import myComponent.MyCheckBox;
-import myComponent.textField.MyTextField;
-import settings.Colors;
+import standardSwing.myComponent.MyCheckBox;
+import standardSwing.myComponent.textField.MyTextField;
+import standardSwing.settings.Colors;
 import ui.dateField.MySimpleDateField;
 
 /**

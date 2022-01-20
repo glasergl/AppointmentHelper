@@ -6,7 +6,6 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import appointment.Appointment;
 import fileInteraction.AppointmentFileInteracter;
-import settings.Colors;
 import ui.VisualizerFrame;
 
 /**
@@ -19,7 +18,6 @@ import ui.VisualizerFrame;
 public final class Visualizer {
 
     public static void main(final String[] args) {
-	Colors.setDarkModeEnabled(false);
 	final File appointmentFile = AppointmentFileInteracter.getDefaultAppointmentFile();
 	if (!appointmentFile.exists()) {
 	    showCouldntFindAppointmentFileError();

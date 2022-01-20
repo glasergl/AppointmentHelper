@@ -4,14 +4,13 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.util.Optional;
 import java.util.Stack;
-
 import javax.swing.JPanel;
 import javax.swing.event.ChangeListener;
 import appointment.Appointment;
 import date.SimpleDate;
-import eventListener.emptyImplementation.MyDocumentListener;
+import standardSwing.eventListener.emptyImplementation.MyDocumentListener;
 import fileInteraction.AppointmentFileInteracter;
-import myComponent.button.MyTextButton;
+import standardSwing.myComponent.button.MyTextButton;
 
 /**
  * Class which controls an AppointmentField and its interaction with the

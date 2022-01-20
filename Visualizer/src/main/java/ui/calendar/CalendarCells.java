@@ -7,8 +7,8 @@ import javax.swing.JPanel;
 import appointment.Appointment;
 import date.SimpleDate;
 import date.SimpleDates;
-import myComponent.MyLabel;
-import settings.Colors;
+import standardSwing.myComponent.MyLabel;
+import standardSwing.settings.Colors;
 
 /**
  * Representation of all correct calendar cells.

@@ -5,9 +5,9 @@ import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import container.RowOfJComponent;
-import myComponent.button.MyTextButton;
-import settings.Colors;
+import standardSwing.container.RowOfJComponent;
+import standardSwing.myComponent.button.MyTextButton;
+import standardSwing.settings.Colors;
 
 /**
  * 

@@ -10,9 +10,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JViewport;
 import javax.swing.border.EmptyBorder;
 import appointment.Appointment;
-import myComponent.MyLabel;
-import settings.Colors;
-import settings.Fonts;
+import standardSwing.myComponent.MyLabel;
+import standardSwing.settings.Colors;
+import standardSwing.settings.Fonts;
 
 /**
  * Top-Level Parent for all AppointmentFields which controls the JScrollPane and

@@ -5,10 +5,10 @@ import java.util.List;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import date.SimpleDate;
-import eventListener.SiblingPopUpDisplayerOnClick;
-import myComponent.MySiblingPopUp;
-import myComponent.button.MyTextButton;
-import settings.Fonts;
+import standardSwing.eventListener.SiblingPopUpDisplayerOnClick;
+import standardSwing.myComponent.MySiblingPopUp;
+import standardSwing.myComponent.button.MyTextButton;
+import standardSwing.settings.Fonts;
 import date.SimpleDates;
 
 /**

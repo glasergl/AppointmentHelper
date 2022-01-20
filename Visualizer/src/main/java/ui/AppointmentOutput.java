@@ -6,8 +6,8 @@ import java.awt.Font;
 import java.util.List;
 import javax.swing.JPanel;
 import appointment.Appointment;
-import settings.Colors;
-import settings.Fonts;
+import standardSwing.settings.Colors;
+import standardSwing.settings.Fonts;
 
 /**
  * Class which shows the appointments of today and tomorrow.

@@ -5,12 +5,12 @@ import java.awt.FlowLayout;
 import java.awt.Image;
 import java.util.List;
 import appointment.Appointment;
-import container.JPanelFactory;
-import container.MyFrame;
-import general.SwingFunctions;
-import myComponent.button.MyTextButton;
+import standardSwing.container.JPanelFactory;
+import standardSwing.container.MyFrame;
+import standardSwing.general.SwingFunctions;
+import standardSwing.myComponent.button.MyTextButton;
 import ui.calendar.VisualCalendar;
-import settings.Colors;
+import standardSwing.settings.Colors;
 
 /**
  * Main Frame for the Visualizer.
