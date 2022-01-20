@@ -6,93 +6,99 @@ import java.awt.Dimension;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import container.RowOfJComponent;
-import date.SimpleDate;
-import date.SimpleDates;
 import myComponent.button.MyTextButton;
 import settings.Colors;
 
+/**
+ * 
+ * 
+ * @author Gabriel Glaser
+ * @version 20.01.2022
+ */
 public class AllMonths extends JPanel {
 
-    private final MySimpleDateField toSetSelectedDateOf;
+    private static final Color BACKGROUND_COLOR = Colors.getGray(1);
+    private static final Color MONTH_CONTROL_BUTTON_COLOR = Colors.getGray(2);
+    private static final int WIDTH_OF_CLOSE_BUTTON = 40;
+    private static final int DISTANCE_BETWEEN_MONTH_CONTROL_BUTTONS = 4;
+
+    private final MySimpleDateField dateField;
+
     private final RowOfJComponent top = new RowOfJComponent();
-    private final RowOfJComponent bottom = new RowOfJComponent(7, 7);
-    private final MyTextButton close = new MyTextButton("x", false);
-    private final MyTextButton goLeft = new MyTextButton("<<", false);
-    private final MyTextButton goRight = new MyTextButton(">>", false);
-    private final MyTextButton goLeftEdge = new MyTextButton("I<<", false);
-    private final MyTextButton goRightEdge = new MyTextButton(">>I", false);
+    private final RowOfJComponent middle = new RowOfJComponent(7, 7);
+
+    private final MyTextButton closeButton = new MyTextButton("x", false);
+    private final MyTextButton goLeftButton = new MyTextButton("<<", false);
+    private final MyTextButton goRightButton = new MyTextButton(">>", false);
+    private final MyTextButton goLeftEdgeButton = new MyTextButton("I<<", false);
+    private final MyTextButton goRightEdgeButton = new MyTextButton(">>I", false);
 
     private int currentMonth;
     private MonthField displayOfCurrentMonth;;
 
-    public AllMonths(final MySimpleDateField toSetSelectedDateOf, final SimpleDate initialDate) {
+    public AllMonths(final MySimpleDateField dateField) {
 	super(new BorderLayout());
-	this.toSetSelectedDateOf = toSetSelectedDateOf;
-	this.currentMonth = initialDate.getMonth();
-	this.displayOfCurrentMonth = new MonthField(toSetSelectedDateOf, currentMonth);
-	setupButtons();
-	updateDisplayedMonth();
+	this.dateField = dateField;
+	this.currentMonth = dateField.getDate().getMonth();
+	this.displayOfCurrentMonth = new MonthField(dateField, currentMonth);
+	setup();
+	setDisplayedMonth(currentMonth);
     }
 
-    public AllMonths(final MySimpleDateField toSetSelectedDateOf) {
-	this(toSetSelectedDateOf, SimpleDates.getToday());
-    }
+    private void setup() {
+	setBackground(BACKGROUND_COLOR);
+	top.setBackground(BACKGROUND_COLOR);
+	middle.setBackground(BACKGROUND_COLOR);
 
-    private void setupButtons() {
-	setBackground(Colors.getGray(1));
-	top.setBackground(Colors.getGray(1));
-	bottom.setBackground(Colors.getGray(1));
+	top.addToRight(closeButton);
+	middle.addToLeft(goLeftEdgeButton);
+	middle.addToLeft(goLeftButton);
+	middle.addToRight(goRightButton);
+	middle.addToRight(goRightEdgeButton);
 
-	top.addToRight(close);
-	bottom.addToLeft(goLeftEdge);
-	bottom.addToLeft(goLeft);
-	bottom.addToRight(goRight);
-	bottom.addToRight(goRightEdge);
+	middle.setBackgroundOfChildren(BACKGROUND_COLOR);
+	middle.setBorderOfChildren(new EmptyBorder(DISTANCE_BETWEEN_MONTH_CONTROL_BUTTONS / 2, DISTANCE_BETWEEN_MONTH_CONTROL_BUTTONS / 2, DISTANCE_BETWEEN_MONTH_CONTROL_BUTTONS / 2,
+		DISTANCE_BETWEEN_MONTH_CONTROL_BUTTONS / 2));
 
-	bottom.setBackgroundOfChildren(Colors.getGray(1));
-	bottom.setBorderOfChildren(new EmptyBorder(2, 2, 2, 2));
-
-	close.setPreferredSize(new Dimension(40, (int) close.getPreferredSize().getHeight()));
-	close.setBackground(getBackground());
-	close.setBackgroundWhileMouseHovered(new Color(209, 63, 52));
-	close.setForegroundWhileMouseHovered(new Color(230, 230, 230));
-	goLeft.setBackgroundWhileMouseHovered(Colors.getGray(2));
-	goLeftEdge.setBackgroundWhileMouseHovered(Colors.getGray(2));
-	goRight.setBackgroundWhileMouseHovered(Colors.getGray(2));
-	goRightEdge.setBackgroundWhileMouseHovered(Colors.getGray(2));
+	closeButton.setPreferredSize(new Dimension(WIDTH_OF_CLOSE_BUTTON, (int) closeButton.getPreferredSize().getHeight()));
+	closeButton.setBackground(BACKGROUND_COLOR);
+	closeButton.setBackgroundWhileMouseHovered(new Color(209, 63, 52));
+	closeButton.setForegroundWhileMouseHovered(new Color(230, 230, 230));
+	goLeftButton.setBackgroundWhileMouseHovered(MONTH_CONTROL_BUTTON_COLOR);
+	goLeftEdgeButton.setBackgroundWhileMouseHovered(MONTH_CONTROL_BUTTON_COLOR);
+	goRightButton.setBackgroundWhileMouseHovered(MONTH_CONTROL_BUTTON_COLOR);
+	goRightEdgeButton.setBackgroundWhileMouseHovered(MONTH_CONTROL_BUTTON_COLOR);
 
 	setupActionListeners();
 
 	add(top, BorderLayout.NORTH);
-	add(bottom, BorderLayout.CENTER);
+	add(middle, BorderLayout.CENTER);
     }
 
     private void setupActionListeners() {
-	close.addActionListener((click) -> {
-	    toSetSelectedDateOf.setInputVisible(false);
+	closeButton.addActionListener((click) -> {
+	    dateField.setDateInputVisible(false);
 	});
-	goLeft.addActionListener((click) -> {
-	    currentMonth = currentMonth == 1 ? 12 : currentMonth - 1;
-	    updateDisplayedMonth();
+	goLeftButton.addActionListener(click -> {
+	    setDisplayedMonth(currentMonth == 1 ? 12 : currentMonth - 1);
 	});
-	goRight.addActionListener((click) -> {
-	    currentMonth = currentMonth == 12 ? 1 : currentMonth + 1;
-	    updateDisplayedMonth();
+	goRightButton.addActionListener(click -> {
+	    setDisplayedMonth(currentMonth == 12 ? 1 : currentMonth + 1);
 	});
-	goLeftEdge.addActionListener((click) -> {
-	    currentMonth = 1;
-	    updateDisplayedMonth();
+	goLeftEdgeButton.addActionListener(click -> {
+	    setDisplayedMonth(1);
 	});
-	goRightEdge.addActionListener((click) -> {
-	    currentMonth = 12;
-	    updateDisplayedMonth();
+	goRightEdgeButton.addActionListener(click -> {
+	    setDisplayedMonth(12);
 	});
     }
 
-    private void updateDisplayedMonth() {
+    private void setDisplayedMonth(final int newMonth) {
+	currentMonth = newMonth;
 	remove(displayOfCurrentMonth);
-	displayOfCurrentMonth = new MonthField(toSetSelectedDateOf, currentMonth);
+	displayOfCurrentMonth = new MonthField(dateField, newMonth);
 	add(displayOfCurrentMonth, BorderLayout.SOUTH);
 	revalidate();
     }
+
 }

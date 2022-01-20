@@ -48,7 +48,7 @@ public class Editor {
     private static boolean askUserToCreateNewAppointmentFile() {
 	final String title = "\"appointments.json\" nicht gefunden";
 	final String message = "Die Datei \"appointments.json\" konnte nicht gefunden werden. Sie sollte im selben Verzeichnis wie die .jar liegen.\n" + "Möchten Sie eine neue, leere erstellen?";
-	final int answer = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.YES_NO_OPTION, JOptionPane.ERROR_MESSAGE);
+	final int answer = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 	return answer == JOptionPane.YES_OPTION;
     }
 

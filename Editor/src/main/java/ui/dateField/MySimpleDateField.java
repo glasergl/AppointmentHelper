@@ -15,29 +15,31 @@ import date.SimpleDates;
  * Input-Field for a Simple-Date.
  * 
  * The component itself shows a date. By clicking on the date, another component
- * shows up under the date. The new component shows all month and lets the user
- * decide for a date.
+ * shows up under the date. The new component shows all months with days and
+ * lets the user decide for a date.
  * 
  * @author Gabriel Glaser
  * @version 20.01.2022
  */
 public class MySimpleDateField extends MyTextButton {
 
+    private static final float DATE_TEXT_SIZE = 23.0f;
+
     private final SiblingPopUpDisplayerOnClick monthPopUpController;
-    private final AllMonths months;
+    private final AllMonths monthsInput;
     private final List<ChangeListener> changeListeners = new ArrayList<>();
 
-    private SimpleDate currentlySelected;
+    private SimpleDate currentlySelectedDate;
 
     /**
      * @param initialDate which is displayed.
      */
     public MySimpleDateField(final SimpleDate initialDate) {
 	super(initialDate.toStringWithLeadingZeros(), false);
-	this.currentlySelected = initialDate;
-	months = new AllMonths(this, initialDate);
-	monthPopUpController = new SiblingPopUpDisplayerOnClick(months, this);
-	setFont(Fonts.resizedStandard(23.0f));
+	this.currentlySelectedDate = initialDate;
+	this.monthsInput = new AllMonths(this);
+	this.monthPopUpController = new SiblingPopUpDisplayerOnClick(monthsInput, this);
+	setFont(Fonts.resizedStandard(DATE_TEXT_SIZE));
     }
 
     /**
@@ -58,7 +60,7 @@ public class MySimpleDateField extends MyTextButton {
      * @param dateToSet
      */
     public void setDate(final SimpleDate dateToSet) {
-	currentlySelected = dateToSet;
+	currentlySelectedDate = dateToSet;
 	setText(dateToSet.toStringWithLeadingZeros());
 	final ChangeEvent dateChange = new ChangeEvent(this);
 	for (final ChangeListener changeListener : changeListeners) {
@@ -66,13 +68,13 @@ public class MySimpleDateField extends MyTextButton {
 	}
     }
 
-    public void setInputVisible(final boolean inputShouldBeVisible) {
+    public void setDateInputVisible(final boolean inputShouldBeVisible) {
 	final MySiblingPopUp dateInput = monthPopUpController.getPopUp();
 	dateInput.setVisible(inputShouldBeVisible);
     }
 
     public SimpleDate getDate() {
-	return currentlySelected;
+	return currentlySelectedDate;
     }
 
 }

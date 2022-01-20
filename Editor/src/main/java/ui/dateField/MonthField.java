@@ -13,6 +13,12 @@ import myComponent.MyLabel;
 import myComponent.button.MyTextButton;
 import settings.Colors;
 
+/**
+ * Representation of a Month with each respective day.
+ * 
+ * @author Gabriel Glaser
+ * @version 20.01.2022
+ */
 public final class MonthField extends JPanel {
 
     private final MySimpleDateField toSetSelectedDateOf;
@@ -91,8 +97,8 @@ public final class MonthField extends JPanel {
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
-	    toSetSelectedDateOf.setInputVisible(false);
+	public void actionPerformed(final ActionEvent click) {
+	    toSetSelectedDateOf.setDateInputVisible(false);
 	    toSetSelectedDateOf.setDate(representedByTheButton);
 	}
 
