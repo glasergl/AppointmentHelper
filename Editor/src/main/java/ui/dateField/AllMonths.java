@@ -69,7 +69,7 @@ public class AllMonths extends JPanel {
 
     private void setupActionListeners() {
 	close.addActionListener((click) -> {
-	    toSetSelectedDateOf.getMonthPopUp().setVisible(false);
+	    toSetSelectedDateOf.setInputVisible(false);
 	});
 	goLeft.addActionListener((click) -> {
 	    currentMonth = currentMonth == 1 ? 12 : currentMonth - 1;

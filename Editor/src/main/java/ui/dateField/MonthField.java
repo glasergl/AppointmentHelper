@@ -92,7 +92,7 @@ public final class MonthField extends JPanel {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-	    toSetSelectedDateOf.getMonthPopUp().setVisible(false);
+	    toSetSelectedDateOf.setInputVisible(false);
 	    toSetSelectedDateOf.setDate(representedByTheButton);
 	}
 

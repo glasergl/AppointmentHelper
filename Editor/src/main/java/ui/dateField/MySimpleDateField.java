@@ -2,7 +2,6 @@ package ui.dateField;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import date.SimpleDate;
@@ -12,6 +11,16 @@ import myComponent.button.MyTextButton;
 import settings.Fonts;
 import date.SimpleDates;
 
+/**
+ * Input-Field for a Simple-Date.
+ * 
+ * The component itself shows a date. By clicking on the date, another component
+ * shows up under the date. The new component shows all month and lets the user
+ * decide for a date.
+ * 
+ * @author Gabriel Glaser
+ * @version 20.01.2022
+ */
 public class MySimpleDateField extends MyTextButton {
 
     private final SiblingPopUpDisplayerOnClick monthPopUpController;
@@ -20,6 +29,9 @@ public class MySimpleDateField extends MyTextButton {
 
     private SimpleDate currentlySelected;
 
+    /**
+     * @param initialDate which is displayed.
+     */
     public MySimpleDateField(final SimpleDate initialDate) {
 	super(initialDate.toStringWithLeadingZeros(), false);
 	this.currentlySelected = initialDate;
@@ -28,6 +40,9 @@ public class MySimpleDateField extends MyTextButton {
 	setFont(Fonts.resizedStandard(23.0f));
     }
 
+    /**
+     * Initially displays today.
+     */
     public MySimpleDateField() {
 	this(SimpleDates.getToday());
     }
@@ -36,21 +51,28 @@ public class MySimpleDateField extends MyTextButton {
 	changeListeners.add(toAdd);
     }
 
-    public void setDate(final SimpleDate toSet) {
-	currentlySelected = toSet;
-	setText(toSet.toStringWithLeadingZeros());
+    /**
+     * Sets the date to the given date and displays it. Furthermore, notifies all
+     * added ChangeListeners.
+     * 
+     * @param dateToSet
+     */
+    public void setDate(final SimpleDate dateToSet) {
+	currentlySelected = dateToSet;
+	setText(dateToSet.toStringWithLeadingZeros());
 	final ChangeEvent dateChange = new ChangeEvent(this);
 	for (final ChangeListener changeListener : changeListeners) {
 	    changeListener.stateChanged(dateChange);
 	}
     }
 
-    public SimpleDate getDate() {
-	return currentlySelected;
+    public void setInputVisible(final boolean inputShouldBeVisible) {
+	final MySiblingPopUp dateInput = monthPopUpController.getPopUp();
+	dateInput.setVisible(inputShouldBeVisible);
     }
 
-    public MySiblingPopUp getMonthPopUp() {
-	return monthPopUpController.getPopUp();
+    public SimpleDate getDate() {
+	return currentlySelected;
     }
 
 }

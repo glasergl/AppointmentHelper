@@ -14,7 +14,7 @@ import ui.appointmentField.AllAppointments;
  * Main-Frame for the Editor.
  * 
  * @author Gabriel Glaser
- * @version 7.1.2022
+ * @version 20.1.2022
  */
 public final class EditorFrame extends MyFrame {
 
@@ -26,31 +26,36 @@ public final class EditorFrame extends MyFrame {
 
     public EditorFrame(final List<Appointment> initialAppointments) {
 	super("TerminEditor", ICON);
-	setLayout(new BorderLayout(0, 2));
 	appointmentsFields = new AllAppointments(initialAppointments);
 	header = new Header(appointmentsFields);
 	footer = new Footer(appointmentsFields);
-	addComponents();
+	setup();
 	start();
 	footer.requestFocusForAddButton();
     }
 
-    private void addComponents() {
+    private void setup() {
 	final Container contentPane = getContentPane();
 	contentPane.add(header, BorderLayout.NORTH);
 	contentPane.add(appointmentsFields, BorderLayout.CENTER);
 	contentPane.add(footer, BorderLayout.SOUTH);
     }
 
+    /**
+     * If every depicted Appointment is saved this Frame is normally disposed. Else,
+     * the user gets asked whether he wants to save, discard all Appointments or
+     * cancel the whole dispose-Operation via a JOptionPane.
+     */
     @Override
     public void dispose() {
 	if (!appointmentsFields.isSaved()) {
-	    final int result = JOptionPane.showConfirmDialog(this, "Es gibt ungespeicherte Termine.\nSpeichern?", "Ungespeicherte Termine", JOptionPane.YES_NO_CANCEL_OPTION,
-		    JOptionPane.INFORMATION_MESSAGE);
-	    if (result == JOptionPane.YES_OPTION) {
+	    final String title = "Ungespeicherte Termine";
+	    final String message = "Es gibt ungespeicherte Termine.\nSpeichern?";
+	    final int answerOfUser = JOptionPane.showConfirmDialog(this, message, title, JOptionPane.YES_NO_CANCEL_OPTION);
+	    if (answerOfUser == JOptionPane.YES_OPTION) {
 		appointmentsFields.saveAll();
 		super.dispose();
-	    } else if (result == JOptionPane.NO_OPTION) {
+	    } else if (answerOfUser == JOptionPane.NO_OPTION) {
 		appointmentsFields.cancelAll();
 		super.dispose();
 	    }
