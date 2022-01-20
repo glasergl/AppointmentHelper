@@ -1,10 +1,9 @@
 package ui.dateField;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import date.SimpleDate;
@@ -21,10 +20,16 @@ import settings.Colors;
  */
 public final class MonthField extends JPanel {
 
+    private static final Color BACKGROUND_COLOR = Colors.getGray(1);
+    private static final Color BACKGROUND_COLOR_OF_DAY = Colors.getGray(2);
+    private static final Color BACKGROUND_COLOR_OF_DAY_WHILE_HOVERED = Colors.getGray(3);
+    private static final int WIDTH_BETWEEN_DAY_LABELS = 2;
+    private static final int SIZE_OF_DAY_LABEL = 35;
+
     private final MySimpleDateField toSetSelectedDateOf;
     private final int monthToDepict;
     private final MyLabel nameOfMonth;
-    private final JPanel days = new JPanel(new GridLayout(5, 7, 2, 2));
+    private final JPanel days = new JPanel(new GridLayout(5, 7, WIDTH_BETWEEN_DAY_LABELS, WIDTH_BETWEEN_DAY_LABELS));
 
     public MonthField(final MySimpleDateField toSetSelectedDateOf, final int monthToDepict) {
 	super(new BorderLayout());
@@ -35,28 +40,44 @@ public final class MonthField extends JPanel {
     }
 
     private void setup() {
-	days.setBackground(Colors.getGray(1));
+	days.setBackground(BACKGROUND_COLOR);
 	nameOfMonth.setHorizontalAlignment(SwingConstants.CENTER);
 	addDays();
 	add(nameOfMonth, BorderLayout.NORTH);
 	add(days, BorderLayout.CENTER);
     }
 
+    /**
+     * Adds the number of days of the current month to depict. To fulfill exact 35
+     * added Labels, empty ones are added after the days.
+     */
     private void addDays() {
-	final int dayOfMonth = monthToDepict == 2 ? 29 : SimpleDates.daysOfMonth(monthToDepict);
-	for (int day = 1; day <= dayOfMonth; day++) {
-	    final MyTextButton visualizedDay = new MyTextButton(String.valueOf(day), false);
-	    visualizedDay.setPreferredSize(new Dimension(40, 40));
-	    visualizedDay.addActionListener(new DayButtonController(new SimpleDate(day, monthToDepict)));
-	    visualizedDay.setBackground(Colors.getGray(2));
-	    visualizedDay.setBackgroundWhileMouseHovered(Colors.getGray(3));
-	    days.add(visualizedDay);
+	final int daysOfMonth = SimpleDates.daysOfMonth(monthToDepict);
+	for (int day = 1; day <= SimpleDates.daysOfMonth(monthToDepict); day++) {
+	    addDayLabel(day);
 	}
-	for (int filler = dayOfMonth + 1; filler <= 35; filler++) {
-	    days.add(new MyLabel());
+	for (int filler = daysOfMonth + 1; filler <= 35; filler++) {
+	    final MyLabel empty = new MyLabel();
+	    days.add(empty);
 	}
     }
 
+    private void addDayLabel(int day) {
+	final SimpleDate date = new SimpleDate(day, monthToDepict);
+	final MyTextButton visualizedDay = new MyTextButton(String.valueOf(day), false);
+	visualizedDay.setBackground(BACKGROUND_COLOR_OF_DAY);
+	visualizedDay.setBackgroundWhileMouseHovered(BACKGROUND_COLOR_OF_DAY_WHILE_HOVERED);
+	visualizedDay.setPreferredSize(new Dimension(SIZE_OF_DAY_LABEL, SIZE_OF_DAY_LABEL));
+	visualizedDay.addActionListener(click -> {
+	    toSetSelectedDateOf.setDateInputVisible(false);
+	    toSetSelectedDateOf.setDate(date);
+	});
+	days.add(visualizedDay);
+    }
+
+    /**
+     * @return German String representation of the month this depicts.
+     */
     public String getMonthName() {
 	if (monthToDepict == 1) {
 	    return "Januar";
@@ -85,23 +106,6 @@ public final class MonthField extends JPanel {
 	} else {
 	    throw new RuntimeException(monthToDepict + " is not a month.");
 	}
-    }
-
-    private class DayButtonController implements ActionListener {
-
-	private final SimpleDate representedByTheButton;
-
-	public DayButtonController(final SimpleDate representedByTheButton) {
-	    super();
-	    this.representedByTheButton = representedByTheButton;
-	}
-
-	@Override
-	public void actionPerformed(final ActionEvent click) {
-	    toSetSelectedDateOf.setDateInputVisible(false);
-	    toSetSelectedDateOf.setDate(representedByTheButton);
-	}
-
     }
 
 }

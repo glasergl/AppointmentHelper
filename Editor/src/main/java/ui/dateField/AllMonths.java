@@ -18,14 +18,14 @@ import settings.Colors;
 public class AllMonths extends JPanel {
 
     private static final Color BACKGROUND_COLOR = Colors.getGray(1);
-    private static final Color MONTH_CONTROL_BUTTON_COLOR = Colors.getGray(2);
+    private static final Color MONTH_CONTROL_BUTTON_COLOR_WHILE_HOVERED = Colors.getGray(2);
     private static final int WIDTH_OF_CLOSE_BUTTON = 40;
     private static final int DISTANCE_BETWEEN_MONTH_CONTROL_BUTTONS = 4;
 
     private final MySimpleDateField dateField;
 
-    private final RowOfJComponent top = new RowOfJComponent();
-    private final RowOfJComponent middle = new RowOfJComponent(7, 7);
+    private final RowOfJComponent topButtons = new RowOfJComponent();
+    private final RowOfJComponent middleButtons = new RowOfJComponent(7, 7);
 
     private final MyTextButton closeButton = new MyTextButton("x", false);
     private final MyTextButton goLeftButton = new MyTextButton("<<", false);
@@ -47,36 +47,36 @@ public class AllMonths extends JPanel {
 
     private void setup() {
 	setBackground(BACKGROUND_COLOR);
-	top.setBackground(BACKGROUND_COLOR);
-	middle.setBackground(BACKGROUND_COLOR);
+	topButtons.setBackground(BACKGROUND_COLOR);
+	middleButtons.setBackground(BACKGROUND_COLOR);
 
-	top.addToRight(closeButton);
-	middle.addToLeft(goLeftEdgeButton);
-	middle.addToLeft(goLeftButton);
-	middle.addToRight(goRightButton);
-	middle.addToRight(goRightEdgeButton);
+	topButtons.addToRight(closeButton);
+	middleButtons.addToLeft(goLeftEdgeButton);
+	middleButtons.addToLeft(goLeftButton);
+	middleButtons.addToRight(goRightButton);
+	middleButtons.addToRight(goRightEdgeButton);
 
-	middle.setBackgroundOfChildren(BACKGROUND_COLOR);
-	middle.setBorderOfChildren(new EmptyBorder(DISTANCE_BETWEEN_MONTH_CONTROL_BUTTONS / 2, DISTANCE_BETWEEN_MONTH_CONTROL_BUTTONS / 2, DISTANCE_BETWEEN_MONTH_CONTROL_BUTTONS / 2,
+	middleButtons.setBackgroundOfChildren(BACKGROUND_COLOR);
+	middleButtons.setBorderOfChildren(new EmptyBorder(DISTANCE_BETWEEN_MONTH_CONTROL_BUTTONS / 2, DISTANCE_BETWEEN_MONTH_CONTROL_BUTTONS / 2, DISTANCE_BETWEEN_MONTH_CONTROL_BUTTONS / 2,
 		DISTANCE_BETWEEN_MONTH_CONTROL_BUTTONS / 2));
 
 	closeButton.setPreferredSize(new Dimension(WIDTH_OF_CLOSE_BUTTON, (int) closeButton.getPreferredSize().getHeight()));
 	closeButton.setBackground(BACKGROUND_COLOR);
 	closeButton.setBackgroundWhileMouseHovered(new Color(209, 63, 52));
 	closeButton.setForegroundWhileMouseHovered(new Color(230, 230, 230));
-	goLeftButton.setBackgroundWhileMouseHovered(MONTH_CONTROL_BUTTON_COLOR);
-	goLeftEdgeButton.setBackgroundWhileMouseHovered(MONTH_CONTROL_BUTTON_COLOR);
-	goRightButton.setBackgroundWhileMouseHovered(MONTH_CONTROL_BUTTON_COLOR);
-	goRightEdgeButton.setBackgroundWhileMouseHovered(MONTH_CONTROL_BUTTON_COLOR);
+	goLeftButton.setBackgroundWhileMouseHovered(MONTH_CONTROL_BUTTON_COLOR_WHILE_HOVERED);
+	goLeftEdgeButton.setBackgroundWhileMouseHovered(MONTH_CONTROL_BUTTON_COLOR_WHILE_HOVERED);
+	goRightButton.setBackgroundWhileMouseHovered(MONTH_CONTROL_BUTTON_COLOR_WHILE_HOVERED);
+	goRightEdgeButton.setBackgroundWhileMouseHovered(MONTH_CONTROL_BUTTON_COLOR_WHILE_HOVERED);
 
 	setupActionListeners();
 
-	add(top, BorderLayout.NORTH);
-	add(middle, BorderLayout.CENTER);
+	add(topButtons, BorderLayout.NORTH);
+	add(middleButtons, BorderLayout.CENTER);
     }
 
     private void setupActionListeners() {
-	closeButton.addActionListener((click) -> {
+	closeButton.addActionListener(click -> {
 	    dateField.setDateInputVisible(false);
 	});
 	goLeftButton.addActionListener(click -> {
@@ -93,6 +93,11 @@ public class AllMonths extends JPanel {
 	});
     }
 
+    /**
+     * Sets the given month as the current month and shows the month.
+     * 
+     * @param newMonth
+     */
     private void setDisplayedMonth(final int newMonth) {
 	currentMonth = newMonth;
 	remove(displayOfCurrentMonth);
