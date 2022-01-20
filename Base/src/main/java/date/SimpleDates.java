@@ -93,7 +93,7 @@ public final class SimpleDates {
 	    case 1:
 		return 31;
 	    case 2:
-		return isSwitchingYear() ? 29 : 28;
+		return 29;
 	    case 3:
 		return 31;
 	    case 4:
