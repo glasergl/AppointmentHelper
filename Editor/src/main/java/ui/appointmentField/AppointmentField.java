@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import javax.swing.JPanel;
 import appointment.Appointment;
+import appointment.InvalidAppointmentException;
 import date.SimpleDate;
 import standardSwing.myComponent.MyCheckBox;
 import standardSwing.myComponent.textField.MyTextField;
@@ -57,9 +58,13 @@ public class AppointmentField extends JPanel {
 	add(isBirthdayField);
     }
 
-    public Appointment getAppointment() {
+    /**
+     * @return The Appointment represented by the current input.
+     * @throws InvalidAppointmentException if the current name-field is empty.
+     */
+    public Appointment getAppointment() throws InvalidAppointmentException {
 	if (!representsValidAppointment()) {
-	    throw new IllegalStateException("Current input doesn't represent a valid Appointment");
+	    throw new InvalidAppointmentException();
 	}
 	return new Appointment(getDate(), getName(), getDescription(), isBirthday());
     }

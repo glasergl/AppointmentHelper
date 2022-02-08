@@ -6,9 +6,12 @@ import java.awt.FlowLayout;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Scrollable;
 import appointment.Appointment;
+import appointment.InvalidAppointmentException;
 import fileInteraction.AppointmentFileInteracter;
 import standardSwing.general.SwingFunctions;
 import standardSwing.settings.Colors;
@@ -74,10 +77,30 @@ public class AppointmentFieldPanel extends JPanel implements Scrollable {
 	SwingFunctions.updateJComponent(this);
     }
 
+    /**
+     * Saves all depicted Appointments. If there are one or more invalid
+     * Appointments, a JOptionPane depicts the error to the user and nothing
+     * happens.
+     */
     public void saveAll() {
-	for (final AppointmentFieldController appointmentInputField : appointmentFields) {
-	    appointmentInputField.save();
+	try {
+	    for (final AppointmentFieldController appointmentInputField : appointmentFields) {
+		appointmentInputField.save();
+	    }
+	} catch (final InvalidAppointmentException e) {
+	    final String errorTitle = "Ungültiger Termin";
+	    final String errorMessage = "Mindestens ein Termin ist ungültig.\nJeder Termin muss mindestens ein Zeichen beim Namen haben.";
+	    JOptionPane.showMessageDialog(null, errorMessage, errorTitle, JOptionPane.ERROR_MESSAGE);
 	}
+    }
+
+    public boolean allRepresentCorrectAppointment() {
+	for (final AppointmentFieldController appointmentInputField : appointmentFields) {
+	    if (!appointmentInputField.representsValidAppointment()) {
+		return false;
+	    }
+	}
+	return true;
     }
 
     private void setSwitchingBackgroundsForAll() {

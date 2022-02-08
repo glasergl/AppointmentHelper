@@ -2,15 +2,18 @@ package ui.appointmentField;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.io.File;
 import java.util.Optional;
 import java.util.Stack;
 import javax.swing.JPanel;
 import javax.swing.event.ChangeListener;
 import appointment.Appointment;
+import appointment.InvalidAppointmentException;
 import date.SimpleDate;
 import standardSwing.eventListener.emptyImplementation.MyDocumentListener;
 import fileInteraction.AppointmentFileInteracter;
 import standardSwing.myComponent.button.MyTextButton;
+import standardSwing.settings.Colors;
 
 /**
  * Class which controls an AppointmentField and its interaction with the
@@ -24,10 +27,11 @@ public class AppointmentFieldController extends JPanel {
     private static final int MARGIN_OF_SUB_COMPONENTS = 20;
     private static final int VERTICAL_MARGIN = 20;
     private static final Stack<AppointmentFieldController> DELETED = new Stack<>();
+    private static final Color DEFAULT_BACKGROUND = Colors.getGray(2);
+    private static final Color UNSAVED_BACKGROUND = new Color(240, 237, 72);
 
     private final AppointmentFieldPanel parent;
 
-    private final AppointmentFieldState stateDisplay = new AppointmentFieldState();
     private final AppointmentField appointmentField;
     private final MyTextButton cancelButton = new MyTextButton("Abbrechen");
     private final MyTextButton deleteButton = new MyTextButton("Löschen");
@@ -47,30 +51,48 @@ public class AppointmentFieldController extends JPanel {
 	this.parent = parent;
 	this.currentlyStoredAppointment = Optional.empty();
 	this.appointmentField = new AppointmentField();
-	stateDisplay.toUnsaved();
 	setup();
     }
 
-    public void save() {
-	if (!appointmentField.representsValidAppointment()) {
-	    stateDisplay.toError();
-	} else {
-	    if (currentlyStoredAppointment.isPresent()) {
-		AppointmentFileInteracter.remove(currentlyStoredAppointment.get());
-	    }
-	    final Appointment currentContent = appointmentField.getAppointment();
-	    AppointmentFileInteracter.add(currentContent);
-	    currentlyStoredAppointment = Optional.of(currentContent);
-	    stateDisplay.toNothing();
-	}
+    /**
+     * Saves the content of the controlled Appointment-Field.
+     * 
+     * @throws InvalidAppointmentException if the current content of the
+     *                                     Appointment-Field isn't valid.
+     */
+    public void save() throws InvalidAppointmentException {
+	save(AppointmentFileInteracter.getDefaultAppointmentFile());
     }
 
+    /**
+     * Saves the content of the controlled Appointment-Field.
+     * 
+     * @param appointmentFile in which the current input should be stored.
+     * @throws InvalidAppointmentException if the current content of the
+     *                                     Appointment-Field isn't valid.
+     */
+    public void save(final File appointmentFile) throws InvalidAppointmentException {
+	final Appointment currentContent = appointmentField.getAppointment();
+	if (currentlyStoredAppointment.isPresent()) {
+	    AppointmentFileInteracter.remove(currentlyStoredAppointment.get());
+	}
+	AppointmentFileInteracter.add(currentContent, appointmentFile);
+	currentlyStoredAppointment = Optional.of(currentContent);
+    }
+
+    /**
+     * Sets the content to the last stored version of this Controller, if any exist.
+     */
     public void cancel() {
 	if (currentlyStoredAppointment.isPresent()) {
 	    appointmentField.setAppointment(currentlyStoredAppointment.get());
 	}
     }
 
+    /**
+     * Removes the Appointment controlled by this and adds it to a Stack of
+     * Appointments which makes it possible to restore it later.
+     */
     public void delete() {
 	if (currentlyStoredAppointment.isPresent()) {
 	    AppointmentFileInteracter.remove(currentlyStoredAppointment.get());
@@ -79,35 +101,59 @@ public class AppointmentFieldController extends JPanel {
 	parent.removeAppointmentField(this);
     }
 
+    /**
+     * Calculates whether the current input is equivalent to the latest stored
+     * version.
+     * 
+     * Will return false, if the current input isn't a valid Appointment or it
+     * hasn't been stored, yet.
+     * 
+     * @return True, if the current Input is equivalent to the latest stored
+     *         version.
+     */
     public boolean isSaved() {
-	if (!appointmentField.representsValidAppointment()) {
-	    return false;
-	} else if (currentlyStoredAppointment.isPresent()) {
+	try {
 	    final Appointment currentInput = appointmentField.getAppointment();
-	    return currentInput.equals(currentlyStoredAppointment.get());
-	} else {
+	    if (currentlyStoredAppointment.isPresent()) {
+		return currentInput.equals(currentlyStoredAppointment.get());
+	    } else {
+		return false;
+	    }
+	} catch (final InvalidAppointmentException e) {
 	    return false;
 	}
     }
 
-    public void updateSavedState() {
-	if (!appointmentField.representsValidAppointment()) {
-	    stateDisplay.toError();
-	} else {
+    public boolean representsValidAppointment() {
+	return appointmentField.representsValidAppointment();
+    }
+
+    /**
+     * Updates the background of this. The background indicates the state of the
+     * controlled Appointment.
+     * 
+     * Standard background if the current input is stored. Yellow background if the
+     * current input doesn't match the stored version or there is no stored version,
+     * yet. Red if the current input isn't a valid Appointment.
+     */
+    public void updateBackground() {
+	try {
 	    final Appointment currentInput = appointmentField.getAppointment();
 	    if (currentlyStoredAppointment.isPresent() && currentInput.equals(currentlyStoredAppointment.get())) {
-		stateDisplay.toNothing();
+		setBackground(DEFAULT_BACKGROUND);
 	    } else {
-		stateDisplay.toUnsaved();
+		setBackground(UNSAVED_BACKGROUND);
 	    }
+	} catch (final InvalidAppointmentException e) {
+	    setBackground(Colors.ofError());
 	}
     }
 
     private void setup() {
 	setLayout(new FlowLayout(FlowLayout.LEFT, MARGIN_OF_SUB_COMPONENTS, VERTICAL_MARGIN));
+	setBackground(DEFAULT_BACKGROUND);
 	addListenersForSaveState();
 	setupButtons();
-	add(stateDisplay);
 	add(appointmentField);
 	add(cancelButton);
 	add(deleteButton);
@@ -116,11 +162,11 @@ public class AppointmentFieldController extends JPanel {
     private void addListenersForSaveState() {
 	final MyDocumentListener toUpdateSavedStateDocumentListener = new MyDocumentListener() {
 	    public void update() {
-		updateSavedState();
+		updateBackground();
 	    }
 	};
 	final ChangeListener toUpdateSaveStateChangeListener = change -> {
-	    updateSavedState();
+	    updateBackground();
 	};
 	appointmentField.getDateField().addChangeListener(toUpdateSaveStateChangeListener);
 	appointmentField.getNameField().getBaseImplementation().getDocument().addDocumentListener(toUpdateSavedStateDocumentListener);
@@ -140,14 +186,13 @@ public class AppointmentFieldController extends JPanel {
     @Override
     public void setBackground(final Color newBackground) {
 	super.setBackground(newBackground);
-	if (stateDisplay != null && appointmentField != null) {
-	    stateDisplay.setBackground(newBackground);
+	if (appointmentField != null) {
 	    appointmentField.setBackground(newBackground);
 	}
     }
 
-    public AppointmentFieldState.State getState() {
-	return stateDisplay.getState();
+    public Appointment getAppointment() throws InvalidAppointmentException {
+	return appointmentField.getAppointment();
     }
 
     public SimpleDate getDate() {
@@ -164,6 +209,10 @@ public class AppointmentFieldController extends JPanel {
 
     public boolean isBirthday() {
 	return appointmentField.isBirthday();
+    }
+
+    public void setAppointment(final Appointment newAppointment) {
+	appointmentField.setAppointment(newAppointment);
     }
 
     public void setDate(final SimpleDate newDate) {
