@@ -1,6 +1,6 @@
 .metadata/
-AppointmentAdapter-0.0.1-SNAPSHOT-jar-with-dependencies.jar
-AppointmentEditor-0.0.1-SNAPSHOT-jar-with-dependencies.jar
-AppointmentVisualizer-0.0.1-SNAPSHOT-jar-with-dependencies.jar
+AppointmentAdapter.jar
+AppointmentEditor.jar
+AppointmentVisualizer.jar
 appointments.json
 Geburtstage.txt
