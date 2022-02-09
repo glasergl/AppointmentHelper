@@ -6,6 +6,7 @@ import java.awt.FlowLayout;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -22,20 +23,21 @@ import standardSwing.settings.Colors;
  * @author Gabriel Glaser
  * @version 2.1.2022
  */
-public class AppointmentFieldPanel extends JPanel implements Scrollable {
+public class AllAppointmentFields extends JPanel implements Scrollable {
 
     private static final int MAX_NUMBER_OF_SHOWN_APPOINTMENTS = 6;
     private static final Color BACKGROUND1 = Colors.getGray(1);
     private static final Color BACKGROUND2 = Colors.getGray(0);
 
     private final List<AppointmentFieldController> appointmentFields = new ArrayList<>();
+    private final Stack<AppointmentFieldController> allLastDeleted = new Stack<>();
 
-    public AppointmentFieldPanel(final List<Appointment> initialAppointments) {
+    public AllAppointmentFields(final List<Appointment> initialAppointments) {
 	super();
 	setup(initialAppointments);
     }
 
-    public AppointmentFieldPanel() {
+    public AllAppointmentFields() {
 	this(new ArrayList<>());
     }
 
@@ -66,8 +68,7 @@ public class AppointmentFieldPanel extends JPanel implements Scrollable {
 	appointmentFields.add(controller);
 	add(controller);
 	setSwitchingBackgroundsForAll();
-	revalidate();
-	repaint();
+	SwingFunctions.updateJComponent(this);
     }
 
     public void removeAppointmentField(final AppointmentFieldController toRemove) {
@@ -106,7 +107,7 @@ public class AppointmentFieldPanel extends JPanel implements Scrollable {
     private void setSwitchingBackgroundsForAll() {
 	for (int i = 0; i < appointmentFields.size(); i++) {
 	    final AppointmentFieldController current = appointmentFields.get(i);
-	    current.setBackground(i % 2 == 0 ? BACKGROUND1 : BACKGROUND2);
+	    current.setDefaultBackground(i % 2 == 0 ? BACKGROUND1 : BACKGROUND2);
 	}
     }
 
@@ -158,6 +159,22 @@ public class AppointmentFieldPanel extends JPanel implements Scrollable {
     public void cancelAll() {
 	for (final AppointmentFieldController appointmentField : appointmentFields) {
 	    appointmentField.cancel();
+	}
+    }
+
+    public void addToLastDeleted(final AppointmentFieldController appointmentFeldController) {
+	allLastDeleted.push(appointmentFeldController);
+    }
+
+    public void restoreLastDeleted() {
+	if (allLastDeleted.size() > 0) {
+	    try {
+		final AppointmentFieldController lastDeleted = allLastDeleted.pop();
+		addAppointmentField(lastDeleted.getAppointment());
+	    } catch (final InvalidAppointmentException e) {
+		e.printStackTrace();
+		throw new RuntimeException("Can't restore non existing Appointment.");
+	    }
 	}
     }
 

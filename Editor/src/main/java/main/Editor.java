@@ -12,7 +12,7 @@ import fileInteraction.AppointmentFileInteracter;
  * Entry-Point for the Editor.
  * 
  * @author Gabriel Glaser
- * @version 20.1.2022
+ * @version 8.2.2022
  */
 public class Editor {
 
@@ -40,7 +40,7 @@ public class Editor {
 
     /**
      * Asks the user whether he wants to create a new Appointment-File with a
-     * ownerless JOptionPane.
+     * JOptionPane which doesn't have an owner.
      * 
      * @return True, if the User wants to create a new Appointment-File, else,
      *         false.

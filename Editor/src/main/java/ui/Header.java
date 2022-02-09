@@ -1,12 +1,11 @@
 package ui;
 
 import java.awt.Color;
-
 import standardSwing.container.RowOfJComponent;
 import standardSwing.myComponent.button.MyTextButton;
 import standardSwing.settings.Colors;
-import ui.appointmentField.AllAppointments;
-import ui.appointmentField.AppointmentFieldController;
+import ui.appointmentField.AllAppointmentFieldsController;
+import ui.appointmentField.AllAppointmentFields;
 
 /**
  * Header for the whole frame.
@@ -22,12 +21,12 @@ public class Header extends RowOfJComponent {
     private static final int DISTANCE_TO_EDGE = 5;
     private static final Color BACKGROUND = Colors.getGray(3);
 
-    private final AllAppointments appointmentInputFields;
+    private final AllAppointmentFieldsController appointmentInputFields;
 
     private final MyTextButton saveButton = new MyTextButton("Alle Speichern");
     private final MyTextButton restoreDeletedButton = new MyTextButton("Zuletzt gelöscht wiederherstellen");
 
-    public Header(final AllAppointments appointmentFields) {
+    public Header(final AllAppointmentFieldsController appointmentFields) {
 	super(DISTANCE_TO_EDGE, DISTANCE_TO_EDGE);
 	this.appointmentInputFields = appointmentFields;
 	setup();
@@ -45,7 +44,8 @@ public class Header extends RowOfJComponent {
 	    appointmentInputFields.saveAll();
 	});
 	restoreDeletedButton.addActionListener(click -> {
-	    AppointmentFieldController.restoreLastDeleted();
+	    final AllAppointmentFields appointmentFieldPanel = appointmentInputFields.getAppointmentFieldPanel();
+	    appointmentFieldPanel.restoreLastDeleted();
 	});
     }
 }

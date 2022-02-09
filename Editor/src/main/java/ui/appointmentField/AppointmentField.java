@@ -15,7 +15,7 @@ import ui.dateField.MySimpleDateField;
  * Visual Input-Field for an Appointment.
  * 
  * @author Gabriel Glaser
- * @version 3.1.2022
+ * @version 8.2.2022
  */
 public class AppointmentField extends JPanel {
 
@@ -23,28 +23,59 @@ public class AppointmentField extends JPanel {
     private static final int NAME_WIDTH = 16;
     private static final int DESCRIPTION_WIDTH = 30;
     private static final int DISTANCE_BETWEEN_SUB_COMPONENTS = 10;
+    private static final boolean STANDARD_IS_BIRTHDAY = true;
 
-    private final MySimpleDateField dateField;
-    private final MyTextField nameField;
-    private final MyTextField descriptionField;
-    private final MyCheckBox isBirthdayField;
+    private final MySimpleDateField dateField = new MySimpleDateField();
+    private final MyTextField nameField = new MyTextField();
+    private final MyTextField descriptionField = new MyTextField();
+    private final MyCheckBox isBirthdayField = new MyCheckBox("ist Geburtstag", STANDARD_IS_BIRTHDAY);
 
+    /**
+     * @param initialDisplay - Appointment which is initially displayed by this.
+     */
     public AppointmentField(final Appointment initialDisplay) {
 	super();
-	this.dateField = new MySimpleDateField(initialDisplay.getDate());
-	this.nameField = new MyTextField("", initialDisplay.getName());
-	this.descriptionField = new MyTextField("", initialDisplay.getDescription());
-	this.isBirthdayField = new MyCheckBox("ist Geburtstag", initialDisplay.isBirthday());
+	dateField.setDate(initialDisplay.getDate());
+	nameField.setText(initialDisplay.getName());
+	descriptionField.setText(initialDisplay.getDescription());
+	isBirthdayField.setSelected(initialDisplay.isBirthday());
 	setup();
     }
 
+    /**
+     * Depicts standard values: Date of today, empty name, empty description and
+     * isBirthday set to true.
+     * 
+     * Calling getAppointment() right after calling this constructor will lead to an
+     * InvalidAppointmentException.
+     */
     public AppointmentField() {
 	super();
-	this.dateField = new MySimpleDateField();
-	this.nameField = new MyTextField();
-	this.descriptionField = new MyTextField();
-	this.isBirthdayField = new MyCheckBox("ist Geburtstag", true);
 	setup();
+    }
+
+    public boolean representsValidAppointment() {
+	final String currentName = nameField.getText();
+	return currentName.length() > 0;
+    }
+
+    /**
+     * @return The Appointment represented by the current input.
+     * @throws InvalidAppointmentException if the current name-field is empty.
+     */
+    public Appointment getAppointment() throws InvalidAppointmentException {
+	if (!representsValidAppointment()) {
+	    throw new InvalidAppointmentException();
+	} else {
+	    return new Appointment(getDate(), getName(), getDescription(), isBirthday());
+	}
+    }
+
+    public void setAppointment(final Appointment newAppointment) {
+	setDate(newAppointment.getDate());
+	setName(newAppointment.getName());
+	setDescription(newAppointment.getDescription());
+	setIsBirthday(newAppointment.isBirthday());
     }
 
     private void setup() {
@@ -56,29 +87,6 @@ public class AppointmentField extends JPanel {
 	add(nameField);
 	add(descriptionField);
 	add(isBirthdayField);
-    }
-
-    /**
-     * @return The Appointment represented by the current input.
-     * @throws InvalidAppointmentException if the current name-field is empty.
-     */
-    public Appointment getAppointment() throws InvalidAppointmentException {
-	if (!representsValidAppointment()) {
-	    throw new InvalidAppointmentException();
-	}
-	return new Appointment(getDate(), getName(), getDescription(), isBirthday());
-    }
-
-    public void setAppointment(final Appointment newAppointment) {
-	setDate(newAppointment.getDate());
-	setName(newAppointment.getName());
-	setDescription(newAppointment.getDescription());
-	setIsBirthday(newAppointment.isBirthday());
-    }
-
-    public boolean representsValidAppointment() {
-	final String currentName = nameField.getText();
-	return currentName.length() > 0;
     }
 
     @Override

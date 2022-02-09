@@ -21,18 +21,18 @@ import standardSwing.settings.Fonts;
  * @author Gabriel Glaser
  * @version 3.1.2022
  */
-public class AllAppointments extends JPanel {
+public class AllAppointmentFieldsController extends JPanel {
 
     private static final Color BACKGROUND = Colors.isDarkMode() ? Color.BLACK : Color.WHITE;
     private static final int SCROLL_SPEED = 20;
 
-    private final AppointmentFieldPanel appointmentFields;
+    private final AllAppointmentFields appointmentFields;
     private final ColumnDescription columnDescription = new ColumnDescription();
     private final JScrollPane jScrollPane;
 
-    public AllAppointments(final List<Appointment> initialAppointments) {
+    public AllAppointmentFieldsController(final List<Appointment> initialAppointments) {
 	super();
-	appointmentFields = new AppointmentFieldPanel(initialAppointments);
+	appointmentFields = new AllAppointmentFields(initialAppointments);
 	jScrollPane = new JScrollPane(appointmentFields, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 	setup();
     }
@@ -80,6 +80,10 @@ public class AllAppointments extends JPanel {
 	final JScrollBar verticalScrollBar = jScrollPane.getVerticalScrollBar();
 	verticalScrollBar.setUnitIncrement(SCROLL_SPEED);
 	add(jScrollPane, BorderLayout.CENTER);
+    }
+
+    public AllAppointmentFields getAppointmentFieldPanel() {
+	return appointmentFields;
     }
 
     private final class ColumnDescription extends JPanel {

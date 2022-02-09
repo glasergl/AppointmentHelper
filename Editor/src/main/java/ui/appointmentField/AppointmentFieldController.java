@@ -4,12 +4,12 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.io.File;
 import java.util.Optional;
-import java.util.Stack;
 import javax.swing.JPanel;
 import javax.swing.event.ChangeListener;
 import appointment.Appointment;
 import appointment.InvalidAppointmentException;
 import date.SimpleDate;
+import date.SimpleDates;
 import standardSwing.eventListener.emptyImplementation.MyDocumentListener;
 import fileInteraction.AppointmentFileInteracter;
 import standardSwing.myComponent.button.MyTextButton;
@@ -20,25 +20,25 @@ import standardSwing.settings.Colors;
  * Appointment-File.
  * 
  * @author Gabriel Glaser
- * @version 3.1.2022
+ * @version 8.2.2022
  */
 public class AppointmentFieldController extends JPanel {
 
-    private static final int MARGIN_OF_SUB_COMPONENTS = 20;
-    private static final int VERTICAL_MARGIN = 20;
-    private static final Stack<AppointmentFieldController> DELETED = new Stack<>();
-    private static final Color DEFAULT_BACKGROUND = Colors.getGray(2);
+    private static final int HORIZONTAL_GAP_OF_SUPCOMPONENTS = 20;
+    private static final int VERTICAL_GAP_OF_SUPCOMPONENTS = 20;
     private static final Color UNSAVED_BACKGROUND = new Color(240, 237, 72);
+    private static final Color ERROR_BACKGROUND = Colors.ofError();
 
-    private final AppointmentFieldPanel parent;
+    private final AllAppointmentFields parent;
 
     private final AppointmentField appointmentField;
     private final MyTextButton cancelButton = new MyTextButton("Abbrechen");
     private final MyTextButton deleteButton = new MyTextButton("Löschen");
 
     private Optional<Appointment> currentlyStoredAppointment = Optional.empty();
+    private Color defaultBackground;
 
-    public AppointmentFieldController(final AppointmentFieldPanel parent, final Appointment initialDisplay) {
+    public AppointmentFieldController(final AllAppointmentFields parent, final Appointment initialDisplay) {
 	super();
 	this.parent = parent;
 	this.currentlyStoredAppointment = Optional.of(initialDisplay);
@@ -46,11 +46,11 @@ public class AppointmentFieldController extends JPanel {
 	setup();
     }
 
-    public AppointmentFieldController(final AppointmentFieldPanel parent) {
+    public AppointmentFieldController(final AllAppointmentFields parent) {
 	super();
 	this.parent = parent;
-	this.currentlyStoredAppointment = Optional.empty();
 	this.appointmentField = new AppointmentField();
+	setBackground(UNSAVED_BACKGROUND);
 	setup();
     }
 
@@ -74,18 +74,25 @@ public class AppointmentFieldController extends JPanel {
     public void save(final File appointmentFile) throws InvalidAppointmentException {
 	final Appointment currentContent = appointmentField.getAppointment();
 	if (currentlyStoredAppointment.isPresent()) {
-	    AppointmentFileInteracter.remove(currentlyStoredAppointment.get());
+	    AppointmentFileInteracter.remove(currentlyStoredAppointment.get(), appointmentFile);
 	}
 	AppointmentFileInteracter.add(currentContent, appointmentFile);
 	currentlyStoredAppointment = Optional.of(currentContent);
+	setBackground(defaultBackground);
     }
 
     /**
-     * Sets the content to the last stored version of this Controller, if any exist.
+     * Sets the content to the last stored version of this Controller, if it exists.
+     * If the input never has been stored, yet, default values are set.
      */
     public void cancel() {
 	if (currentlyStoredAppointment.isPresent()) {
 	    appointmentField.setAppointment(currentlyStoredAppointment.get());
+	} else {
+	    appointmentField.setDate(SimpleDates.getToday());
+	    appointmentField.setName("");
+	    appointmentField.setDescription("");
+	    appointmentField.setIsBirthday(true);
 	}
     }
 
@@ -94,9 +101,19 @@ public class AppointmentFieldController extends JPanel {
      * Appointments which makes it possible to restore it later.
      */
     public void delete() {
+	delete(AppointmentFileInteracter.getDefaultAppointmentFile());
+    }
+
+    /**
+     * Removes the Appointment controlled by this and adds it to a Stack of
+     * Appointments which makes it possible to restore it later.
+     * 
+     * @param appointmentFile from which this should be deleted.
+     */
+    public void delete(final File appointmentFile) {
 	if (currentlyStoredAppointment.isPresent()) {
-	    AppointmentFileInteracter.remove(currentlyStoredAppointment.get());
-	    DELETED.add(this);
+	    AppointmentFileInteracter.remove(currentlyStoredAppointment.get(), appointmentFile);
+	    parent.addToLastDeleted(this);
 	}
 	parent.removeAppointmentField(this);
     }
@@ -140,38 +157,67 @@ public class AppointmentFieldController extends JPanel {
 	try {
 	    final Appointment currentInput = appointmentField.getAppointment();
 	    if (currentlyStoredAppointment.isPresent() && currentInput.equals(currentlyStoredAppointment.get())) {
-		setBackground(DEFAULT_BACKGROUND);
+		setBackground(defaultBackground);
 	    } else {
 		setBackground(UNSAVED_BACKGROUND);
 	    }
 	} catch (final InvalidAppointmentException e) {
-	    setBackground(Colors.ofError());
+	    setBackground(ERROR_BACKGROUND);
 	}
     }
 
+    /**
+     * Sets the default background which is only depicted, if the displayed
+     * Appointment is saved and valid.
+     * 
+     * Else either UNSAVED_BACKGROUND or ERROR_BACKGROUND is shown and the given
+     * newDefaultBackground will be visible as soon as the controlled Appointment is
+     * saved and valid again.
+     * 
+     * @param newDefaultBackground
+     */
+    public void setDefaultBackground(final Color newDefaultBackground) {
+	defaultBackground = newDefaultBackground;
+	final Color currentBackground = getBackground();
+	if (currentBackground != UNSAVED_BACKGROUND && currentBackground != ERROR_BACKGROUND) {
+	    setBackground(defaultBackground);
+	}
+    }
+
+    public boolean hasDefaultBackground() {
+	return getBackground() == defaultBackground;
+    }
+
+    public boolean hasUnsavedBackground() {
+	return getBackground() == UNSAVED_BACKGROUND;
+    }
+
+    public boolean hasErrorBackground() {
+	return getBackground() == ERROR_BACKGROUND;
+    }
+
     private void setup() {
-	setLayout(new FlowLayout(FlowLayout.LEFT, MARGIN_OF_SUB_COMPONENTS, VERTICAL_MARGIN));
-	setBackground(DEFAULT_BACKGROUND);
-	addListenersForSaveState();
+	setLayout(new FlowLayout(FlowLayout.LEFT, HORIZONTAL_GAP_OF_SUPCOMPONENTS, VERTICAL_GAP_OF_SUPCOMPONENTS));
+	addListenersForBackgroundChanges();
 	setupButtons();
 	add(appointmentField);
 	add(cancelButton);
 	add(deleteButton);
     }
 
-    private void addListenersForSaveState() {
-	final MyDocumentListener toUpdateSavedStateDocumentListener = new MyDocumentListener() {
+    private void addListenersForBackgroundChanges() {
+	final MyDocumentListener toUpdateBackgroundDocumentListener = new MyDocumentListener() {
 	    public void update() {
 		updateBackground();
 	    }
 	};
-	final ChangeListener toUpdateSaveStateChangeListener = change -> {
+	final ChangeListener toUpdateBackgroundChangeListener = change -> {
 	    updateBackground();
 	};
-	appointmentField.getDateField().addChangeListener(toUpdateSaveStateChangeListener);
-	appointmentField.getNameField().getBaseImplementation().getDocument().addDocumentListener(toUpdateSavedStateDocumentListener);
-	appointmentField.getDescriptionField().getBaseImplementation().getDocument().addDocumentListener(toUpdateSavedStateDocumentListener);
-	appointmentField.getIsBirthdayField().addChangeListener(toUpdateSaveStateChangeListener);
+	appointmentField.getDateField().addChangeListener(toUpdateBackgroundChangeListener);
+	appointmentField.getNameField().getBaseImplementation().getDocument().addDocumentListener(toUpdateBackgroundDocumentListener);
+	appointmentField.getDescriptionField().getBaseImplementation().getDocument().addDocumentListener(toUpdateBackgroundDocumentListener);
+	appointmentField.getIsBirthdayField().addChangeListener(toUpdateBackgroundChangeListener);
     }
 
     private void setupButtons() {
@@ -189,6 +235,10 @@ public class AppointmentFieldController extends JPanel {
 	if (appointmentField != null) {
 	    appointmentField.setBackground(newBackground);
 	}
+    }
+
+    public AllAppointmentFields getParent() {
+	return parent;
     }
 
     public Appointment getAppointment() throws InvalidAppointmentException {
@@ -229,13 +279,6 @@ public class AppointmentFieldController extends JPanel {
 
     public void setIsBirthday(final boolean newIsBirthday) {
 	appointmentField.setIsBirthday(newIsBirthday);
-    }
-
-    public static void restoreLastDeleted() {
-	if (DELETED.size() > 0) {
-	    final AppointmentFieldController lastDeleted = DELETED.pop();
-	    lastDeleted.parent.addAppointmentField(lastDeleted.currentlyStoredAppointment.get());
-	}
     }
 
 }

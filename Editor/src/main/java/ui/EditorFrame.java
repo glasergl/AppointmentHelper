@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 import appointment.Appointment;
 import standardSwing.container.MyFrame;
 import standardSwing.general.SwingFunctions;
-import ui.appointmentField.AllAppointments;
+import ui.appointmentField.AllAppointmentFieldsController;
 
 /**
  * Main-Frame for the Editor.
@@ -20,13 +20,13 @@ public final class EditorFrame extends MyFrame {
 
     private static final Image ICON = SwingFunctions.getImage("EditorIcon.png", EditorFrame.class);
 
-    private final AllAppointments appointmentsFields;
+    private final AllAppointmentFieldsController appointmentsFields;
     private final Header header;
     private final Footer footer;
 
     public EditorFrame(final List<Appointment> initialAppointments) {
 	super("TerminEditor", ICON);
-	appointmentsFields = new AllAppointments(initialAppointments);
+	appointmentsFields = new AllAppointmentFieldsController(initialAppointments);
 	header = new Header(appointmentsFields);
 	footer = new Footer(appointmentsFields);
 	setup();

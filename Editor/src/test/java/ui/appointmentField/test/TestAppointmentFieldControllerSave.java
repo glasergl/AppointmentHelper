@@ -1,4 +1,4 @@
-package ui.test;
+package ui.appointmentField.test;
 
 import static org.junit.Assert.*;
 
@@ -11,16 +11,16 @@ import appointment.InvalidAppointmentException;
 import date.SimpleDate;
 import fileInteraction.AppointmentFileInteracter;
 import ui.appointmentField.AppointmentFieldController;
-import ui.appointmentField.AppointmentFieldPanel;
+import ui.appointmentField.AllAppointmentFields;
 
 /**
  * @author Gabriel Glaser
- * @version 19.01.2022
+ * @version 8.2.2022
  */
 public class TestAppointmentFieldControllerSave {
 
     static File testAppointmentFile = AppointmentFileInteracter.createEmptyAppointmentFile("src\\test\\resources\\TestAppointmentFieldControllerAppointments.json");
-    static AppointmentFieldPanel allAppointments = new AppointmentFieldPanel();
+    static AllAppointmentFields allAppointments = new AllAppointmentFields();
 
     static SimpleDate testDate = new SimpleDate(10, 10);
     static String testName = "Tim";
@@ -93,7 +93,7 @@ public class TestAppointmentFieldControllerSave {
 	    assertTrue(AppointmentFileInteracter.contains(appointmentFieldController.getAppointment(), testAppointmentFile));
 	} catch (InvalidAppointmentException e) {
 	    e.printStackTrace();
-	    fail("Couldn't save Appointment, but should've been.");
+	    fail("Wasn't able to save Appointment.");
 	}
     }
 

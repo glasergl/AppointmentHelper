@@ -7,7 +7,7 @@ import standardSwing.container.RowOfJComponent;
 import standardSwing.myComponent.button.MyTextButton;
 import standardSwing.settings.Colors;
 import standardSwing.settings.Fonts;
-import ui.appointmentField.AllAppointments;
+import ui.appointmentField.AllAppointmentFieldsController;
 
 /**
  * Footer for the whole frame.
@@ -23,10 +23,10 @@ public class Footer extends RowOfJComponent {
     private static final Color BACKGROUND = Colors.getGray(3);
     private static final float ADD_BUTTON_PLUS_SIZE = 65.0f;
 
-    private final AllAppointments appointmentInputFields;
+    private final AllAppointmentFieldsController appointmentInputFields;
     private final MyTextButton addAppointmentButton = new MyTextButton("+");
 
-    public Footer(final AllAppointments appointmentInputFields) {
+    public Footer(final AllAppointmentFieldsController appointmentInputFields) {
 	super(DISTANCE_TO_EDGE, DISTANCE_TO_EDGE);
 	this.appointmentInputFields = appointmentInputFields;
 	setup();
