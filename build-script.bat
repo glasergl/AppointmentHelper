@@ -32,6 +32,10 @@ echo ################################################################-Visualizer
 echo\
 call mvn package -f Visualizer/
 
+del AppointmentAdapter.jar
+del AppointmentEditor.jar
+del AppointmentVisualizer.jar
+
 rename "AppointmentAdapter-0.0.1-SNAPSHOT-jar-with-dependencies.jar" "AppointmentAdapter.jar"
 rename "AppointmentEditor-0.0.1-SNAPSHOT-jar-with-dependencies.jar" "AppointmentEditor.jar"
 rename "AppointmentVisualizer-0.0.1-SNAPSHOT-jar-with-dependencies.jar" "AppointmentVisualizer.jar"
