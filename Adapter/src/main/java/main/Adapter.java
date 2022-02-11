@@ -39,6 +39,10 @@ public final class Adapter {
 		for (final Appointment appointmentToStore : reader.getAdaptedAppointments()) {
 		    AppointmentFileInteracter.add(appointmentToStore);
 		}
+		final File appointmentFile = AppointmentFileInteracter.getDefaultAppointmentFile();
+		final String title = "Adaption erfolgreich";
+		final String message = "Die Geburtstage aus \"" + GEBURTSTAGE.getAbsolutePath() + "\"\nkonnten erfolgreich zu \"" + appointmentFile.getAbsolutePath() + "\"\nkonvertiert werden.";
+		JOptionPane.showMessageDialog(null, message, title, JOptionPane.INFORMATION_MESSAGE);
 	    } catch (final IllegalFileFormatException e) {
 		final String errorTitle = "Format-Fehler in \"Geburtstage.txt\"";
 		final String errorMessage = "\"Geburtstage.txt\" hat nicht das richtige Format. Sie kann nicht zu JSON adaptiert werden.";
