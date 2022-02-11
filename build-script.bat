@@ -32,12 +32,27 @@ echo ################################################################-Visualizer
 echo\
 call mvn package -f Visualizer/
 
+echo ################################################################-delete old jars (if they already existed)-################################################################
+echo\
 del AppointmentAdapter.jar
 del AppointmentEditor.jar
 del AppointmentVisualizer.jar
+echo\
 
+echo ################################################################-rename jars-################################################################
+echo\
 rename "AppointmentAdapter-0.0.1-SNAPSHOT-jar-with-dependencies.jar" "AppointmentAdapter.jar"
 rename "AppointmentEditor-0.0.1-SNAPSHOT-jar-with-dependencies.jar" "AppointmentEditor.jar"
 rename "AppointmentVisualizer-0.0.1-SNAPSHOT-jar-with-dependencies.jar" "AppointmentVisualizer.jar"
+echo\
+
+echo ################################################################-pack jars in zip-################################################################
+echo\
+call 7z a AppointmentHelper.zip AppointmentAdapter.jar AppointmentEditor.jar AppointmentVisualizer.jar
+echo\
+echo\
+echo\
+
+echo build finished.
 
 pause
