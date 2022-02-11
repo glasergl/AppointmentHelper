@@ -31,9 +31,9 @@ public class TestAppointmentFieldControllerCancel {
 	    appointmentFieldController.setName("Luca");
 	    appointmentFieldController.setDescription("I need a cupcake");
 	    appointmentFieldController.setIsBirthday(!testIsBirthday);
-	    assertNotEquals(testAppointment, appointmentFieldController.getAppointment());
+	    assertNotEquals(testAppointment, appointmentFieldController.getInputAppointment());
 	    appointmentFieldController.cancel();
-	    assertEquals(testAppointment, appointmentFieldController.getAppointment());
+	    assertEquals(testAppointment, appointmentFieldController.getInputAppointment());
 	} catch (InvalidAppointmentException e) {
 	    e.printStackTrace();
 	    fail("Couldn't get Appointment but should've been able to");

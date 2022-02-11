@@ -45,7 +45,7 @@ public class Header extends RowOfJComponent {
 	});
 	restoreDeletedButton.addActionListener(click -> {
 	    final AllAppointmentFields appointmentFieldPanel = appointmentInputFields.getAppointmentFieldPanel();
-	    appointmentFieldPanel.restoreLastDeleted();
+	    appointmentFieldPanel.restoreLastDeletedAppointmentField();
 	});
     }
 }

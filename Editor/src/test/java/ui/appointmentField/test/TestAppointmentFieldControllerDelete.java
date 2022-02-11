@@ -52,7 +52,7 @@ public class TestAppointmentFieldControllerDelete {
 	    AppointmentFieldController appointmentFieldController = new AppointmentFieldController(allAppointments);
 	    appointmentFieldController.setName("Turkey");
 	    appointmentFieldController.setDate(new SimpleDate(8, 1));
-	    Appointment currentInput = appointmentFieldController.getAppointment();
+	    Appointment currentInput = appointmentFieldController.getInputAppointment();
 	    appointmentFieldController.save(testAppointmentFile);
 	    assertTrue(AppointmentFileInteracter.contains(currentInput, testAppointmentFile));
 	    appointmentFieldController.delete(testAppointmentFile);

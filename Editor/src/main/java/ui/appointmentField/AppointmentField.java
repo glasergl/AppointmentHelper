@@ -6,20 +6,27 @@ import javax.swing.JPanel;
 import appointment.Appointment;
 import appointment.InvalidAppointmentException;
 import date.SimpleDate;
+import standardSwing.entity.CelestialDirection;
+import standardSwing.eventListener.SiblingPopUpDisplayerOnHover;
+import standardSwing.eventListener.emptyImplementation.MyDocumentListener;
 import standardSwing.myComponent.MyCheckBox;
+import standardSwing.myComponent.MyLabel;
 import standardSwing.myComponent.textField.MyTextField;
+import standardSwing.myComponent.textField.MyTextFieldAttributes;
 import standardSwing.settings.Colors;
 import ui.dateField.MySimpleDateField;
 
 /**
  * Visual Input-Field for an Appointment.
  * 
+ * Furthermore, if the textfield for the name is empty, it gets colored red to
+ * indicate it being in an illegal state.
+ * 
  * @author Gabriel Glaser
- * @version 8.2.2022
+ * @version 11.2.2022
  */
 public class AppointmentField extends JPanel {
 
-    private static final Color DATE_FIELD_COLOR_WHILE_HOVERED = Colors.getGray(3);
     private static final int NAME_WIDTH = 16;
     private static final int DESCRIPTION_WIDTH = 30;
     private static final int DISTANCE_BETWEEN_SUB_COMPONENTS = 10;
@@ -80,8 +87,20 @@ public class AppointmentField extends JPanel {
 
     private void setup() {
 	setLayout(new FlowLayout(FlowLayout.LEFT, DISTANCE_BETWEEN_SUB_COMPONENTS, 0));
-	dateField.setBackgroundWhileMouseHovered(DATE_FIELD_COLOR_WHILE_HOVERED);
 	nameField.setColumns(NAME_WIDTH);
+	nameField.getBaseImplementation().getDocument().addDocumentListener(new MyDocumentListener() {
+	    @Override
+	    public void update() {
+		final String currentText = nameField.getText();
+		if (currentText.length() == 0) {
+		    nameField.setBackground(Colors.ofError());
+//		    final MyLabel myLabel = new MyLabel("Name muss mindestens einen Buchstaben enthalten!");
+//		    new SiblingPopUpDisplayerOnHover(myLabel, nameField, CelestialDirection.SOUTH);
+		} else {
+		    nameField.setBackground(MyTextFieldAttributes.getBackgroundColor());
+		}
+	    }
+	});
 	descriptionField.setColumns(DESCRIPTION_WIDTH);
 	add(dateField);
 	add(nameField);

@@ -12,7 +12,7 @@ import fileInteraction.AppointmentFileInteracter;
  * Entry-Point for the Editor.
  * 
  * @author Gabriel Glaser
- * @version 8.2.2022
+ * @version 11.2.2022
  */
 public class Editor {
 
@@ -39,6 +39,17 @@ public class Editor {
     }
 
     /**
+     * Retrieves all Appointments out of the Appointment-File and creates, shows the
+     * EditorFrame on the EDT.
+     */
+    private static void createAndShowGUI() {
+	final List<Appointment> initialAppointments = AppointmentFileInteracter.getAppointments();
+	SwingUtilities.invokeLater(() -> {
+	    new EditorFrame(initialAppointments);
+	});
+    }
+
+    /**
      * Asks the user whether he wants to create a new Appointment-File with a
      * JOptionPane which doesn't have an owner.
      * 
@@ -50,17 +61,6 @@ public class Editor {
 	final String message = "Die Datei \"appointments.json\" konnte nicht gefunden werden. Sie sollte im selben Verzeichnis wie die .jar liegen.\n" + "Möchten Sie eine neue, leere erstellen?";
 	final int answer = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 	return answer == JOptionPane.YES_OPTION;
-    }
-
-    /**
-     * Retrieves all Appointments out of the Appointment-File and creates, shows the
-     * EditorFrame on the EDT.
-     */
-    private static void createAndShowGUI() {
-	final List<Appointment> initialAppointments = AppointmentFileInteracter.getAppointments();
-	SwingUtilities.invokeLater(() -> {
-	    new EditorFrame(initialAppointments);
-	});
     }
 
 }

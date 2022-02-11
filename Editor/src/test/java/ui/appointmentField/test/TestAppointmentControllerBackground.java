@@ -41,14 +41,6 @@ public class TestAppointmentControllerBackground {
     }
 
     @Test
-    public void testBackgroundAfterFirstNotNameChange() {
-	AppointmentFieldController appointmentFieldController = new AppointmentFieldController(allAppointments);
-	appointmentFieldController.setDefaultBackground(defaultBackground);
-	appointmentFieldController.setDescription("TestDescription");
-	assertTrue(appointmentFieldController.hasErrorBackground());
-    }
-
-    @Test
     public void testBackgroundAfterFirstNameChange() {
 	AppointmentFieldController appointmentFieldController = new AppointmentFieldController(allAppointments);
 	appointmentFieldController.setDefaultBackground(defaultBackground);
@@ -70,15 +62,6 @@ public class TestAppointmentControllerBackground {
 	assertTrue(appointmentFieldController.hasDefaultBackground());
 	appointmentFieldController.setDate(new SimpleDate(12, 2));
 	assertTrue(appointmentFieldController.hasUnsavedBackground());
-    }
-
-    @Test
-    public void testBackgroundOfAppointmentControllerWithInitialAppointmentAndChangeToError() {
-	AppointmentFieldController appointmentFieldController = new AppointmentFieldController(allAppointments, testAppointment);
-	appointmentFieldController.setDefaultBackground(defaultBackground);
-	assertTrue(appointmentFieldController.hasDefaultBackground());
-	appointmentFieldController.setName("");
-	assertTrue(appointmentFieldController.hasErrorBackground());
     }
 
     @Test
@@ -111,16 +94,6 @@ public class TestAppointmentControllerBackground {
 	    e.printStackTrace();
 	    fail("Couldn't save Appointment");
 	}
-    }
-
-    @Test
-    public void testBackgroundAfterCancel() {
-	AppointmentFieldController appointmentFieldController = new AppointmentFieldController(allAppointments);
-	appointmentFieldController.setDefaultBackground(defaultBackground);
-	appointmentFieldController.setName("Test123");
-	appointmentFieldController.setDate(new SimpleDate(14, 5));
-	appointmentFieldController.cancel();
-	assertTrue(appointmentFieldController.hasErrorBackground());
     }
     
     @Test

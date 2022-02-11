@@ -18,7 +18,6 @@ import standardSwing.settings.Colors;
 public class AllMonths extends JPanel {
 
     private static final Color BACKGROUND_COLOR = Colors.getGray(1);
-    private static final Color MONTH_CONTROL_BUTTON_COLOR_WHILE_HOVERED = Colors.getGray(2);
     private static final int WIDTH_OF_CLOSE_BUTTON = 40;
     private static final int DISTANCE_BETWEEN_MONTH_CONTROL_BUTTONS = 4;
 
@@ -27,7 +26,7 @@ public class AllMonths extends JPanel {
     private final RowOfJComponent topButtons = new RowOfJComponent();
     private final RowOfJComponent middleButtons = new RowOfJComponent(7, 7);
 
-    private final MyTextButton closeButton = new MyTextButton("x", false);
+    private final MyTextButton closeButton = new MyTextButton("x", false, new Color(209, 63, 52), Color.WHITE);
     private final MyTextButton goLeftButton = new MyTextButton("<<", false);
     private final MyTextButton goRightButton = new MyTextButton(">>", false);
     private final MyTextButton goLeftEdgeButton = new MyTextButton("I<<", false);
@@ -56,18 +55,14 @@ public class AllMonths extends JPanel {
 	middleButtons.addToRight(goRightButton);
 	middleButtons.addToRight(goRightEdgeButton);
 
-	middleButtons.setBackgroundOfChildren(BACKGROUND_COLOR);
+	middleButtons.forEachChildDo(button -> {
+	    ((MyTextButton) button).updateBackground(BACKGROUND_COLOR);
+	});
 	middleButtons.setBorderOfChildren(new EmptyBorder(DISTANCE_BETWEEN_MONTH_CONTROL_BUTTONS / 2, DISTANCE_BETWEEN_MONTH_CONTROL_BUTTONS / 2, DISTANCE_BETWEEN_MONTH_CONTROL_BUTTONS / 2,
 		DISTANCE_BETWEEN_MONTH_CONTROL_BUTTONS / 2));
 
 	closeButton.setPreferredSize(new Dimension(WIDTH_OF_CLOSE_BUTTON, (int) closeButton.getPreferredSize().getHeight()));
 	closeButton.setBackground(BACKGROUND_COLOR);
-	closeButton.setBackgroundWhileMouseHovered(new Color(209, 63, 52));
-	closeButton.setForegroundWhileMouseHovered(new Color(230, 230, 230));
-	goLeftButton.setBackgroundWhileMouseHovered(MONTH_CONTROL_BUTTON_COLOR_WHILE_HOVERED);
-	goLeftEdgeButton.setBackgroundWhileMouseHovered(MONTH_CONTROL_BUTTON_COLOR_WHILE_HOVERED);
-	goRightButton.setBackgroundWhileMouseHovered(MONTH_CONTROL_BUTTON_COLOR_WHILE_HOVERED);
-	goRightEdgeButton.setBackgroundWhileMouseHovered(MONTH_CONTROL_BUTTON_COLOR_WHILE_HOVERED);
 
 	setupActionListeners();
 

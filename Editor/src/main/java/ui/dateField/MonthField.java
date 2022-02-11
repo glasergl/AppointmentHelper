@@ -22,7 +22,6 @@ public final class MonthField extends JPanel {
 
     private static final Color BACKGROUND_COLOR = Colors.getGray(1);
     private static final Color BACKGROUND_COLOR_OF_DAY = Colors.getGray(2);
-    private static final Color BACKGROUND_COLOR_OF_DAY_WHILE_HOVERED = Colors.getGray(3);
     private static final int WIDTH_BETWEEN_DAY_LABELS = 2;
     private static final int SIZE_OF_DAY_LABEL = 35;
 
@@ -65,8 +64,7 @@ public final class MonthField extends JPanel {
     private void addDayLabel(int day) {
 	final SimpleDate date = new SimpleDate(day, monthToDepict);
 	final MyTextButton visualizedDay = new MyTextButton(String.valueOf(day), false);
-	visualizedDay.setBackground(BACKGROUND_COLOR_OF_DAY);
-	visualizedDay.setBackgroundWhileMouseHovered(BACKGROUND_COLOR_OF_DAY_WHILE_HOVERED);
+	visualizedDay.updateBackground(BACKGROUND_COLOR_OF_DAY);
 	visualizedDay.setPreferredSize(new Dimension(SIZE_OF_DAY_LABEL, SIZE_OF_DAY_LABEL));
 	visualizedDay.addActionListener(click -> {
 	    toSetSelectedDateOf.setDateInputVisible(false);

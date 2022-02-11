@@ -46,15 +46,6 @@ public class AllAppointmentFieldsController extends JPanel {
 	jScrollPane.repaint();
     }
 
-    public void addAppointmentField(final Appointment appointmentToDisplay) {
-	appointmentFields.addAppointmentField(appointmentToDisplay);
-	jScrollPane.validate();
-	final JScrollBar verticalScrollBar = jScrollPane.getVerticalScrollBar();
-	verticalScrollBar.setValue(verticalScrollBar.getMaximum());
-	jScrollPane.revalidate();
-	jScrollPane.repaint();
-    }
-
     public void saveAll() {
 	appointmentFields.saveAll();
     }
