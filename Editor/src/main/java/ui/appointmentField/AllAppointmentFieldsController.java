@@ -91,9 +91,9 @@ public class AllAppointmentFieldsController extends JPanel {
 	    date.setFont(Fonts.resizedStandard(16.0f));
 	    name.setFont(Fonts.resizedStandard(16.0f));
 	    description.setFont(Fonts.resizedStandard(16.0f));
-	    date.setBorder(new EmptyBorder(0, 71, 0, 0));
-	    name.setBorder(new EmptyBorder(0, 20, 0, 0));
-	    description.setBorder(new EmptyBorder(0, 247, 0, 0));
+	    date.setBorder(new EmptyBorder(0, 30, 0, 0));
+	    name.setBorder(new EmptyBorder(0, 22, 0, 0));
+	    description.setBorder(new EmptyBorder(0, 227, 0, 0));
 	    add(date);
 	    add(name);
 	    add(description);
