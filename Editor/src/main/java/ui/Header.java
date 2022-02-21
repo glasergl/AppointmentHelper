@@ -2,7 +2,7 @@ package ui;
 
 import java.awt.Color;
 import standardSwing.container.RowOfJComponent;
-import standardSwing.myComponent.button.MyTextButton;
+import standardSwing.myComponent.button.MyJButton;
 import standardSwing.settings.Colors;
 import ui.appointmentField.AllAppointmentFieldsController;
 import ui.appointmentField.AllAppointmentFields;
@@ -23,8 +23,8 @@ public class Header extends RowOfJComponent {
 
     private final AllAppointmentFieldsController appointmentInputFields;
 
-    private final MyTextButton saveButton = new MyTextButton("Alle Speichern");
-    private final MyTextButton restoreDeletedButton = new MyTextButton("Zuletzt gelöscht wiederherstellen");
+    private final MyJButton saveButton = new MyJButton("Alle Speichern");
+    private final MyJButton restoreDeletedButton = new MyJButton("Zuletzt gelöscht wiederherstellen");
 
     public Header(final AllAppointmentFieldsController appointmentFields) {
 	super(DISTANCE_TO_EDGE, DISTANCE_TO_EDGE);

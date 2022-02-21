@@ -11,8 +11,8 @@ import appointment.InvalidAppointmentException;
 import date.SimpleDate;
 import date.SimpleDates;
 import standardSwing.eventListener.emptyImplementation.MyDocumentListener;
+import standardSwing.myComponent.button.MyJButton;
 import fileInteraction.AppointmentFileInteracter;
-import standardSwing.myComponent.button.MyTextButton;
 
 /**
  * Class which controls an AppointmentField and its interaction with the
@@ -30,8 +30,8 @@ public class AppointmentFieldController extends JPanel {
     private final AllAppointmentFields parent;
 
     private final AppointmentField appointmentField;
-    private final MyTextButton cancelButton = new MyTextButton("Abbrechen");
-    private final MyTextButton deleteButton = new MyTextButton("Löschen");
+    private final MyJButton cancelButton = new MyJButton("Abbrechen");
+    private final MyJButton deleteButton = new MyJButton("Löschen");
 
     private Optional<Appointment> currentlyStoredAppointment = Optional.empty();
     private Color defaultBackground;
@@ -209,8 +209,8 @@ public class AppointmentFieldController extends JPanel {
 	    updateBackground();
 	};
 	appointmentField.getDateField().addChangeListener(toUpdateBackgroundChangeListener);
-	appointmentField.getNameField().getBaseImplementation().getDocument().addDocumentListener(toUpdateBackgroundDocumentListener);
-	appointmentField.getDescriptionField().getBaseImplementation().getDocument().addDocumentListener(toUpdateBackgroundDocumentListener);
+	appointmentField.getNameField().getDocument().addDocumentListener(toUpdateBackgroundDocumentListener);
+	appointmentField.getDescriptionField().getDocument().addDocumentListener(toUpdateBackgroundDocumentListener);
 	appointmentField.getIsBirthdayField().addChangeListener(toUpdateBackgroundChangeListener);
     }
 

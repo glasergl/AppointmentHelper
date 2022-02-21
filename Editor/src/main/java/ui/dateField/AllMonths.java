@@ -6,7 +6,7 @@ import java.awt.Dimension;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import standardSwing.container.RowOfJComponent;
-import standardSwing.myComponent.button.MyTextButton;
+import standardSwing.myComponent.button.CustomButton;
 import standardSwing.settings.Colors;
 
 /**
@@ -20,17 +20,18 @@ public class AllMonths extends JPanel {
     private static final Color BACKGROUND_COLOR = Colors.getGray(1);
     private static final int WIDTH_OF_CLOSE_BUTTON = 40;
     private static final int DISTANCE_BETWEEN_MONTH_CONTROL_BUTTONS = 4;
+    private static final Dimension SIZE_OF_MONTH_CONTROL_BUTTONS = new Dimension(35, 35);
 
     private final MySimpleDateField dateField;
 
     private final RowOfJComponent topButtons = new RowOfJComponent();
     private final RowOfJComponent middleButtons = new RowOfJComponent(7, 7);
 
-    private final MyTextButton closeButton = new MyTextButton("x", false, new Color(209, 63, 52), Color.WHITE);
-    private final MyTextButton goLeftButton = new MyTextButton("<<", false);
-    private final MyTextButton goRightButton = new MyTextButton(">>", false);
-    private final MyTextButton goLeftEdgeButton = new MyTextButton("I<<", false);
-    private final MyTextButton goRightEdgeButton = new MyTextButton(">>I", false);
+    private final CustomButton closeButton = new CustomButton("x", BACKGROUND_COLOR, Color.BLACK);
+    private final CustomButton goLeftButton = new CustomButton("<<", BACKGROUND_COLOR, Color.BLACK);
+    private final CustomButton goRightButton = new CustomButton(">>", BACKGROUND_COLOR, Color.BLACK);
+    private final CustomButton goLeftEdgeButton = new CustomButton("I<<", BACKGROUND_COLOR, Color.BLACK);
+    private final CustomButton goRightEdgeButton = new CustomButton(">>I", BACKGROUND_COLOR, Color.BLACK);
 
     private int currentMonth;
     private MonthField displayOfCurrentMonth;;
@@ -55,14 +56,18 @@ public class AllMonths extends JPanel {
 	middleButtons.addToRight(goRightButton);
 	middleButtons.addToRight(goRightEdgeButton);
 
-	middleButtons.forEachChildDo(button -> {
-	    ((MyTextButton) button).updateBackground(BACKGROUND_COLOR);
-	});
+	closeButton.setBackgroundWhileHovered(new Color(209, 63, 52));
+	closeButton.setForegroundWhileHovered(Color.WHITE);
 	middleButtons.setBorderOfChildren(new EmptyBorder(DISTANCE_BETWEEN_MONTH_CONTROL_BUTTONS / 2, DISTANCE_BETWEEN_MONTH_CONTROL_BUTTONS / 2, DISTANCE_BETWEEN_MONTH_CONTROL_BUTTONS / 2,
 		DISTANCE_BETWEEN_MONTH_CONTROL_BUTTONS / 2));
 
 	closeButton.setPreferredSize(new Dimension(WIDTH_OF_CLOSE_BUTTON, (int) closeButton.getPreferredSize().getHeight()));
 	closeButton.setBackground(BACKGROUND_COLOR);
+
+	goLeftButton.setPreferredSize(SIZE_OF_MONTH_CONTROL_BUTTONS);
+	goRightButton.setPreferredSize(SIZE_OF_MONTH_CONTROL_BUTTONS);
+	goLeftEdgeButton.setPreferredSize(SIZE_OF_MONTH_CONTROL_BUTTONS);
+	goRightEdgeButton.setPreferredSize(SIZE_OF_MONTH_CONTROL_BUTTONS);
 
 	setupActionListeners();
 

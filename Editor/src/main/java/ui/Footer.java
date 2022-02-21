@@ -1,10 +1,9 @@
 package ui;
 
 import java.awt.Color;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.EmptyBorder;
+import java.awt.Dimension;
 import standardSwing.container.RowOfJComponent;
-import standardSwing.myComponent.button.MyTextButton;
+import standardSwing.myComponent.button.MyJButton;
 import standardSwing.settings.Colors;
 import standardSwing.settings.Fonts;
 import ui.appointmentField.AllAppointmentFieldsController;
@@ -24,7 +23,7 @@ public class Footer extends RowOfJComponent {
     private static final float ADD_BUTTON_PLUS_SIZE = 65.0f;
 
     private final AllAppointmentFieldsController appointmentInputFields;
-    private final MyTextButton addAppointmentButton = new MyTextButton("+");
+    private final MyJButton addAppointmentButton = new MyJButton("+");
 
     public Footer(final AllAppointmentFieldsController appointmentInputFields) {
 	super(DISTANCE_TO_EDGE, DISTANCE_TO_EDGE);
@@ -41,7 +40,7 @@ public class Footer extends RowOfJComponent {
 
     private void setupAddButton() {
 	addAppointmentButton.setFont(Fonts.resizedStandard(ADD_BUTTON_PLUS_SIZE));
-	addAppointmentButton.setBorder(new CompoundBorder(addAppointmentButton.getBorder(), new EmptyBorder(0, 100, 0, 100)));
+	addAppointmentButton.setPreferredSize(new Dimension(300, 100));
 	addAppointmentButton.addActionListener((event) -> {
 	    appointmentInputFields.addEmptyAppointmentField();
 	});

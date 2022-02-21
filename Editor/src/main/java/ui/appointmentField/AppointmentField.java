@@ -2,6 +2,7 @@ package ui.appointmentField;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.util.Optional;
 import javax.swing.JPanel;
 import appointment.Appointment;
 import appointment.InvalidAppointmentException;
@@ -11,8 +12,7 @@ import standardSwing.eventListener.SiblingPopUpDisplayerOnHover;
 import standardSwing.eventListener.emptyImplementation.MyDocumentListener;
 import standardSwing.myComponent.MyCheckBox;
 import standardSwing.myComponent.MyLabel;
-import standardSwing.myComponent.textField.MyTextField;
-import standardSwing.myComponent.textField.MyTextFieldAttributes;
+import standardSwing.myComponent.textfieldx.MyJTextField;
 import standardSwing.settings.Colors;
 import ui.dateField.MySimpleDateField;
 
@@ -33,8 +33,8 @@ public class AppointmentField extends JPanel {
     private static final boolean STANDARD_IS_BIRTHDAY = true;
 
     private final MySimpleDateField dateField = new MySimpleDateField();
-    private final MyTextField nameField = new MyTextField();
-    private final MyTextField descriptionField = new MyTextField();
+    private final MyJTextField nameField = new MyJTextField();
+    private final MyJTextField descriptionField = new MyJTextField();
     private final MyCheckBox isBirthdayField = new MyCheckBox("ist Geburtstag", STANDARD_IS_BIRTHDAY);
 
     /**
@@ -88,16 +88,19 @@ public class AppointmentField extends JPanel {
     private void setup() {
 	setLayout(new FlowLayout(FlowLayout.LEFT, DISTANCE_BETWEEN_SUB_COMPONENTS, 0));
 	nameField.setColumns(NAME_WIDTH);
-	nameField.getBaseImplementation().getDocument().addDocumentListener(new MyDocumentListener() {
+	nameField.getDocument().addDocumentListener(new MyDocumentListener() {
+	    private Optional<Color> oldBackground = Optional.of(nameField.getBackground());
+
 	    @Override
 	    public void update() {
 		final String currentText = nameField.getText();
 		if (currentText.length() == 0) {
+		    oldBackground = Optional.of(nameField.getBackground());
 		    nameField.setBackground(Colors.ofError());
 //		    final MyLabel myLabel = new MyLabel("Name muss mindestens einen Buchstaben enthalten!");
 //		    new SiblingPopUpDisplayerOnHover(myLabel, nameField, CelestialDirection.SOUTH);
 		} else {
-		    nameField.setBackground(MyTextFieldAttributes.getBackgroundColor());
+		    nameField.setBackground(oldBackground.get());
 		}
 	    }
 	});
@@ -112,7 +115,7 @@ public class AppointmentField extends JPanel {
     public void setBackground(final Color newBackground) {
 	super.setBackground(newBackground);
 	if (dateField != null) {
-	    dateField.setBackground(newBackground);
+	    dateField.updateBackground(newBackground);
 	}
     }
 
@@ -120,11 +123,11 @@ public class AppointmentField extends JPanel {
 	return dateField;
     }
 
-    public MyTextField getNameField() {
+    public MyJTextField getNameField() {
 	return nameField;
     }
 
-    public MyTextField getDescriptionField() {
+    public MyJTextField getDescriptionField() {
 	return descriptionField;
     }
 
