@@ -34,7 +34,7 @@ public class AppointmentFieldController extends JPanel {
     private final MyJButton deleteButton = new MyJButton("Löschen");
 
     private Optional<Appointment> currentlyStoredAppointment = Optional.empty();
-    private Color defaultBackground;
+    private Color defaultBackground = Color.WHITE;
 
     public AppointmentFieldController(final AllAppointmentFields parent, final Appointment initialDisplay) {
 	super();
