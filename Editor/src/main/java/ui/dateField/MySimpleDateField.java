@@ -1,5 +1,7 @@
 package ui.dateField;
 
+import java.awt.Color;
+import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.event.ChangeEvent;
@@ -7,7 +9,8 @@ import javax.swing.event.ChangeListener;
 import date.SimpleDate;
 import standardSwing.eventListener.SiblingPopUpDisplayerOnClick;
 import standardSwing.myComponent.MySiblingPopUp;
-import standardSwing.myComponent.button.MyTextButton;
+import standardSwing.myComponent.button.CustomTextButton;
+import standardSwing.settings.Colors;
 import standardSwing.settings.Fonts;
 import date.SimpleDates;
 
@@ -21,7 +24,7 @@ import date.SimpleDates;
  * @author Gabriel Glaser
  * @version 20.01.2022
  */
-public class MySimpleDateField extends MyTextButton {
+public class MySimpleDateField extends CustomTextButton {
 
     private static final float DATE_TEXT_SIZE = 23.0f;
 
@@ -35,11 +38,13 @@ public class MySimpleDateField extends MyTextButton {
      * @param initialDate which is displayed.
      */
     public MySimpleDateField(final SimpleDate initialDate) {
-	super(initialDate.toStringWithLeadingZeros(), false);
+	super(initialDate.toStringWithLeadingZeros(), Color.black, Colors.ofText(), false);
 	this.currentlySelectedDate = initialDate;
 	this.monthsInput = new AllMonths(this);
 	this.monthPopUpController = new SiblingPopUpDisplayerOnClick(monthsInput, this);
 	setFont(Fonts.resizedStandard(DATE_TEXT_SIZE));
+	setPreferredSize(new Dimension(70, 40));
+	setBackground(Color.BLACK);
     }
 
     /**

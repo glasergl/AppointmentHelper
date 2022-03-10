@@ -9,7 +9,7 @@ import javax.swing.SwingConstants;
 import date.SimpleDate;
 import date.SimpleDates;
 import standardSwing.myComponent.MyLabel;
-import standardSwing.myComponent.button.CustomButton;
+import standardSwing.myComponent.button.CustomTextButton;
 import standardSwing.settings.Colors;
 
 /**
@@ -63,7 +63,7 @@ public final class MonthField extends JPanel {
 
     private void addDayLabel(int day) {
 	final SimpleDate date = new SimpleDate(day, monthToDepict);
-	final CustomButton visualizedDay = new CustomButton(String.valueOf(day), BACKGROUND_COLOR_OF_DAY, Colors.ofText());
+	final CustomTextButton visualizedDay = new CustomTextButton(String.valueOf(day), BACKGROUND_COLOR_OF_DAY, Colors.ofText());
 	visualizedDay.setPreferredSize(new Dimension(SIZE_OF_DAY_LABEL, SIZE_OF_DAY_LABEL));
 	visualizedDay.addActionListener(click -> {
 	    toSetSelectedDateOf.setDateInputVisible(false);

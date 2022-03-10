@@ -6,7 +6,7 @@ import java.awt.Dimension;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import standardSwing.container.RowOfJComponent;
-import standardSwing.myComponent.button.CustomButton;
+import standardSwing.myComponent.button.CustomTextButton;
 import standardSwing.settings.Colors;
 
 /**
@@ -27,11 +27,11 @@ public class AllMonths extends JPanel {
     private final RowOfJComponent topButtons = new RowOfJComponent();
     private final RowOfJComponent middleButtons = new RowOfJComponent(7, 7);
 
-    private final CustomButton closeButton = new CustomButton("x", BACKGROUND_COLOR, Color.BLACK);
-    private final CustomButton goLeftButton = new CustomButton("<<", BACKGROUND_COLOR, Color.BLACK);
-    private final CustomButton goRightButton = new CustomButton(">>", BACKGROUND_COLOR, Color.BLACK);
-    private final CustomButton goLeftEdgeButton = new CustomButton("I<<", BACKGROUND_COLOR, Color.BLACK);
-    private final CustomButton goRightEdgeButton = new CustomButton(">>I", BACKGROUND_COLOR, Color.BLACK);
+    private final CustomTextButton closeButton = new CustomTextButton("x", BACKGROUND_COLOR, Color.BLACK);
+    private final CustomTextButton goLeftButton = new CustomTextButton("<<", BACKGROUND_COLOR, Color.BLACK);
+    private final CustomTextButton goRightButton = new CustomTextButton(">>", BACKGROUND_COLOR, Color.BLACK);
+    private final CustomTextButton goLeftEdgeButton = new CustomTextButton("I<<", BACKGROUND_COLOR, Color.BLACK);
+    private final CustomTextButton goRightEdgeButton = new CustomTextButton(">>I", BACKGROUND_COLOR, Color.BLACK);
 
     private int currentMonth;
     private MonthField displayOfCurrentMonth;;

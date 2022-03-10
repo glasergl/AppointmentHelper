@@ -110,7 +110,7 @@ public class AppointmentField extends JPanel {
     public void setBackground(final Color newBackground) {
 	super.setBackground(newBackground);
 	if (dateField != null) {
-	    dateField.updateBackground(newBackground);
+	    dateField.setBackground(newBackground);
 	}
     }
 
