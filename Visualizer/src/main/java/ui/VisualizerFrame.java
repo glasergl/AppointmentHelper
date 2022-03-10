@@ -8,7 +8,7 @@ import appointment.Appointment;
 import standardSwing.container.JPanelFactory;
 import standardSwing.container.MyFrame;
 import standardSwing.general.SwingFunctions;
-import standardSwing.myComponent.button.MyTextButton;
+import standardSwing.myComponent.button.MyJButton;
 import ui.calendar.VisualCalendar;
 import standardSwing.settings.Colors;
 
@@ -22,7 +22,7 @@ public final class VisualizerFrame extends MyFrame {
 
     private static final Image ICON = SwingFunctions.getImage("VisualizerIcon.png", VisualizerFrame.class);
 
-    private final MyTextButton calendarVisabilityChangerButton = new MyTextButton("Kalender anzeigen");
+    private final MyJButton calendarVisabilityChangerButton = new MyJButton("Kalender anzeigen");
     private final AppointmentOutput appointmentOutput;
     private final VisualCalendar calendarWithAppointments;
 
