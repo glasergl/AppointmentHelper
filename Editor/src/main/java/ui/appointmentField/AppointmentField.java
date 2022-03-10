@@ -7,11 +7,8 @@ import javax.swing.JPanel;
 import appointment.Appointment;
 import appointment.InvalidAppointmentException;
 import date.SimpleDate;
-import standardSwing.entity.CelestialDirection;
-import standardSwing.eventListener.SiblingPopUpDisplayerOnHover;
 import standardSwing.eventListener.emptyImplementation.MyDocumentListener;
 import standardSwing.myComponent.MyCheckBox;
-import standardSwing.myComponent.MyLabel;
 import standardSwing.myComponent.textfieldx.MyJTextField;
 import standardSwing.settings.Colors;
 import ui.dateField.MySimpleDateField;
@@ -97,8 +94,6 @@ public class AppointmentField extends JPanel {
 		if (currentText.length() == 0) {
 		    oldBackground = Optional.of(nameField.getBackground());
 		    nameField.setBackground(Colors.ofError());
-//		    final MyLabel myLabel = new MyLabel("Name muss mindestens einen Buchstaben enthalten!");
-//		    new SiblingPopUpDisplayerOnHover(myLabel, nameField, CelestialDirection.SOUTH);
 		} else {
 		    nameField.setBackground(oldBackground.get());
 		}
