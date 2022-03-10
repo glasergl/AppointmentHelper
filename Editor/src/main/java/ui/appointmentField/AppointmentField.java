@@ -111,6 +111,7 @@ public class AppointmentField extends JPanel {
 	super.setBackground(newBackground);
 	if (dateField != null) {
 	    dateField.setBackground(newBackground);
+	    dateField.setDefaultBackgroundWhileHovered();
 	}
     }
 

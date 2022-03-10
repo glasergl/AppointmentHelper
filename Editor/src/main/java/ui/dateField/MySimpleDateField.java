@@ -10,7 +10,6 @@ import date.SimpleDate;
 import standardSwing.eventListener.SiblingPopUpDisplayerOnClick;
 import standardSwing.myComponent.MySiblingPopUp;
 import standardSwing.myComponent.button.CustomTextButton;
-import standardSwing.settings.Colors;
 import standardSwing.settings.Fonts;
 import date.SimpleDates;
 
@@ -38,7 +37,7 @@ public class MySimpleDateField extends CustomTextButton {
      * @param initialDate which is displayed.
      */
     public MySimpleDateField(final SimpleDate initialDate) {
-	super(initialDate.toStringWithLeadingZeros(), Color.black, Colors.ofText(), false);
+	super(initialDate.toStringWithLeadingZeros(), false);
 	this.currentlySelectedDate = initialDate;
 	this.monthsInput = new AllMonths(this);
 	this.monthPopUpController = new SiblingPopUpDisplayerOnClick(monthsInput, this);
