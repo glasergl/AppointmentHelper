@@ -16,7 +16,7 @@ import ui.dateField.MySimpleDateField;
 /**
  * Visual Input-Field for an Appointment.
  * 
- * Furthermore, if the textfield for the name is empty, it gets colored red to
+ * Furthermore, if the TextField for the name is empty, it gets colored red to
  * indicate it being in an illegal state.
  * 
  * @author Gabriel Glaser
