@@ -212,4 +212,8 @@ public class AllAppointmentFields extends JPanel implements Scrollable {
 	return false;
     }
 
+    public List<AppointmentFieldController> getAppointmentFields() {
+	return appointmentFields;
+    }
+
 }
