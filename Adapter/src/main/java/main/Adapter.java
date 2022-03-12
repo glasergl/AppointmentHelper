@@ -1,6 +1,12 @@
 package main;
 
+import java.awt.Image;
 import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import appointment.Appointment;
 import fileInteraction.AppointmentAlreadyAddedException;
@@ -39,26 +45,45 @@ public final class Adapter {
 		for (final Appointment appointmentToStore : reader.getAdaptedAppointments()) {
 		    AppointmentFileInteracter.add(appointmentToStore);
 		}
-		final File appointmentFile = AppointmentFileInteracter.getDefaultAppointmentFile();
-		final String title = "Adaption erfolgreich";
-		final String message = "Die Geburtstage aus \"" + GEBURTSTAGE.getAbsolutePath() + "\"\nkonnten erfolgreich zu \"" + appointmentFile.getAbsolutePath() + "\"\nkonvertiert werden.";
-		JOptionPane.showMessageDialog(null, message, title, JOptionPane.INFORMATION_MESSAGE);
+		showSuccessfulAdaption();
 	    } catch (final IllegalFileFormatException e) {
-		final String errorTitle = "Format-Fehler in \"Geburtstage.txt\"";
-		final String errorMessage = "\"Geburtstage.txt\" hat nicht das richtige Format. Sie kann nicht zu JSON adaptiert werden.";
-		JOptionPane.showMessageDialog(null, errorMessage, errorTitle, JOptionPane.ERROR_MESSAGE);
+		showErrorOfIllegalFileFormat();
 	    } catch (final IllegalArgumentException e) {
-		final String errorTitle = "\"appointments.json\" existiert bereits";
-		final String errorMessage = "Die Datei \"appointments.json\" existiert bereits und wird deswegen nicht überschrieben.";
-		JOptionPane.showMessageDialog(null, errorMessage, errorTitle, JOptionPane.INFORMATION_MESSAGE);
+		showErrorOfAlreadyExistingAppointmentFile();
 	    } catch (final AppointmentAlreadyAddedException e) {
-		AppointmentFileInteracter.getDefaultAppointmentFile().delete();
-		final String errorTitle = "Duplikate in \"Geburtstage.txt\"";
-		final String errorMessage = "Die Datei \"Geburtstage.txt\" enthält mindestens zwei identische Geburtstage. Das ist in der neuen Version nicht erlaubt.\n"
-			+ "Bevor Sie das Programm erneut ausführen können, müssen alle Duplikate entfernt worden sein.";
-		JOptionPane.showMessageDialog(null, errorMessage, errorTitle, JOptionPane.ERROR_MESSAGE);
+		showErrorOfDuplicateAppointment();
+	    } catch (IOException e) {
+		e.printStackTrace();
 	    }
 	}
+    }
+
+    private static void showSuccessfulAdaption() throws IOException {
+	final File appointmentFile = AppointmentFileInteracter.getDefaultAppointmentFile();
+	final String title = "Adaption erfolgreich";
+	final String message = "Die Geburtstage aus \"" + GEBURTSTAGE.getAbsolutePath() + "\"\nkonnten erfolgreich zu \"" + appointmentFile.getAbsolutePath() + "\"\nkonvertiert werden.";
+	final Icon checkIcon = new ImageIcon(ImageIO.read(Adapter.class.getClassLoader().getResourceAsStream("CheckIcon.png")).getScaledInstance(50, 50, Image.SCALE_DEFAULT));
+	JOptionPane.showMessageDialog(null, message, title, JOptionPane.INFORMATION_MESSAGE, checkIcon);
+    }
+
+    private static void showErrorOfIllegalFileFormat() {
+	final String errorTitle = "Format-Fehler in \"Geburtstage.txt\"";
+	final String errorMessage = "\"Geburtstage.txt\" hat nicht das richtige Format. Sie kann nicht zu JSON adaptiert werden.";
+	JOptionPane.showMessageDialog(null, errorMessage, errorTitle, JOptionPane.ERROR_MESSAGE);
+    }
+
+    private static void showErrorOfAlreadyExistingAppointmentFile() {
+	final String errorTitle = "\"appointments.json\" existiert bereits";
+	final String errorMessage = "Die Datei \"appointments.json\" existiert bereits und wird deswegen nicht überschrieben.";
+	JOptionPane.showMessageDialog(null, errorMessage, errorTitle, JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    private static void showErrorOfDuplicateAppointment() {
+	AppointmentFileInteracter.getDefaultAppointmentFile().delete();
+	final String errorTitle = "Duplikate in \"Geburtstage.txt\"";
+	final String errorMessage = "Die Datei \"Geburtstage.txt\" enthält mindestens zwei identische Geburtstage. Das ist in der neuen Version nicht erlaubt.\n"
+		+ "Bevor Sie das Programm erneut ausführen können, müssen alle Duplikate entfernt worden sein.";
+	JOptionPane.showMessageDialog(null, errorMessage, errorTitle, JOptionPane.ERROR_MESSAGE);
     }
 
 }
