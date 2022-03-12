@@ -1,27 +1,20 @@
-package ui.appointmentField.test;
+package ui.test.appointmentField;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
 import appointment.Appointment;
 import appointment.InvalidAppointmentException;
-import date.SimpleDate;
 import ui.appointmentField.AppointmentField;
 
 /**
  * @author Gabriel Glaser
- * @version 08.02.2022
+ * @version 12.03.2022
  */
 public class TestAppointmentField {
 
-    static SimpleDate testDate = new SimpleDate(10, 5);
-    static String testName = "Fred";
-    static String testDescription = "ball";
-    static boolean testIsBirthday = false;
-    static Appointment testAppointment = new Appointment(testDate, testName, testDescription, testIsBirthday);
-
     @Test
     public void testRepresentsValidAppointmentWithInitialAppointment() {
-	AppointmentField appointmentField = new AppointmentField(testAppointment);
+	AppointmentField appointmentField = new AppointmentField(Tests.testAppointment1);
 	assertTrue(appointmentField.representsValidAppointment());
 	appointmentField.setName("");
 	assertFalse(appointmentField.representsValidAppointment());
@@ -36,9 +29,9 @@ public class TestAppointmentField {
     @Test
     public void testGetAppointmentWithInitialAppointment() {
 	try {
-	    AppointmentField appointmentField = new AppointmentField(testAppointment);
+	    AppointmentField appointmentField = new AppointmentField(Tests.testAppointment1);
 	    Appointment result = appointmentField.getAppointment();
-	    assertEquals(testAppointment, result);
+	    assertEquals(Tests.testAppointment1, result);
 	} catch (InvalidAppointmentException e) {
 	    e.printStackTrace();
 	    fail("Couldn't retrieve Appointment from AppointmentField, but should have been able to");
@@ -57,17 +50,21 @@ public class TestAppointmentField {
 	}
     }
 
-    @Test(expected = InvalidAppointmentException.class)
+    @Test
     public void testErrorWithGetAppointmentWithInitialAppointment() throws InvalidAppointmentException {
-	AppointmentField appointmentField = new AppointmentField(testAppointment);
+	AppointmentField appointmentField = new AppointmentField(Tests.testAppointment1);
 	appointmentField.setName("");
-	appointmentField.getAppointment();
+	assertThrows(InvalidAppointmentException.class, () -> {
+	    appointmentField.getAppointment();
+	});
     }
 
-    @Test(expected = InvalidAppointmentException.class)
+    @Test
     public void testErrorWithGetAppointmentWithoutInitialAppointment() throws InvalidAppointmentException {
 	AppointmentField appointmentField = new AppointmentField();
-	appointmentField.getAppointment();
+	assertThrows(InvalidAppointmentException.class, () -> {
+	    appointmentField.getAppointment();
+	});
     }
 
 }

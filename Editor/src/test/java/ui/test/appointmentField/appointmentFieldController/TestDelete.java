@@ -1,8 +1,7 @@
-package ui.appointmentField.test.appointmentFieldController;
+package ui.test.appointmentField.appointmentFieldController;
 
 import static org.junit.Assert.*;
 import java.io.File;
-import org.junit.AfterClass;
 import org.junit.Test;
 import appointment.Appointment;
 import appointment.InvalidAppointmentException;
@@ -10,29 +9,24 @@ import date.SimpleDate;
 import fileInteraction.AppointmentFileInteracter;
 import ui.appointmentField.AllAppointmentFields;
 import ui.appointmentField.AppointmentFieldController;
+import ui.test.appointmentField.Tests;
 
 /**
  * @author Gabriel Glaser
- * @version 08.02.2022
+ * @version 12.03.2022
  */
 public class TestDelete {
 
-    static File testAppointmentFile = AppointmentFileInteracter.createEmptyAppointmentFile("src\\test\\resources\\testDeleteAppointmentFile.json");
-    static AllAppointmentFields allAppointments = new AllAppointmentFields();
+    AllAppointmentFields allAppointmentFieldsStub = new AllAppointmentFields();
 
-    static SimpleDate testDate = new SimpleDate(10, 10);
-    static String testName = "Tim";
-    static String testDescription = "Hello There";
-    static boolean testIsBirthday = false;
-    static Appointment testAppointment = new Appointment(testDate, testName, testDescription, testIsBirthday);
-
-    /**
-     * Should throw no Exception, should just do nothing.
-     */
     @Test
     public void testDeleteDirectly() {
-	AppointmentFieldController appointmentFieldController = new AppointmentFieldController(allAppointments);
-	appointmentFieldController.delete();
+	try {
+	    AppointmentFieldController appointmentFieldController = new AppointmentFieldController(allAppointmentFieldsStub);
+	    appointmentFieldController.delete();
+	} catch (final Throwable e) {
+	    fail("Caught an exception which was not expected");
+	}
     }
 
     /**
@@ -40,7 +34,7 @@ public class TestDelete {
      */
     @Test
     public void testDeleteWithoutSave() {
-	AppointmentFieldController appointmentFieldController = new AppointmentFieldController(allAppointments);
+	AppointmentFieldController appointmentFieldController = new AppointmentFieldController(allAppointmentFieldsStub);
 	appointmentFieldController.setName("Turkey");
 	appointmentFieldController.setDate(new SimpleDate(8, 1));
 	appointmentFieldController.delete();
@@ -49,7 +43,8 @@ public class TestDelete {
     @Test
     public void testDeleteWithSave() {
 	try {
-	    AppointmentFieldController appointmentFieldController = new AppointmentFieldController(allAppointments);
+	    File testAppointmentFile = Tests.createTestAppointmentFile("TestDeleteWithSaveAppointments.json");
+	    AppointmentFieldController appointmentFieldController = new AppointmentFieldController(allAppointmentFieldsStub);
 	    appointmentFieldController.setName("Turkey");
 	    appointmentFieldController.setDate(new SimpleDate(8, 1));
 	    Appointment currentInput = appointmentFieldController.getInputAppointment();
@@ -57,6 +52,7 @@ public class TestDelete {
 	    assertTrue(AppointmentFileInteracter.contains(currentInput, testAppointmentFile));
 	    appointmentFieldController.delete(testAppointmentFile);
 	    assertFalse(AppointmentFileInteracter.contains(currentInput, testAppointmentFile));
+	    testAppointmentFile.delete();
 	} catch (final InvalidAppointmentException e) {
 	    e.printStackTrace();
 	    fail("");
@@ -65,14 +61,11 @@ public class TestDelete {
 
     @Test
     public void testDeleteWithoutSaveButInitialAppointment() {
-	AppointmentFileInteracter.add(testAppointment, testAppointmentFile);
-	AppointmentFieldController appointmentFieldController = new AppointmentFieldController(allAppointments, testAppointment);
+	File testAppointmentFile = Tests.createTestAppointmentFile("TestDeleteWithoutSaveButInitialAppointmentAppointments.json");
+	AppointmentFileInteracter.add(Tests.testAppointment1, testAppointmentFile);
+	AppointmentFieldController appointmentFieldController = new AppointmentFieldController(allAppointmentFieldsStub, Tests.testAppointment1);
 	appointmentFieldController.delete(testAppointmentFile);
-	assertFalse(AppointmentFileInteracter.contains(testAppointment, testAppointmentFile));
-    }
-
-    @AfterClass
-    public static void deleteTestFile() {
+	assertFalse(AppointmentFileInteracter.contains(Tests.testAppointment1, testAppointmentFile));
 	testAppointmentFile.delete();
     }
 
