@@ -12,6 +12,7 @@ import date.SimpleDate;
 import date.SimpleDates;
 import standardSwing.eventListener.emptyImplementation.MyDocumentListener;
 import standardSwing.myComponent.button.MyJButton;
+import fileInteraction.AppointmentAlreadyAddedException;
 import fileInteraction.AppointmentFileInteracter;
 
 /**
@@ -56,10 +57,12 @@ public class AppointmentFieldController extends JPanel {
      * Saves the content of the controlled Appointment-Field to the default
      * Appointment-File.
      * 
-     * @throws InvalidAppointmentException if the current content of the
-     *                                     Appointment-Field isn't valid.
+     * @throws InvalidAppointmentException      if the current content of the
+     *                                          Appointment-Field isn't valid.
+     * @throws AppointmentAlreadyAddedException if the appointment represented by
+     *                                          the current state already exists.
      */
-    public void save() throws InvalidAppointmentException {
+    public void save() throws InvalidAppointmentException, AppointmentAlreadyAddedException {
 	save(AppointmentFileInteracter.getDefaultAppointmentFile());
     }
 
@@ -68,10 +71,12 @@ public class AppointmentFieldController extends JPanel {
      * Appointment-File.
      * 
      * @param appointmentFile in which the current input should be stored.
-     * @throws InvalidAppointmentException if the current content of the
-     *                                     Appointment-Field isn't valid.
+     * @throws InvalidAppointmentException      if the current content of the
+     *                                          Appointment-Field isn't valid.
+     * @throws AppointmentAlreadyAddedException if the appointment represented by
+     *                                          the current state already exists.
      */
-    public void save(final File appointmentFile) throws InvalidAppointmentException {
+    public void save(final File appointmentFile) throws InvalidAppointmentException, AppointmentAlreadyAddedException {
 	final Appointment currentContent = appointmentField.getAppointment();
 	if (currentlyStoredAppointment.isPresent()) {
 	    AppointmentFileInteracter.remove(currentlyStoredAppointment.get(), appointmentFile);

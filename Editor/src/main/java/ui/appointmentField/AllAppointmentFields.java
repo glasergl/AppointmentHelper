@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.Scrollable;
 import appointment.Appointment;
 import appointment.InvalidAppointmentException;
+import fileInteraction.AppointmentAlreadyAddedException;
 import fileInteraction.AppointmentFileInteracter;
 import standardSwing.general.SwingFunctions;
 import standardSwing.settings.Colors;
@@ -125,9 +126,13 @@ public class AllAppointmentFields extends JPanel implements Scrollable {
 		final String errorMessage = "Mindestens ein Termin ist ungültig.\nDer Name jedes Termins muss mindestens ein Zeichen enthalten.";
 		JOptionPane.showMessageDialog(null, errorMessage, errorTitle, JOptionPane.ERROR_MESSAGE);
 	    }
+	} catch (final AppointmentAlreadyAddedException e) {
+	    final String errorTitle = "Doppelter Termin";
+	    final String errorMessage = "Mindestens zwei Termine enthalten den gleichen Inhalt. Bitte änderen Sie einen und speichern erneut.";
+	    JOptionPane.showMessageDialog(null, errorMessage, errorTitle, JOptionPane.ERROR_MESSAGE);
 	} catch (final InvalidAppointmentException e) {
 	    e.printStackTrace();
-	    throw new RuntimeException();
+	    throw new RuntimeException("Atleast one Appointment isn't valid, but should've been.");
 	}
     }
 
