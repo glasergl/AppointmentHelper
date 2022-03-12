@@ -3,7 +3,6 @@ package main;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -17,7 +16,7 @@ import fileInteraction.AppointmentFileInteracter;
  * version "Geburtstage.txt" to the new version "appointments.json".
  * 
  * @author Gabriel Glaser
- * @version 19.1.2022
+ * @version 12.3.2022
  */
 public final class Adapter {
 
@@ -52,7 +51,7 @@ public final class Adapter {
 		showErrorOfAlreadyExistingAppointmentFile();
 	    } catch (final AppointmentAlreadyAddedException e) {
 		showErrorOfDuplicateAppointment();
-	    } catch (IOException e) {
+	    } catch (final IOException e) {
 		e.printStackTrace();
 	    }
 	}
