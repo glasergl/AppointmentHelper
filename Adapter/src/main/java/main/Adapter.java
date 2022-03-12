@@ -62,7 +62,7 @@ public final class Adapter {
 	final File appointmentFile = AppointmentFileInteracter.getDefaultAppointmentFile();
 	final String title = "Adaption erfolgreich";
 	final String message = "Die Geburtstage aus \"" + GEBURTSTAGE.getAbsolutePath() + "\"\nkonnten erfolgreich zu \"" + appointmentFile.getAbsolutePath() + "\"\nkonvertiert werden.";
-	final Icon checkIcon = new ImageIcon(ImageIO.read(Adapter.class.getClassLoader().getResourceAsStream("CheckIcon.png")).getScaledInstance(50, 50, Image.SCALE_DEFAULT));
+	final Icon checkIcon = new ImageIcon(ImageIO.read(Adapter.class.getClassLoader().getResourceAsStream("CheckIcon.png")).getScaledInstance(50, 50, Image.SCALE_SMOOTH));
 	JOptionPane.showMessageDialog(null, message, title, JOptionPane.INFORMATION_MESSAGE, checkIcon);
     }
 
