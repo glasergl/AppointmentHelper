@@ -1,4 +1,4 @@
-package ui.appointmentField.test;
+package ui.appointmentField.test.appointmentFieldController;
 
 import static org.junit.Assert.*;
 import java.awt.Color;
@@ -16,7 +16,7 @@ import ui.appointmentField.AppointmentFieldController;
  * @author Gabriel Glaser
  * @version 09.02.2022
  */
-public class TestAppointmentControllerBackground {
+public class TestBackground {
 
     static File testAppointmentFile = AppointmentFileInteracter.createEmptyAppointmentFile("src\\test\\resources\\TestAppointmentFieldControllerBackgroundAppointments.json");
     static AllAppointmentFields allAppointments = new AllAppointmentFields();

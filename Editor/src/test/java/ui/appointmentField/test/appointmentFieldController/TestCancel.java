@@ -1,4 +1,4 @@
-package ui.appointmentField.test;
+package ui.appointmentField.test.appointmentFieldController;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
@@ -13,7 +13,7 @@ import ui.appointmentField.AppointmentFieldController;
  * @author Gabriel Glaser
  * @version 08.02.2022
  */
-public class TestAppointmentFieldControllerCancel {
+public class TestCancel {
 
     static AllAppointmentFields allAppointments = new AllAppointmentFields();
 

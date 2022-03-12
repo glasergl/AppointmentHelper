@@ -1,4 +1,4 @@
-package ui.appointmentField.test;
+package ui.appointmentField.test.appointmentFieldController;
 
 import static org.junit.Assert.*;
 
@@ -17,7 +17,7 @@ import ui.appointmentField.AllAppointmentFields;
  * @author Gabriel Glaser
  * @version 8.2.2022
  */
-public class TestAppointmentFieldControllerSave {
+public class TestSave {
 
     static File testAppointmentFile = AppointmentFileInteracter.createEmptyAppointmentFile("src\\test\\resources\\TestAppointmentFieldControllerAppointments.json");
     static AllAppointmentFields allAppointments = new AllAppointmentFields();

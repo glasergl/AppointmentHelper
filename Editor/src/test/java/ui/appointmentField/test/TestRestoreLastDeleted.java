@@ -12,7 +12,7 @@ import ui.appointmentField.AppointmentFieldController;
  * @author Gabriel Glaser
  * @version 11.03.2022
  */
-public class TestAllAppointmentFieldsRestoreDeleted {
+public class TestRestoreLastDeleted {
 
     static AllAppointmentFields testAppointmentFields = new AllAppointmentFields();
     static Appointment testAppointment1 = new Appointment(new SimpleDate(10, 2), "Tom", "hello there", true);
