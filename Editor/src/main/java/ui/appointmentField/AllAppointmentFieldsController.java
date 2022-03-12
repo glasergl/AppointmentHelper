@@ -1,13 +1,11 @@
 package ui.appointmentField;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.FlowLayout;
 import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
-import javax.swing.JViewport;
 import javax.swing.border.EmptyBorder;
 import appointment.Appointment;
 import standardSwing.myComponent.MyLabel;
@@ -19,11 +17,10 @@ import standardSwing.settings.Fonts;
  * the header.
  * 
  * @author Gabriel Glaser
- * @version 3.1.2022
+ * @version 312.3.2022
  */
 public class AllAppointmentFieldsController extends JPanel {
 
-    private static final Color BACKGROUND = Colors.isDarkMode() ? Color.BLACK : Color.WHITE;
     private static final int SCROLL_SPEED = 20;
 
     private final AllAppointmentFields appointmentFields;
@@ -66,8 +63,6 @@ public class AllAppointmentFieldsController extends JPanel {
 
     private void setupJScrollPane() {
 	jScrollPane.setBorder(new EmptyBorder(0, 0, 0, 0));
-	final JViewport viewport = jScrollPane.getViewport();
-	viewport.setBackground(BACKGROUND);
 	final JScrollBar verticalScrollBar = jScrollPane.getVerticalScrollBar();
 	verticalScrollBar.setUnitIncrement(SCROLL_SPEED);
 	add(jScrollPane, BorderLayout.CENTER);
