@@ -1,5 +1,13 @@
 @echo off
 
+echo ################################################################-delete old files (if they already existed)-################################################################
+
+del AppointmentAdapter.jar
+del AppointmentEditor.jar
+del AppointmentVisualizer.jar
+del AppointmentHelper.zip
+del appointments.json
+
 echo ################################################################-Base-################################################################
 echo\
 call mvn install -f Base/
@@ -31,13 +39,6 @@ echo\
 echo ################################################################-Visualizer-################################################################
 echo\
 call mvn package -f Visualizer/
-
-echo ################################################################-delete old jars (if they already existed)-################################################################
-echo\
-del AppointmentAdapter.jar
-del AppointmentEditor.jar
-del AppointmentVisualizer.jar
-echo\
 
 echo ################################################################-rename jars-################################################################
 echo\
