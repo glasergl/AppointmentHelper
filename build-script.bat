@@ -1,12 +1,16 @@
 @echo off
 
-echo ################################################################-delete old files (if they already existed)-################################################################
+echo delete old files
+echo\
 
 del AppointmentAdapter.jar
 del AppointmentEditor.jar
 del AppointmentVisualizer.jar
 del AppointmentHelper.zip
 del appointments.json
+
+echo\
+echo\
 
 echo ################################################################-Base-################################################################
 echo\
