@@ -25,7 +25,7 @@ import fileInteraction.AppointmentFileInteracter;
 public class AppointmentFieldController extends JPanel {
 
     private static final int HORIZONTAL_GAP_OF_SUPCOMPONENTS = 20;
-    private static final int VERTICAL_GAP_OF_SUPCOMPONENTS = 20;
+    private static final int VERTICAL_GAP_OF_SUPCOMPONENTS = 10;
     private static final Color UNSAVED_BACKGROUND = new Color(240, 237, 72);
 
     private final AllAppointmentFields parent;

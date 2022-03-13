@@ -33,7 +33,7 @@ public final class EditorFrame extends MyFrame {
 	setup();
 	start();
 	final Point currentLocation = getLocation();
-	setLocation(new Point(currentLocation.x, currentLocation.y - 60));
+	setLocation(new Point(currentLocation.x, currentLocation.y - 75));
 	footer.requestFocusForAddButton();
     }
 

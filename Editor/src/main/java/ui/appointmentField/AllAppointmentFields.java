@@ -25,7 +25,7 @@ import standardSwing.settings.Colors;
  */
 public class AllAppointmentFields extends JPanel implements Scrollable {
 
-    private static final int MAX_NUMBER_OF_SHOWN_APPOINTMENTS = 8;
+    private static final int MAX_NUMBER_OF_SHOWN_APPOINTMENTS = 9;
     private static final Color BACKGROUND1 = Colors.getGray(1);
     private static final Color BACKGROUND2 = Colors.getGray(0);
 
