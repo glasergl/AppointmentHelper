@@ -19,7 +19,7 @@ import ui.appointmentField.AllAppointmentFieldsController;
 public class Footer extends RowOfJComponent {
 
     private static final int DISTANCE_TO_EDGE = 5;
-    private static final Color BACKGROUND = Colors.getGray(3);
+    private static final Color BACKGROUND = Colors.getBlue(3);
     private static final float ADD_BUTTON_PLUS_SIZE = 65.0f;
 
     private final AllAppointmentFieldsController appointmentInputFields;

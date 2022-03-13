@@ -57,11 +57,11 @@ public class AllAppointmentFieldsController extends JPanel {
 	setLayout(new BorderLayout());
 	setupJScrollPane();
 	add(columnDescription, BorderLayout.NORTH);
+	add(jScrollPane, BorderLayout.CENTER);
     }
 
     private void setupJScrollPane() {
 	jScrollPane.setBorder(new EmptyBorder(0, 0, 0, 0));
-	add(jScrollPane, BorderLayout.CENTER);
     }
 
     public AllAppointmentFields getAppointmentFieldPanel() {
@@ -75,7 +75,7 @@ public class AllAppointmentFieldsController extends JPanel {
 
 	public ColumnDescription() {
 	    super(new FlowLayout(FlowLayout.LEFT, 0, 0));
-	    setBackground(Colors.getGray(0));
+	    setBackground(Colors.getBlue(2));
 	    date.setOpaque(false);
 	    name.setOpaque(false);
 	    description.setOpaque(false);

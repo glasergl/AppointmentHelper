@@ -19,7 +19,7 @@ import ui.appointmentField.AllAppointmentFields;
 public class Header extends RowOfJComponent {
 
     private static final int DISTANCE_TO_EDGE = 5;
-    private static final Color BACKGROUND = Colors.getGray(3);
+    private static final Color BACKGROUND = Colors.getBlue(3);
 
     private final AllAppointmentFieldsController appointmentInputFields;
 

@@ -26,8 +26,8 @@ import standardSwing.settings.Colors;
 public class AllAppointmentFields extends JPanel implements Scrollable {
 
     private static final int MAX_NUMBER_OF_SHOWN_APPOINTMENTS = 10;
-    private static final Color BACKGROUND1 = Colors.getGray(1);
-    private static final Color BACKGROUND2 = Colors.getGray(0);
+    private static final Color BACKGROUND1 = Colors.getBlue(1);
+    private static final Color BACKGROUND2 = Colors.getBlue(0);
 
     private final List<AppointmentFieldController> allAppointmentFields = new ArrayList<>();
     private final Stack<AppointmentFieldController> allLastDeleted = new Stack<>();
@@ -170,6 +170,7 @@ public class AllAppointmentFields extends JPanel implements Scrollable {
 
     private void setup(final List<Appointment> initialAppointments) {
 	setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
+	setBackground(Colors.getBlue(2));
 	setupAllAppointments(initialAppointments);
 	setSwitchingBackgroundsForAll();
     }
@@ -188,10 +189,10 @@ public class AllAppointmentFields extends JPanel implements Scrollable {
      * @param toAdd
      */
     private void addAppointmentField(final AppointmentFieldController toAdd) {
-        allAppointmentFields.add(toAdd);
-        add(toAdd);
-        setSwitchingBackgroundsForAll();
-        SwingFunctions.updateJComponent(this);
+	allAppointmentFields.add(toAdd);
+	add(toAdd);
+	setSwitchingBackgroundsForAll();
+	SwingFunctions.updateJComponent(this);
     }
 
     private void setSwitchingBackgroundsForAll() {
@@ -210,7 +211,7 @@ public class AllAppointmentFields extends JPanel implements Scrollable {
 	final AppointmentFieldController toCalculatePreferredSize = new AppointmentFieldController(this);
 	final Dimension preferredSize = toCalculatePreferredSize.getPreferredSize();
 	final int preferredWidth = preferredSize.width;
-	final int preferredHeight = getComponents().length * preferredSize.height;
+	final int preferredHeight = Math.max(MAX_NUMBER_OF_SHOWN_APPOINTMENTS, getComponents().length) * preferredSize.height;
 	return new Dimension(preferredWidth, preferredHeight);
     }
 
