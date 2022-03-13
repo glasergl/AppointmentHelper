@@ -17,11 +17,9 @@ import standardSwing.settings.Fonts;
  * the header.
  * 
  * @author Gabriel Glaser
- * @version 312.3.2022
+ * @version 13.3.2022
  */
 public class AllAppointmentFieldsController extends JPanel {
-
-    private static final int SCROLL_SPEED = 20;
 
     private final AllAppointmentFields appointmentFields;
     private final ColumnDescription columnDescription = new ColumnDescription();
@@ -63,8 +61,6 @@ public class AllAppointmentFieldsController extends JPanel {
 
     private void setupJScrollPane() {
 	jScrollPane.setBorder(new EmptyBorder(0, 0, 0, 0));
-	final JScrollBar verticalScrollBar = jScrollPane.getVerticalScrollBar();
-	verticalScrollBar.setUnitIncrement(SCROLL_SPEED);
 	add(jScrollPane, BorderLayout.CENTER);
     }
 
@@ -86,8 +82,8 @@ public class AllAppointmentFieldsController extends JPanel {
 	    date.setFont(Fonts.resizedStandard(16.0f));
 	    name.setFont(Fonts.resizedStandard(16.0f));
 	    description.setFont(Fonts.resizedStandard(16.0f));
-	    date.setBorder(new EmptyBorder(0, 30, 0, 0));
-	    name.setBorder(new EmptyBorder(0, 22, 0, 0));
+	    date.setBorder(new EmptyBorder(0, 37, 0, 0));
+	    name.setBorder(new EmptyBorder(0, 27, 0, 0));
 	    description.setBorder(new EmptyBorder(0, 227, 0, 0));
 	    add(date);
 	    add(name);

@@ -76,7 +76,7 @@ public class TestSave {
 	    appointmentFieldController.setDescription("new computer");
 	    appointmentFieldController.setIsBirthday(true);
 	    appointmentFieldController.save(testAppointmentFile);
-	    assertTrue(AppointmentFileInteracter.contains(appointmentFieldController.getInputAppointment(), testAppointmentFile));
+	    assertTrue(AppointmentFileInteracter.contains(appointmentFieldController.getAppointment(), testAppointmentFile));
 	    testAppointmentFile.delete();
 	} catch (InvalidAppointmentException e) {
 	    e.printStackTrace();

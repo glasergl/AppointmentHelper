@@ -47,7 +47,7 @@ public class TestDelete {
 	    AppointmentFieldController appointmentFieldController = new AppointmentFieldController(allAppointmentFieldsStub);
 	    appointmentFieldController.setName("Turkey");
 	    appointmentFieldController.setDate(new SimpleDate(8, 1));
-	    Appointment currentInput = appointmentFieldController.getInputAppointment();
+	    Appointment currentInput = appointmentFieldController.getAppointment();
 	    appointmentFieldController.save(testAppointmentFile);
 	    assertTrue(AppointmentFileInteracter.contains(currentInput, testAppointmentFile));
 	    appointmentFieldController.delete(testAppointmentFile);

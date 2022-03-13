@@ -20,13 +20,13 @@ import fileInteraction.AppointmentFileInteracter;
  * Appointment-File.
  * 
  * @author Gabriel Glaser
- * @version 8.2.2022
+ * @version 13.3.2022
  */
 public class AppointmentFieldController extends JPanel {
 
     private static final int HORIZONTAL_GAP_OF_SUPCOMPONENTS = 20;
     private static final int VERTICAL_GAP_OF_SUPCOMPONENTS = 10;
-    private static final Color UNSAVED_BACKGROUND = new Color(240, 237, 72);
+    private static final Color UNSAVED_BACKGROUND = new Color(245, 240, 86);
 
     private final AllAppointmentFields parent;
 
@@ -37,6 +37,15 @@ public class AppointmentFieldController extends JPanel {
     private Optional<Appointment> currentlyStoredAppointment = Optional.empty();
     private Color defaultBackground = Color.WHITE;
 
+    /**
+     * Initializes the controller for an AppointmentField and adding the given
+     * Appointment as initial input of the AppointmentField.
+     * 
+     * @param parent         - which contains all AppointmentFieldController
+     *                       (including this)
+     * @param initialDisplay - the Appointment which is initially shown (it's
+     *                       assumed this Appointment is already stored)
+     */
     public AppointmentFieldController(final AllAppointmentFields parent, final Appointment initialDisplay) {
 	super();
 	this.parent = parent;
@@ -45,6 +54,13 @@ public class AppointmentFieldController extends JPanel {
 	setup();
     }
 
+    /**
+     * Initializes the controller for an AppointmentField and letting the input be
+     * the default values for an Appointment.
+     * 
+     * @param parent - which contains all AppointmentFieldController (including
+     *               this)
+     */
     public AppointmentFieldController(final AllAppointmentFields parent) {
 	super();
 	this.parent = parent;
@@ -58,8 +74,8 @@ public class AppointmentFieldController extends JPanel {
      * Appointment-File.
      * 
      * @throws InvalidAppointmentException      if the current content of the
-     *                                          Appointment-Field isn't valid.
-     * @throws AppointmentAlreadyAddedException if the appointment represented by
+     *                                          AppointmentField isn't valid.
+     * @throws AppointmentAlreadyAddedException if the Appointment represented by
      *                                          the current state already exists.
      */
     public void save() throws InvalidAppointmentException, AppointmentAlreadyAddedException {
@@ -88,7 +104,7 @@ public class AppointmentFieldController extends JPanel {
 
     /**
      * Sets the content to the last stored version of this Controller, if it exists.
-     * If the input never has been stored, yet, default values are set.
+     * If the input has never been stored, yet, default values are set.
      */
     public void cancel() {
 	if (currentlyStoredAppointment.isPresent()) {
@@ -145,6 +161,10 @@ public class AppointmentFieldController extends JPanel {
 	}
     }
 
+    /**
+     * @return Whether the controlled AppointmentField's current content represents
+     *         a correct Appointment.
+     */
     public boolean representsValidAppointment() {
 	return appointmentField.representsValidAppointment();
     }
@@ -154,8 +174,7 @@ public class AppointmentFieldController extends JPanel {
      * controlled Appointment.
      * 
      * Standard background if the current input is stored. Yellow background if the
-     * current input doesn't match the stored version or there is no stored version,
-     * yet. Red if the current input isn't a valid Appointment.
+     * current input doesn't match the stored version or there is no stored version.
      */
     public void updateBackground() {
 	try {
@@ -171,11 +190,10 @@ public class AppointmentFieldController extends JPanel {
 
     /**
      * Sets the default background which is only depicted, if the displayed
-     * Appointment is saved and valid.
+     * Appointment is saved.
      * 
-     * Else either UNSAVED_BACKGROUND or ERROR_BACKGROUND is shown and the given
-     * newDefaultBackground will be visible as soon as the controlled Appointment is
-     * saved and valid again.
+     * Else UNSAVED_BACKGROUND is shown and the given newDefaultBackground will be
+     * visible as soon as the controlled Appointment is saved again.
      * 
      * @param newDefaultBackground
      */
@@ -188,11 +206,11 @@ public class AppointmentFieldController extends JPanel {
     }
 
     public boolean hasDefaultBackground() {
-	return getBackground() == defaultBackground;
+	return getBackground().equals(defaultBackground);
     }
 
     public boolean hasUnsavedBackground() {
-	return getBackground() == UNSAVED_BACKGROUND;
+	return getBackground().equals(UNSAVED_BACKGROUND);
     }
 
     private void setup() {
@@ -236,7 +254,7 @@ public class AppointmentFieldController extends JPanel {
 	}
     }
 
-    public Appointment getInputAppointment() throws InvalidAppointmentException {
+    public Appointment getAppointment() throws InvalidAppointmentException {
 	return appointmentField.getAppointment();
     }
 

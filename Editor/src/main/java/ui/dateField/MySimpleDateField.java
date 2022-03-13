@@ -13,6 +13,7 @@ import standardSwing.myComponent.button.CustomTextButton;
 import standardSwing.settings.Fonts;
 import date.SimpleDates;
 
+//TODO popup close when appointmentfieldcontroller deleted.
 /**
  * Input-Field for a Simple-Date.
  * 
@@ -53,6 +54,11 @@ public class MySimpleDateField extends CustomTextButton {
 	this(SimpleDates.getToday());
     }
 
+    /**
+     * Adds the given ChangeListener to a List of ChangeListener's.
+     * 
+     * They are called when any date is set on this input field.
+     */
     public void addChangeListener(final ChangeListener toAdd) {
 	changeListeners.add(toAdd);
     }
@@ -72,6 +78,11 @@ public class MySimpleDateField extends CustomTextButton {
 	}
     }
 
+    /**
+     * Sets the visibility of the pop up date input according to the argument.
+     * 
+     * @param inputShouldBeVisible
+     */
     public void setDateInputVisible(final boolean inputShouldBeVisible) {
 	final MySiblingPopUp dateInput = monthPopUpController.getPopUp();
 	dateInput.setVisible(inputShouldBeVisible);

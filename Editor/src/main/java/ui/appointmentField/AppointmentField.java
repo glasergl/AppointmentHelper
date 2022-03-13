@@ -20,7 +20,7 @@ import ui.dateField.MySimpleDateField;
  * indicate it being in an illegal state.
  * 
  * @author Gabriel Glaser
- * @version 11.2.2022
+ * @version 13.3.2022
  */
 public class AppointmentField extends JPanel {
 
@@ -58,11 +58,16 @@ public class AppointmentField extends JPanel {
 	setup();
     }
 
+    /**
+     * @return Calculates whether the current content represents a valid Appointment
+     *         (name length bigger than zero).
+     */
     public boolean representsValidAppointment() {
 	final String currentName = nameField.getText();
 	return currentName.length() > 0;
     }
 
+    /*Force exception catch?*/
     /**
      * @return The Appointment represented by the current input.
      * @throws InvalidAppointmentException if the current name-field is empty.
@@ -75,6 +80,11 @@ public class AppointmentField extends JPanel {
 	}
     }
 
+    /**
+     * Replaces the current input with the content of the given Appointment.
+     * 
+     * @param newAppointment
+     */
     public void setAppointment(final Appointment newAppointment) {
 	setDate(newAppointment.getDate());
 	setName(newAppointment.getName());

@@ -10,10 +10,11 @@ import standardSwing.myComponent.button.CustomTextButton;
 import standardSwing.settings.Colors;
 
 /**
- * 
+ * This JPanel visualizes all months as individual MonthField's and allows
+ * controlling them with Buttons.
  * 
  * @author Gabriel Glaser
- * @version 20.01.2022
+ * @version 13.03.2022
  */
 public class AllMonths extends JPanel {
 
