@@ -3,6 +3,7 @@ package ui;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Image;
+import java.awt.Point;
 import java.util.List;
 import javax.swing.JOptionPane;
 import appointment.Appointment;
@@ -31,6 +32,8 @@ public final class EditorFrame extends MyFrame {
 	footer = new Footer(appointmentsFields);
 	setup();
 	start();
+	final Point currentLocation = getLocation();
+	setLocation(new Point(currentLocation.x, currentLocation.y - 60));
 	footer.requestFocusForAddButton();
     }
 
