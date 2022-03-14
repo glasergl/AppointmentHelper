@@ -11,7 +11,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Scrollable;
 import appointment.Appointment;
-import appointment.InvalidAppointmentException;
 import fileInteraction.AppointmentAlreadyAddedException;
 import fileInteraction.AppointmentFileInteracter;
 import standardSwing.general.SwingFunctions;
@@ -94,17 +93,12 @@ public class AllAppointmentFields extends JPanel implements Scrollable {
      *         AppointmentFieldController, else false.
      */
     public boolean containsAppointmentAsInput(final Appointment appointmentToTest) {
-	try {
-	    for (final AppointmentFieldController appointmentController : allAppointmentFields) {
-		if (appointmentController.representsValidAppointment() && appointmentToTest.equals(appointmentController.getAppointment())) {
-		    return true;
-		}
+	for (final AppointmentFieldController appointmentController : allAppointmentFields) {
+	    if (appointmentController.representsValidAppointment() && appointmentToTest.equals(appointmentController.getAppointment())) {
+		return true;
 	    }
-	    return false;
-	} catch (final InvalidAppointmentException e) {
-	    e.printStackTrace();
-	    throw new RuntimeException();
 	}
+	return false;
     }
 
     /**
@@ -127,9 +121,6 @@ public class AllAppointmentFields extends JPanel implements Scrollable {
 	    final String errorTitle = "Doppelter Termin";
 	    final String errorMessage = "Mindestens zwei Termine enthalten den gleichen Inhalt. Bitte änderen Sie einen und speichern erneut.";
 	    JOptionPane.showMessageDialog(null, errorMessage, errorTitle, JOptionPane.ERROR_MESSAGE);
-	} catch (final InvalidAppointmentException e) {
-	    e.printStackTrace();
-	    throw new RuntimeException("Atleast one Appointment isn't valid, but should've been.");
 	}
     }
 

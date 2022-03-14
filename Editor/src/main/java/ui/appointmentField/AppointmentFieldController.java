@@ -149,15 +149,11 @@ public class AppointmentFieldController extends JPanel {
      *         version.
      */
     public boolean isSaved() {
-	try {
-	    if (currentlyStoredAppointment.isPresent() && appointmentField.representsValidAppointment()) {
-		final Appointment currentInput = appointmentField.getAppointment();
-		return currentInput.equals(currentlyStoredAppointment.get());
-	    } else {
-		return false;
-	    }
-	} catch (final InvalidAppointmentException e) {
-	    throw new RuntimeException();
+	if (currentlyStoredAppointment.isPresent() && appointmentField.representsValidAppointment()) {
+	    final Appointment currentInput = appointmentField.getAppointment();
+	    return currentInput.equals(currentlyStoredAppointment.get());
+	} else {
+	    return false;
 	}
     }
 
@@ -173,18 +169,14 @@ public class AppointmentFieldController extends JPanel {
      * Updates the background of this. The background indicates the state of the
      * controlled Appointment.
      * 
-     * Standard background if the current input is stored. Yellow background if the
+     * Default background if the current input is stored. Yellow background if the
      * current input doesn't match the stored version or there is no stored version.
      */
     public void updateBackground() {
-	try {
-	    final Appointment currentInput = appointmentField.getAppointment();
-	    if (currentlyStoredAppointment.isPresent() && currentInput.equals(currentlyStoredAppointment.get())) {
-		setBackground(defaultBackground);
-	    } else {
-		setBackground(UNSAVED_BACKGROUND);
-	    }
-	} catch (final InvalidAppointmentException e) {
+	if (isSaved()) {
+	    setBackground(defaultBackground);
+	} else {
+	    setBackground(UNSAVED_BACKGROUND);
 	}
     }
 
