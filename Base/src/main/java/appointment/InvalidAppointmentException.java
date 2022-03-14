@@ -6,9 +6,9 @@ package appointment;
  * An Appointment is considered as invalid if the name has a length of zero.
  * 
  * @author Gabriel Glaser
- * @version 08.02.2022
+ * @version 14.03.2022
  */
-public class InvalidAppointmentException extends Exception {
+public class InvalidAppointmentException extends RuntimeException {
 
     public InvalidAppointmentException() {
 	super();
