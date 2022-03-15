@@ -132,6 +132,7 @@ public class AppointmentFieldController extends JPanel {
      * @param appointmentFile from which this should be deleted.
      */
     public void delete(final File appointmentFile) {
+	appointmentField.getDateField().setDateInputVisible(false);
 	if (currentlyStoredAppointment.isPresent()) {
 	    AppointmentFileInteracter.remove(currentlyStoredAppointment.get(), appointmentFile);
 	}

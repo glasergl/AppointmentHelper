@@ -9,7 +9,7 @@ import appointment.InvalidAppointmentException;
 import date.SimpleDate;
 import standardSwing.eventListener.emptyImplementation.MyDocumentListener;
 import standardSwing.myComponent.MyCheckBox;
-import standardSwing.myComponent.textfieldx.MyJTextField;
+import standardSwing.myComponent.textField.MyJTextField;
 import standardSwing.settings.Colors;
 import ui.dateField.MySimpleDateField;
 
