@@ -20,8 +20,8 @@ import standardSwing.settings.Colors;
  */
 public final class MonthField extends JPanel {
 
-    private static final Color BACKGROUND_COLOR = Colors.getGray(1);
-    private static final Color BACKGROUND_COLOR_OF_DAY = Colors.getGray(2);
+    private static final Color BACKGROUND_COLOR = Colors.getBlue(1);
+    private static final Color BACKGROUND_COLOR_OF_DAY = Colors.getBlue(2);
     private static final int WIDTH_BETWEEN_DAY_LABELS = 2;
     private static final int SIZE_OF_DAY_LABEL = 35;
 
@@ -41,6 +41,7 @@ public final class MonthField extends JPanel {
     private void setup() {
 	days.setBackground(BACKGROUND_COLOR);
 	nameOfMonth.setHorizontalAlignment(SwingConstants.CENTER);
+	nameOfMonth.setBackground(BACKGROUND_COLOR);
 	addDays();
 	add(nameOfMonth, BorderLayout.NORTH);
 	add(days, BorderLayout.CENTER);
@@ -57,6 +58,7 @@ public final class MonthField extends JPanel {
 	}
 	for (int filler = daysOfMonth + 1; filler <= 35; filler++) {
 	    final MyLabel empty = new MyLabel();
+	    empty.setBackground(BACKGROUND_COLOR);
 	    days.add(empty);
 	}
     }

@@ -18,7 +18,7 @@ import standardSwing.settings.Colors;
  */
 public class AllMonths extends JPanel {
 
-    private static final Color BACKGROUND_COLOR = Colors.getGray(1);
+    private static final Color BACKGROUND_COLOR = Colors.getBlue(1);
     private static final int WIDTH_OF_CLOSE_BUTTON = 40;
     private static final int DISTANCE_BETWEEN_MONTH_CONTROL_BUTTONS = 4;
     private static final Dimension SIZE_OF_MONTH_CONTROL_BUTTONS = new Dimension(35, 35);
