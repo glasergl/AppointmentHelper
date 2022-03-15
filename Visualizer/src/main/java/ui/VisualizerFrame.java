@@ -43,12 +43,13 @@ public final class VisualizerFrame extends MyFrame {
 	    pack();
 	    setLocationRelativeTo(null);
 	});
+	appointmentOutput.setBackground(Colors.getBlue(0));
 	addComponents();
     }
 
     private void addComponents() {
 	add(appointmentOutput, BorderLayout.NORTH);
-	add(JPanelFactory.create(new FlowLayout(FlowLayout.RIGHT, 0, 0), Colors.getGray(0), calendarVisabilityChangerButton), BorderLayout.CENTER);
+	add(JPanelFactory.create(new FlowLayout(FlowLayout.RIGHT, 0, 0), Colors.getBlue(0), calendarVisabilityChangerButton), BorderLayout.CENTER);
 	add(calendarWithAppointments, BorderLayout.SOUTH);
     }
 

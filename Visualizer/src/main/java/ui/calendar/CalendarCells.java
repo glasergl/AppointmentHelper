@@ -17,14 +17,16 @@ import standardSwing.settings.Colors;
  * @version 28.09.2021
  */
 public final class CalendarCells extends JPanel {
-
+    private static final Color BACKGROUND_COLOR = Colors.getBlue(1);
+    private static final Color BACKGROUND_COLOR_OF_TODAY = Colors.getBlue(3);
+    
     private final List<Appointment> toRepresent;
 
     public CalendarCells(final List<Appointment> toAdd) {
 	super();
 	this.toRepresent = toAdd;
 	setLayout(new GridLayout(31, 12, 1, 1));
-	setBackground(Colors.getGray(1));
+	setBackground(BACKGROUND_COLOR);
 	addCells();
     }
 
@@ -36,7 +38,7 @@ public final class CalendarCells extends JPanel {
 		    final CalendarCell cell = new CalendarCell(new SimpleDate(day, month), toRepresent);
 		    add(cell);
 		    if (date.isToday()) {
-			cell.setBackground(Colors.getGray(4));
+			cell.setBackground(BACKGROUND_COLOR_OF_TODAY);
 		    }
 		} else {
 		    final MyLabel empty = new MyLabel();

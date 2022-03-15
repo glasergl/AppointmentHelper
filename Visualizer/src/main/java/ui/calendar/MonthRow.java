@@ -1,5 +1,6 @@
 package ui.calendar;
 
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,12 +10,14 @@ import standardSwing.settings.Colors;
 
 public final class MonthRow extends JPanel {
 
+    private static final Color BACKGROUND_COLOR = Colors.getBlue(1);
+
     private final List<MyLabel> months = getMonths();
 
     public MonthRow() {
 	super();
 	setLayout(new GridLayout(1, 12, 1, 1));
-	setBackground(Colors.getGray(1));
+	setBackground(BACKGROUND_COLOR);
 	addMonths();
     }
 
@@ -26,18 +29,24 @@ public final class MonthRow extends JPanel {
 
     private List<MyLabel> getMonths() {
 	List<MyLabel> months = new ArrayList<>(12);
-	months.add(new MyLabel("Januar"));
-	months.add(new MyLabel("Februar"));
-	months.add(new MyLabel("März"));
-	months.add(new MyLabel("April"));
-	months.add(new MyLabel("Mai"));
-	months.add(new MyLabel("Juni"));
-	months.add(new MyLabel("Juli"));
-	months.add(new MyLabel("August"));
-	months.add(new MyLabel("September  "));
-	months.add(new MyLabel("Oktober"));
-	months.add(new MyLabel("November"));
-	months.add(new MyLabel("Dezember"));
+	months.add(initializeBackground(new MyLabel("Januar")));
+	months.add(initializeBackground(new MyLabel("Februar")));
+	months.add(initializeBackground(new MyLabel("März")));
+	months.add(initializeBackground(new MyLabel("April")));
+	months.add(initializeBackground(new MyLabel("Mai")));
+	months.add(initializeBackground(new MyLabel("Juni")));
+	months.add(initializeBackground(new MyLabel("Juli")));
+	months.add(initializeBackground(new MyLabel("August")));
+	months.add(initializeBackground(new MyLabel("September  ")));
+	months.add(initializeBackground(new MyLabel("Oktober")));
+	months.add(initializeBackground(new MyLabel("November")));
+	months.add(initializeBackground(new MyLabel("Dezember")));
 	return months;
+    }
+
+    private MyLabel initializeBackground(final MyLabel toInitialize) {
+	toInitialize.setOpaque(true);
+	toInitialize.setBackground(BACKGROUND_COLOR);
+	return toInitialize;
     }
 }

@@ -23,7 +23,9 @@ import standardSwing.settings.Colors;
  * @version 6.1.2022
  */
 public final class AppointmentOutputText extends JPanel {
-
+    
+    private static final Color BACKGROUND_COLOR_OF_POP_UP = Colors.getBlue(0);
+    
     private final String timeDescription;
     private final List<Appointment> birthdaysAtTimeDescription;
     private final List<Appointment> nonBirthdaysAtTimeDescription;
@@ -101,6 +103,7 @@ public final class AppointmentOutputText extends JPanel {
 	appointmentName.addMouseListener(new ColorChangerOnHover(Colors.ofFocus(), ColorType.BACKGROUND));
 	final String description = appointment.getDescription();
 	final MyLabel withDescription = new MyLabel(description);
+	withDescription.setBackground(BACKGROUND_COLOR_OF_POP_UP);
 	if (!description.equals("")) {
 	    new SiblingPopUpDisplayerOnHover(withDescription, appointmentName);
 	}

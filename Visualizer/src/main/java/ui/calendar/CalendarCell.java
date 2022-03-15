@@ -1,5 +1,6 @@
 package ui.calendar;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,6 +26,8 @@ import standardSwing.settings.Fonts;
 public final class CalendarCell extends MyLabel {
 
     public static final int MAXIMUM_NAME_LENGTH = 12;
+    private static final Color BACKGROUND_COLOR = Colors.getBlue(2);
+    private static final Color BACKGROUND_COLOR_OF_POP_UP = Colors.getBlue(0);
 
     private final SimpleDate date;
     private final List<Appointment> atDate;
@@ -35,7 +38,7 @@ public final class CalendarCell extends MyLabel {
 	this.atDate = toRespect.stream().filter(appointment -> appointment.isAt(date)).collect(Collectors.toList());
 	setText(calculateTextForDate());
 	setFont(Fonts.mediumSmall());
-	setBackground(Colors.getGray(2));
+	setBackground(BACKGROUND_COLOR);
 	addMouseListener(new ColorChangerOnHover(Colors.ofFocus(), ColorType.BACKGROUND));
 	if (atDate.size() > 1 || (atDate.size() == 1 && atDate.get(0).getName().length() > MAXIMUM_NAME_LENGTH)) {
 	    new SiblingPopUpDisplayerOnHover(getPopUpComponent(), this);
@@ -84,14 +87,16 @@ public final class CalendarCell extends MyLabel {
 
     private JComponent getPopUpComponent() {
 	final LineOfJComponent names = new LineOfJComponent(Alignment.VERTICAL, getNamesAsLabels(atDate), 0);
-	names.setBackground(Colors.getGray(1));
+	names.setBackground(BACKGROUND_COLOR_OF_POP_UP);
 	return names;
     }
 
     private List<MyLabel> getNamesAsLabels(final List<Appointment> appointments) {
 	final List<MyLabel> names = new ArrayList<>(appointments.size());
 	for (final Appointment appointment : appointments) {
-	    names.add(new MyLabel(appointment.getName()));
+	    final MyLabel withAppointmentName = new MyLabel(appointment.getName());
+	    withAppointmentName.setBackground(BACKGROUND_COLOR_OF_POP_UP);
+	    names.add(withAppointmentName);
 	}
 	return names;
     }
