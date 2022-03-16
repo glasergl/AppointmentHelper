@@ -5,18 +5,18 @@ import java.awt.FlowLayout;
 import java.awt.Image;
 import java.util.List;
 import appointment.Appointment;
+import calendar.VisualCalendar;
 import standardSwing.container.JPanelFactory;
 import standardSwing.container.MyFrame;
 import standardSwing.general.SwingFunctions;
 import standardSwing.myComponent.button.MyJButton;
-import ui.calendar.VisualCalendar;
 import standardSwing.settings.Colors;
 
 /**
  * Main Frame for the Visualizer.
  * 
  * @author Gabriel Glaser
- * @version 6.1.2022
+ * @version 16.3.2022
  */
 public final class VisualizerFrame extends MyFrame {
 

@@ -1,4 +1,4 @@
-package ui.calendar;
+package calendar;
 
 import java.awt.BorderLayout;
 import java.util.List;

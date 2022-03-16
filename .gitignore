@@ -1,7 +1,11 @@
 .metadata/
+
 AppointmentAdapter.jar
+AppointmentCalendar.jar
 AppointmentEditor.jar
 AppointmentVisualizer.jar
+
 appointments.json
 Geburtstage.txt
+
 AppointmentHelper.zip

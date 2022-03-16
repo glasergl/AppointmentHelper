@@ -1,4 +1,4 @@
-package ui.calendar;
+package calendar;
 
 import java.awt.Color;
 import java.util.ArrayList;

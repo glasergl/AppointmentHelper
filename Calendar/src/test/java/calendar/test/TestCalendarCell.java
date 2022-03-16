@@ -1,15 +1,15 @@
-package ui.test;
+package calendar.test;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
 import appointment.Appointment;
+import calendar.CalendarCell;
 import date.SimpleDate;
-import ui.calendar.CalendarCell;
 import java.util.List;
 
 /**
  * @author Gabriel Glaser
- * @version 19.01.2022
+ * @version 16.03.2022
  */
 public class TestCalendarCell {
 
