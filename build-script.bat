@@ -4,11 +4,12 @@ echo delete old files
 del AppointmentAdapter.jar
 del AppointmentCalendar.jar
 del AppointmentEditor.jar
-del AppointmentVisualizer.jar
+del AppointmentReminder.jar
 
 del AppointmentHelper.zip
 
 del appointments.json
+
 
 echo ################################################################-Base-################################################################
 call mvn install -f Base/
@@ -25,17 +26,17 @@ call mvn package -f Calendar/
 echo ################################################################-Editor-################################################################
 call mvn package -f Editor/
 
-echo ################################################################-Visualizer-################################################################
-call mvn package -f Visualizer/
+echo ################################################################-Reminder-################################################################
+call mvn package -f Reminder/
 
 echo rename jars
 rename "AppointmentAdapter-0.0.1-SNAPSHOT-jar-with-dependencies.jar" "AppointmentAdapter.jar"
 rename "AppointmentCalendar-0.0.1-SNAPSHOT-jar-with-dependencies.jar" "AppointmentCalendar.jar"
 rename "AppointmentEditor-0.0.1-SNAPSHOT-jar-with-dependencies.jar" "AppointmentEditor.jar"
-rename "AppointmentVisualizer-0.0.1-SNAPSHOT-jar-with-dependencies.jar" "AppointmentVisualizer.jar"
+rename "AppointmentReminder-0.0.1-SNAPSHOT-jar-with-dependencies.jar" "AppointmentReminder.jar"
 
 echo pack jars in zip:
-call 7z a AppointmentHelper.zip AppointmentAdapter.jar AppointmentCalendar.jar AppointmentEditor.jar AppointmentVisualizer.jar
+call 7z a AppointmentHelper.zip AppointmentAdapter.jar AppointmentCalendar.jar AppointmentEditor.jar AppointmentReminder.jar
 
 echo\
 
