@@ -18,15 +18,15 @@ import standardSwing.settings.Colors;
  * @author Gabriel Glaser
  * @version 16.3.2022
  */
-public final class VisualizerFrame extends MyFrame {
+public final class ReminderFrame extends MyFrame {
 
-    private static final Image ICON = SwingFunctions.getImage("VisualizerIcon.png", VisualizerFrame.class);
+    private static final Image ICON = SwingFunctions.getImage("ReminderIcon.png", ReminderFrame.class);
 
     private final MyJButton calendarVisabilityChangerButton = new MyJButton("Kalender anzeigen");
     private final AppointmentOutput appointmentOutput;
     private final VisualCalendar calendarWithAppointments;
 
-    public VisualizerFrame(final List<Appointment> appointmentsToConsider) {
+    public ReminderFrame(final List<Appointment> appointmentsToConsider) {
 	super("TerminHelfer", ICON);
 	this.appointmentOutput = new AppointmentOutput(appointmentsToConsider);
 	this.calendarWithAppointments = new VisualCalendar(appointmentsToConsider);

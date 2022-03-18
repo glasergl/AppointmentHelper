@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import appointment.Appointment;
 import fileInteraction.AppointmentFileInteracter;
-import ui.VisualizerFrame;
+import ui.ReminderFrame;
 
 /**
  * Entry point for the Visualizer program which visualizes the appointments of
@@ -15,7 +15,7 @@ import ui.VisualizerFrame;
  * @author Gabriel Glaser
  * @version 6.1.2022
  */
-public final class Visualizer {
+public final class Reminder {
 
     public static void main(final String[] args) {
 	final File appointmentFile = AppointmentFileInteracter.getDefaultAppointmentFile();
@@ -29,7 +29,7 @@ public final class Visualizer {
     private static void createAndShowGUI() {
 	final List<Appointment> appointmentsToConsider = AppointmentFileInteracter.getAppointments();
 	SwingUtilities.invokeLater(() -> {
-	    new VisualizerFrame(appointmentsToConsider);
+	    new ReminderFrame(appointmentsToConsider);
 	});
     }
 

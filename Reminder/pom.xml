@@ -59,7 +59,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>main.Visualizer</mainClass>
+							<mainClass>main.Reminder</mainClass>
 						</manifest>
 					</archive>
 					<descriptorRefs>
