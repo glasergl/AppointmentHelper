@@ -10,24 +10,23 @@ del TerminHelfer.zip
 
 del appointments.json
 
-
 echo ################################################################-Base-################################################################
-call mvn install -f Base/
+call mvn clean install -f Base/
 
 echo ################################################################-FileInteraction-################################################################
-call mvn install -f FileInteraction/
+call mvn clean install -f FileInteraction/
 
 echo ################################################################-Adapter-################################################################
-call mvn package -f Adapter/
+call mvn clean package -f Adapter/
 
 echo ################################################################-Calendar-################################################################
-call mvn package -f Calendar/
+call mvn clean package -f Calendar/
 
 echo ################################################################-Editor-################################################################
-call mvn package -f Editor/
+call mvn clean package -f Editor/
 
 echo ################################################################-Reminder-################################################################
-call mvn package -f Reminder/
+call mvn clean package -f Reminder/
 
 echo rename jars
 rename "AppointmentAdapter-0.0.1-SNAPSHOT-jar-with-dependencies.jar" "TerminAdapter.jar"
