@@ -10,7 +10,6 @@ import date.SimpleDate;
 import standardSwing.eventListener.emptyImplementation.MyDocumentListener;
 import standardSwing.myComponent.MyCheckBox;
 import standardSwing.myComponent.textField.MyTextField;
-import standardSwing.settings.Colors;
 import ui.dateField.MySimpleDateField;
 
 /**
@@ -103,7 +102,7 @@ public class AppointmentField extends JPanel {
 		final String currentText = nameField.getText();
 		if (currentText.length() == 0) {
 		    oldBackground = Optional.of(nameField.getBackground());
-		    nameField.setBackground(Colors.ofError());
+		    nameField.setBackground(new Color(255, 115, 122));
 		} else {
 		    nameField.setBackground(oldBackground.get());
 		}
