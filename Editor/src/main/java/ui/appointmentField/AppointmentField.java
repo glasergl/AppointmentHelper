@@ -10,7 +10,7 @@ import date.SimpleDate;
 import standardSwing.eventListener.emptyImplementation.MyDocumentListener;
 import standardSwing.myComponent.MyCheckBox;
 import standardSwing.myComponent.textField.MyTextField;
-import ui.dateField.MySimpleDateField;
+import ui.appointmentField.dateField.MySimpleDateField;
 
 /**
  * Visual Input-Field for an Appointment.
