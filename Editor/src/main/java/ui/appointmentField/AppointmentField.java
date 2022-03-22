@@ -9,7 +9,7 @@ import appointment.InvalidAppointmentException;
 import date.SimpleDate;
 import standardSwing.eventListener.emptyImplementation.MyDocumentListener;
 import standardSwing.myComponent.MyCheckBox;
-import standardSwing.myComponent.textField.MyJTextField;
+import standardSwing.myComponent.textField.MyTextField;
 import standardSwing.settings.Colors;
 import ui.dateField.MySimpleDateField;
 
@@ -30,8 +30,8 @@ public class AppointmentField extends JPanel {
     private static final boolean STANDARD_IS_BIRTHDAY = true;
 
     private final MySimpleDateField dateField = new MySimpleDateField();
-    private final MyJTextField nameField = new MyJTextField();
-    private final MyJTextField descriptionField = new MyJTextField();
+    private final MyTextField nameField = new MyTextField();
+    private final MyTextField descriptionField = new MyTextField();
     private final MyCheckBox isBirthdayField = new MyCheckBox("ist Geburtstag", STANDARD_IS_BIRTHDAY);
 
     /**
@@ -95,7 +95,7 @@ public class AppointmentField extends JPanel {
     private void setup() {
 	setLayout(new FlowLayout(FlowLayout.LEFT, DISTANCE_BETWEEN_SUB_COMPONENTS, 0));
 	nameField.setColumns(NAME_WIDTH);
-	nameField.getDocument().addDocumentListener(new MyDocumentListener() {
+	nameField.addDocumentListener(new MyDocumentListener() {
 	    private Optional<Color> oldBackground = Optional.of(nameField.getBackground());
 
 	    @Override
@@ -129,11 +129,11 @@ public class AppointmentField extends JPanel {
 	return dateField;
     }
 
-    public MyJTextField getNameField() {
+    public MyTextField getNameField() {
 	return nameField;
     }
 
-    public MyJTextField getDescriptionField() {
+    public MyTextField getDescriptionField() {
 	return descriptionField;
     }
 

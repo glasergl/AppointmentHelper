@@ -225,8 +225,8 @@ public class AppointmentFieldController extends JPanel {
 	    updateBackground();
 	};
 	appointmentField.getDateField().addChangeListener(toUpdateBackgroundChangeListener);
-	appointmentField.getNameField().getDocument().addDocumentListener(toUpdateBackgroundDocumentListener);
-	appointmentField.getDescriptionField().getDocument().addDocumentListener(toUpdateBackgroundDocumentListener);
+	appointmentField.getNameField().addDocumentListener(toUpdateBackgroundDocumentListener);
+	appointmentField.getDescriptionField().addDocumentListener(toUpdateBackgroundDocumentListener);
 	appointmentField.getIsBirthdayField().addChangeListener(toUpdateBackgroundChangeListener);
     }
 
