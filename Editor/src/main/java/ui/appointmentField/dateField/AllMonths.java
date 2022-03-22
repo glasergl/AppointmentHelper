@@ -3,8 +3,10 @@ package ui.appointmentField.dateField;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import date.SimpleDate;
 import standardSwing.container.RowOfJComponent;
 import standardSwing.myComponent.button.CustomTextButton;
 import standardSwing.settings.Colors;
@@ -44,6 +46,13 @@ public class AllMonths extends JPanel {
 	this.displayOfCurrentMonth = new MonthField(dateField, currentMonth);
 	setup();
 	setDisplayedMonth(currentMonth);
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+	final SimpleDate currentInput = dateField.getDate();
+	setDisplayedMonth(currentInput.getMonth());
+	super.paintComponent(g);
     }
 
     private void setup() {
