@@ -66,7 +66,6 @@ public class AppointmentField extends JPanel {
 	return currentName.length() > 0;
     }
 
-    /*Force exception catch?*/
     /**
      * @return The Appointment represented by the current input.
      * @throws InvalidAppointmentException if the current name-field is empty.
