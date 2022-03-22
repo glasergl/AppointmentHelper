@@ -1,6 +1,5 @@
 package ui.appointmentField.dateField;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +42,6 @@ public class MySimpleDateField extends CustomTextButton {
 	this.monthPopUpController = new SiblingPopUpDisplayerOnClick(monthsInput, this);
 	setFont(Fonts.resizedStandard(DATE_TEXT_SIZE));
 	setPreferredSize(new Dimension(70, 40));
-	setBackground(Color.BLACK);
     }
 
     /**
