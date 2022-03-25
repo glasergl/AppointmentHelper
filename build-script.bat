@@ -40,6 +40,9 @@ echo Test3.25.9>>output\Geburtstage.txt
 echo Test4.5.5>>output\Geburtstage.txt
 echo Test5.25.2>>output\Geburtstage.txt
 
+echo\
+echo pack .exe-Files in zip
+call 7z a output\TerminHelfer.zip .\output\*.exe
 
 echo\
 echo build finished.
