@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE xml>
 <launch4jConfig>
 	<headerType>gui</headerType>
-	<jar>target\AppointmentEditor-0.0.1-SNAPSHOT-jar-with-dependencies.jar
-	</jar>
+	<jar>target\AppointmentEditor-0.0.1-SNAPSHOT-jar-with-dependencies.jar</jar>
 	<outfile>..\output\TerminEditor.exe</outfile>
 	<icon>src\main\resources\EditorIcon.ico</icon>
 	<singleInstance>

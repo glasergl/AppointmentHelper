@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE xml>
 <launch4jConfig>
 	<headerType>gui</headerType>
-	<jar>target\AppointmentCalendar-0.0.1-SNAPSHOT-jar-with-dependencies.jar
-	</jar>
+	<jar>target\AppointmentCalendar-0.0.1-SNAPSHOT-jar-with-dependencies.jar</jar>
 	<outfile>..\output\TerminKalender.exe</outfile>
 	<icon>src\main\resources\CalendarIcon.ico</icon>
 	<jre>
