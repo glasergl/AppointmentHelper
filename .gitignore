@@ -1,11 +1,2 @@
 .metadata/
-
-TerminAdapter.jar
-TerminKalender.jar
-TerminEditor.jar
-TerminReminder.jar
-
-appointments.json
-Geburtstage.txt
-
-TerminHelfer.zip
+output/
