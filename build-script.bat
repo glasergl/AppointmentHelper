@@ -32,6 +32,8 @@ echo Test3.25.9>>output\Geburtstage.txt
 echo Test4.5.5>>output\Geburtstage.txt
 echo Test5.25.2>>output\Geburtstage.txt
 
+
+echo\
 echo build finished.
 
 pause
