@@ -1,12 +1,12 @@
-package ui.test;
+package appointmentOutput.test;
 
 import static org.junit.Assert.*;
 import java.util.List;
 import org.junit.Test;
 import appointment.Appointment;
+import appointmentOutput.AppointmentOutputText;
 import date.SimpleDate;
 import date.SimpleDates;
-import ui.AppointmentOutputText;
 
 /**
  * @author Gabriel Glaser
