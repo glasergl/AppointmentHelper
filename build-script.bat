@@ -25,6 +25,14 @@ echo ################################################################-Reminder-#
 call mvn clean package -f Reminder/
 
 echo\
+echo create .exe-Files
+call launch4jc Calendar\config.xml
+echo\
+call launch4jc Editor\config.xml
+echo\
+call launch4jc Reminder\config.xml
+
+echo\
 echo create Geburtstage.txt
 echo Test1.21.9>>output\Geburtstage.txt
 echo Test2.27.8>>output\Geburtstage.txt

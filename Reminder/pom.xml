@@ -65,7 +65,6 @@
 					<descriptorRefs>
 						<descriptorRef>jar-with-dependencies</descriptorRef>
 					</descriptorRefs>
-					<outputDirectory>../output/</outputDirectory>
 				</configuration>
 				<executions>
 					<execution>
