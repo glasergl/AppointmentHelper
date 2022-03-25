@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
 <launch4jConfig>
-  <headerType>gui</headerType>
-  <jar>target\AppointmentReminder-0.0.1-SNAPSHOT-jar-with-dependencies.jar</jar>
-  <outfile>..\output\TerminReminder.exe</outfile>
-  <icon>src\main\resources\ReminderIcon.ico</icon>
-  <singleInstance>
-    <mutexName>glasergl_AppointmentReminder</mutexName>
-  </singleInstance>
-  <jre>
-    <minVersion>13.0.2</minVersion>
-  </jre>
+	<headerType>gui</headerType>
+	<jar>target\AppointmentReminder-0.0.1-SNAPSHOT-jar-with-dependencies.jar
+	</jar>
+	<outfile>..\output\TerminReminder.exe</outfile>
+	<icon>src\main\resources\ReminderIcon.ico</icon>
+	<jre>
+		<minVersion>13.0.2</minVersion>
+	</jre>
 </launch4jConfig>
