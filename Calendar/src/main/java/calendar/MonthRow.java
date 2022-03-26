@@ -5,6 +5,8 @@ import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+
 import standardSwing.myComponent.MyLabel;
 import standardSwing.settings.Colors;
 
@@ -47,6 +49,7 @@ public final class MonthRow extends JPanel {
     private MyLabel initializeBackground(final MyLabel toInitialize) {
 	toInitialize.setOpaque(true);
 	toInitialize.setBackground(BACKGROUND_COLOR);
+	toInitialize.setHorizontalAlignment(SwingConstants.CENTER);
 	return toInitialize;
     }
 }
