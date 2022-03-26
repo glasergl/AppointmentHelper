@@ -39,7 +39,7 @@ public final class MonthRow extends JPanel {
 	months.add(initializeBackground(new MyLabel("Juni")));
 	months.add(initializeBackground(new MyLabel("Juli")));
 	months.add(initializeBackground(new MyLabel("August")));
-	months.add(initializeBackground(new MyLabel("September  ")));
+	months.add(initializeBackground(new MyLabel("September")));
 	months.add(initializeBackground(new MyLabel("Oktober")));
 	months.add(initializeBackground(new MyLabel("November")));
 	months.add(initializeBackground(new MyLabel("Dezember")));
