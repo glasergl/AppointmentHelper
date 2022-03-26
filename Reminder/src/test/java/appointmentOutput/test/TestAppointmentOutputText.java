@@ -1,6 +1,7 @@
 package appointmentOutput.test;
 
 import static org.junit.Assert.*;
+import java.util.Arrays;
 import java.util.List;
 import org.junit.Test;
 import appointment.Appointment;
@@ -82,7 +83,7 @@ public class TestAppointmentOutputText {
 	Appointment appointment2 = new Appointment(d2, "Frodo", "beschreibung2", true);
 	Appointment appointment3 = new Appointment(d3, "Besprechung", "beschreibung3", false);
 	Appointment appointment4 = new Appointment(d4, "Party", "beschreibung4", false);
-	return List.of(appointment1, appointment2, appointment3, appointment4);
+	return Arrays.asList(appointment1, appointment2, appointment3, appointment4);
     }
 
 }

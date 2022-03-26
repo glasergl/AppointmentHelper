@@ -5,6 +5,6 @@
 	<outfile>..\output\TerminReminder.exe</outfile>
 	<icon>src\main\resources\ReminderIcon.ico</icon>
 	<jre>
-		<minVersion>13.0.2</minVersion>
+		<minVersion>1.8.9_321</minVersion>
 	</jre>
 </launch4jConfig>
