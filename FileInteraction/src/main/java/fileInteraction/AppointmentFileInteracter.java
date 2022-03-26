@@ -5,11 +5,9 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
@@ -166,7 +164,7 @@ public final class AppointmentFileInteracter {
 	if (!fileWithAppointments.exists()) {
 	    throw new IllegalArgumentException("The given Appointment-File doesn't exist.");
 	}
-	try (final FileReader reader = new FileReader(fileWithAppointments, StandardCharsets.UTF_8);) {
+	try (final FileReader reader = new FileReader(fileWithAppointments);) {
 	    final JSONTokener parser = new JSONTokener(reader);
 	    return new JSONArray(parser);
 	} catch (final IOException e) {
@@ -184,7 +182,7 @@ public final class AppointmentFileInteracter {
 	if (!fileToStoreAt.exists()) {
 	    throw new IllegalArgumentException("The given Appointment-File doesn't exist.");
 	}
-	try (final BufferedWriter writer = new BufferedWriter(new FileWriter(fileToStoreAt, StandardCharsets.UTF_8))) {
+	try (final BufferedWriter writer = new BufferedWriter(new FileWriter(fileToStoreAt))) {
 	    final String[] jsonLines = appointmentsToStore.toString(APPOINTMENT_FILE_INDENT_SIZE).split("\n");
 	    for (final String line : jsonLines) {
 		writer.write(line);
@@ -222,7 +220,7 @@ public final class AppointmentFileInteracter {
 	if (emptyAppointmentFile.exists()) {
 	    throw new IllegalArgumentException("Appointment-File at " + pathOfTheNewAppointmentFile + " already exists.");
 	}
-	try (final BufferedWriter writer = new BufferedWriter(new FileWriter(emptyAppointmentFile, StandardCharsets.UTF_8))) {
+	try (final BufferedWriter writer = new BufferedWriter(new FileWriter(emptyAppointmentFile))) {
 	    writer.write("[");
 	    writer.newLine();
 	    writer.newLine();

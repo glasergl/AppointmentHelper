@@ -5,6 +5,7 @@ import java.awt.FlowLayout;
 import java.awt.Image;
 import java.util.List;
 import appointment.Appointment;
+import appointmentOutput.AppointmentOutput;
 import calendar.VisualCalendar;
 import standardSwing.container.JPanelFactory;
 import standardSwing.container.MyFrame;

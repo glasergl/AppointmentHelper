@@ -1,4 +1,4 @@
-package ui;
+package appointmentOutput;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
