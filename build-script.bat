@@ -38,7 +38,7 @@ echo Test1.21.9>>output\Geburtstage.txt
 echo Test2.27.8>>output\Geburtstage.txt
 echo Test3.25.9>>output\Geburtstage.txt
 echo Test4.5.5>>output\Geburtstage.txt
-echo Test5.25.2>>output\Geburtstage.txt
+echo Test5ßöäü.25.2>>output\Geburtstage.txt
 
 echo\
 echo pack .exe-Files in zip
