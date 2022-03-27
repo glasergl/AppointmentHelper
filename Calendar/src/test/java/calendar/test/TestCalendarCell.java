@@ -10,7 +10,7 @@ import date.SimpleDate;
 
 /**
  * @author Gabriel Glaser
- * @version 16.03.2022
+ * @version 27.03.2022
  */
 public class TestCalendarCell {
 
@@ -39,22 +39,15 @@ public class TestCalendarCell {
     }
 
     @Test
-    public void testEdgeCaseOfNameLength() {
-	String edgeWord = getEdgeWord();
-	CalendarCell calendarCell = new CalendarCell(testDate1, Arrays.asList(new Appointment(testDate1, edgeWord, "", true)));
-	assertEquals(getExpectedCellString(testDate1, edgeWord), calendarCell.toString());
-    }
-
-    @Test
     public void testSpecialCaseOfNameLength() {
-	String specialCaseWord = getSpecialCaseWord();
+	String specialCaseWord = "MMMMMMMMMMMMMMMM";
 	CalendarCell calendarCell = new CalendarCell(testDate1, Arrays.asList(new Appointment(testDate1, specialCaseWord, "", true)));
 	assertEquals(getExpectedCellString(testDate1, "1 Geburtstag"), calendarCell.toString());
     }
 
     @Test
     public void testSpecialCaseWithoutBirthday() {
-	String specialCaseWord = getSpecialCaseWord();
+	String specialCaseWord = "MMMMMMMMMMMMMMMM";
 	CalendarCell calendarCell = new CalendarCell(testDate1, Arrays.asList(new Appointment(testDate1, specialCaseWord, "", false)));
 	assertEquals(getExpectedCellString(testDate1, "1 Termin"), calendarCell.toString());
     }
@@ -134,18 +127,6 @@ public class TestCalendarCell {
 
     private String getExpectedDateString(final SimpleDate toGetDateStringOf) {
 	return String.valueOf(toGetDateStringOf.getDay()) + ".  ";
-    }
-
-    private String getEdgeWord() {
-	String extremeWord = "";
-	for (int i = 0; i < CalendarCell.MAXIMUM_NAME_LENGTH; i++) {
-	    extremeWord += "a";
-	}
-	return extremeWord;
-    }
-
-    private String getSpecialCaseWord() {
-	return getEdgeWord() + "a";
     }
 
 }

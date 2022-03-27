@@ -45,6 +45,11 @@ echo pack .exe-Files in zip
 call 7z a output\TerminHelfer.zip .\output\*.exe
 
 echo\
+echo create appointments.json
+call cd output
+call java -jar AppointmentAdapter-0.0.1-SNAPSHOT-jar-with-dependencies.jar
+
+echo\
 echo build finished.
 
 pause

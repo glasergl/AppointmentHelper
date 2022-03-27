@@ -1,6 +1,7 @@
 package calendar;
 
 import java.awt.Color;
+import java.awt.FontMetrics;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,11 +22,11 @@ import standardSwing.settings.Fonts;
  * collection of appointments which are at the specified date.
  *
  * @author Gabriel Glaser
- * @version 6.1.2022
+ * @version 27.3.2022
  */
 public final class CalendarCell extends MyLabel {
 
-    public static final int MAXIMUM_NAME_LENGTH = 12;
+    private static final int MAXIMUM_NAME_PIXEL_LENGTH = 100;
     private static final Color BACKGROUND_COLOR = Colors.getBlue(2);
     private static final Color BACKGROUND_COLOR_OF_POP_UP = Colors.getBlue(0);
 
@@ -36,11 +37,11 @@ public final class CalendarCell extends MyLabel {
 	super();
 	this.date = date;
 	this.atDate = toRespect.stream().filter(appointment -> appointment.isAt(date)).collect(Collectors.toList());
-	setText(calculateTextForDate());
 	setFont(Fonts.mediumSmall());
 	setBackground(BACKGROUND_COLOR);
+	setText(calculateTextForDate());
 	addMouseListener(new ColorChangerOnHover(Colors.ofFocus(), ColorType.BACKGROUND));
-	if (atDate.size() > 1 || (atDate.size() == 1 && atDate.get(0).getName().length() > MAXIMUM_NAME_LENGTH)) {
+	if (atDate.size() > 1 || (atDate.size() == 1 && widthOfText(atDate.get(0).getName()) > MAXIMUM_NAME_PIXEL_LENGTH)) {
 	    new SiblingPopUpDisplayerOnHover(getPopUpComponent(), this);
 	}
     }
@@ -54,11 +55,16 @@ public final class CalendarCell extends MyLabel {
 	return textForDate.toString();
     }
 
+    /**
+     * @return The name of the one appointment, if there only exists one, else the
+     *         number of appointments occurring today. In addition to that, it
+     *         returns "1" if the one name is longer than allowed.
+     */
     private String calculateTextForName() {
 	if (atDate.size() == 1) {
 	    final Appointment one = atDate.get(0);
 	    final String nameOfOne = one.getName();
-	    if (nameOfOne.length() > MAXIMUM_NAME_LENGTH) {
+	    if (widthOfText(nameOfOne) > MAXIMUM_NAME_PIXEL_LENGTH) {
 		return String.valueOf(1);
 	    } else {
 		return nameOfOne;
@@ -70,13 +76,17 @@ public final class CalendarCell extends MyLabel {
 	}
     }
 
+    /**
+     * @return The type of appointments occurring at the day. Returns an empty
+     *         String, if only one appointment occurs today and its name is legal.
+     */
     private String calculateTextForEnding() {
 	final StringBuilder ending = new StringBuilder();
 	final boolean allBirthdays = atDate.stream().allMatch(Appointment::isBirthday);
 	if (atDate.size() == 1) {
 	    final Appointment one = atDate.get(0);
 	    final String nameOfOne = one.getName();
-	    if (nameOfOne.length() > MAXIMUM_NAME_LENGTH) {
+	    if (widthOfText(nameOfOne) > MAXIMUM_NAME_PIXEL_LENGTH) {
 		ending.append(allBirthdays ? "Geburtstag " : "Termin ");
 	    }
 	} else if (atDate.size() > 1) {
@@ -104,6 +114,11 @@ public final class CalendarCell extends MyLabel {
     @Override
     public String toString() {
 	return getText();
+    }
+
+    public int widthOfText(final String widthOfText) {
+	final FontMetrics fontMetrics = getFontMetrics(getFont());
+	return fontMetrics.stringWidth(widthOfText);
     }
 
 }
