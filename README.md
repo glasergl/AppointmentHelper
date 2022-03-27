@@ -1,5 +1,5 @@
 # AppointmentHelper
-A set of tools to organize events which occur on the same day every year (e.g. birthdays, wedding days, ...).
+A set of tools to organize events which occur on the same day every year (e.g. birthdays, wedding days etc.).
 
 Tool     | What it does
 -------- | -------------------------------------------------------------------------------------
