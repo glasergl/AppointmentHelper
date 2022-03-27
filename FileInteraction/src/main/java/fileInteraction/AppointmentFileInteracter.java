@@ -2,9 +2,12 @@ package fileInteraction;
 
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -164,7 +167,7 @@ public final class AppointmentFileInteracter {
 	if (!fileWithAppointments.exists()) {
 	    throw new IllegalArgumentException("The given Appointment-File doesn't exist.");
 	}
-	try (final FileReader reader = new FileReader(fileWithAppointments);) {
+	try (final InputStreamReader reader = new InputStreamReader(new FileInputStream(fileWithAppointments), StandardCharsets.UTF_8);) {
 	    final JSONTokener parser = new JSONTokener(reader);
 	    return new JSONArray(parser);
 	} catch (final IOException e) {
@@ -182,7 +185,7 @@ public final class AppointmentFileInteracter {
 	if (!fileToStoreAt.exists()) {
 	    throw new IllegalArgumentException("The given Appointment-File doesn't exist.");
 	}
-	try (final BufferedWriter writer = new BufferedWriter(new FileWriter(fileToStoreAt))) {
+	try (final BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileToStoreAt), StandardCharsets.UTF_8));) {
 	    final String[] jsonLines = appointmentsToStore.toString(APPOINTMENT_FILE_INDENT_SIZE).split("\n");
 	    for (final String line : jsonLines) {
 		writer.write(line);
@@ -220,7 +223,7 @@ public final class AppointmentFileInteracter {
 	if (emptyAppointmentFile.exists()) {
 	    throw new IllegalArgumentException("Appointment-File at " + pathOfTheNewAppointmentFile + " already exists.");
 	}
-	try (final BufferedWriter writer = new BufferedWriter(new FileWriter(emptyAppointmentFile))) {
+	try (final BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(emptyAppointmentFile), StandardCharsets.UTF_8));) {
 	    writer.write("[");
 	    writer.newLine();
 	    writer.newLine();

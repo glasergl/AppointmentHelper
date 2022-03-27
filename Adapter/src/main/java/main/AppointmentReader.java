@@ -2,8 +2,10 @@ package main;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import appointment.Appointment;
@@ -47,7 +49,7 @@ public final class AppointmentReader {
      */
     private List<Appointment> calculateAdapted() throws IllegalFileFormatException {
 	final List<Appointment> adaptedAppointments = new ArrayList<>();
-	try (final BufferedReader reader = new BufferedReader(new FileReader(fileWithOldBirthdays))) {
+	try (final BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(fileWithOldBirthdays), StandardCharsets.UTF_8));) {
 	    String currentLine;
 	    while ((currentLine = reader.readLine()) != null) {
 		if (!currentLine.equals("") && currentLine.charAt(0) != '#') {
