@@ -5,8 +5,9 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import org.json.JSONObject;
 import org.junit.Test;
-import date.SimpleDate;
+
 import fileInteraction.SimpleDateJSONTransformer;
+import simpleDate.SimpleDate;
 
 /**
  * @author Gabriel Glaser

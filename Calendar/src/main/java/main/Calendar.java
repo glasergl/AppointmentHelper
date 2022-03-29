@@ -8,8 +8,20 @@ import appointmentFileErrors.AppointmentFileError;
 import fileInteraction.AppointmentFileInteracter;
 import ui.CalendarFrame;
 
-public class Calendar {
+/**
+ * Entry point for the Calendar.
+ * 
+ * @author Gabriel Glaser
+ * @version 29.03.2022
+ */
+public final class Calendar {
 
+    /**
+     * Creates a Frame with an overview of all Appointments which are stored in the
+     * default Appointment-File.
+     * 
+     * @param args - unused
+     */
     public static void main(final String[] args) {
 	final File appointmentFile = AppointmentFileInteracter.getDefaultAppointmentFile();
 	if (!appointmentFile.exists()) {
@@ -19,6 +31,10 @@ public class Calendar {
 	}
     }
 
+    /**
+     * Fetches all Appointments in the default Appointment File and creates the
+     * Frame with the Calendar on the EDT.
+     */
     private static void createAndShowGUI() {
 	final List<Appointment> appointmentsToConsider = AppointmentFileInteracter.getAppointments();
 	SwingUtilities.invokeLater(() -> {

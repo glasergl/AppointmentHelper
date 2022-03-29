@@ -5,12 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import date.SimpleDate;
+
+import simpleDate.SimpleDate;
+import simpleDate.SimpleDates;
 import standardSwing.eventListener.SiblingPopUpDisplayerOnClick;
 import standardSwing.myComponent.MySiblingPopUp;
 import standardSwing.myComponent.button.CustomTextButton;
 import standardSwing.settings.Fonts;
-import date.SimpleDates;
 
 /**
  * Input-Field for a Simple-Date.

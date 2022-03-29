@@ -8,6 +8,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import appointment.Appointment;
+import commonErrors.CommonErrors;
 import fileInteraction.AppointmentAlreadyAddedException;
 import fileInteraction.AppointmentFileInteracter;
 import reader.AppointmentReader;
@@ -28,22 +29,27 @@ public final class Adapter {
      * Reads all birthdays from "Geburtstage.txt", adapts them to Appointments and
      * stores them in "appointments.json".
      * 
-     * Visually depicts the errors if "Geburtstage.txt" doesn't exist,
-     * "appointments.json" already exists, "Geburtstage.txt" doesn't have the
-     * correct format and "Geburtstage.txt" contains two identical birthdays.
-     * 
      * @param args - unused
      */
     public static void main(final String[] args) {
 	if (!GEBURTSTAGE.exists()) {
 	    final String errorTitle = "\"Geburtstage.txt\" nicht gefunden";
-	    final String errorMessage = "\"Geburtstage.txt\" konte nicht gefunden werden. Die Datei sollte im selben Verzeichnis wie die .jar liegen.";
+	    final String errorMessage = "\"Geburtstage.txt\" konnte nicht gefunden werden. Die Datei sollte im selben Verzeichnis wie die .jar liegen.";
 	    JOptionPane.showMessageDialog(null, errorMessage, errorTitle, JOptionPane.ERROR_MESSAGE);
 	} else {
 	    adaptBirthdays();
 	}
     }
 
+    /**
+     * Adapts the entries of "Geburtstage.txt".
+     * 
+     * Visually depicts the errors if "Geburtstage.txt" doesn't exist,
+     * "appointments.json" already exists, "Geburtstage.txt" doesn't have the
+     * correct format and "Geburtstage.txt" contains two identical birthdays. If
+     * there is an unexpected exception its content gets shown and the program
+     * terminates.
+     */
     private static void adaptBirthdays() {
 	try {
 	    final AppointmentReader reader = new AppointmentReader(GEBURTSTAGE);
@@ -52,14 +58,14 @@ public final class Adapter {
 		AppointmentFileInteracter.add(appointmentToStore);
 	    }
 	    showSuccessfulAdaption();
-	} catch (final IllegalFileFormatException e) {
-	    showErrorOfIllegalFileFormat();
 	} catch (final IllegalArgumentException e) {
 	    showErrorOfAlreadyExistingAppointmentFile();
+	} catch (final IllegalFileFormatException e) {
+	    showErrorOfIllegalFileFormat(e);
 	} catch (final AppointmentAlreadyAddedException e) {
 	    showErrorOfDuplicateAppointment();
-	} catch (final IOException e) {
-	    e.printStackTrace();
+	} catch (final Exception e) {
+	    CommonErrors.showUnexpectedExceptionAndExitProgram(e);
 	}
     }
 
@@ -71,10 +77,9 @@ public final class Adapter {
 	JOptionPane.showMessageDialog(null, message, title, JOptionPane.INFORMATION_MESSAGE, checkIcon);
     }
 
-    private static void showErrorOfIllegalFileFormat() {
+    private static void showErrorOfIllegalFileFormat(final IllegalFileFormatException e) {
 	final String errorTitle = "Format-Fehler in \"Geburtstage.txt\"";
-	final String errorMessage = "\"Geburtstage.txt\" hat nicht das richtige Format. Sie kann nicht zu JSON adaptiert werden.";
-	JOptionPane.showMessageDialog(null, errorMessage, errorTitle, JOptionPane.ERROR_MESSAGE);
+	JOptionPane.showMessageDialog(null, e.getMessage(), errorTitle, JOptionPane.ERROR_MESSAGE);
     }
 
     private static void showErrorOfAlreadyExistingAppointmentFile() {
@@ -84,7 +89,6 @@ public final class Adapter {
     }
 
     private static void showErrorOfDuplicateAppointment() {
-	AppointmentFileInteracter.getDefaultAppointmentFile().delete();
 	final String errorTitle = "Duplikate in \"Geburtstage.txt\"";
 	final String errorMessage = "Die Datei \"Geburtstage.txt\" enthält mindestens zwei identische Geburtstage. Das ist in der neuen Version nicht erlaubt.\nBevor Sie das Programm erneut ausführen können, müssen alle Duplikate entfernt worden sein.";
 	JOptionPane.showMessageDialog(null, errorMessage, errorTitle, JOptionPane.ERROR_MESSAGE);

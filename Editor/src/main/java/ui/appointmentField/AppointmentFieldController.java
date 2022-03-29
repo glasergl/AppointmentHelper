@@ -8,12 +8,12 @@ import javax.swing.JPanel;
 import javax.swing.event.ChangeListener;
 import appointment.Appointment;
 import appointment.InvalidAppointmentException;
-import date.SimpleDate;
-import date.SimpleDates;
 import standardSwing.eventListener.emptyImplementation.MyDocumentListener;
 import standardSwing.myComponent.button.MyJButton;
 import fileInteraction.AppointmentAlreadyAddedException;
 import fileInteraction.AppointmentFileInteracter;
+import simpleDate.SimpleDate;
+import simpleDate.SimpleDates;
 
 /**
  * Class which controls an AppointmentField and its interaction with the

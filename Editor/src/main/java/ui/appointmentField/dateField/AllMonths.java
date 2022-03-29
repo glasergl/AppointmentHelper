@@ -6,7 +6,8 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import date.SimpleDate;
+
+import simpleDate.SimpleDate;
 import standardSwing.container.RowOfJComponent;
 import standardSwing.myComponent.button.CustomTextButton;
 import standardSwing.settings.Colors;

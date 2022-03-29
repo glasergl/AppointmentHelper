@@ -15,12 +15,13 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 import appointment.Appointment;
+import appointment.Appointments;
 
 /**
  * Class which contains functions to interact with a File of Appointments.
  * 
  * Usually, you shouldn't give a File to the functions as an argument. The
- * overloaded function exists for testing.
+ * overloaded functions exist for testing.
  * 
  * @author Gabriel Glaser
  * @version 19.1.2022
@@ -149,7 +150,7 @@ public final class AppointmentFileInteracter {
      * @param fileToStoreAt
      */
     private static void storeAppointments(final List<Appointment> appointmentsToStore, final File fileToStoreAt) {
-	Appointment.sortAppointments(appointmentsToStore);
+	Appointments.sortAppointments(appointmentsToStore);
 	final JSONArray appointmentsAsJSONArray = new JSONArray();
 	for (final Appointment appointment : appointmentsToStore) {
 	    appointmentsAsJSONArray.put(AppointmentJSONTransformer.appointmentToJSON(appointment));

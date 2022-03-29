@@ -3,8 +3,9 @@ package fileInteraction.test;
 import static org.junit.Assert.*;
 import org.junit.*;
 import appointment.Appointment;
-import date.SimpleDate;
 import fileInteraction.AppointmentFileInteracter;
+import simpleDate.SimpleDate;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;

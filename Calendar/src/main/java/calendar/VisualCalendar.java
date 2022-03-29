@@ -15,11 +15,11 @@ import appointment.Appointment;
 public final class VisualCalendar extends JPanel {
     
     private final MonthRow months = new MonthRow();
-    private final CalendarCells cells;
+    private final AllCalendarCells cells;
 
     public VisualCalendar(final List<Appointment> toRespect) {
 	super();
-	cells = new CalendarCells(toRespect);
+	cells = new AllCalendarCells(toRespect);
 	setup();
 
     }

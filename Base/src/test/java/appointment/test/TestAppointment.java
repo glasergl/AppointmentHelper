@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import appointment.Appointment;
-import date.SimpleDate;
+import simpleDate.SimpleDate;
 
 /**
  * @author Gabriel Glaser

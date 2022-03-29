@@ -2,7 +2,8 @@ package date.test;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
-import date.SimpleDates;
+
+import simpleDate.SimpleDates;
 
 /**
  * @author Gabriel Glaser

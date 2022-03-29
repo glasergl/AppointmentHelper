@@ -1,12 +1,12 @@
-package date;
+package simpleDate;
 
 import java.util.Calendar;
 
 /**
- * Class which contains methods about simple dates.
+ * Class which contains function about simple dates.
  * 
  * @author Gabriel Glaser
- * @version 20.1.2022
+ * @version 29.3.2022
  */
 public final class SimpleDates {
 

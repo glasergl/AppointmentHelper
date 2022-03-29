@@ -6,7 +6,7 @@ import java.util.Optional;
 import javax.swing.JPanel;
 import appointment.Appointment;
 import appointment.InvalidAppointmentException;
-import date.SimpleDate;
+import simpleDate.SimpleDate;
 import standardSwing.eventListener.emptyImplementation.MyDocumentListener;
 import standardSwing.myComponent.MyCheckBox;
 import standardSwing.myComponent.textField.MyTextField;

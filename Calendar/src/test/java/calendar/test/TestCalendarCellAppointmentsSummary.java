@@ -5,22 +5,22 @@ import java.util.Arrays;
 import java.util.Collections;
 import org.junit.Test;
 import appointment.Appointment;
-import calendar.CalendarCell;
-import date.SimpleDate;
+import calendar.CalendarCellAppointmentsSummary;
+import simpleDate.SimpleDate;
 
 /**
  * @author Gabriel Glaser
- * @version 27.03.2022
+ * @version 30.03.2022
  */
-public class TestCalendarCell {
+public class TestCalendarCellAppointmentsSummary {
 
     static SimpleDate testDate1 = new SimpleDate(14, 7);
     static SimpleDate testDate2 = new SimpleDate(18, 6);
 
     @Test
     public void testNoAppointments() {
-	CalendarCell calendarCell = new CalendarCell(testDate1, Collections.emptyList());
-	assertEquals(getExpectedDateString(testDate1), calendarCell.toString());
+	CalendarCellAppointmentsSummary appointmentsSummary = new CalendarCellAppointmentsSummary(testDate1, Collections.emptyList());
+	assertEquals("", appointmentsSummary.getSummaryText());
     }
 
     @Test
@@ -28,52 +28,52 @@ public class TestCalendarCell {
 	final Appointment appointment1 = new Appointment(testDate2, "Sam", "", true);
 	final Appointment appointment2 = new Appointment(testDate2, "Frodo", "", false);
 	final Appointment appointment3 = new Appointment(testDate2, "Gandalf", "", true);
-	CalendarCell calendarCell = new CalendarCell(testDate1, Arrays.asList(appointment1, appointment2, appointment3));
-	assertEquals(getExpectedDateString(testDate1), calendarCell.toString());
+	CalendarCellAppointmentsSummary appointmentsSummary = new CalendarCellAppointmentsSummary(testDate1, Arrays.asList(appointment1, appointment2, appointment3));
+	assertEquals("", appointmentsSummary.getSummaryText());
     }
 
     @Test
     public void testWithOne() {
-	CalendarCell calendarCell = new CalendarCell(testDate1, Arrays.asList(new Appointment(testDate1, "Sam", "", true)));
-	assertEquals(getExpectedCellString(testDate1, "Sam"), calendarCell.toString());
+	CalendarCellAppointmentsSummary appointmentsSummary = new CalendarCellAppointmentsSummary(testDate1, Arrays.asList(new Appointment(testDate1, "Sam", "", true)));
+	assertEquals("Sam", appointmentsSummary.getSummaryText());
     }
 
     @Test
     public void testSpecialCaseOfNameLength() {
 	String specialCaseWord = "MMMMMMMMMMMMMMMM";
-	CalendarCell calendarCell = new CalendarCell(testDate1, Arrays.asList(new Appointment(testDate1, specialCaseWord, "", true)));
-	assertEquals(getExpectedCellString(testDate1, "1 Geburtstag"), calendarCell.toString());
+	CalendarCellAppointmentsSummary appointmentsSummary = new CalendarCellAppointmentsSummary(testDate1, Arrays.asList(new Appointment(testDate1, specialCaseWord, "", true)));
+	assertEquals("1 Geburtstag", appointmentsSummary.getSummaryText());
     }
 
     @Test
     public void testSpecialCaseWithoutBirthday() {
 	String specialCaseWord = "MMMMMMMMMMMMMMMM";
-	CalendarCell calendarCell = new CalendarCell(testDate1, Arrays.asList(new Appointment(testDate1, specialCaseWord, "", false)));
-	assertEquals(getExpectedCellString(testDate1, "1 Termin"), calendarCell.toString());
+	CalendarCellAppointmentsSummary appointmentsSummary = new CalendarCellAppointmentsSummary(testDate1, Arrays.asList(new Appointment(testDate1, specialCaseWord, "", false)));
+	assertEquals("1 Termin", appointmentsSummary.getSummaryText());
     }
 
     @Test
     public void testWithTwo() {
 	final Appointment appointment1 = new Appointment(testDate1, "Sam", "", true);
 	final Appointment appointment2 = new Appointment(testDate1, "Frodo", "", true);
-	CalendarCell calendarCell = new CalendarCell(testDate1, Arrays.asList(appointment1, appointment2));
-	assertEquals(getExpectedCellString(testDate1, "2 Geburtstage"), calendarCell.toString());
+	CalendarCellAppointmentsSummary appointmentsSummary = new CalendarCellAppointmentsSummary(testDate1, Arrays.asList(appointment1, appointment2));
+	assertEquals("2 Geburtstage", appointmentsSummary.getSummaryText());
     }
 
     @Test
     public void testWithTwoWithoutAllBirthdays() {
 	final Appointment appointment1 = new Appointment(testDate1, "Sam", "", false);
 	final Appointment appointment2 = new Appointment(testDate1, "Frodo", "", true);
-	CalendarCell calendarCell = new CalendarCell(testDate1, Arrays.asList(appointment1, appointment2));
-	assertEquals(getExpectedCellString(testDate1, "2 Termine"), calendarCell.toString());
+	CalendarCellAppointmentsSummary appointmentsSummary = new CalendarCellAppointmentsSummary(testDate1, Arrays.asList(appointment1, appointment2));
+	assertEquals("2 Termine", appointmentsSummary.getSummaryText());
     }
 
     @Test
     public void testWithTwoButOnlyOneIsAt() {
 	final Appointment appointment1 = new Appointment(testDate1, "Sam", "", false);
 	final Appointment appointment2 = new Appointment(testDate2, "Frodo", "", true);
-	CalendarCell calendarCell = new CalendarCell(testDate1, Arrays.asList(appointment1, appointment2));
-	assertEquals(getExpectedCellString(testDate1, "Sam"), calendarCell.toString());
+	CalendarCellAppointmentsSummary appointmentsSummary = new CalendarCellAppointmentsSummary(testDate1, Arrays.asList(appointment1, appointment2));
+	assertEquals("Sam", appointmentsSummary.getSummaryText());
     }
 
     @Test
@@ -81,8 +81,8 @@ public class TestCalendarCell {
 	final Appointment appointment1 = new Appointment(testDate1, "Sam", "", true);
 	final Appointment appointment2 = new Appointment(testDate1, "Frodo", "", true);
 	final Appointment appointment3 = new Appointment(testDate1, "Gandalf", "", true);
-	CalendarCell calendarCell = new CalendarCell(testDate1, Arrays.asList(appointment1, appointment2, appointment3));
-	assertEquals(getExpectedCellString(testDate1, "3 Geburtstage"), calendarCell.toString());
+	CalendarCellAppointmentsSummary appointmentsSummary = new CalendarCellAppointmentsSummary(testDate1, Arrays.asList(appointment1, appointment2, appointment3));
+	assertEquals("3 Geburtstage", appointmentsSummary.getSummaryText());
     }
 
     @Test
@@ -90,8 +90,8 @@ public class TestCalendarCell {
 	final Appointment appointment1 = new Appointment(testDate1, "Sam", "", false);
 	final Appointment appointment2 = new Appointment(testDate1, "Frodo", "", false);
 	final Appointment appointment3 = new Appointment(testDate1, "Gandalf", "", true);
-	CalendarCell calendarCell = new CalendarCell(testDate1, Arrays.asList(appointment1, appointment2, appointment3));
-	assertEquals(getExpectedCellString(testDate1, "3 Termine"), calendarCell.toString());
+	CalendarCellAppointmentsSummary appointmentsSummary = new CalendarCellAppointmentsSummary(testDate1, Arrays.asList(appointment1, appointment2, appointment3));
+	assertEquals("3 Termine", appointmentsSummary.getSummaryText());
     }
 
     @Test
@@ -99,8 +99,8 @@ public class TestCalendarCell {
 	final Appointment appointment1 = new Appointment(testDate1, "Sam", "", false);
 	final Appointment appointment2 = new Appointment(testDate2, "Frodo", "", false);
 	final Appointment appointment3 = new Appointment(testDate1, "Gandalf", "", true);
-	CalendarCell calendarCell = new CalendarCell(testDate1, Arrays.asList(appointment1, appointment2, appointment3));
-	assertEquals(getExpectedCellString(testDate1, "2 Termine"), calendarCell.toString());
+	CalendarCellAppointmentsSummary appointmentsSummary = new CalendarCellAppointmentsSummary(testDate1, Arrays.asList(appointment1, appointment2, appointment3));
+	assertEquals("2 Termine", appointmentsSummary.getSummaryText());
     }
 
     @Test
@@ -108,8 +108,8 @@ public class TestCalendarCell {
 	final Appointment appointment1 = new Appointment(testDate1, "Sam", "", true);
 	final Appointment appointment2 = new Appointment(testDate2, "Frodo", "", false);
 	final Appointment appointment3 = new Appointment(testDate1, "Gandalf", "", true);
-	CalendarCell calendarCell = new CalendarCell(testDate1, Arrays.asList(appointment1, appointment2, appointment3));
-	assertEquals(getExpectedCellString(testDate1, "2 Geburtstage"), calendarCell.toString());
+	CalendarCellAppointmentsSummary appointmentsSummary = new CalendarCellAppointmentsSummary(testDate1, Arrays.asList(appointment1, appointment2, appointment3));
+	assertEquals("2 Geburtstage", appointmentsSummary.getSummaryText());
     }
 
     @Test
@@ -117,16 +117,8 @@ public class TestCalendarCell {
 	final Appointment appointment1 = new Appointment(testDate2, "Sam", "", true);
 	final Appointment appointment2 = new Appointment(testDate2, "Frodo", "", false);
 	final Appointment appointment3 = new Appointment(testDate1, "Gandalf", "", true);
-	CalendarCell calendarCell = new CalendarCell(testDate1, Arrays.asList(appointment1, appointment2, appointment3));
-	assertEquals(getExpectedCellString(testDate1, "Gandalf"), calendarCell.toString());
-    }
-
-    private String getExpectedCellString(final SimpleDate toGetDateStringOf, final String rest) {
-	return getExpectedDateString(toGetDateStringOf) + rest + " ";
-    }
-
-    private String getExpectedDateString(final SimpleDate toGetDateStringOf) {
-	return String.valueOf(toGetDateStringOf.getDay()) + ".  ";
+	CalendarCellAppointmentsSummary appointmentsSummary = new CalendarCellAppointmentsSummary(testDate1, Arrays.asList(appointment1, appointment2, appointment3));
+	assertEquals("Gandalf", appointmentsSummary.getSummaryText());
     }
 
 }

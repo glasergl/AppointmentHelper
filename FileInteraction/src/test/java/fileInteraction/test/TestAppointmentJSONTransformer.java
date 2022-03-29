@@ -4,9 +4,9 @@ import static org.junit.Assert.*;
 import org.json.JSONObject;
 import org.junit.Test;
 import appointment.Appointment;
-import date.SimpleDate;
 import fileInteraction.AppointmentJSONTransformer;
 import fileInteraction.SimpleDateJSONTransformer;
+import simpleDate.SimpleDate;
 
 /**
  * @author Gabriel Glaser

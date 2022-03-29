@@ -1,15 +1,13 @@
 package appointment;
 
-import java.util.List;
-
-import date.SimpleDate;
-import date.SimpleDates;
+import simpleDate.SimpleDate;
+import simpleDate.SimpleDates;
 
 /**
  * Immutable class which contains all necessary attributes for an appointment.
  * 
  * @author Gabriel Glaser
- * @version 1.1.2022
+ * @version 29.3.2022
  */
 public final class Appointment implements Comparable<Appointment> {
 
@@ -162,17 +160,6 @@ public final class Appointment implements Comparable<Appointment> {
 
     public boolean isBirthday() {
 	return isBirthday;
-    }
-
-    /**
-     * Sorts the given appointments by the standard comparator.
-     * 
-     * @param appointmentsToSort
-     */
-    public static void sortAppointments(final List<Appointment> appointmentsToSort) {
-	appointmentsToSort.sort((appointment1, appointment2) -> {
-	    return appointment1.compareTo(appointment2);
-	});
     }
 
 }

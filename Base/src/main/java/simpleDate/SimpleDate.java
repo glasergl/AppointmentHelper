@@ -1,4 +1,4 @@
-package date;
+package simpleDate;
 
 /**
  * Immutable class to store a simple date with just day and month.
@@ -14,8 +14,8 @@ public final class SimpleDate implements Comparable<SimpleDate> {
     /**
      * @param day
      * @param month
-     * @throws IllegalArgumentException If the given day and month don't represent
-     *                                  a valid date.
+     * @throws IllegalArgumentException If the given day and month don't represent a
+     *                                  valid date.
      */
     public SimpleDate(final int day, final int month) throws IllegalArgumentException {
 	if (!SimpleDates.isValidDate(day, month)) {

@@ -2,8 +2,8 @@ package ui.test.appointmentField;
 
 import java.io.File;
 import appointment.Appointment;
-import date.SimpleDate;
 import fileInteraction.AppointmentFileInteracter;
+import simpleDate.SimpleDate;
 import ui.appointmentField.AppointmentFieldController;
 
 /**

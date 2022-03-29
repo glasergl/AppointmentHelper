@@ -1,19 +1,12 @@
 package calendar;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.FontMetrics;
-import java.util.ArrayList;
+import java.awt.Font;
 import java.util.List;
-import java.util.stream.Collectors;
-import javax.swing.JComponent;
+import javax.swing.JPanel;
 import appointment.Appointment;
-import standardSwing.container.LineOfJComponent;
-import date.SimpleDate;
-import standardSwing.entity.Alignment;
-import standardSwing.entity.ColorType;
-import standardSwing.eventListener.ColorChangerOnHover;
-import standardSwing.eventListener.SiblingPopUpDisplayerOnHover;
-import standardSwing.myComponent.MyLabel;
+import simpleDate.SimpleDate;
 import standardSwing.settings.Colors;
 import standardSwing.settings.Fonts;
 
@@ -22,103 +15,43 @@ import standardSwing.settings.Fonts;
  * collection of appointments which are at the specified date.
  *
  * @author Gabriel Glaser
- * @version 27.3.2022
+ * @version 30.3.2022
  */
-public final class CalendarCell extends MyLabel {
+public final class CalendarCell extends JPanel {
 
-    private static final int MAXIMUM_NAME_PIXEL_LENGTH = 100;
     private static final Color BACKGROUND_COLOR = Colors.getBlue(2);
-    private static final Color BACKGROUND_COLOR_OF_POP_UP = Colors.getBlue(0);
+    private static final int MARGIN = 5;
 
-    private final SimpleDate date;
-    private final List<Appointment> atDate;
+    private final CalendarCellDate dateRepresentation;
+    private final CalendarCellAppointmentsSummary message;
 
     public CalendarCell(final SimpleDate date, final List<Appointment> toRespect) {
 	super();
-	this.date = date;
-	this.atDate = toRespect.stream().filter(appointment -> appointment.isAt(date)).collect(Collectors.toList());
-	setFont(Fonts.mediumSmall());
+	dateRepresentation = new CalendarCellDate(date);
+	message = new CalendarCellAppointmentsSummary(date, toRespect);
+	setLayout(new BorderLayout(MARGIN, 0));
 	setBackground(BACKGROUND_COLOR);
-	setText(calculateTextForDate());
-	addMouseListener(new ColorChangerOnHover(Colors.ofFocus(), ColorType.BACKGROUND));
-	if (atDate.size() > 1 || (atDate.size() == 1 && widthOfText(atDate.get(0).getName()) > MAXIMUM_NAME_PIXEL_LENGTH)) {
-	    new SiblingPopUpDisplayerOnHover(getPopUpComponent(), this);
-	}
-    }
-
-    private String calculateTextForDate() {
-	final StringBuilder textForDate = new StringBuilder(date.getDay() + "." + "  ");
-	final String name = calculateTextForName();
-	textForDate.append(name);
-	textForDate.append(name.length() > 0 ? " " : "");
-	textForDate.append(calculateTextForEnding());
-	return textForDate.toString();
-    }
-
-    /**
-     * @return The name of the one appointment, if there only exists one, else the
-     *         number of appointments occurring today. In addition to that, it
-     *         returns "1" if the one name is longer than allowed.
-     */
-    private String calculateTextForName() {
-	if (atDate.size() == 1) {
-	    final Appointment one = atDate.get(0);
-	    final String nameOfOne = one.getName();
-	    if (widthOfText(nameOfOne) > MAXIMUM_NAME_PIXEL_LENGTH) {
-		return String.valueOf(1);
-	    } else {
-		return nameOfOne;
-	    }
-	} else if (atDate.size() > 1) {
-	    return String.valueOf(atDate.size());
-	} else {
-	    return "";
-	}
-    }
-
-    /**
-     * @return The type of appointments occurring at the day. Returns an empty
-     *         String, if only one appointment occurs today and its name is legal.
-     */
-    private String calculateTextForEnding() {
-	final StringBuilder ending = new StringBuilder();
-	final boolean allBirthdays = atDate.stream().allMatch(Appointment::isBirthday);
-	if (atDate.size() == 1) {
-	    final Appointment one = atDate.get(0);
-	    final String nameOfOne = one.getName();
-	    if (widthOfText(nameOfOne) > MAXIMUM_NAME_PIXEL_LENGTH) {
-		ending.append(allBirthdays ? "Geburtstag " : "Termin ");
-	    }
-	} else if (atDate.size() > 1) {
-	    ending.append(allBirthdays ? "Geburtstage " : "Termine ");
-	}
-	return ending.toString();
-    }
-
-    private JComponent getPopUpComponent() {
-	final LineOfJComponent names = new LineOfJComponent(Alignment.VERTICAL, getNamesAsLabels(atDate), 0);
-	names.setBackground(BACKGROUND_COLOR_OF_POP_UP);
-	return names;
-    }
-
-    private List<MyLabel> getNamesAsLabels(final List<Appointment> appointments) {
-	final List<MyLabel> names = new ArrayList<>(appointments.size());
-	for (final Appointment appointment : appointments) {
-	    final MyLabel withAppointmentName = new MyLabel(appointment.getName());
-	    withAppointmentName.setBackground(BACKGROUND_COLOR_OF_POP_UP);
-	    names.add(withAppointmentName);
-	}
-	return names;
+	setFont(Fonts.mediumSmall());
+	add(dateRepresentation, BorderLayout.WEST);
+	add(message, BorderLayout.CENTER);
     }
 
     @Override
-    public String toString() {
-	return getText();
+    public void setBackground(final Color newBackground) {
+	super.setBackground(newBackground);
+	if (dateRepresentation != null && message != null) {
+	    dateRepresentation.setBackground(newBackground);
+	    message.setBackground(newBackground);
+	}
     }
 
-    public int widthOfText(final String widthOfText) {
-	final FontMetrics fontMetrics = getFontMetrics(getFont());
-	return fontMetrics.stringWidth(widthOfText);
+    @Override
+    public void setFont(final Font newFont) {
+	super.setFont(newFont);
+	if (dateRepresentation != null && message != null) {
+	    dateRepresentation.setFont(newFont);
+	    message.setFont(newFont);
+	}
     }
 
 }

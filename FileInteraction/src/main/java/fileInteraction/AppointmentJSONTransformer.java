@@ -2,7 +2,7 @@ package fileInteraction;
 
 import org.json.JSONObject;
 import appointment.Appointment;
-import date.SimpleDate;
+import simpleDate.SimpleDate;
 
 /**
  * Class which contains static functions to transform JSONObjects to

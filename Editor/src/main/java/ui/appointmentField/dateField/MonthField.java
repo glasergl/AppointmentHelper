@@ -6,8 +6,9 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-import date.SimpleDate;
-import date.SimpleDates;
+
+import simpleDate.SimpleDate;
+import simpleDate.SimpleDates;
 import standardSwing.myComponent.MyLabel;
 import standardSwing.myComponent.button.CustomTextButton;
 import standardSwing.settings.Colors;

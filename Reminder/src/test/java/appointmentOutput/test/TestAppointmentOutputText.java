@@ -6,8 +6,8 @@ import java.util.List;
 import org.junit.Test;
 import appointment.Appointment;
 import appointmentOutput.AppointmentOutputText;
-import date.SimpleDate;
-import date.SimpleDates;
+import simpleDate.SimpleDate;
+import simpleDate.SimpleDates;
 
 /**
  * @author Gabriel Glaser
