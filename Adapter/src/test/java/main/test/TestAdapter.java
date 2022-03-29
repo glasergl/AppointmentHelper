@@ -9,8 +9,8 @@ import java.util.List;
 import org.junit.Test;
 import appointment.Appointment;
 import date.SimpleDate;
-import main.AppointmentReader;
-import main.IllegalFileFormatException;
+import reader.AppointmentReader;
+import reader.IllegalFileFormatException;
 
 /**
  * @author Gabriel Glaser

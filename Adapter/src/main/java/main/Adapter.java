@@ -10,6 +10,8 @@ import javax.swing.JOptionPane;
 import appointment.Appointment;
 import fileInteraction.AppointmentAlreadyAddedException;
 import fileInteraction.AppointmentFileInteracter;
+import reader.AppointmentReader;
+import reader.IllegalFileFormatException;
 
 /**
  * Entry-Point of the Adapter program which transforms the File of the older
