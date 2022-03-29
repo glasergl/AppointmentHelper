@@ -1,4 +1,4 @@
-package main.test;
+package reader.test;
 
 import static org.junit.Assert.*;
 import java.io.BufferedWriter;
