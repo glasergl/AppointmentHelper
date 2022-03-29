@@ -13,7 +13,7 @@ echo ################################################################-FileIntera
 call mvn clean install -f FileInteraction/
 
 echo ################################################################-Errors-################################################################
-call mvn clean install -f AppointmentErrors/
+call mvn clean install -f Errors/
 
 echo ################################################################-Adapter-################################################################
 call mvn clean package -f Adapter/
