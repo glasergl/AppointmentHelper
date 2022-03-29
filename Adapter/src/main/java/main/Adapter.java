@@ -16,7 +16,7 @@ import fileInteraction.AppointmentFileInteracter;
  * version "Geburtstage.txt" to the new version "appointments.json".
  * 
  * @author Gabriel Glaser
- * @version 12.3.2022
+ * @version 29.3.2022
  */
 public final class Adapter {
 
@@ -38,22 +38,26 @@ public final class Adapter {
 	    final String errorMessage = "\"Geburtstage.txt\" konte nicht gefunden werden. Die Datei sollte im selben Verzeichnis wie die .jar liegen.";
 	    JOptionPane.showMessageDialog(null, errorMessage, errorTitle, JOptionPane.ERROR_MESSAGE);
 	} else {
-	    try {
-		final AppointmentReader reader = new AppointmentReader(GEBURTSTAGE);
-		AppointmentFileInteracter.createDefaultAppointmentFile();
-		for (final Appointment appointmentToStore : reader.getAdaptedAppointments()) {
-		    AppointmentFileInteracter.add(appointmentToStore);
-		}
-		showSuccessfulAdaption();
-	    } catch (final IllegalFileFormatException e) {
-		showErrorOfIllegalFileFormat();
-	    } catch (final IllegalArgumentException e) {
-		showErrorOfAlreadyExistingAppointmentFile();
-	    } catch (final AppointmentAlreadyAddedException e) {
-		showErrorOfDuplicateAppointment();
-	    } catch (final IOException e) {
-		e.printStackTrace();
+	    adaptBirthdays();
+	}
+    }
+
+    private static void adaptBirthdays() {
+	try {
+	    final AppointmentReader reader = new AppointmentReader(GEBURTSTAGE);
+	    AppointmentFileInteracter.createDefaultAppointmentFile();
+	    for (final Appointment appointmentToStore : reader.getAdaptedAppointments()) {
+		AppointmentFileInteracter.add(appointmentToStore);
 	    }
+	    showSuccessfulAdaption();
+	} catch (final IllegalFileFormatException e) {
+	    showErrorOfIllegalFileFormat();
+	} catch (final IllegalArgumentException e) {
+	    showErrorOfAlreadyExistingAppointmentFile();
+	} catch (final AppointmentAlreadyAddedException e) {
+	    showErrorOfDuplicateAppointment();
+	} catch (final IOException e) {
+	    e.printStackTrace();
 	}
     }
 
@@ -80,8 +84,7 @@ public final class Adapter {
     private static void showErrorOfDuplicateAppointment() {
 	AppointmentFileInteracter.getDefaultAppointmentFile().delete();
 	final String errorTitle = "Duplikate in \"Geburtstage.txt\"";
-	final String errorMessage = "Die Datei \"Geburtstage.txt\" enthält mindestens zwei identische Geburtstage. Das ist in der neuen Version nicht erlaubt.\n"
-		+ "Bevor Sie das Programm erneut ausführen können, müssen alle Duplikate entfernt worden sein.";
+	final String errorMessage = "Die Datei \"Geburtstage.txt\" enthält mindestens zwei identische Geburtstage. Das ist in der neuen Version nicht erlaubt.\nBevor Sie das Programm erneut ausführen können, müssen alle Duplikate entfernt worden sein.";
 	JOptionPane.showMessageDialog(null, errorMessage, errorTitle, JOptionPane.ERROR_MESSAGE);
     }
 
