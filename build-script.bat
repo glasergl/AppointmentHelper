@@ -50,7 +50,8 @@ call 7z a output\TerminHelfer.zip .\output\*.exe
 echo\
 echo adapt "Geburtstage.txt" to "appointments.json"
 call cd output
-call java -jar AppointmentAdapter-0.0.1-SNAPSHOT-jar-with-dependencies.jar
+rename "AppointmentAdapter-0.0.1-SNAPSHOT-jar-with-dependencies.jar" "AppointmentAdapter.jar"
+call java -jar AppointmentAdapter.jar
 
 echo\
 echo build finished.
