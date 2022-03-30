@@ -10,8 +10,8 @@ Reminder | Shows appointments which occur today or tomorrow (at the time the pro
 Currently, there is an Adapter, too. It is used to migrate from an old version.
 
 ## How to use
-1. Clone https://github.com/glasergl/StandardSwing
-2. Run *mvn install*
+1. Clone https://github.com/glasergl/StandardSwing.
+2. Run *mvn install*.
 3. Clone this repository.
 4. Run *build-script.bat*.
 5. The output-Folder contains the three .exe-files for the **Editor**, **Calendar** and **Reminder**.
