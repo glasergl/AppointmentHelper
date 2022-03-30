@@ -1,4 +1,4 @@
-package ui.appointmentField;
+package appointmentField;
 
 import java.awt.Color;
 import java.awt.FlowLayout;

@@ -4,11 +4,11 @@ import static org.junit.Assert.*;
 import java.io.File;
 import org.junit.Test;
 import appointment.InvalidAppointmentException;
+import appointmentField.AllAppointmentFields;
+import appointmentField.AppointmentFieldController;
 import fileInteraction.AppointmentFileInteracter;
 import simpleDate.SimpleDate;
-import ui.appointmentField.AppointmentFieldController;
 import ui.test.appointmentField.Tests;
-import ui.appointmentField.AllAppointmentFields;
 
 /**
  * @author Gabriel Glaser

@@ -1,4 +1,4 @@
-package ui.appointmentField;
+package appointmentField;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;

@@ -3,8 +3,9 @@ package ui.test.appointmentField;
 import static org.junit.Assert.*;
 import java.util.List;
 import org.junit.Test;
-import ui.appointmentField.AllAppointmentFields;
-import ui.appointmentField.AppointmentFieldController;
+
+import appointmentField.AllAppointmentFields;
+import appointmentField.AppointmentFieldController;
 
 /**
  * @author Gabriel Glaser

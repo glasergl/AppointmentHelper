@@ -7,9 +7,9 @@ import java.awt.Point;
 import java.util.List;
 import javax.swing.JOptionPane;
 import appointment.Appointment;
+import appointmentField.AllAppointmentFieldsController;
 import standardSwing.container.MyFrame;
 import standardSwing.general.SwingFunctions;
-import ui.appointmentField.AllAppointmentFieldsController;
 
 /**
  * Main-Frame for the Editor.

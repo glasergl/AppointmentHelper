@@ -5,10 +5,10 @@ import java.io.File;
 import org.junit.Test;
 import appointment.Appointment;
 import appointment.InvalidAppointmentException;
+import appointmentField.AllAppointmentFields;
+import appointmentField.AppointmentFieldController;
 import fileInteraction.AppointmentFileInteracter;
 import simpleDate.SimpleDate;
-import ui.appointmentField.AllAppointmentFields;
-import ui.appointmentField.AppointmentFieldController;
 import ui.test.appointmentField.Tests;
 
 /**

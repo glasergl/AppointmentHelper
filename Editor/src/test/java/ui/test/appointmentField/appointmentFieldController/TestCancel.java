@@ -3,10 +3,10 @@ package ui.test.appointmentField.appointmentFieldController;
 import static org.junit.Assert.*;
 import org.junit.Test;
 import appointment.InvalidAppointmentException;
+import appointmentField.AllAppointmentFields;
+import appointmentField.AppointmentFieldController;
 import simpleDate.SimpleDate;
 import simpleDate.SimpleDates;
-import ui.appointmentField.AllAppointmentFields;
-import ui.appointmentField.AppointmentFieldController;
 import ui.test.appointmentField.Tests;
 
 /**

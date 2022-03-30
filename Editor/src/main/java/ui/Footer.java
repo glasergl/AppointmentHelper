@@ -2,11 +2,12 @@ package ui;
 
 import java.awt.Color;
 import java.awt.Dimension;
+
+import appointmentField.AllAppointmentFieldsController;
 import standardSwing.container.RowOfJComponent;
 import standardSwing.myComponent.button.MyJButton;
 import standardSwing.settings.Colors;
 import standardSwing.settings.Fonts;
-import ui.appointmentField.AllAppointmentFieldsController;
 
 /**
  * Footer for the whole frame.

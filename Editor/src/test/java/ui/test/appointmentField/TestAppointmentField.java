@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import appointment.Appointment;
 import appointment.InvalidAppointmentException;
-import ui.appointmentField.AppointmentField;
+import appointmentField.AppointmentField;
 
 /**
  * @author Gabriel Glaser
