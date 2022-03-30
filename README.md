@@ -9,9 +9,16 @@ Reminder | Shows appointments which occur today or tomorrow (at the time the pro
 
 Currently, there is an Adapter, too. It is used to migrate from an old version.
 
-## How to use
+## How to use?
+
+### Requirements:
+- Operating System: *Windows*
+- *JDK-Version* atleast 1.8.9_321 (check with *java -version*-command)
+- *Apache Maven* installed.
+
+### Build-process:
 1. Clone https://github.com/glasergl/StandardSwing.
-2. Run *mvn install*.
+2. Call *mvn install* from the console.
 3. Clone this repository.
 4. Run *build-script.bat*.
 5. The output-Folder contains the three .exe-files for the **Editor**, **Calendar** and **Reminder**.
@@ -19,6 +26,6 @@ Currently, there is an Adapter, too. It is used to migrate from an old version.
 7. Enter your appointments with the **Editor**.
 8. A window will show if an appointment occurs today or will occur tomorrow.
   
-## Important
+## Important!
 - The file *appointments.json* needs to be in the same folder as the three .exe-files.
 - Don't modify the file *appointments.json*.
