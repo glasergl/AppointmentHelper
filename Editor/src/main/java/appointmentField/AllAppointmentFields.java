@@ -78,13 +78,13 @@ public class AllAppointmentFields extends JPanel implements Scrollable {
      * @param toRemove
      */
     public void removeAppointmentField(final AppointmentFieldController toRemove) {
+	EditorFrame parent = (EditorFrame) SwingFunctions.getMyFrame(this);
+	parent.requestFocusForRestoreDeletedButtonButton();
 	allAppointmentFields.remove(toRemove);
 	remove(toRemove);
 	setSwitchingBackgroundsForAll();
 	SwingFunctions.updateJComponent(this);
 	allLastDeleted.push(toRemove);
-	EditorFrame parent = (EditorFrame) SwingFunctions.getMyFrame(this);
-	parent.requestFocusForRestoreDeletedButtonButton();
     }
 
     /**
