@@ -12,8 +12,8 @@ Currently, there is an Adapter, too. It is used to migrate from an old version.
 ## How to use?
 
 ### Requirements:
-- Operating System: *Windows*
-- *JDK-Version* atleast 1.8.9_321 (check with *java -version*-command)
+- Operating System: *Windows*.
+- *JDK-Version* atleast 1.8.9_301.
 - *Apache Maven* installed.
 
 ### Build-process:

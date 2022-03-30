@@ -29,11 +29,11 @@ call mvn clean package -f Reminder/
 
 echo\
 echo create .exe-Files
-call launch4jc Calendar\config.xml
+call launch4jc Calendar\launch4j_configuration.xml
 echo\
-call launch4jc Editor\config.xml
+call launch4jc Editor\launch4j_configuration.xml
 echo\
-call launch4jc Reminder\config.xml
+call launch4jc Reminder\launch4j_configuration.xml
 
 echo\
 echo create Geburtstage.txt

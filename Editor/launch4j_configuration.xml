@@ -8,6 +8,6 @@
 		<mutexName>glasergl_AppointmentEditor</mutexName>
 	</singleInstance>
 	<jre>
-		<minVersion>1.8.9_321</minVersion>
+		<minVersion>1.8.9_301</minVersion>
 	</jre>
 </launch4jConfig>
