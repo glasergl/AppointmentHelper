@@ -61,7 +61,9 @@ public final class EditorFrame extends MyFrame {
 	    final int answerOfUser = JOptionPane.showConfirmDialog(this, message, title, JOptionPane.YES_NO_CANCEL_OPTION);
 	    if (answerOfUser == JOptionPane.YES_OPTION) {
 		appointmentsFields.saveAll();
-		super.dispose();
+		if (appointmentsFields.allRepresentCorrectAppointment()) {
+		    super.dispose();
+		}
 	    } else if (answerOfUser == JOptionPane.NO_OPTION) {
 		appointmentsFields.cancelAll();
 		super.dispose();

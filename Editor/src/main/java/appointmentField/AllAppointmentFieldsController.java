@@ -45,6 +45,14 @@ public class AllAppointmentFieldsController extends JPanel {
 	appointmentFields.saveAll();
     }
 
+    /**
+     * @return True, if the input of every AppointmentField this contains represents
+     *         a valid Appointment, else false.
+     */
+    public boolean allRepresentCorrectAppointment() {
+	return appointmentFields.allRepresentCorrectAppointment();
+    }
+
     public boolean isSaved() {
 	return appointmentFields.isSaved();
     }
