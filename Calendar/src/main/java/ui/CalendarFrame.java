@@ -4,26 +4,25 @@ import java.awt.BorderLayout;
 import java.awt.Image;
 import java.util.List;
 import appointment.Appointment;
-import calendar.VisualCalendar;
+import calendar.CalendarPanel;
 import standardSwing.container.MyFrame;
 import standardSwing.general.SwingFunctions;
 
 /**
- * Frame which shows the VisualCalendar containing all Appointments in the
- * center.
+ * Frame which shows the VisualCalendar containing all Appointments.
  * 
  * @author Gabriel Glaser
- * @version 16.03.2022
+ * @version 30.03.2022
  */
-public class CalendarFrame extends MyFrame {
+public final class CalendarFrame extends MyFrame {
 
     private static final Image ICON = SwingFunctions.getImage("CalendarIcon.png", CalendarFrame.class);
 
-    private final VisualCalendar calendar;
+    private final CalendarPanel calendar;
 
-    public CalendarFrame(final List<Appointment> toRespect) {
+    public CalendarFrame(final List<Appointment> allAppointments) {
 	super("TerminKalender", ICON);
-	calendar = new VisualCalendar(toRespect);
+	calendar = new CalendarPanel(allAppointments);
 	add(calendar, BorderLayout.CENTER);
 	calendar.setVisible(true);
 	start();

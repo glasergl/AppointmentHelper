@@ -12,7 +12,7 @@ import ui.CalendarFrame;
  * Entry point for the Calendar.
  * 
  * @author Gabriel Glaser
- * @version 29.03.2022
+ * @version 30.03.2022
  */
 public final class Calendar {
 
@@ -32,13 +32,13 @@ public final class Calendar {
     }
 
     /**
-     * Fetches all Appointments in the default Appointment File and creates the
+     * Fetches all Appointments from the default Appointment File and creates the
      * Frame with the Calendar on the EDT.
      */
     private static void createAndShowGUI() {
-	final List<Appointment> appointmentsToConsider = AppointmentFileInteracter.getAppointments();
+	final List<Appointment> allAppointments = AppointmentFileInteracter.getAppointments();
 	SwingUtilities.invokeLater(() -> {
-	    new CalendarFrame(appointmentsToConsider);
+	    new CalendarFrame(allAppointments);
 	});
     }
 

@@ -1,6 +1,8 @@
 package simpleDate;
 
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.List;
 
 /**
  * Class which contains function about simple dates.
@@ -9,6 +11,8 @@ import java.util.Calendar;
  * @version 29.3.2022
  */
 public final class SimpleDates {
+
+    public static final List<String> MONTHS = Arrays.asList("Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember");
 
     /**
      * @param day

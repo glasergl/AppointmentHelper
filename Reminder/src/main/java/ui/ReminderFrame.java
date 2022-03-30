@@ -6,7 +6,7 @@ import java.awt.Image;
 import java.util.List;
 import appointment.Appointment;
 import appointmentOutput.AppointmentOutput;
-import calendar.VisualCalendar;
+import calendar.CalendarPanel;
 import standardSwing.container.JPanelFactory;
 import standardSwing.container.MyFrame;
 import standardSwing.general.SwingFunctions;
@@ -25,12 +25,12 @@ public final class ReminderFrame extends MyFrame {
 
     private final MyJButton calendarVisabilityChangerButton = new MyJButton("Kalender anzeigen");
     private final AppointmentOutput appointmentOutput;
-    private final VisualCalendar calendarWithAppointments;
+    private final CalendarPanel calendarWithAppointments;
 
     public ReminderFrame(final List<Appointment> appointmentsToConsider) {
 	super("TerminHelfer", ICON);
 	this.appointmentOutput = new AppointmentOutput(appointmentsToConsider);
-	this.calendarWithAppointments = new VisualCalendar(appointmentsToConsider);
+	this.calendarWithAppointments = new CalendarPanel(appointmentsToConsider);
 	setup();
 	if (anyIsTodayOrTomorrow(appointmentsToConsider)) {
 	    start();

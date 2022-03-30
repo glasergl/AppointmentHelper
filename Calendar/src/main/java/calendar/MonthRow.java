@@ -1,55 +1,46 @@
 package calendar;
 
-import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-
+import simpleDate.SimpleDates;
 import standardSwing.myComponent.MyLabel;
-import standardSwing.settings.Colors;
 
+/**
+ * Visual representation of all Months in a horizontal row.
+ * 
+ * @author Gabriel Glaser
+ * @version 30.03.2022
+ */
 public final class MonthRow extends JPanel {
 
-    private static final Color BACKGROUND_COLOR = Colors.getBlue(1);
-
-    private final List<MyLabel> months = getMonths();
+    private final List<MyLabel> monthLabels = getMonthLabels();
 
     public MonthRow() {
 	super();
-	setLayout(new GridLayout(1, 12, 1, 1));
-	setBackground(BACKGROUND_COLOR);
-	addMonths();
+	setup();
     }
 
-    private void addMonths() {
-	for (final MyLabel month : months) {
-	    add(month);
+    private void setup() {
+	setLayout(new GridLayout(1, 12, 1, 1));
+	setBackground(CalendarAttributes.CALENDAR_BACKGROUND);
+	for (final MyLabel monthLabel : monthLabels) {
+	    add(monthLabel);
 	}
     }
 
-    private List<MyLabel> getMonths() {
-	List<MyLabel> months = new ArrayList<>(12);
-	months.add(initializeBackground(new MyLabel("Januar")));
-	months.add(initializeBackground(new MyLabel("Februar")));
-	months.add(initializeBackground(new MyLabel("März")));
-	months.add(initializeBackground(new MyLabel("April")));
-	months.add(initializeBackground(new MyLabel("Mai")));
-	months.add(initializeBackground(new MyLabel("Juni")));
-	months.add(initializeBackground(new MyLabel("Juli")));
-	months.add(initializeBackground(new MyLabel("August")));
-	months.add(initializeBackground(new MyLabel("September")));
-	months.add(initializeBackground(new MyLabel("Oktober")));
-	months.add(initializeBackground(new MyLabel("November")));
-	months.add(initializeBackground(new MyLabel("Dezember")));
-	return months;
-    }
-
-    private MyLabel initializeBackground(final MyLabel toInitialize) {
-	toInitialize.setOpaque(true);
-	toInitialize.setBackground(BACKGROUND_COLOR);
-	toInitialize.setHorizontalAlignment(SwingConstants.CENTER);
-	return toInitialize;
+    private List<MyLabel> getMonthLabels() {
+	final List<MyLabel> monthLabels = new ArrayList<>(12);
+	for (final String month : SimpleDates.MONTHS) {
+	    final MyLabel monthLabel = new MyLabel(month);
+	    monthLabel.setBackground(CalendarAttributes.CALENDAR_BACKGROUND);
+	    monthLabel.setFont(CalendarAttributes.FONT.deriveFont(Font.BOLD));
+	    monthLabel.setHorizontalAlignment(SwingConstants.CENTER);
+	    monthLabels.add(monthLabel);
+	}
+	return monthLabels;
     }
 }
