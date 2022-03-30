@@ -1,4 +1,4 @@
-package ui.appointmentField.dateField;
+package appointmentField.dateField;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

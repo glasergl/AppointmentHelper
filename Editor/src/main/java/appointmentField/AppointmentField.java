@@ -6,11 +6,11 @@ import java.util.Optional;
 import javax.swing.JPanel;
 import appointment.Appointment;
 import appointment.InvalidAppointmentException;
+import appointmentField.dateField.MySimpleDateField;
 import simpleDate.SimpleDate;
 import standardSwing.eventListener.emptyImplementation.MyDocumentListener;
 import standardSwing.myComponent.MyCheckBox;
 import standardSwing.myComponent.textField.MyTextField;
-import ui.appointmentField.dateField.MySimpleDateField;
 
 /**
  * Visual Input-Field for an Appointment.

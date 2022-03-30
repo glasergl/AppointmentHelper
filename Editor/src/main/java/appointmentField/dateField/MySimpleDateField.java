@@ -1,4 +1,4 @@
-package ui.appointmentField.dateField;
+package appointmentField.dateField;
 
 import java.awt.Dimension;
 import java.util.ArrayList;
