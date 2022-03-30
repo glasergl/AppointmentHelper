@@ -11,6 +11,7 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import appointment.Appointment;
 import simpleDate.SimpleDate;
+import standardSwing.border.LeftRightRoundBorder;
 import standardSwing.container.LineOfJComponent;
 import standardSwing.entity.Alignment;
 import standardSwing.entity.ColorType;
@@ -43,6 +44,7 @@ public final class CalendarCellAppointmentsSummary extends JPanel {
 	this.atDate = appointments.stream().filter(appointment -> appointment.isAt(date)).collect(Collectors.toList());
 	setLayout(new BorderLayout());
 	setFont(Fonts.mediumSmall());
+	setBorder(new LeftRightRoundBorder());
 	appointmentsSummary.setText(calculateAppointmentsRepresentationText());
 	add(appointmentsSummary, BorderLayout.CENTER);
 	addMouseListener(new ColorChangerOnHover(Colors.ofFocus(), ColorType.BACKGROUND));
