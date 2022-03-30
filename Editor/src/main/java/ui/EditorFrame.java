@@ -15,7 +15,7 @@ import standardSwing.general.SwingFunctions;
  * Main-Frame for the Editor.
  * 
  * @author Gabriel Glaser
- * @version 20.1.2022
+ * @version 30.3.2022
  */
 public final class EditorFrame extends MyFrame {
 
@@ -35,6 +35,10 @@ public final class EditorFrame extends MyFrame {
 	final Point currentLocation = getLocation();
 	setLocation(new Point(currentLocation.x, currentLocation.y - 90));
 	footer.requestFocusForAddButton();
+    }
+
+    public void requestFocusForRestoreDeletedButtonButton() {
+	header.requestFocusForRestoreDeletedButton();
     }
 
     private void setup() {

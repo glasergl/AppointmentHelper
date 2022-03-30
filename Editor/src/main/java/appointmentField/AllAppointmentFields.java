@@ -15,6 +15,7 @@ import fileInteraction.AppointmentAlreadyAddedException;
 import fileInteraction.AppointmentFileInteracter;
 import standardSwing.general.SwingFunctions;
 import standardSwing.settings.Colors;
+import ui.EditorFrame;
 
 /**
  * Depiction of all AppointmentInputFields.
@@ -82,6 +83,8 @@ public class AllAppointmentFields extends JPanel implements Scrollable {
 	setSwitchingBackgroundsForAll();
 	SwingFunctions.updateJComponent(this);
 	allLastDeleted.push(toRemove);
+	EditorFrame parent = (EditorFrame) SwingFunctions.getMyFrame(this);
+	parent.requestFocusForRestoreDeletedButtonButton();
     }
 
     /**
@@ -115,12 +118,12 @@ public class AllAppointmentFields extends JPanel implements Scrollable {
 	    } else {
 		final String errorTitle = "Ungültiger Termin";
 		final String errorMessage = "Mindestens ein Termin ist ungültig.\nDer Name jedes Termins muss mindestens ein Zeichen enthalten.";
-		JOptionPane.showMessageDialog(null, errorMessage, errorTitle, JOptionPane.ERROR_MESSAGE);
+		JOptionPane.showMessageDialog(SwingFunctions.getMyFrame(this), errorMessage, errorTitle, JOptionPane.ERROR_MESSAGE);
 	    }
 	} catch (final AppointmentAlreadyAddedException e) {
 	    final String errorTitle = "Doppelter Termin";
 	    final String errorMessage = "Mindestens zwei Termine enthalten den gleichen Inhalt. Bitte änderen Sie einen und speichern erneut.";
-	    JOptionPane.showMessageDialog(null, errorMessage, errorTitle, JOptionPane.ERROR_MESSAGE);
+	    JOptionPane.showMessageDialog(SwingFunctions.getMyFrame(this), errorMessage, errorTitle, JOptionPane.ERROR_MESSAGE);
 	}
     }
 

@@ -15,7 +15,7 @@ import standardSwing.settings.Fonts;
  * Contains a button to add an empty appointment.
  * 
  * @author Gabriel Glaser
- * @version 20.1.2022
+ * @version 30.3.2022
  */
 public class Footer extends RowOfJComponent {
 
@@ -48,7 +48,7 @@ public class Footer extends RowOfJComponent {
     }
 
     public void requestFocusForAddButton() {
-	addAppointmentButton.requestFocus();
+	addAppointmentButton.requestFocusInWindow();
     }
 
 }

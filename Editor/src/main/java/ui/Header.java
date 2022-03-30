@@ -15,7 +15,7 @@ import standardSwing.settings.Colors;
  * to restore the last deleted button.
  * 
  * @author Gabriel Glaser
- * @version 20.1.2022
+ * @version 30.3.2022
  */
 public class Header extends RowOfJComponent {
 
@@ -38,6 +38,10 @@ public class Header extends RowOfJComponent {
 	setupActionListeners();
 	addToRight(restoreDeletedButton);
 	addToRight(saveButton);
+    }
+
+    public void requestFocusForRestoreDeletedButton() {
+	restoreDeletedButton.requestFocusInWindow();
     }
 
     private void setupActionListeners() {
