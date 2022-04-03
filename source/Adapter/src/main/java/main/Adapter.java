@@ -90,7 +90,7 @@ public final class Adapter {
 
     private static void showErrorOfDuplicateAppointment() {
 	final String errorTitle = "Duplikate in \"Geburtstage.txt\"";
-	final String errorMessage = "Die Datei \"Geburtstage.txt\" enthält mindestens zwei identische Geburtstage. Das ist in der neuen Version nicht erlaubt.\nBevor Sie das Programm erneut ausführen können, müssen alle Duplikate entfernt worden sein.";
+	final String errorMessage = "Die Datei \"Geburtstage.txt\" enthält mindestens zwei identische Geburtstage. Das ist in der neuen Version nicht erlaubt.\nBevor Sie das Programm erneut ausführen können, müssen alle Duplikate entfernt werden.";
 	JOptionPane.showMessageDialog(null, errorMessage, errorTitle, JOptionPane.ERROR_MESSAGE);
     }
 
