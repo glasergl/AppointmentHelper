@@ -1,11 +1,12 @@
 package ui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Image;
 import java.util.List;
 import appointment.Appointment;
-import appointmentOutput.AppointmentOutput;
+import appointmentMessage.TodayTomorrowAppointmentMessagePanel;
 import calendar.CalendarPanel;
 import standardSwing.container.JPanelFactory;
 import standardSwing.container.MyFrame;
@@ -14,25 +15,26 @@ import standardSwing.myComponent.button.MyJButton;
 import standardSwing.settings.Colors;
 
 /**
- * Main Frame for the Visualizer.
+ * Main Frame for the Reminder.
  * 
  * @author Gabriel Glaser
- * @version 16.3.2022
+ * @version 3.4.2022
  */
 public final class ReminderFrame extends MyFrame {
 
     private static final Image ICON = SwingFunctions.getImage("ReminderIcon.png", ReminderFrame.class);
+    private static final Color BACKGROUND_COLOR_OF_APPOINTMENT_MESSAGES = Colors.getBlue(0);
 
     private final MyJButton calendarVisabilityChangerButton = new MyJButton("Kalender anzeigen");
-    private final AppointmentOutput appointmentOutput;
+    private final TodayTomorrowAppointmentMessagePanel appointmentMessages;
     private final CalendarPanel calendarWithAppointments;
 
-    public ReminderFrame(final List<Appointment> appointmentsToConsider) {
+    public ReminderFrame(final List<Appointment> allAppointments) {
 	super("TerminHelfer", ICON);
-	this.appointmentOutput = new AppointmentOutput(appointmentsToConsider);
-	this.calendarWithAppointments = new CalendarPanel(appointmentsToConsider);
+	this.appointmentMessages = new TodayTomorrowAppointmentMessagePanel(allAppointments);
+	this.calendarWithAppointments = new CalendarPanel(allAppointments);
 	setup();
-	if (anyIsTodayOrTomorrow(appointmentsToConsider)) {
+	if (anyIsTodayOrTomorrow(allAppointments)) {
 	    start();
 	}
     }
@@ -44,19 +46,15 @@ public final class ReminderFrame extends MyFrame {
 	    pack();
 	    setLocationRelativeTo(null);
 	});
-	appointmentOutput.setBackground(Colors.getBlue(0));
-	addComponents();
-    }
-
-    private void addComponents() {
-	add(appointmentOutput, BorderLayout.NORTH);
+	appointmentMessages.setBackground(BACKGROUND_COLOR_OF_APPOINTMENT_MESSAGES);
+	add(appointmentMessages, BorderLayout.NORTH);
 	add(JPanelFactory.create(new FlowLayout(FlowLayout.RIGHT, 0, 0), Colors.getBlue(0), calendarVisabilityChangerButton), BorderLayout.CENTER);
 	add(calendarWithAppointments, BorderLayout.SOUTH);
     }
 
     private boolean anyIsTodayOrTomorrow(final List<Appointment> appointmentsToTest) {
-	for (final Appointment toTest : appointmentsToTest) {
-	    if (toTest.isToday() || toTest.isTomorrow()) {
+	for (final Appointment appointment : appointmentsToTest) {
+	    if (appointment.isToday() || appointment.isTomorrow()) {
 		return true;
 	    }
 	}

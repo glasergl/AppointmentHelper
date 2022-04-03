@@ -1,81 +1,81 @@
-package appointmentOutput.test;
+package appointmentMessage.test;
 
 import static org.junit.Assert.*;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.Test;
 import appointment.Appointment;
-import appointmentOutput.AppointmentOutputText;
+import appointmentMessage.AppointmentMessage;
 import simpleDate.SimpleDate;
 import simpleDate.SimpleDates;
 
 /**
  * @author Gabriel Glaser
- * @version 19.01.2022
+ * @version 3.04.2022
  */
-public class TestAppointmentOutputText {
+public class TestAppointmentMessage {
 
     @Test
     public void test00() {
 	List<Appointment> appointments = getTestAppointmentsWithDates(SimpleDates.getDateIn(122), SimpleDates.getDateIn(13), SimpleDates.getDateIn(54), SimpleDates.getDateIn(16));
-	AppointmentOutputText output = new AppointmentOutputText("Heute", Appointment::isToday, appointments);
-	assertEquals("", output.toString());
+	AppointmentMessage output = new AppointmentMessage("Heute", Appointment::isToday, appointments);
+	assertEquals("", output.getAppointmentMessage());
     }
 
     @Test
     public void test01() {
 	List<Appointment> appointments = getTestAppointmentsWithDates(SimpleDates.getDateIn(122), SimpleDates.getDateIn(13), SimpleDates.getToday(), SimpleDates.getDateIn(16));
-	AppointmentOutputText output = new AppointmentOutputText("Heute", Appointment::isToday, appointments);
-	assertEquals("Heute ist Besprechung.", output.toString());
+	AppointmentMessage output = new AppointmentMessage("Heute", Appointment::isToday, appointments);
+	assertEquals("Heute ist Besprechung.", output.getAppointmentMessage());
     }
 
     @Test
     public void test02() {
 	List<Appointment> appointments = getTestAppointmentsWithDates(SimpleDates.getDateIn(122), SimpleDates.getDateIn(13), SimpleDates.getToday(), SimpleDates.getToday());
-	AppointmentOutputText output = new AppointmentOutputText("Heute", Appointment::isToday, appointments);
-	assertEquals("Heute sind Besprechung und Party.", output.toString());
+	AppointmentMessage output = new AppointmentMessage("Heute", Appointment::isToday, appointments);
+	assertEquals("Heute sind Besprechung und Party.", output.getAppointmentMessage());
     }
 
     @Test
     public void test10() {
 	List<Appointment> appointments = getTestAppointmentsWithDates(SimpleDates.getToday(), SimpleDates.getDateIn(13), SimpleDates.getDateIn(54), SimpleDates.getDateIn(16));
-	AppointmentOutputText output = new AppointmentOutputText("Heute", Appointment::isToday, appointments);
-	assertEquals("Heute hat Sam Geburtstag!", output.toString());
+	AppointmentMessage output = new AppointmentMessage("Heute", Appointment::isToday, appointments);
+	assertEquals("Heute hat Sam Geburtstag!", output.getAppointmentMessage());
     }
 
     @Test
     public void test11() {
 	List<Appointment> appointments = getTestAppointmentsWithDates(SimpleDates.getToday(), SimpleDates.getDateIn(13), SimpleDates.getToday(), SimpleDates.getDateIn(16));
-	AppointmentOutputText output = new AppointmentOutputText("Heute", Appointment::isToday, appointments);
-	assertEquals("Heute hat Sam Geburtstag und es ist Besprechung.", output.toString());
+	AppointmentMessage output = new AppointmentMessage("Heute", Appointment::isToday, appointments);
+	assertEquals("Heute hat Sam Geburtstag und es ist Besprechung.", output.getAppointmentMessage());
     }
 
     @Test
     public void test12() {
 	List<Appointment> appointments = getTestAppointmentsWithDates(SimpleDates.getToday(), SimpleDates.getDateIn(13), SimpleDates.getToday(), SimpleDates.getToday());
-	AppointmentOutputText output = new AppointmentOutputText("Heute", Appointment::isToday, appointments);
-	assertEquals("Heute hat Sam Geburtstag und es sind Besprechung und Party.", output.toString());
+	AppointmentMessage output = new AppointmentMessage("Heute", Appointment::isToday, appointments);
+	assertEquals("Heute hat Sam Geburtstag und es sind Besprechung und Party.", output.getAppointmentMessage());
     }
 
     @Test
     public void test20() {
 	List<Appointment> appointments = getTestAppointmentsWithDates(SimpleDates.getToday(), SimpleDates.getToday(), SimpleDates.getDateIn(54), SimpleDates.getDateIn(16));
-	AppointmentOutputText output = new AppointmentOutputText("Heute", Appointment::isToday, appointments);
-	assertEquals("Heute haben Sam und Frodo Geburtstag!", output.toString());
+	AppointmentMessage output = new AppointmentMessage("Heute", Appointment::isToday, appointments);
+	assertEquals("Heute haben Sam und Frodo Geburtstag!", output.getAppointmentMessage());
     }
 
     @Test
     public void test21() {
 	List<Appointment> appointments = getTestAppointmentsWithDates(SimpleDates.getToday(), SimpleDates.getToday(), SimpleDates.getToday(), SimpleDates.getDateIn(16));
-	AppointmentOutputText output = new AppointmentOutputText("Heute", Appointment::isToday, appointments);
-	assertEquals("Heute haben Sam und Frodo Geburtstag und es ist Besprechung.", output.toString());
+	AppointmentMessage output = new AppointmentMessage("Heute", Appointment::isToday, appointments);
+	assertEquals("Heute haben Sam und Frodo Geburtstag und es ist Besprechung.", output.getAppointmentMessage());
     }
 
     @Test
     public void test22() {
 	List<Appointment> appointments = getTestAppointmentsWithDates(SimpleDates.getToday(), SimpleDates.getToday(), SimpleDates.getToday(), SimpleDates.getToday());
-	AppointmentOutputText output = new AppointmentOutputText("Heute", Appointment::isToday, appointments);
-	assertEquals("Heute haben Sam und Frodo Geburtstag und es sind Besprechung und Party.", output.toString());
+	AppointmentMessage output = new AppointmentMessage("Heute", Appointment::isToday, appointments);
+	assertEquals("Heute haben Sam und Frodo Geburtstag und es sind Besprechung und Party.", output.getAppointmentMessage());
     }
 
     private List<Appointment> getTestAppointmentsWithDates(SimpleDate d1, SimpleDate d2, SimpleDate d3, SimpleDate d4) {

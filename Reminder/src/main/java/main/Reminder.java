@@ -4,23 +4,23 @@ import java.io.File;
 import java.util.List;
 import javax.swing.SwingUtilities;
 import appointment.Appointment;
-import appointmentFileErrors.AppointmentFileError;
+import appointmentFileErrors.AppointmentFileErrors;
 import fileInteraction.AppointmentFileInteracter;
 import ui.ReminderFrame;
 
 /**
- * Entry point for the Visualizer program which visualizes the appointments of
- * today and tomorrow in relation to the date when the program is started.
+ * Entry point for the Reminder program which shows the appointments of today
+ * and tomorrow at the time when the program is executed.
  * 
  * @author Gabriel Glaser
- * @version 29.3.2022
+ * @version 3.4.2022
  */
 public final class Reminder {
 
     public static void main(final String[] args) {
 	final File appointmentFile = AppointmentFileInteracter.getDefaultAppointmentFile();
 	if (!appointmentFile.exists()) {
-	    AppointmentFileError.showCouldntFindAppointmentFile();
+	    AppointmentFileErrors.showCouldntFindAppointmentFile();
 	} else {
 	    createAndShowGUI();
 	}

@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
  * @author Gabriel Glaser
  * @version 29.03.2022
  */
-public class AppointmentFileError {
+public class AppointmentFileErrors {
 
     public static void showCouldntFindAppointmentFile() {
 	final String title = "\"appointments.json\" nicht gefunden";
