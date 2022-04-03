@@ -22,9 +22,12 @@ Currently, there is an Adapter, too. It is used to migrate from an old version.
 3. Clone this repository.
 4. Run *build-script.bat*.
 5. The output-Folder contains the three .exe-files for the **Editor**, **Calendar** and **Reminder**.
-6. Put a shortcut to the **Reminder** in the autostart folder of Windows.
-7. Enter your appointments with the **Editor**.
-8. A window will show if an appointment occurs today or will occur tomorrow.
+
+### Workflow:
+1. Put a shortcut to the **Reminder** in the autostart folder of Windows.
+2. Enter your appointments with the **Editor**.
+3. A window will show if an appointment occurs today or will occur tomorrow.
+4. You can always look at an overview of all appointments with the **Calendar**.
   
 ## Important!
 - The file *appointments.json* needs to be in the same folder as the three .exe-files.
