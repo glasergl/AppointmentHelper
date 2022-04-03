@@ -2,7 +2,7 @@
 <launch4jConfig>
 	<headerType>gui</headerType>
 	<jar>target\AppointmentEditor-0.0.1-SNAPSHOT-jar-with-dependencies.jar</jar>
-	<outfile>..\output\TerminEditor.exe</outfile>
+	<outfile>..\..\output\TerminEditor.exe</outfile>
 	<icon>src\main\resources\EditorIcon.ico</icon>
 	<singleInstance>
 		<mutexName>glasergl_AppointmentEditor</mutexName>
