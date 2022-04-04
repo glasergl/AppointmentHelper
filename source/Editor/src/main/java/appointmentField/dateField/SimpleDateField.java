@@ -23,12 +23,13 @@ import standardSwing.settings.Fonts;
  * @author Gabriel Glaser
  * @version 20.01.2022
  */
-public class MySimpleDateField extends CustomTextButton {
+public class SimpleDateField extends CustomTextButton {
 
     private static final float DATE_TEXT_SIZE = 23.0f;
+    private static final Dimension PREFERRED_SIZE = new Dimension(70, 40);
 
     private final SiblingPopUpDisplayerOnClick monthPopUpController;
-    private final AllMonths monthsInput;
+    private final AllMonthFields monthsInput;
     private final List<ChangeListener> changeListeners = new ArrayList<>();
 
     private SimpleDate currentlySelectedDate;
@@ -36,19 +37,19 @@ public class MySimpleDateField extends CustomTextButton {
     /**
      * @param initialDate which is displayed.
      */
-    public MySimpleDateField(final SimpleDate initialDate) {
+    public SimpleDateField(final SimpleDate initialDate) {
 	super(initialDate.toStringWithLeadingZeros(), false);
 	this.currentlySelectedDate = initialDate;
-	this.monthsInput = new AllMonths(this);
+	this.monthsInput = new AllMonthFields(this);
 	this.monthPopUpController = new SiblingPopUpDisplayerOnClick(monthsInput, this);
 	setFont(Fonts.resizedStandard(DATE_TEXT_SIZE));
-	setPreferredSize(new Dimension(70, 40));
+	setPreferredSize(PREFERRED_SIZE);
     }
 
     /**
      * Initially displays today.
      */
-    public MySimpleDateField() {
+    public SimpleDateField() {
 	this(SimpleDates.getToday());
     }
 

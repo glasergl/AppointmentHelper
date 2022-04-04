@@ -6,7 +6,7 @@ import java.util.Optional;
 import javax.swing.JPanel;
 import appointment.Appointment;
 import appointment.InvalidAppointmentException;
-import appointmentField.dateField.MySimpleDateField;
+import appointmentField.dateField.SimpleDateField;
 import simpleDate.SimpleDate;
 import standardSwing.eventListener.emptyImplementation.MyDocumentListener;
 import standardSwing.myComponent.MyCheckBox;
@@ -28,7 +28,7 @@ public class AppointmentField extends JPanel {
     private static final int DISTANCE_BETWEEN_SUB_COMPONENTS = 10;
     private static final boolean STANDARD_IS_BIRTHDAY = true;
 
-    private final MySimpleDateField dateField = new MySimpleDateField();
+    private final SimpleDateField dateField = new SimpleDateField();
     private final MyTextField nameField = new MyTextField();
     private final MyTextField descriptionField = new MyTextField();
     private final MyCheckBox isBirthdayField = new MyCheckBox("ist Geburtstag", STANDARD_IS_BIRTHDAY);
@@ -123,7 +123,7 @@ public class AppointmentField extends JPanel {
 	}
     }
 
-    public MySimpleDateField getDateField() {
+    public SimpleDateField getDateField() {
 	return dateField;
     }
 

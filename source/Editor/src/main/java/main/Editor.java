@@ -40,10 +40,6 @@ public class Editor {
 	}
     }
 
-    /**
-     * Retrieves all Appointments out of the Appointment-File and creates, shows the
-     * EditorFrame on the EDT.
-     */
     private static void createAndShowGUI() {
 	final List<Appointment> initialAppointments = AppointmentFileInteracter.getAppointments();
 	SwingUtilities.invokeLater(() -> {

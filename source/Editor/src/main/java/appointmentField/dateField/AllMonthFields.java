@@ -19,14 +19,14 @@ import standardSwing.settings.Colors;
  * @author Gabriel Glaser
  * @version 13.03.2022
  */
-public class AllMonths extends JPanel {
+public class AllMonthFields extends JPanel {
 
     private static final Color BACKGROUND_COLOR = Colors.getBlue(1);
     private static final int WIDTH_OF_CLOSE_BUTTON = 40;
     private static final int DISTANCE_BETWEEN_MONTH_CONTROL_BUTTONS = 4;
     private static final Dimension SIZE_OF_MONTH_CONTROL_BUTTONS = new Dimension(35, 35);
 
-    private final MySimpleDateField dateField;
+    private final SimpleDateField dateField;
 
     private final RowOfJComponent topButtons = new RowOfJComponent();
     private final RowOfJComponent middleButtons = new RowOfJComponent(7, 7);
@@ -40,7 +40,7 @@ public class AllMonths extends JPanel {
     private int currentMonth;
     private MonthField displayOfCurrentMonth;;
 
-    public AllMonths(final MySimpleDateField dateField) {
+    public AllMonthFields(final SimpleDateField dateField) {
 	super(new BorderLayout());
 	this.dateField = dateField;
 	this.currentMonth = dateField.getDate().getMonth();
@@ -69,8 +69,7 @@ public class AllMonths extends JPanel {
 
 	closeButton.setBackgroundWhileHovered(new Color(209, 63, 52));
 	closeButton.setForegroundWhileHovered(Color.WHITE);
-	middleButtons.setBorderOfChildren(new EmptyBorder(DISTANCE_BETWEEN_MONTH_CONTROL_BUTTONS / 2, DISTANCE_BETWEEN_MONTH_CONTROL_BUTTONS / 2, DISTANCE_BETWEEN_MONTH_CONTROL_BUTTONS / 2,
-		DISTANCE_BETWEEN_MONTH_CONTROL_BUTTONS / 2));
+	middleButtons.setBorderOfChildren(new EmptyBorder(DISTANCE_BETWEEN_MONTH_CONTROL_BUTTONS / 2, DISTANCE_BETWEEN_MONTH_CONTROL_BUTTONS / 2, DISTANCE_BETWEEN_MONTH_CONTROL_BUTTONS / 2, DISTANCE_BETWEEN_MONTH_CONTROL_BUTTONS / 2));
 
 	closeButton.setPreferredSize(new Dimension(WIDTH_OF_CLOSE_BUTTON, (int) closeButton.getPreferredSize().getHeight()));
 	closeButton.setBackground(BACKGROUND_COLOR);

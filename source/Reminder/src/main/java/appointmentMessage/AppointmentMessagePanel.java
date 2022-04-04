@@ -28,12 +28,17 @@ public final class AppointmentMessagePanel extends JPanel {
     private final List<MyLabel> allLabels = new ArrayList<>();
     private final AppointmentMessage appointmentMessage;
 
-    public AppointmentMessagePanel(final String timeDescription, final Predicate<Appointment> timeCondition, final List<Appointment> appointmentsAtTimeDescription) {
+    public AppointmentMessagePanel(final String timeDescription, final Predicate<Appointment> timeCondition, final List<Appointment> allAppointments) {
 	super();
-	this.appointmentMessage = new AppointmentMessage(timeDescription, timeCondition, appointmentsAtTimeDescription);
+	this.appointmentMessage = new AppointmentMessage(timeDescription, timeCondition, allAppointments);
 	setup();
     }
 
+    /**
+     * Adds all components of the AppointmentMessage as MyLabels to this.
+     * 
+     * If a component is a name, it gets set up further.
+     */
     private void setup() {
 	setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
 	final List<String> messageComponents = appointmentMessage.getComponents();
@@ -47,13 +52,20 @@ public final class AppointmentMessagePanel extends JPanel {
 	}
     }
 
-    private void setupAppointmentLabel(final MyLabel appointmentName, final Appointment appointment) {
-	appointmentName.addMouseListener(new ColorChangerOnHover(Colors.ofFocus(), ColorType.BACKGROUND));
+    /**
+     * Adds a PopUp with the appointments' description under the MyLabel with the
+     * respective name.
+     * 
+     * @param appointmentNameLabel
+     * @param appointment
+     */
+    private void setupAppointmentLabel(final MyLabel appointmentNameLabel, final Appointment appointment) {
+	appointmentNameLabel.addMouseListener(new ColorChangerOnHover(Colors.ofFocus(), ColorType.BACKGROUND));
 	final String description = appointment.getDescription();
 	final MyLabel withDescription = new MyLabel(description);
 	withDescription.setBackground(BACKGROUND_COLOR_OF_POP_UP);
 	if (!description.equals("")) {
-	    new SiblingPopUpDisplayerOnHover(withDescription, appointmentName);
+	    new SiblingPopUpDisplayerOnHover(withDescription, appointmentNameLabel);
 	}
     }
 

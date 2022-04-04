@@ -60,8 +60,7 @@ public final class CommonErrors {
      */
     private static String getCurrentDateAndTime() {
 	final Calendar calendar = Calendar.getInstance();
-	return calendar.get(Calendar.YEAR) + "-" + (calendar.get(Calendar.MONTH) + 1) + "-" + calendar.get(Calendar.DAY_OF_MONTH) + "_" + calendar.get(Calendar.HOUR_OF_DAY) + "."
-		+ calendar.get(Calendar.MINUTE) + "." + calendar.get(Calendar.SECOND) + "." + calendar.get(Calendar.MILLISECOND);
+	return calendar.get(Calendar.YEAR) + "-" + (calendar.get(Calendar.MONTH) + 1) + "-" + calendar.get(Calendar.DAY_OF_MONTH) + "_" + calendar.get(Calendar.HOUR_OF_DAY) + "." + calendar.get(Calendar.MINUTE) + "." + calendar.get(Calendar.SECOND) + "." + calendar.get(Calendar.MILLISECOND);
     }
 
 }

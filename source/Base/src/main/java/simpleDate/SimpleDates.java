@@ -2,6 +2,7 @@ package simpleDate;
 
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -12,7 +13,7 @@ import java.util.List;
  */
 public final class SimpleDates {
 
-    public static final List<String> MONTHS = Arrays.asList("Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember");
+    public static final List<String> MONTHS = Collections.unmodifiableList(Arrays.asList("Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"));
 
     /**
      * @param day
@@ -119,7 +120,7 @@ public final class SimpleDates {
 	    case 12:
 		return 31;
 	    default:
-		return -1; // unreachable
+		throw new RuntimeException();
 	    }
 	}
     }

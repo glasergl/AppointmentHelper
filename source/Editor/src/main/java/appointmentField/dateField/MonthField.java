@@ -26,12 +26,12 @@ public final class MonthField extends JPanel {
     private static final int WIDTH_BETWEEN_DAY_LABELS = 2;
     private static final int SIZE_OF_DAY_LABEL = 40;
 
-    private final MySimpleDateField toSetSelectedDateOf;
+    private final SimpleDateField toSetSelectedDateOf;
     private final int monthToDepict;
     private final MyLabel nameOfMonth;
     private final JPanel days = new JPanel(new GridLayout(5, 7, WIDTH_BETWEEN_DAY_LABELS, WIDTH_BETWEEN_DAY_LABELS));
 
-    public MonthField(final MySimpleDateField toSetSelectedDateOf, final int monthToDepict) {
+    public MonthField(final SimpleDateField toSetSelectedDateOf, final int monthToDepict) {
 	super(new BorderLayout());
 	this.toSetSelectedDateOf = toSetSelectedDateOf;
 	this.monthToDepict = monthToDepict;
@@ -79,33 +79,7 @@ public final class MonthField extends JPanel {
      * @return German String representation of the month this depicts.
      */
     public String getMonthName() {
-	if (monthToDepict == 1) {
-	    return "Januar";
-	} else if (monthToDepict == 2) {
-	    return "Februar";
-	} else if (monthToDepict == 3) {
-	    return "März";
-	} else if (monthToDepict == 4) {
-	    return "April";
-	} else if (monthToDepict == 5) {
-	    return "Mai";
-	} else if (monthToDepict == 6) {
-	    return "Juni";
-	} else if (monthToDepict == 7) {
-	    return "Juli";
-	} else if (monthToDepict == 8) {
-	    return "August";
-	} else if (monthToDepict == 9) {
-	    return "September";
-	} else if (monthToDepict == 10) {
-	    return "Oktober";
-	} else if (monthToDepict == 11) {
-	    return "November";
-	} else if (monthToDepict == 12) {
-	    return "Dezember";
-	} else {
-	    throw new RuntimeException(monthToDepict + " is not a month.");
-	}
+	return SimpleDates.MONTHS.get(monthToDepict);
     }
 
 }

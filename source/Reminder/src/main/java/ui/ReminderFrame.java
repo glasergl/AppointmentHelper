@@ -22,6 +22,7 @@ import standardSwing.settings.Colors;
  */
 public final class ReminderFrame extends MyFrame {
 
+    private static final String FRAME_NAME = "TerminReminder";
     private static final Image ICON = SwingFunctions.getImage("ReminderIcon.png", ReminderFrame.class);
     private static final Color BACKGROUND_COLOR_OF_APPOINTMENT_MESSAGES = Colors.getBlue(0);
 
@@ -30,7 +31,7 @@ public final class ReminderFrame extends MyFrame {
     private final CalendarPanel calendarWithAppointments;
 
     public ReminderFrame(final List<Appointment> allAppointments) {
-	super("TerminHelfer", ICON);
+	super(FRAME_NAME, ICON);
 	this.appointmentMessages = new TodayTomorrowAppointmentMessagePanel(allAppointments);
 	this.calendarWithAppointments = new CalendarPanel(allAppointments);
 	setup();
@@ -40,16 +41,21 @@ public final class ReminderFrame extends MyFrame {
     }
 
     private void setup() {
+	setupCalendarVisabilityButton();
+	appointmentMessages.setBackground(BACKGROUND_COLOR_OF_APPOINTMENT_MESSAGES);
+	calendarWithAppointments.setVisible(false);
+	add(appointmentMessages, BorderLayout.NORTH);
+	add(JPanelFactory.create(new FlowLayout(FlowLayout.RIGHT, 0, 0), Colors.getBlue(0), calendarVisabilityChangerButton), BorderLayout.CENTER);
+	add(calendarWithAppointments, BorderLayout.SOUTH);
+    }
+
+    private void setupCalendarVisabilityButton() {
 	calendarVisabilityChangerButton.addActionListener(click -> {
 	    calendarWithAppointments.setVisible(!calendarWithAppointments.isVisible());
 	    calendarVisabilityChangerButton.setText(calendarWithAppointments.isVisible() ? "Kalender verbergen" : "Kalender anzeigen");
 	    pack();
 	    setLocationRelativeTo(null);
 	});
-	appointmentMessages.setBackground(BACKGROUND_COLOR_OF_APPOINTMENT_MESSAGES);
-	add(appointmentMessages, BorderLayout.NORTH);
-	add(JPanelFactory.create(new FlowLayout(FlowLayout.RIGHT, 0, 0), Colors.getBlue(0), calendarVisabilityChangerButton), BorderLayout.CENTER);
-	add(calendarWithAppointments, BorderLayout.SOUTH);
     }
 
     private boolean anyIsTodayOrTomorrow(final List<Appointment> appointmentsToTest) {

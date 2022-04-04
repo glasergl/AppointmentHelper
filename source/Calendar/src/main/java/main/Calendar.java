@@ -33,10 +33,6 @@ public final class Calendar {
 	}
     }
 
-    /**
-     * Fetches all Appointments from the default Appointment File and creates the
-     * Frame with the Calendar on the EDT.
-     */
     private static void createAndShowGUI() {
 	final List<Appointment> allAppointments = AppointmentFileInteracter.getAppointments();
 	SwingUtilities.invokeLater(() -> {

@@ -107,8 +107,7 @@ public final class Appointment implements Comparable<Appointment> {
 	    return false;
 	}
 	final Appointment appointmentToCompare = (Appointment) objectToCompare;
-	return date.equals(appointmentToCompare.date) && name.equals(appointmentToCompare.name) && description.equals(appointmentToCompare.description)
-		&& isBirthday == appointmentToCompare.isBirthday;
+	return date.equals(appointmentToCompare.date) && name.equals(appointmentToCompare.name) && description.equals(appointmentToCompare.description) && isBirthday == appointmentToCompare.isBirthday;
     }
 
     /**

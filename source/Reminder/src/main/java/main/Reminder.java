@@ -10,14 +10,19 @@ import fileInteraction.AppointmentFileInteracter;
 import ui.ReminderFrame;
 
 /**
- * Entry point for the Reminder program which shows the appointments of today
- * and tomorrow at the time when the program is executed.
+ * Entry class for the Reminder.
  * 
  * @author Gabriel Glaser
  * @version 4.4.2022
  */
 public final class Reminder {
 
+    /**
+     * Reminder program which shows the appointments of today and tomorrow. Also, a
+     * calendar is depicted to provide an overview of all appointments.
+     * 
+     * @param args - unused.
+     */
     public static void main(final String[] args) {
 	CommonErrors.setDefaultExceptionHandling();
 	final File appointmentFile = AppointmentFileInteracter.getDefaultAppointmentFile();
@@ -29,9 +34,9 @@ public final class Reminder {
     }
 
     private static void createAndShowGUI() {
-	final List<Appointment> appointmentsToConsider = AppointmentFileInteracter.getAppointments();
+	final List<Appointment> allAppointments = AppointmentFileInteracter.getAppointments();
 	SwingUtilities.invokeLater(() -> {
-	    new ReminderFrame(appointmentsToConsider);
+	    new ReminderFrame(allAppointments);
 	});
     }
 

@@ -55,7 +55,9 @@ public final class EditorFrame extends MyFrame {
      */
     @Override
     public void dispose() {
-	if (!appointmentsFields.isSaved()) {
+	if (appointmentsFields.isSaved()) {
+	    super.dispose();
+	} else {
 	    final String title = "Ungespeicherte Termine";
 	    final String message = "Es gibt ungespeicherte Termine.\nSpeichern?";
 	    final int answerOfUser = JOptionPane.showConfirmDialog(this, message, title, JOptionPane.YES_NO_CANCEL_OPTION);
@@ -68,8 +70,6 @@ public final class EditorFrame extends MyFrame {
 		appointmentsFields.cancelAll();
 		super.dispose();
 	    }
-	} else {
-	    super.dispose();
 	}
     }
 

@@ -33,6 +33,15 @@ public final class SimpleDate implements Comparable<SimpleDate> {
 	return equals(SimpleDates.getTomorrow());
     }
 
+    /**
+     * Calculates the order of two SimpleDates.
+     * 
+     * The order is determined by the month first and then the day, if the months
+     * are equal.
+     * 
+     * @param toCompare
+     * @return A number representing the order of this and toCompare.
+     */
     @Override
     public int compareTo(final SimpleDate toCompare) {
 	final int monthCompareValue = Integer.compare(month, toCompare.getMonth());
@@ -52,6 +61,17 @@ public final class SimpleDate implements Comparable<SimpleDate> {
 	}
     }
 
+    /**
+     * Tests the equality of two dates.
+     * 
+     * If two dates have the same entries for day and month, they are considered
+     * equal. If one date is the 29th of February and the other is the 1st of March,
+     * they are considered equal, too.
+     * 
+     * @param toCompare
+     * @param year
+     * @return Equality of this an toCompare.
+     */
     public boolean equals(final SimpleDate toCompare, final int year) {
 	if (day == toCompare.day && month == toCompare.month) {
 	    return true;
