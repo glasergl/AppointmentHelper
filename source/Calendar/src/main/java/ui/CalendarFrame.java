@@ -9,7 +9,7 @@ import standardSwing.container.MyFrame;
 import standardSwing.general.SwingFunctions;
 
 /**
- * Frame which shows the VisualCalendar containing all Appointments.
+ * Frame which shows the CalendarPanel containing all Appointments.
  * 
  * @author Gabriel Glaser
  * @version 30.03.2022
