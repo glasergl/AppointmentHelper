@@ -19,6 +19,7 @@ import standardSwing.general.SwingFunctions;
  */
 public final class EditorFrame extends MyFrame {
 
+    private static final String FRAME_NAME = "TerminEditor";
     private static final Image ICON = SwingFunctions.getImage("EditorIcon.png", EditorFrame.class);
 
     private final AllAppointmentFieldsController appointmentsFields;
@@ -26,7 +27,7 @@ public final class EditorFrame extends MyFrame {
     private final Footer footer;
 
     public EditorFrame(final List<Appointment> initialAppointments) {
-	super("TerminEditor", ICON);
+	super(FRAME_NAME, ICON);
 	appointmentsFields = new AllAppointmentFieldsController(initialAppointments);
 	header = new Header(appointmentsFields);
 	footer = new Footer(appointmentsFields);

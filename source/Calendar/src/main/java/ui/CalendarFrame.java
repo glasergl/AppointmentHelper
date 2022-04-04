@@ -16,12 +16,13 @@ import standardSwing.general.SwingFunctions;
  */
 public final class CalendarFrame extends MyFrame {
 
+    private static final String FRAME_NAME = "TerminKalender";
     private static final Image ICON = SwingFunctions.getImage("CalendarIcon.png", CalendarFrame.class);
 
     private final CalendarPanel calendar;
 
     public CalendarFrame(final List<Appointment> allAppointments) {
-	super("TerminKalender", ICON);
+	super(FRAME_NAME, ICON);
 	calendar = new CalendarPanel(allAppointments);
 	add(calendar, BorderLayout.CENTER);
 	calendar.setVisible(true);
