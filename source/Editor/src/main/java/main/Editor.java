@@ -5,6 +5,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import appointment.Appointment;
+import commonErrors.CommonErrors;
 import ui.EditorFrame;
 import fileInteraction.AppointmentFileInteracter;
 
@@ -26,6 +27,7 @@ public class Editor {
      * @param args - unused
      */
     public static void main(final String[] args) {
+	CommonErrors.setDefaultExceptionHandling();
 	final File appointmentFile = AppointmentFileInteracter.getDefaultAppointmentFile();
 	if (!appointmentFile.exists()) {
 	    final boolean userWantsNewAppointmentFile = askUserToCreateNewAppointmentFile();

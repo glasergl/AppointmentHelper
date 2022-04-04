@@ -5,6 +5,7 @@ import java.util.List;
 import javax.swing.SwingUtilities;
 import appointment.Appointment;
 import appointmentFileErrors.AppointmentFileErrors;
+import commonErrors.CommonErrors;
 import fileInteraction.AppointmentFileInteracter;
 import ui.ReminderFrame;
 
@@ -13,11 +14,12 @@ import ui.ReminderFrame;
  * and tomorrow at the time when the program is executed.
  * 
  * @author Gabriel Glaser
- * @version 3.4.2022
+ * @version 4.4.2022
  */
 public final class Reminder {
 
     public static void main(final String[] args) {
+	CommonErrors.setDefaultExceptionHandling();
 	final File appointmentFile = AppointmentFileInteracter.getDefaultAppointmentFile();
 	if (!appointmentFile.exists()) {
 	    AppointmentFileErrors.showCouldntFindAppointmentFile();

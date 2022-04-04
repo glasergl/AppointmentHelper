@@ -19,7 +19,7 @@ import reader.IllegalFileFormatException;
  * version "Geburtstage.txt" to the new version "appointments.json".
  * 
  * @author Gabriel Glaser
- * @version 29.3.2022
+ * @version 4.4.2022
  */
 public final class Adapter {
 
@@ -32,6 +32,7 @@ public final class Adapter {
      * @param args - unused
      */
     public static void main(final String[] args) {
+	CommonErrors.setDefaultExceptionHandling();
 	if (!GEBURTSTAGE.exists()) {
 	    final String errorTitle = "\"Geburtstage.txt\" nicht gefunden";
 	    final String errorMessage = "\"Geburtstage.txt\" konnte nicht gefunden werden. Die Datei sollte im selben Verzeichnis wie die .jar liegen.";
@@ -64,8 +65,8 @@ public final class Adapter {
 	    showErrorOfIllegalFileFormat(e);
 	} catch (final AppointmentAlreadyAddedException e) {
 	    showErrorOfDuplicateAppointment();
-	} catch (final Exception e) {
-	    CommonErrors.showUnexpectedExceptionAndExitProgram(e);
+	} catch (final IOException e) {
+	    throw new RuntimeException(e);
 	}
     }
 

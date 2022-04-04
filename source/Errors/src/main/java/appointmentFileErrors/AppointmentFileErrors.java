@@ -6,9 +6,9 @@ import javax.swing.JOptionPane;
  * Class which contains function which depict errors with the appointment-File.
  * 
  * @author Gabriel Glaser
- * @version 29.03.2022
+ * @version 4.04.2022
  */
-public class AppointmentFileErrors {
+public final class AppointmentFileErrors {
 
     public static void showCouldntFindAppointmentFile() {
 	final String title = "\"appointments.json\" nicht gefunden";
