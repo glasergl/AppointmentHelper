@@ -7,8 +7,6 @@ Editor   | Add, change and delete appointments
 Calendar | Overview of all stored appointments
 Reminder | Shows appointments which occur today or tomorrow (at the time the program is executed)
 
-Currently, there is an Adapter, too. It is used to migrate from an old version.
-
 ## How to use?
 
 ### Requirements:
