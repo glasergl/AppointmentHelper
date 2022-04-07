@@ -79,7 +79,7 @@ public final class MonthField extends JPanel {
      * @return German String representation of the month this depicts.
      */
     public String getMonthName() {
-	return SimpleDates.MONTHS.get(monthToDepict);
+	return SimpleDates.MONTHS.get(monthToDepict - 1);
     }
 
 }
