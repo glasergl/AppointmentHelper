@@ -7,9 +7,11 @@ import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
+
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Scrollable;
+
 import appointment.Appointment;
 import fileInteraction.AppointmentAlreadyAddedException;
 import fileInteraction.AppointmentFileInteracter;
@@ -19,7 +21,7 @@ import ui.EditorFrame;
 
 /**
  * Depiction of all AppointmentInputFields.
- * 
+ *
  * @author Gabriel Glaser
  * @version 13.3.2022
  */
@@ -35,7 +37,7 @@ public class AllAppointmentFields extends JPanel implements Scrollable {
     /**
      * Constructs a Panel which displays all given Appointments in an
      * AppointmentField.
-     * 
+     *
      * @param initialAppointments
      */
     public AllAppointmentFields(final List<Appointment> initialAppointments) {
@@ -57,7 +59,7 @@ public class AllAppointmentFields extends JPanel implements Scrollable {
 
     /**
      * Restores the last deleted AppointmentField.
-     * 
+     *
      * Can be called till every AppointmentField is restored.
      */
     public void restoreLastDeletedAppointmentField() {
@@ -72,9 +74,9 @@ public class AllAppointmentFields extends JPanel implements Scrollable {
 
     /**
      * Removes the given AppointmentField and adds it to allLastDeleted.
-     * 
+     *
      * It can be restored by calling restoreLastDeleted().
-     * 
+     *
      * @param toRemove
      */
     public void removeAppointmentField(final AppointmentFieldController toRemove) {
@@ -94,7 +96,7 @@ public class AllAppointmentFields extends JPanel implements Scrollable {
     /**
      * Tests if the given Appointment is equal to an input of an
      * AppointmentFieldController of this.
-     * 
+     *
      * @param appointmentToTest
      * @return True, if the given Appointment is the input of an
      *         AppointmentFieldController, else false.
@@ -183,7 +185,7 @@ public class AllAppointmentFields extends JPanel implements Scrollable {
 
     /**
      * Adds the given AppointmentField to this.
-     * 
+     *
      * @param toAdd
      */
     private void addAppointmentField(final AppointmentFieldController toAdd) {

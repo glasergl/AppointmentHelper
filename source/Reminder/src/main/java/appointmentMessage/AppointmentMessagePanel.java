@@ -6,7 +6,9 @@ import java.awt.Font;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
+
 import javax.swing.JPanel;
+
 import appointment.Appointment;
 import standardSwing.entity.ColorType;
 import standardSwing.eventListener.ColorChangerOnHover;
@@ -17,7 +19,7 @@ import standardSwing.settings.Colors;
 /**
  * Class which calculates the sentence which contains the appointments of today
  * and tomorrow.
- * 
+ *
  * @author Gabriel Glaser
  * @version 3.4.2022
  */
@@ -36,7 +38,7 @@ public final class AppointmentMessagePanel extends JPanel {
 
     /**
      * Adds all components of the AppointmentMessage as MyLabels to this.
-     * 
+     *
      * If a component is a name, it gets set up further.
      */
     private void setup() {
@@ -55,7 +57,7 @@ public final class AppointmentMessagePanel extends JPanel {
     /**
      * Adds a PopUp with the appointments' description under the MyLabel with the
      * respective name.
-     * 
+     *
      * @param appointmentNameLabel
      * @param appointment
      */

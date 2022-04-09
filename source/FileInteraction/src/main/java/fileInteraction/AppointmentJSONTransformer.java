@@ -1,13 +1,14 @@
 package fileInteraction;
 
 import org.json.JSONObject;
+
 import appointment.Appointment;
 import simpleDate.SimpleDate;
 
 /**
  * Class which contains static functions to transform JSONObjects to
  * Appointment-Objects and back.
- * 
+ *
  * @author Gabriel Glaser
  * @version 19.1.2021
  */
@@ -18,7 +19,7 @@ public final class AppointmentJSONTransformer {
 
     /**
      * Transforms a JSONObject to an Appointment.
-     * 
+     *
      * @param jsonToTransform
      * @return The Appointment represented by the given JSONObject.
      */
@@ -33,7 +34,7 @@ public final class AppointmentJSONTransformer {
 
     /**
      * Transforms an Appointment into a JSONObject.
-     * 
+     *
      * @param appointmentToTransform
      * @return The given Appointment transformed into a JSONObject.
      */
@@ -48,7 +49,7 @@ public final class AppointmentJSONTransformer {
 
     /**
      * Tests whether the given JSON represents an Appointment.
-     * 
+     *
      * @param jsonToTest
      * @return True, if the given JSON represents an Appointment.
      */

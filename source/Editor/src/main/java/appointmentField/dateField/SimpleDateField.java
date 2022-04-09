@@ -3,6 +3,7 @@ package appointmentField.dateField;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
@@ -15,11 +16,11 @@ import standardSwing.settings.Fonts;
 
 /**
  * Input-Field for a Simple-Date.
- * 
+ *
  * The component itself shows a date. By clicking on the date, another component
  * shows up under the date. The new component shows all months with days and
  * lets the user decide for a date.
- * 
+ *
  * @author Gabriel Glaser
  * @version 20.01.2022
  */
@@ -55,9 +56,10 @@ public class SimpleDateField extends CustomTextButton {
 
     /**
      * Adds the given ChangeListener to a List of ChangeListener's.
-     * 
+     *
      * They are called when any date is set on this input field.
      */
+    @Override
     public void addChangeListener(final ChangeListener toAdd) {
 	changeListeners.add(toAdd);
     }
@@ -65,7 +67,7 @@ public class SimpleDateField extends CustomTextButton {
     /**
      * Sets the date to the given date and displays it. Furthermore, notifies all
      * added ChangeListeners.
-     * 
+     *
      * @param dateToSet
      */
     public void setDate(final SimpleDate dateToSet) {
@@ -79,7 +81,7 @@ public class SimpleDateField extends CustomTextButton {
 
     /**
      * Sets the visibility of the pop up date input according to the argument.
-     * 
+     *
      * @param inputShouldBeVisible
      */
     public void setDateInputVisible(final boolean inputShouldBeVisible) {

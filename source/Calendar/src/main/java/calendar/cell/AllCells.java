@@ -3,8 +3,10 @@ package calendar.cell;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.util.List;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
 import appointment.Appointment;
 import calendar.CalendarAttributes;
 import simpleDate.SimpleDate;
@@ -12,7 +14,7 @@ import simpleDate.SimpleDates;
 
 /**
  * Representation of all possible dates.
- * 
+ *
  * Only contains the 29th of February if constructed in a switching year.
  * Appointments at the 29th of February occur on the first of March in non
  * switching years.
@@ -27,7 +29,7 @@ public final class AllCells extends JPanel {
     /**
      * Constructs a grid of Cells which contains all valid dates of the year the
      * constructor is called.
-     * 
+     *
      * @param allAppointments
      */
     public AllCells(final List<Appointment> allAppointments) {
@@ -52,10 +54,10 @@ public final class AllCells extends JPanel {
     /**
      * Adds a Cell if day.month is a valid date, else, adds an empty, invisible
      * JLabel.
-     * 
+     *
      * Furthermore, the background of a Cell which represents the day this is
      * constructed is emphasized.
-     * 
+     *
      * @param day
      * @param month
      */

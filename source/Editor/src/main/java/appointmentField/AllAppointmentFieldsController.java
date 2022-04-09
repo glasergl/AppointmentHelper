@@ -3,10 +3,13 @@ package appointmentField;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.util.List;
+
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EmptyBorder;
+
 import appointment.Appointment;
 import standardSwing.myComponent.MyLabel;
 import standardSwing.settings.Colors;
@@ -15,7 +18,7 @@ import standardSwing.settings.Fonts;
 /**
  * Top-Level Parent for all AppointmentFields which controls the JScrollPane and
  * the header.
- * 
+ *
  * @author Gabriel Glaser
  * @version 13.3.2022
  */
@@ -28,7 +31,7 @@ public class AllAppointmentFieldsController extends JPanel {
     public AllAppointmentFieldsController(final List<Appointment> initialAppointments) {
 	super();
 	appointmentFields = new AllAppointmentFields(initialAppointments);
-	jScrollPane = new JScrollPane(appointmentFields, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+	jScrollPane = new JScrollPane(appointmentFields, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 	setup();
     }
 

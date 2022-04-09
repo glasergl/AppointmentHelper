@@ -11,9 +11,9 @@ import standardSwing.settings.Fonts;
 
 /**
  * Footer for the whole frame.
- * 
+ *
  * Contains a button to add an empty appointment.
- * 
+ *
  * @author Gabriel Glaser
  * @version 30.3.2022
  */

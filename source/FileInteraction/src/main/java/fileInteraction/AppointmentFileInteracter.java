@@ -11,18 +11,20 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
+
 import appointment.Appointment;
 import appointment.Appointments;
 
 /**
  * Class which contains functions to interact with a File of Appointments.
- * 
+ *
  * Usually, you shouldn't give a File to the functions as an argument. The
  * overloaded functions exist for testing.
- * 
+ *
  * @author Gabriel Glaser
  * @version 19.1.2022
  */
@@ -37,7 +39,7 @@ public final class AppointmentFileInteracter {
 
     /**
      * Adds the given Appointment to the default Appointment-File.
-     * 
+     *
      * @param appointmentToAdd
      * @throws AppointmentAlreadyAddedException If the default Appointment-File
      *                                          already contains the given
@@ -49,7 +51,7 @@ public final class AppointmentFileInteracter {
 
     /**
      * Removes the given Appointment from the default Appointment-File.
-     * 
+     *
      * @param appointmentToRemove
      * @throws NoSuchElementException If the standard Appointment-File already
      *                                contains the given Appointment.
@@ -60,7 +62,7 @@ public final class AppointmentFileInteracter {
 
     /**
      * Tests if the default Appointment-File contains the specified Appointment.
-     * 
+     *
      * @param appointmentToTest
      * @return True if the standard Appointment-File contains the specified
      *         Appointment.
@@ -72,7 +74,7 @@ public final class AppointmentFileInteracter {
     /**
      * Calculates the List of Appointments represented by the default
      * Appointment-File.
-     * 
+     *
      * @return List of all Appointments represented by the default Appointment-File.
      */
     public static List<Appointment> getAppointments() {
@@ -81,7 +83,7 @@ public final class AppointmentFileInteracter {
 
     /**
      * Adds the given Appointment to the given Appointment-File.
-     * 
+     *
      * @param appointmentToAdd
      * @param fileWithAppointments
      * @throws AppointmentAlreadyAddedException If the given Appointment-File
@@ -99,7 +101,7 @@ public final class AppointmentFileInteracter {
 
     /**
      * Removes the given Appointment from the given Appointment-File.
-     * 
+     *
      * @param appointmentToRemove
      * @param fileWithAppointments
      * @throws NoSuchElementException If the given Appointment-File doesn't contain
@@ -116,7 +118,7 @@ public final class AppointmentFileInteracter {
 
     /**
      * Tests if the given Appointment-File contains the given Appointment.
-     * 
+     *
      * @param appointment
      * @param fileWithAppointments
      * @return True, if the given appointment is already stored in the given File.
@@ -129,7 +131,7 @@ public final class AppointmentFileInteracter {
     /**
      * Calculates the List of Appointments represented by the given
      * Appointment-File.
-     * 
+     *
      * @param fileWithAppointments
      * @return List of all Appointments represented by the given Appointment-File.
      */
@@ -145,7 +147,7 @@ public final class AppointmentFileInteracter {
 
     /**
      * Sorts and stores the given Appointments to the given File.
-     * 
+     *
      * @param appointmentsToStore
      * @param fileToStoreAt
      */
@@ -160,7 +162,7 @@ public final class AppointmentFileInteracter {
 
     /**
      * Calculates the JSONArray represented by the given File.
-     * 
+     *
      * @param fileWithAppointments
      * @return JSONArray represented by the content of the given File.
      */
@@ -178,7 +180,7 @@ public final class AppointmentFileInteracter {
 
     /**
      * Stores the given JSONArray in the given File.
-     * 
+     *
      * @param appointmentsToStore
      * @param fileToStoreAt
      */
@@ -203,7 +205,7 @@ public final class AppointmentFileInteracter {
 
     /**
      * Creates an empty, syntactically correct Appointment-File at the default path.
-     * 
+     *
      * @throws IllegalArgumentException If the default path already represents an
      *                                  existing File.
      */
@@ -213,7 +215,7 @@ public final class AppointmentFileInteracter {
 
     /**
      * Creates an empty, syntactically correct Appointment-File at the given path.
-     * 
+     *
      * @param pathOfTheNewAppointmentFile
      * @throws IllegalArgumentException If the given path already represents an
      *                                  existing File.

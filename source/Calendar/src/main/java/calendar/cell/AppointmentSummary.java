@@ -2,6 +2,7 @@ package calendar.cell;
 
 import java.awt.FontMetrics;
 import java.util.List;
+
 import appointment.Appointment;
 import calendar.CalendarAttributes;
 import standardSwing.myComponent.MyLabel;
@@ -9,7 +10,7 @@ import standardSwing.myComponent.MyLabel;
 /**
  * Class which contains the calculation of a summary-String of given
  * Appointments.
- * 
+ *
  * @author Gabriel Glaser
  * @version 30.03.2022
  */
@@ -81,7 +82,7 @@ public final class AppointmentSummary {
     /**
      * Calculates the width of the given text in pixel by using a MyLabel with the
      * Cell-Font.
-     * 
+     *
      * @param text
      * @return The width of the text in pixel.
      */

@@ -5,7 +5,7 @@ import appointment.Appointment;
 /**
  * Exception to indicate that an Appointment has already been added to the
  * Appointment-File.
- * 
+ *
  * @author Gabriel Glaser
  * @version 19.01.2022
  */

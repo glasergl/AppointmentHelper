@@ -2,14 +2,16 @@ package calendar;
 
 import java.awt.BorderLayout;
 import java.util.List;
+
 import javax.swing.JPanel;
+
 import appointment.Appointment;
 import calendar.cell.AllCells;
 
 /**
  * Representation of a visual calendar which depicts all days of the current
  * year. Furthermore, Appointments on a given day are visualized, too.
- * 
+ *
  * @author Gabriel Glaser
  * @version 30.3.2022
  */

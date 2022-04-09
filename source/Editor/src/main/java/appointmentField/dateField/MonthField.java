@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
@@ -15,7 +16,7 @@ import standardSwing.settings.Colors;
 
 /**
  * Representation of a Month with each respective day.
- * 
+ *
  * @author Gabriel Glaser
  * @version 20.01.2022
  */

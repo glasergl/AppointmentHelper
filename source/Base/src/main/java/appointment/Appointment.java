@@ -5,7 +5,7 @@ import simpleDate.SimpleDates;
 
 /**
  * Immutable class which contains all necessary attributes for an appointment.
- * 
+ *
  * @author Gabriel Glaser
  * @version 29.3.2022
  */
@@ -39,7 +39,7 @@ public final class Appointment implements Comparable<Appointment> {
 
     /**
      * Constructor with default empty description.
-     * 
+     *
      * @param date
      * @param name
      * @param isBirthday
@@ -51,7 +51,7 @@ public final class Appointment implements Comparable<Appointment> {
 
     /**
      * Constructor with default date (today) and empty description.
-     * 
+     *
      * @param name
      * @param isBirthday
      * @throws IllegalArgumentException - If name is an empty String.
@@ -62,7 +62,7 @@ public final class Appointment implements Comparable<Appointment> {
 
     /**
      * Constructor with default empty description and is a birthday.
-     * 
+     *
      * @param date
      * @param name
      * @throws IllegalArgumentException - If name is an empty String.
@@ -73,7 +73,7 @@ public final class Appointment implements Comparable<Appointment> {
 
     /**
      * Constructor with default date (today), empty description and is a birthday.
-     * 
+     *
      * @param name
      * @throws IllegalArgumentException - If name is an empty String.
      */
@@ -112,10 +112,10 @@ public final class Appointment implements Comparable<Appointment> {
 
     /**
      * Calculates the order of this in comparison to toCompare.
-     * 
+     *
      * It is sorted by the compareTo() results of date > name > description >
      * isBirthday
-     * 
+     *
      * @param toCompare
      * @return The value representing the order of this and toCompare.
      */

@@ -7,7 +7,7 @@ import simpleDate.SimpleDate;
 /**
  * Class which contains static functions to transform JSONObjects to
  * SimpleDate-Objects and back.
- * 
+ *
  * @author Gabriel Glaser
  * @version 19.1.2021
  */
@@ -18,7 +18,7 @@ public final class SimpleDateJSONTransformer {
 
     /**
      * Transforms a JSONObject to a SimpleDate.
-     * 
+     *
      * @param jsonToTransform
      * @return The Date represented by the given JSONObject.
      */
@@ -31,7 +31,7 @@ public final class SimpleDateJSONTransformer {
 
     /**
      * Transforms a SimpleDate into a JSONObject.
-     * 
+     *
      * @param dateToTransform
      * @return The given Date transformed into a JSONObject.
      */
@@ -44,7 +44,7 @@ public final class SimpleDateJSONTransformer {
 
     /**
      * Tests whether the given JSON represents a SimpleDate.
-     * 
+     *
      * @param jsonToTest
      * @return True, if the given JSON represents a SimpleDate.
      */

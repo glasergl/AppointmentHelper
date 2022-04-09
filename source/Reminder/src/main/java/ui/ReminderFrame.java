@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Image;
 import java.util.List;
+
 import appointment.Appointment;
 import appointmentMessage.TodayTomorrowAppointmentMessagePanel;
 import standardSwing.container.MyFrame;
@@ -12,7 +13,7 @@ import standardSwing.settings.Colors;
 
 /**
  * Main Frame for the Reminder.
- * 
+ *
  * @author Gabriel Glaser
  * @version 3.4.2022
  */

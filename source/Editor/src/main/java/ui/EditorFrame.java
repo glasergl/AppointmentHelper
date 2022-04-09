@@ -5,7 +5,9 @@ import java.awt.Container;
 import java.awt.Image;
 import java.awt.Point;
 import java.util.List;
+
 import javax.swing.JOptionPane;
+
 import appointment.Appointment;
 import appointmentField.AllAppointmentFieldsController;
 import standardSwing.container.MyFrame;
@@ -13,7 +15,7 @@ import standardSwing.general.SwingFunctions;
 
 /**
  * Main-Frame for the Editor.
- * 
+ *
  * @author Gabriel Glaser
  * @version 30.3.2022
  */

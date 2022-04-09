@@ -4,12 +4,13 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Calendar;
+
 import javax.swing.JOptionPane;
 
 /**
  * This class contains functions about common errors and handling in this
  * project.
- * 
+ *
  * @author Gabriel Glaser
  * @version 4.04.2022
  */
@@ -28,7 +29,7 @@ public final class CommonErrors {
     /**
      * Depicts the given Exception in a JOptionPane and terminates the program after
      * that.
-     * 
+     *
      * @param exception
      */
     private static void showAndLogUnexpectedExceptionAndExitProgram(final Throwable exception) {
@@ -41,7 +42,7 @@ public final class CommonErrors {
 
     /**
      * Prints the stack-trace of the given Exception in a file.
-     * 
+     *
      * @param exception
      */
     private static void logException(final Throwable exception) {

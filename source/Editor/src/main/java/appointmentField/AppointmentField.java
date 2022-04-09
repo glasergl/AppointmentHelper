@@ -3,7 +3,9 @@ package appointmentField;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.util.Optional;
+
 import javax.swing.JPanel;
+
 import appointment.Appointment;
 import appointment.InvalidAppointmentException;
 import appointmentField.dateField.SimpleDateField;
@@ -14,10 +16,10 @@ import standardSwing.myComponent.textField.MyTextField;
 
 /**
  * Visual Input-Field for an Appointment.
- * 
+ *
  * Furthermore, if the TextField for the name is empty, it gets colored red to
  * indicate it being in an illegal state.
- * 
+ *
  * @author Gabriel Glaser
  * @version 13.3.2022
  */
@@ -48,7 +50,7 @@ public class AppointmentField extends JPanel {
     /**
      * Depicts standard values: Date of today, empty name, empty description and
      * isBirthday set to true.
-     * 
+     *
      * Calling getAppointment() right after calling this constructor will lead to an
      * InvalidAppointmentException.
      */
@@ -80,7 +82,7 @@ public class AppointmentField extends JPanel {
 
     /**
      * Replaces the current input with the content of the given Appointment.
-     * 
+     *
      * @param newAppointment
      */
     public void setAppointment(final Appointment newAppointment) {
@@ -143,6 +145,7 @@ public class AppointmentField extends JPanel {
 	return dateField.getDate();
     }
 
+    @Override
     public String getName() {
 	return nameField.getText();
     }
@@ -159,6 +162,7 @@ public class AppointmentField extends JPanel {
 	dateField.setDate(newDate);
     }
 
+    @Override
     public void setName(final String newName) {
 	nameField.setText(newName);
     }

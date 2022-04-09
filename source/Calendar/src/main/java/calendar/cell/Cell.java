@@ -4,7 +4,9 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.util.List;
+
 import javax.swing.JPanel;
+
 import appointment.Appointment;
 import appointment.Appointments;
 import calendar.CalendarAttributes;

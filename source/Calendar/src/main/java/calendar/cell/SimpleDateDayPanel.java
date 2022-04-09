@@ -3,13 +3,15 @@ package calendar.cell;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+
 import javax.swing.JPanel;
+
 import simpleDate.SimpleDate;
 import standardSwing.myComponent.MyLabel;
 
 /**
  * Visual representation of a SimpleDate.
- * 
+ *
  * @author Gabriel Glaser
  * @version 30.03.2022
  */

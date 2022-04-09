@@ -4,13 +4,15 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.util.List;
+
 import javax.swing.JPanel;
+
 import appointment.Appointment;
 import standardSwing.settings.Fonts;
 
 /**
  * Class which shows the appointments of today and tomorrow.
- * 
+ *
  * @author Gabriel Glaser
  * @version 3.4.2022
  */

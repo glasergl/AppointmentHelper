@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -15,7 +16,7 @@ import standardSwing.settings.Colors;
 /**
  * This JPanel visualizes all months as individual MonthField's and allows
  * controlling them with Buttons.
- * 
+ *
  * @author Gabriel Glaser
  * @version 13.03.2022
  */
@@ -38,7 +39,7 @@ public class AllMonthFields extends JPanel {
     private final CustomTextButton goRightEdgeButton = new CustomTextButton(">>I", BACKGROUND_COLOR, Color.BLACK);
 
     private int currentMonth;
-    private MonthField displayOfCurrentMonth;;
+    private MonthField displayOfCurrentMonth;
 
     public AllMonthFields(final SimpleDateField dateField) {
 	super(new BorderLayout());
@@ -105,7 +106,7 @@ public class AllMonthFields extends JPanel {
 
     /**
      * Sets the given month as the current month and shows the month.
-     * 
+     *
      * @param newMonth
      */
     private void setDisplayedMonth(final int newMonth) {

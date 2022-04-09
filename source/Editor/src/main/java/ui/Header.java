@@ -10,10 +10,10 @@ import standardSwing.settings.Colors;
 
 /**
  * Header for the whole frame.
- * 
+ *
  * Contains a button which saves all currently entered appointments and a button
  * to restore the last deleted button.
- * 
+ *
  * @author Gabriel Glaser
  * @version 30.3.2022
  */

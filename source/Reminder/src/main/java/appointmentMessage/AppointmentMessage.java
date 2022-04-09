@@ -7,16 +7,17 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+
 import appointment.Appointment;
 
 /**
  * Class which calculates a representative text of a list of appointments at a
  * given time.
- * 
+ *
  * The whole text is stored in the List components. Additionally, the given Map
  * maps each index of the List components, which represents a name of an
  * Appointment, to the respective Appointment.
- * 
+ *
  * @author Gabriel Glaser
  * @version 03.04.2022
  */
@@ -31,7 +32,7 @@ public final class AppointmentMessage {
     /**
      * Creates the components for the message which is retrievable through
      * getComponents().
-     * 
+     *
      * @param timeDescription
      * @param timeCondition
      * @param allAppointments
@@ -85,7 +86,7 @@ public final class AppointmentMessage {
 
     /**
      * Calculates the List of all components needed for the message.
-     * 
+     *
      * @return The List of all components.
      */
     private List<String> calculateComponents() {
@@ -105,7 +106,7 @@ public final class AppointmentMessage {
 
     /**
      * Adds all enumerated birthdays to the given List.
-     * 
+     *
      * @param components
      */
     private void addBirthdayLabels(final List<String> components) {
@@ -121,7 +122,7 @@ public final class AppointmentMessage {
 
     /**
      * Adds all enumerated non-birthdays to the given List.
-     * 
+     *
      * @param components
      */
     private void addNonBirthdayLabels(final List<String> components) {
@@ -136,12 +137,12 @@ public final class AppointmentMessage {
     /**
      * Enumerates the names of the given Appointments and stores them in the given
      * List.
-     * 
+     *
      * Furthermore, for each name, the index of the name in the resulting List
      * components is mapped to the respective Appointment. This is necessary to
      * differentiate between necessary text, like commas, spaces etc. and the names
      * of the Appointments.
-     * 
+     *
      * @param appointmentsToEnumerate
      * @param components
      */

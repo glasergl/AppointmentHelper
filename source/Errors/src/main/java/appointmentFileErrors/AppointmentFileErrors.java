@@ -4,7 +4,7 @@ import javax.swing.JOptionPane;
 
 /**
  * Class which contains function which depict errors with the appointment-File.
- * 
+ *
  * @author Gabriel Glaser
  * @version 4.04.2022
  */

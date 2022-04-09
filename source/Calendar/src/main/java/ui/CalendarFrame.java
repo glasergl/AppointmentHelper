@@ -3,6 +3,7 @@ package ui;
 import java.awt.BorderLayout;
 import java.awt.Image;
 import java.util.List;
+
 import appointment.Appointment;
 import calendar.CalendarPanel;
 import standardSwing.container.MyFrame;
@@ -10,7 +11,7 @@ import standardSwing.general.SwingFunctions;
 
 /**
  * Frame which shows the CalendarPanel containing all Appointments.
- * 
+ *
  * @author Gabriel Glaser
  * @version 30.03.2022
  */

@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * Class which contains function about simple dates.
- * 
+ *
  * @author Gabriel Glaser
  * @version 29.3.2022
  */
@@ -42,7 +42,7 @@ public final class SimpleDates {
     /**
      * Calculates the date in the given days in relation to the current date when
      * the function gets called.
-     * 
+     *
      * @param days
      * @return The date in the given days.
      */
@@ -70,7 +70,7 @@ public final class SimpleDates {
 
     /**
      * Calculates whether the given year is a switching year.
-     * 
+     *
      * @param yearToTest
      * @return True if the given year is a switching year.
      */
@@ -86,7 +86,7 @@ public final class SimpleDates {
 
     /**
      * Calculates the days of the given month.
-     * 
+     *
      * @param month
      * @return The days of the given month.
      */
@@ -127,7 +127,7 @@ public final class SimpleDates {
 
     /**
      * Calculates the SimpleDate represented by the given Calendar.
-     * 
+     *
      * @param toTransform
      * @return The SimpleDate represented by the given Calendar.
      */

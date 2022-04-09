@@ -1,9 +1,13 @@
 package ui.test.appointmentField.appointmentFieldController;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
 import java.awt.Color;
 import java.io.File;
+
 import org.junit.Test;
+
 import appointment.InvalidAppointmentException;
 import appointmentField.AllAppointmentFields;
 import appointmentField.AppointmentFieldController;

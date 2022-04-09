@@ -5,7 +5,9 @@ import java.awt.Color;
 import java.awt.Font;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.swing.JPanel;
+
 import appointment.Appointment;
 import calendar.CalendarAttributes;
 import standardSwing.border.LeftRightRoundBorder;
@@ -20,7 +22,7 @@ import standardSwing.settings.Colors;
 /**
  * Visual representation of the summary of the given Appointments at the given
  * date.
- * 
+ *
  * @author Gabriel Glaser
  * @version 30.03.2022
  */

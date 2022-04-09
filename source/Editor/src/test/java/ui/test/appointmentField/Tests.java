@@ -1,6 +1,7 @@
 package ui.test.appointmentField;
 
 import java.io.File;
+
 import appointment.Appointment;
 import appointmentField.AppointmentFieldController;
 import fileInteraction.AppointmentFileInteracter;
@@ -8,7 +9,7 @@ import simpleDate.SimpleDate;
 
 /**
  * Class which contains variables and functions which are used in tests.
- * 
+ *
  * @author Gabriel Glaser
  * @version 12.03.2022
  */

@@ -4,14 +4,16 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+
 import simpleDate.SimpleDates;
 import standardSwing.myComponent.MyLabel;
 
 /**
  * Visual representation of all Months in a horizontal row.
- * 
+ *
  * @author Gabriel Glaser
  * @version 30.03.2022
  */

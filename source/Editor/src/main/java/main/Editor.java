@@ -2,16 +2,18 @@ package main;
 
 import java.io.File;
 import java.util.List;
+
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+
 import appointment.Appointment;
 import commonErrors.CommonErrors;
-import ui.EditorFrame;
 import fileInteraction.AppointmentFileInteracter;
+import ui.EditorFrame;
 
 /**
  * Entry-Point for the Editor.
- * 
+ *
  * @author Gabriel Glaser
  * @version 11.2.2022
  */
@@ -20,10 +22,10 @@ public class Editor {
     /**
      * The Editor depicts all stored Appointments of the default Appointment-File
      * and allows to edit them.
-     * 
+     *
      * If the Appointment-File doesn't exist, the user is asked whether he wants to
      * create a new, empty Appointment-File.
-     * 
+     *
      * @param args - unused
      */
     public static void main(final String[] args) {
@@ -50,7 +52,7 @@ public class Editor {
     /**
      * Asks the user whether he wants to create a new Appointment-File with a
      * JOptionPane which doesn't have an owner.
-     * 
+     *
      * @return True, if the User wants to create a new Appointment-File, else,
      *         false.
      */

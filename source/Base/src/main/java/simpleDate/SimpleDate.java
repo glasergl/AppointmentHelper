@@ -2,7 +2,7 @@ package simpleDate;
 
 /**
  * Immutable class to store a simple date with just day and month.
- * 
+ *
  * @author Gabriel Glaser
  * @version 1.1.2022
  */
@@ -35,10 +35,10 @@ public final class SimpleDate implements Comparable<SimpleDate> {
 
     /**
      * Calculates the order of two SimpleDates.
-     * 
+     *
      * The order is determined by the month first and then the day, if the months
      * are equal.
-     * 
+     *
      * @param toCompare
      * @return A number representing the order of this and toCompare.
      */
@@ -63,11 +63,11 @@ public final class SimpleDate implements Comparable<SimpleDate> {
 
     /**
      * Tests the equality of two dates.
-     * 
+     *
      * If two dates have the same entries for day and month, they are considered
      * equal. If one date is the 29th of February and the other is the 1st of March,
      * they are considered equal, too.
-     * 
+     *
      * @param toCompare
      * @param year
      * @return Equality of this an toCompare.

@@ -2,12 +2,13 @@ package calendar;
 
 import java.awt.Color;
 import java.awt.Font;
+
 import standardSwing.settings.Colors;
 import standardSwing.settings.Fonts;
 
 /**
  * Class which contains the attributes for the Calendar.
- * 
+ *
  * @author Gabriel Glaser
  * @version 30.03.2022
  */
