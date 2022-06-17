@@ -4,7 +4,7 @@ package de.glasergl.simpleDate;
  * Immutable class to store a simple date with just day and month.
  *
  * @author Gabriel Glaser
- * @version 1.1.2022
+ * @version 18.6.2022
  */
 public final class SimpleDate implements Comparable<SimpleDate> {
 
