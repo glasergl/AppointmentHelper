@@ -5,18 +5,30 @@ del /s /q output\*.*
 
 echo\
 echo build modules
-echo - Base:
-call mvn clean install -f source/AppointmentHelper-Entities/
-echo - FileInteraction:
-call mvn clean install -f source/AppointmentHelper-Files/
-echo - Errors:
-call mvn clean install -f source/AppointmentHelper-Util/
+
+echo\
+echo - Entities:
+call mvn clean install -f source\AppointmentHelper-Entities\
+
+echo\
+echo - Util:
+call mvn clean install -f source\AppointmentHelper-Util\
+
+echo\
+echo - Files:
+call mvn clean install -f source\AppointmentHelper-Files\
+
+echo\
 echo - Calendar:
-call mvn clean install -f source/AppointmentHelper-Calendar/
+call mvn clean install -f source\AppointmentHelper-Calendar\
+
+echo\
 echo - Editor:
-call mvn clean package -f source/AppointmentHelper-Editor/
+call mvn clean package -f source\AppointmentHelper-Editor\
+
+echo\
 echo - Reminder:
-call mvn clean package -f source/AppointmentHelper-Reminder/
+call mvn clean package -f source\AppointmentHelper-Reminder\
 
 echo\
 echo create .exe-Files
