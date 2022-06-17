@@ -66,7 +66,7 @@ public final class SimpleDate implements Comparable<SimpleDate> {
      *
      * If two dates have the same entries for day and month, they are considered
      * equal. If one date is the 29th of February and the other is the 1st of March,
-     * they are considered equal, too.
+     * they are considered equal, too, if the given year is no switching year.
      *
      * @param toCompare
      * @param year
