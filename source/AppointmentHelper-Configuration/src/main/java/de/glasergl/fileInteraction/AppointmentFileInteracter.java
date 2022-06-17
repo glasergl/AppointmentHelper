@@ -18,6 +18,7 @@ import org.json.JSONTokener;
 
 import de.glasergl.appointment.Appointment;
 import de.glasergl.appointment.Appointments;
+import de.glasergl.jsonTransformer.AppointmentJSONTransformer;
 
 /**
  * Class which contains functions to interact with a File of Appointments.

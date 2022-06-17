@@ -1,4 +1,4 @@
-package de.glasergl.fileInteraction;
+package de.glasergl.jsonTransformer;
 
 import org.json.JSONObject;
 

@@ -27,7 +27,7 @@
 
 		<dependency>
 			<groupId>glasergl</groupId>
-			<artifactId>AppointmentHelper-Files</artifactId>
+			<artifactId>AppointmentHelper-Configuration</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 

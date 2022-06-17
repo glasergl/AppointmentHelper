@@ -15,8 +15,8 @@ echo - Util:
 call mvn clean install -f source\AppointmentHelper-Util\
 
 echo\
-echo - Files:
-call mvn clean install -f source\AppointmentHelper-Files\
+echo - Configuration:
+call mvn clean install -f source\AppointmentHelper-Configuration\
 
 echo\
 echo - Calendar:
