@@ -36,11 +36,10 @@ public class TestSimpleDate {
     }
 
     @Test
-    public void testEqualsSpecialCase() {
+    public void testEqualsWith29February() {
 	final SimpleDate february29 = new SimpleDate(29, 2);
-	assertTrue(february29.equals(new SimpleDate(29, 2), 2020));
-	assertTrue(february29.equals(new SimpleDate(1, 3), 2020));
-	assertFalse(february29.equals(new SimpleDate(1, 3), 2019));
+	assertTrue(february29.equals(new SimpleDate(1, 3), 2019));
+	assertFalse(february29.equals(new SimpleDate(1, 3), 2020));
     }
 
 }

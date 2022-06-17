@@ -77,9 +77,9 @@ public final class SimpleDate implements Comparable<SimpleDate> {
 	    return true;
 	} else {
 	    if (day == 29 && month == 2) {
-		return toCompare.day == 1 && toCompare.month == 3 && SimpleDates.isSwitchingYear(year);
+		return toCompare.day == 1 && toCompare.month == 3 && !SimpleDates.isSwitchingYear(year);
 	    } else if (toCompare.day == 29 && toCompare.month == 2) {
-		return day == 1 && month == 3 && SimpleDates.isSwitchingYear(year);
+		return day == 1 && month == 3 && !SimpleDates.isSwitchingYear(year);
 	    } else {
 		return false;
 	    }
