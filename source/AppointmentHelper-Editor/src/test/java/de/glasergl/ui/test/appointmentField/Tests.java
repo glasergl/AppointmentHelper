@@ -4,7 +4,7 @@ import java.io.File;
 
 import de.glasergl.appointment.Appointment;
 import de.glasergl.appointmentField.AppointmentFieldController;
-import de.glasergl.fileInteraction.AppointmentFileInteracter;
+import de.glasergl.configuration.ConfigurationHandler;
 import de.glasergl.simpleDate.SimpleDate;
 
 /**
@@ -28,7 +28,7 @@ public class Tests {
     }
 
     public static File createTestAppointmentFile(String name) {
-	return AppointmentFileInteracter.createEmptyAppointmentFile(pathForTestRessources + name);
+	return ConfigurationHandler.createEmptyAppointmentFile(pathForTestRessources + name);
     }
 
 }

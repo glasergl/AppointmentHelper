@@ -58,7 +58,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>de.glasergl.main.AppointmentHelperEditorMain</mainClass>
+							<mainClass>de.glasergl.main.EditorMain</mainClass>
 						</manifest>
 					</archive>
 					<descriptorRefs>

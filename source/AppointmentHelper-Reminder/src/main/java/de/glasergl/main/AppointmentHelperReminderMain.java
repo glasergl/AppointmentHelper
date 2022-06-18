@@ -8,7 +8,7 @@ import javax.swing.SwingUtilities;
 import de.glasergl.standard.errors.DefaultErrorHandling;
 import de.glasergl.appointment.Appointment;
 import de.glasergl.appointmentFileErrors.AppointmentFileErrors;
-import de.glasergl.fileInteraction.AppointmentFileInteracter;
+import de.glasergl.configuration.ConfigurationHandler;
 import de.glasergl.ui.ReminderFrame;
 
 /**
@@ -27,7 +27,7 @@ public final class AppointmentHelperReminderMain {
      */
     public static void main(final String[] args) {
 	DefaultErrorHandling.activateDefaultExceptionHandling();
-	final File appointmentFile = AppointmentFileInteracter.getDefaultAppointmentFile();
+	final File appointmentFile = ConfigurationHandler.getDefaultAppointmentFile();
 	if (!appointmentFile.exists()) {
 	    AppointmentFileErrors.showCouldntFindAppointmentFile();
 	} else {
@@ -36,7 +36,7 @@ public final class AppointmentHelperReminderMain {
     }
 
     private static void createAndShowGUI() {
-	final List<Appointment> allAppointments = AppointmentFileInteracter.getAppointments();
+	final List<Appointment> allAppointments = ConfigurationHandler.getAppointments();
 	SwingUtilities.invokeLater(() -> {
 	    new ReminderFrame(allAppointments);
 	});

@@ -12,7 +12,7 @@ import org.junit.Test;
 import de.glasergl.appointment.InvalidAppointmentException;
 import de.glasergl.appointmentField.AllAppointmentFields;
 import de.glasergl.appointmentField.AppointmentFieldController;
-import de.glasergl.fileInteraction.AppointmentFileInteracter;
+import de.glasergl.configuration.ConfigurationHandler;
 import de.glasergl.simpleDate.SimpleDate;
 import de.glasergl.ui.test.appointmentField.Tests;
 
@@ -82,7 +82,7 @@ public class TestSave {
 	    appointmentFieldController.setDescription("new computer");
 	    appointmentFieldController.setIsBirthday(true);
 	    appointmentFieldController.save(testAppointmentFile);
-	    assertTrue(AppointmentFileInteracter.contains(appointmentFieldController.getAppointment(), testAppointmentFile));
+	    assertTrue(ConfigurationHandler.contains(appointmentFieldController.getAppointment(), testAppointmentFile));
 	    testAppointmentFile.delete();
 	} catch (InvalidAppointmentException e) {
 	    e.printStackTrace();

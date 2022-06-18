@@ -12,7 +12,7 @@ import de.glasergl.appointment.Appointment;
 import de.glasergl.appointment.InvalidAppointmentException;
 import de.glasergl.appointmentField.AllAppointmentFields;
 import de.glasergl.appointmentField.AppointmentFieldController;
-import de.glasergl.fileInteraction.AppointmentFileInteracter;
+import de.glasergl.configuration.ConfigurationHandler;
 import de.glasergl.simpleDate.SimpleDate;
 import de.glasergl.ui.test.appointmentField.Tests;
 
@@ -54,9 +54,9 @@ public class TestDelete {
 	    appointmentFieldController.setDate(new SimpleDate(8, 1));
 	    Appointment currentInput = appointmentFieldController.getAppointment();
 	    appointmentFieldController.save(testAppointmentFile);
-	    assertTrue(AppointmentFileInteracter.contains(currentInput, testAppointmentFile));
+	    assertTrue(ConfigurationHandler.contains(currentInput, testAppointmentFile));
 	    appointmentFieldController.delete(testAppointmentFile);
-	    assertFalse(AppointmentFileInteracter.contains(currentInput, testAppointmentFile));
+	    assertFalse(ConfigurationHandler.contains(currentInput, testAppointmentFile));
 	    testAppointmentFile.delete();
 	} catch (final InvalidAppointmentException e) {
 	    e.printStackTrace();
@@ -67,10 +67,10 @@ public class TestDelete {
     @Test
     public void testDeleteWithoutSaveButInitialAppointment() {
 	File testAppointmentFile = Tests.createTestAppointmentFile("TestDeleteWithoutSaveButInitialAppointmentAppointments.json");
-	AppointmentFileInteracter.add(Tests.testAppointment1, testAppointmentFile);
+	ConfigurationHandler.add(Tests.testAppointment1, testAppointmentFile);
 	AppointmentFieldController appointmentFieldController = new AppointmentFieldController(allAppointmentFieldsStub, Tests.testAppointment1);
 	appointmentFieldController.delete(testAppointmentFile);
-	assertFalse(AppointmentFileInteracter.contains(Tests.testAppointment1, testAppointmentFile));
+	assertFalse(ConfigurationHandler.contains(Tests.testAppointment1, testAppointmentFile));
 	testAppointmentFile.delete();
     }
 

@@ -10,8 +10,7 @@ import javax.swing.event.ChangeListener;
 
 import de.glasergl.appointment.Appointment;
 import de.glasergl.appointment.InvalidAppointmentException;
-import de.glasergl.fileInteraction.AppointmentAlreadyAddedException;
-import de.glasergl.fileInteraction.AppointmentFileInteracter;
+import de.glasergl.configuration.ConfigurationHandler;
 import de.glasergl.simpleDate.SimpleDate;
 import de.glasergl.simpleDate.SimpleDates;
 import de.glasergl.standard.swing.eventListener.emptyImplementation.MyDocumentListener;
@@ -81,7 +80,7 @@ public class AppointmentFieldController extends JPanel {
      *                                          the current state already exists.
      */
     public void save() throws InvalidAppointmentException, AppointmentAlreadyAddedException {
-	save(AppointmentFileInteracter.getDefaultAppointmentFile());
+	save(ConfigurationHandler.getDefaultAppointmentFile());
     }
 
     /**
@@ -97,9 +96,9 @@ public class AppointmentFieldController extends JPanel {
     public void save(final File appointmentFile) throws InvalidAppointmentException, AppointmentAlreadyAddedException {
 	final Appointment currentContent = appointmentField.getAppointment();
 	if (currentlyStoredAppointment.isPresent()) {
-	    AppointmentFileInteracter.remove(currentlyStoredAppointment.get(), appointmentFile);
+	    ConfigurationHandler.remove(currentlyStoredAppointment.get(), appointmentFile);
 	}
-	AppointmentFileInteracter.add(currentContent, appointmentFile);
+	ConfigurationHandler.add(currentContent, appointmentFile);
 	currentlyStoredAppointment = Optional.of(currentContent);
 	setBackground(defaultBackground);
     }
@@ -124,7 +123,7 @@ public class AppointmentFieldController extends JPanel {
      * Appointments which makes it possible to restore it later.
      */
     public void delete() {
-	delete(AppointmentFileInteracter.getDefaultAppointmentFile());
+	delete(ConfigurationHandler.getDefaultAppointmentFile());
     }
 
     /**
@@ -136,7 +135,7 @@ public class AppointmentFieldController extends JPanel {
     public void delete(final File appointmentFile) {
 	appointmentField.getDateField().setDateInputVisible(false);
 	if (currentlyStoredAppointment.isPresent()) {
-	    AppointmentFileInteracter.remove(currentlyStoredAppointment.get(), appointmentFile);
+	    ConfigurationHandler.remove(currentlyStoredAppointment.get(), appointmentFile);
 	}
 	parent.removeAppointmentField(this);
     }

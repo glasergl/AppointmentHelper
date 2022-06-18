@@ -13,8 +13,8 @@ import javax.swing.JPanel;
 import javax.swing.Scrollable;
 
 import de.glasergl.appointment.Appointment;
-import de.glasergl.fileInteraction.AppointmentAlreadyAddedException;
-import de.glasergl.fileInteraction.AppointmentFileInteracter;
+import de.glasergl.configuration.ConfigurationHandler;
+import de.glasergl.main.EditorMain;
 import de.glasergl.ui.EditorFrame;
 import de.glasergl.standard.swing.general.SwingFunctions;
 import de.glasergl.standard.swing.settings.Colors;
@@ -67,7 +67,7 @@ public class AllAppointmentFields extends JPanel implements Scrollable {
 	    final AppointmentFieldController lastDeleted = allLastDeleted.pop();
 	    addAppointmentField(lastDeleted);
 	    if (lastDeleted.isSaved()) {
-		AppointmentFileInteracter.add(lastDeleted.getStoredAppointment());
+		EditorMain.APPOINTMENTS_HANDLER.add(lastDeleted.getStoredAppointment());
 	    }
 	}
     }
@@ -116,19 +116,13 @@ public class AllAppointmentFields extends JPanel implements Scrollable {
      * happens.
      */
     public void saveAll() {
-	try {
-	    if (allRepresentCorrectAppointment()) {
-		for (final AppointmentFieldController appointmentInputField : allAppointmentFields) {
-		    appointmentInputField.save();
-		}
-	    } else {
-		final String errorTitle = "Ungültiger Termin";
-		final String errorMessage = "Mindestens ein Termin ist ungültig.\nDer Name jedes Termins muss mindestens ein Zeichen enthalten.";
-		JOptionPane.showMessageDialog(SwingFunctions.getMyFrame(this), errorMessage, errorTitle, JOptionPane.ERROR_MESSAGE);
+	if (allRepresentCorrectAppointment()) {
+	    for (final AppointmentFieldController appointmentInputField : allAppointmentFields) {
+		appointmentInputField.save();
 	    }
-	} catch (final AppointmentAlreadyAddedException e) {
-	    final String errorTitle = "Doppelter Termin";
-	    final String errorMessage = "Mindestens zwei Termine enthalten den gleichen Inhalt. Bitte änderen Sie einen und speichern erneut.";
+	} else {
+	    final String errorTitle = "Ungültiger Termin";
+	    final String errorMessage = "Mindestens ein Termin ist ungültig.\nDer Name jedes Termins muss mindestens ein Zeichen enthalten.";
 	    JOptionPane.showMessageDialog(SwingFunctions.getMyFrame(this), errorMessage, errorTitle, JOptionPane.ERROR_MESSAGE);
 	}
     }

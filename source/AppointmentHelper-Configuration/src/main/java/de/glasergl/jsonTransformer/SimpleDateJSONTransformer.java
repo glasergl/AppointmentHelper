@@ -5,11 +5,11 @@ import org.json.JSONObject;
 import de.glasergl.simpleDate.SimpleDate;
 
 /**
- * Class which contains static functions to transform JSONObjects to
- * SimpleDate-Objects and back.
+ * Class which contains functions to transform JSONObjects to SimpleDate-Objects
+ * and back.
  *
  * @author Gabriel Glaser
- * @version 19.1.2021
+ * @version 18.7.2022
  */
 public final class SimpleDateJSONTransformer {
 

@@ -11,7 +11,7 @@ import org.junit.Test;
 import de.glasergl.appointment.InvalidAppointmentException;
 import de.glasergl.appointmentField.AllAppointmentFields;
 import de.glasergl.appointmentField.AppointmentFieldController;
-import de.glasergl.fileInteraction.AppointmentFileInteracter;
+import de.glasergl.configuration.ConfigurationHandler;
 import de.glasergl.simpleDate.SimpleDate;
 import de.glasergl.ui.test.appointmentField.Tests;
 
@@ -77,7 +77,7 @@ public class TestBackground {
     public void testBackgroundAfterSaveWithInitialAppointment() {
 	try {
 	    File testAppointmentFile = Tests.createTestAppointmentFile("TestBackgroundAfterSaveWithInitialAppointmentAppointments.json");
-	    AppointmentFileInteracter.add(Tests.testAppointment1, testAppointmentFile);
+	    ConfigurationHandler.add(Tests.testAppointment1, testAppointmentFile);
 	    AppointmentFieldController appointmentFieldController = new AppointmentFieldController(allAppointmentFieldsStub, Tests.testAppointment1);
 	    appointmentFieldController.setDefaultBackground(testColor);
 	    appointmentFieldController.setName("TestName");

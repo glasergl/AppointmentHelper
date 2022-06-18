@@ -6,11 +6,11 @@ import de.glasergl.appointment.Appointment;
 import de.glasergl.simpleDate.SimpleDate;
 
 /**
- * Class which contains static functions to transform JSONObjects to
+ * Class which contains functions to transform JSONObjects to
  * Appointment-Objects and back.
  *
  * @author Gabriel Glaser
- * @version 19.1.2021
+ * @version 18.6.2022
  */
 public final class AppointmentJSONTransformer {
 
