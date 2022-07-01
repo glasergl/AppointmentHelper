@@ -1,4 +1,4 @@
-package de.glasergl.appointmentField;
+package de.glasergl.ui.appointmentField;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
@@ -8,11 +8,11 @@ import javax.swing.JPanel;
 
 import de.glasergl.appointment.Appointment;
 import de.glasergl.appointment.InvalidAppointmentException;
-import de.glasergl.appointmentField.dateField.SimpleDateField;
 import de.glasergl.simpleDate.SimpleDate;
 import de.glasergl.standard.swing.eventListener.emptyImplementation.MyDocumentListener;
 import de.glasergl.standard.swing.myComponent.MyCheckBox;
 import de.glasergl.standard.swing.myComponent.textField.MyTextField;
+import de.glasergl.ui.appointmentField.dateField.SimpleDateField;
 
 /**
  * Visual Input-Field for an Appointment.

@@ -10,12 +10,9 @@ import de.glasergl.simpleDate.SimpleDate;
  * Appointment-Objects and back.
  *
  * @author Gabriel Glaser
- * @version 18.6.2022
+ * @version 30.6.2022
  */
 public final class AppointmentJSONTransformer {
-
-    private AppointmentJSONTransformer() {
-    }
 
     /**
      * Transforms a JSONObject to an Appointment.

@@ -1,4 +1,4 @@
-package de.glasergl.appointmentMessage;
+package de.glasergl.model;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -21,7 +21,7 @@ import de.glasergl.appointment.Appointment;
  * @author Gabriel Glaser
  * @version 03.04.2022
  */
-public final class AppointmentMessage {
+public final class AppointmentMessageModel {
 
     private final String timeDescription;
     private final List<String> components;
@@ -37,7 +37,7 @@ public final class AppointmentMessage {
      * @param timeCondition
      * @param allAppointments
      */
-    public AppointmentMessage(final String timeDescription, final Predicate<Appointment> timeCondition, final List<Appointment> allAppointments) {
+    public AppointmentMessageModel(final String timeDescription, final Predicate<Appointment> timeCondition, final List<Appointment> allAppointments) {
 	super();
 	this.timeDescription = timeDescription;
 	final List<Appointment> appointmentsAtTimeDescription = allAppointments.stream().filter(timeCondition).collect(Collectors.toList());
@@ -48,6 +48,9 @@ public final class AppointmentMessage {
 	this.components = calculateComponents();
     }
 
+    /**
+     * @return An unmodifiable List of the components.
+     */
     public List<String> getComponents() {
 	return Collections.unmodifiableList(components);
     }

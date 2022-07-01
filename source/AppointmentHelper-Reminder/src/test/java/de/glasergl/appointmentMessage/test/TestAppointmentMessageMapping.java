@@ -10,7 +10,7 @@ import java.util.function.Predicate;
 import org.junit.Test;
 
 import de.glasergl.appointment.Appointment;
-import de.glasergl.appointmentMessage.AppointmentMessage;
+import de.glasergl.model.AppointmentMessageModel;
 import de.glasergl.simpleDate.SimpleDates;
 
 /**
@@ -37,7 +37,7 @@ public class TestAppointmentMessageMapping {
     }
 
     public void testMappingWith(final List<Appointment> appointments, final Predicate<Appointment> timeCondition, final int expectedSize) {
-	AppointmentMessage appointmentMessage = new AppointmentMessage("Time", timeCondition, appointments);
+	AppointmentMessageModel appointmentMessage = new AppointmentMessageModel("Time", timeCondition, appointments);
 	List<String> messageComponents = appointmentMessage.getComponents();
 	int numberOfSeenNames = 0;
 	for (int i = 0; i < messageComponents.size(); i++) {

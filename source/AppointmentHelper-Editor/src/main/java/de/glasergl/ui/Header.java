@@ -2,11 +2,12 @@ package de.glasergl.ui;
 
 import java.awt.Color;
 
-import de.glasergl.appointmentField.AllAppointmentFields;
-import de.glasergl.appointmentField.AllAppointmentFieldsController;
+import javax.swing.JOptionPane;
+
 import de.glasergl.standard.swing.container.RowOfJComponent;
 import de.glasergl.standard.swing.myComponent.button.MyJButton;
 import de.glasergl.standard.swing.settings.Colors;
+import de.glasergl.ui.appointmentField.AppointmentFieldControllerListController;
 
 /**
  * Header for the whole frame.
@@ -22,12 +23,12 @@ public class Header extends RowOfJComponent {
     private static final int DISTANCE_TO_EDGE = 5;
     private static final Color BACKGROUND = Colors.getBlue(3);
 
-    private final AllAppointmentFieldsController appointmentInputFields;
+    private final AppointmentFieldControllerListController appointmentInputFields;
 
     private final MyJButton saveButton = new MyJButton("Alle Speichern");
     private final MyJButton restoreDeletedButton = new MyJButton("Zuletzt gelöscht wiederherstellen");
 
-    public Header(final AllAppointmentFieldsController appointmentFields) {
+    public Header(final AppointmentFieldControllerListController appointmentFields) {
 	super(DISTANCE_TO_EDGE, DISTANCE_TO_EDGE);
 	this.appointmentInputFields = appointmentFields;
 	setup();
@@ -46,11 +47,16 @@ public class Header extends RowOfJComponent {
 
     private void setupActionListeners() {
 	saveButton.addActionListener(click -> {
-	    appointmentInputFields.saveAll();
+	    if (appointmentInputFields.allRepresentValidAppointment()) {
+		appointmentInputFields.storeAll();
+	    } else {
+		final String title = "Ungültiger Termin";
+		final String message = "Mindestens ein Termin ist ungültig.\nBitte geben Sie jedem Termin einen Namen und versuchen es erneut.";
+		JOptionPane.showMessageDialog(null, message, title, JOptionPane.ERROR_MESSAGE);
+	    }
 	});
 	restoreDeletedButton.addActionListener(click -> {
-	    final AllAppointmentFields appointmentFieldPanel = appointmentInputFields.getAppointmentFieldPanel();
-	    appointmentFieldPanel.restoreLastDeletedAppointmentField();
+	    appointmentInputFields.restoreLastDeleted();
 	});
     }
 }

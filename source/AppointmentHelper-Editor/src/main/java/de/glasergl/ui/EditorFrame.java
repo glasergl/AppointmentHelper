@@ -4,14 +4,13 @@ import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Image;
 import java.awt.Point;
-import java.util.List;
 
 import javax.swing.JOptionPane;
 
-import de.glasergl.appointment.Appointment;
-import de.glasergl.appointmentField.AllAppointmentFieldsController;
+import de.glasergl.configuration.ConfigurationHandler;
 import de.glasergl.standard.swing.container.MyFrame;
 import de.glasergl.standard.swing.general.SwingFunctions;
+import de.glasergl.ui.appointmentField.AppointmentFieldControllerListController;
 
 /**
  * Main-Frame for the Editor.
@@ -24,13 +23,13 @@ public final class EditorFrame extends MyFrame {
     private static final String FRAME_NAME = "TerminEditor";
     private static final Image ICON = SwingFunctions.getImage("EditorIcon.png", EditorFrame.class);
 
-    private final AllAppointmentFieldsController appointmentsFields;
+    private final AppointmentFieldControllerListController appointmentsFields;
     private final Header header;
     private final Footer footer;
 
-    public EditorFrame(final List<Appointment> initialAppointments) {
+    public EditorFrame(final ConfigurationHandler configurationHandler) {
 	super(FRAME_NAME, ICON);
-	appointmentsFields = new AllAppointmentFieldsController(initialAppointments);
+	appointmentsFields = new AppointmentFieldControllerListController(configurationHandler);
 	header = new Header(appointmentsFields);
 	footer = new Footer(appointmentsFields);
 	setup();
@@ -52,25 +51,29 @@ public final class EditorFrame extends MyFrame {
     }
 
     /**
-     * If every depicted Appointment is saved this Frame is normally disposed. Else,
-     * the user gets asked whether he wants to save, discard all Appointments or
-     * cancel the whole dispose-Operation via a JOptionPane.
+     * If every depicted Appointment is stored, this Frame is normally disposed.
+     * Else, the user gets asked whether he wants to save or discard the current
+     * appointments or cancel the dispose-operation via a JOptionPane. If the
+     * appointments cannot be saved, the error with another JOptionPane is showed.
      */
     @Override
     public void dispose() {
-	if (appointmentsFields.isSaved()) {
+	if (appointmentsFields.isStored()) {
 	    super.dispose();
 	} else {
-	    final String title = "Ungespeicherte Termine";
-	    final String message = "Es gibt ungespeicherte Termine.\nSpeichern?";
+	    final String title = "Zustand nicht gespeichert";
+	    final String message = "Der aktuelle Zustand der Termine ist nicht gespeichert.\nSpeichern?";
 	    final int answerOfUser = JOptionPane.showConfirmDialog(this, message, title, JOptionPane.YES_NO_CANCEL_OPTION);
 	    if (answerOfUser == JOptionPane.YES_OPTION) {
-		appointmentsFields.saveAll();
-		if (appointmentsFields.allRepresentCorrectAppointment()) {
+		if (appointmentsFields.allRepresentValidAppointment()) {
+		    appointmentsFields.storeAll();
 		    super.dispose();
+		} else {
+		    final String errorTitle = "Speichern nicht möglich";
+		    final String errorMessage = "Speichern ist aufgrund fehlerhafter Termine nicht möglich.\nBeheben Sie ihre Eingabe und versuchen Sie es erneut.";
+		    JOptionPane.showMessageDialog(this, errorMessage, errorTitle, JOptionPane.ERROR_MESSAGE);
 		}
 	    } else if (answerOfUser == JOptionPane.NO_OPTION) {
-		appointmentsFields.cancelAll();
 		super.dispose();
 	    }
 	}

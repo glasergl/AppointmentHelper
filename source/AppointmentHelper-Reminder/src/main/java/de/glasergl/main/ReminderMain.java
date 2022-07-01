@@ -8,34 +8,29 @@ import de.glasergl.standard.errors.DefaultErrorHandling;
 import de.glasergl.appointment.Appointment;
 import de.glasergl.configuration.AppointmentsConfigurationHandler;
 import de.glasergl.configuration.ConfigurationHandler;
-import de.glasergl.ui.CalendarFrame;
+import de.glasergl.ui.ReminderFrame;
 
 /**
- * Entry point for the Calendar.
+ * Entry class for the Reminder.
  *
  * @author Gabriel Glaser
- * @version 18.06.2022
+ * @version 27.06.2022
  */
-public final class CalendarMain {
+public final class ReminderMain {
 
     public static final ConfigurationHandler CONFIGURATION_HANDLER = new ConfigurationHandler();
 
     /**
-     * Creates a Window with an overview of all Appointments which are stored in the
-     * configurationFile.
+     * Reminder program which shows the appointments of today and tomorrow.
      *
-     * @param args - unused
+     * @param args - unused.
      */
     public static void main(final String[] args) {
 	DefaultErrorHandling.activateDefaultExceptionHandling();
-	createAndShowGUI();
-    }
-
-    private static void createAndShowGUI() {
 	final AppointmentsConfigurationHandler appointmentsHandler = CONFIGURATION_HANDLER.getAppointmentsHandler();
 	final List<Appointment> allAppointments = appointmentsHandler.getAppointments();
 	SwingUtilities.invokeLater(() -> {
-	    new CalendarFrame(allAppointments);
+	    new ReminderFrame(allAppointments);
 	});
     }
 

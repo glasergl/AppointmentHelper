@@ -4,26 +4,27 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import static de.glasergl.simpleDate.ExampleSimpleDateFactory.TEST_DATE_0;
+
 import org.json.JSONObject;
 import org.junit.Test;
 
 import de.glasergl.appointment.Appointment;
 import de.glasergl.jsonTransformer.AppointmentJSONTransformer;
 import de.glasergl.jsonTransformer.SimpleDateJSONTransformer;
-import de.glasergl.simpleDate.SimpleDate;
 
 /**
+ * Tests the transforming of JSONObjects to Appointments and back.
+ * 
  * @author Gabriel Glaser
- * @version 19.01.2022
+ * @version 30.06.2022
  */
 public class TestAppointmentJSONTransformer {
 
-    SimpleDate testDate = new SimpleDate(15, 6);
-
     @Test
     public void testAppointmentToJSON() {
-	Appointment appointment = new Appointment(testDate, "TestName", "TestDescription", true);
-	JSONObject jsonOfA = AppointmentJSONTransformer.appointmentToJSON(appointment);
+	final Appointment appointment = new Appointment(TEST_DATE_0, "TestName", "TestDescription", true);
+	final JSONObject jsonOfA = AppointmentJSONTransformer.appointmentToJSON(appointment);
 
 	assertTrue(jsonOfA.has("date"));
 	assertTrue(jsonOfA.has("isABirthday"));
@@ -32,15 +33,15 @@ public class TestAppointmentJSONTransformer {
 
 	assertEquals("TestName", jsonOfA.getString("name"));
 	assertEquals("TestDescription", jsonOfA.getString("description"));
-	assertEquals(testDate, SimpleDateJSONTransformer.jsonToSimpleDate(jsonOfA.getJSONObject("date")));
+	assertEquals(TEST_DATE_0, SimpleDateJSONTransformer.jsonToSimpleDate(jsonOfA.getJSONObject("date")));
 
 	assertTrue(jsonOfA.getBoolean("isABirthday"));
     }
 
     @Test
     public void testRepresentsAppointment() {
-	JSONObject json = new JSONObject();
-	json.put("date", SimpleDateJSONTransformer.simpleDateToJSON(testDate));
+	final JSONObject json = new JSONObject();
+	json.put("date", SimpleDateJSONTransformer.simpleDateToJSON(TEST_DATE_0));
 	json.put("name", "TestName");
 	json.put("description", "TestDescription");
 
@@ -51,14 +52,14 @@ public class TestAppointmentJSONTransformer {
 
     @Test
     public void testJSONToAppointment() {
-	JSONObject json = new JSONObject();
-	json.put("date", SimpleDateJSONTransformer.simpleDateToJSON(testDate));
+	final JSONObject json = new JSONObject();
+	json.put("date", SimpleDateJSONTransformer.simpleDateToJSON(TEST_DATE_0));
 	json.put("name", "TestName");
 	json.put("description", "TestDescription");
 	json.put("isABirthday", false);
-	Appointment appointment = AppointmentJSONTransformer.jsonToAppointment(json);
+	final Appointment appointment = AppointmentJSONTransformer.jsonToAppointment(json);
 
-	assertEquals(testDate, appointment.getDate());
+	assertEquals(TEST_DATE_0, appointment.getDate());
 	assertEquals("TestName", appointment.getName());
 	assertEquals("TestDescription", appointment.getDescription());
 

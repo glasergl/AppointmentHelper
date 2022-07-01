@@ -1,8 +1,7 @@
-package de.glasergl.appointmentField;
+package de.glasergl.ui.appointmentField;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
-import java.util.List;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
@@ -10,7 +9,7 @@ import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EmptyBorder;
 
-import de.glasergl.appointment.Appointment;
+import de.glasergl.configuration.ConfigurationHandler;
 import de.glasergl.standard.swing.myComponent.MyLabel;
 import de.glasergl.standard.swing.settings.Colors;
 import de.glasergl.standard.swing.settings.Fonts;
@@ -22,46 +21,42 @@ import de.glasergl.standard.swing.settings.Fonts;
  * @author Gabriel Glaser
  * @version 13.3.2022
  */
-public class AllAppointmentFieldsController extends JPanel {
+public class AppointmentFieldControllerListController extends JPanel {
 
-    private final AllAppointmentFields appointmentFields;
+    private final AppointmentFieldControllerList appointmentFields;
     private final ColumnDescription columnDescription = new ColumnDescription();
     private final JScrollPane jScrollPane;
 
-    public AllAppointmentFieldsController(final List<Appointment> initialAppointments) {
+    public AppointmentFieldControllerListController(final ConfigurationHandler configurationHandler) {
 	super();
-	appointmentFields = new AllAppointmentFields(initialAppointments);
+	appointmentFields = new AppointmentFieldControllerList(configurationHandler);
 	jScrollPane = new JScrollPane(appointmentFields, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 	setup();
     }
 
     public void addEmptyAppointmentField() {
+//	jScrollPane.validate();
 	appointmentFields.addEmptyAppointmentField();
-	jScrollPane.validate();
 	final JScrollBar verticalScrollBar = jScrollPane.getVerticalScrollBar();
 	verticalScrollBar.setValue(verticalScrollBar.getMaximum());
 	jScrollPane.revalidate();
 	jScrollPane.repaint();
     }
 
-    public void saveAll() {
-	appointmentFields.saveAll();
+    public void storeAll() {
+	appointmentFields.storeAll();
     }
 
-    /**
-     * @return True, if the input of every AppointmentField this contains represents
-     *         a valid Appointment, else false.
-     */
-    public boolean allRepresentCorrectAppointment() {
-	return appointmentFields.allRepresentCorrectAppointment();
+    public boolean allRepresentValidAppointment() {
+	return appointmentFields.allRepresentValidAppointments();
     }
 
-    public boolean isSaved() {
-	return appointmentFields.isSaved();
+    public boolean isStored() {
+	return appointmentFields.matchesConfiguration();
     }
 
-    public void cancelAll() {
-	appointmentFields.cancelAll();
+    public void restoreLastDeleted() {
+	appointmentFields.restoreLastDeleted();
     }
 
     private void setup() {
@@ -73,10 +68,8 @@ public class AllAppointmentFieldsController extends JPanel {
 
     private void setupJScrollPane() {
 	jScrollPane.setBorder(new EmptyBorder(0, 0, 0, 0));
-    }
-
-    public AllAppointmentFields getAppointmentFieldPanel() {
-	return appointmentFields;
+	jScrollPane.setPreferredSize(appointmentFields.getPreferredViewSize());
+	jScrollPane.getVerticalScrollBar().setUnitIncrement(10);
     }
 
     private final class ColumnDescription extends JPanel {

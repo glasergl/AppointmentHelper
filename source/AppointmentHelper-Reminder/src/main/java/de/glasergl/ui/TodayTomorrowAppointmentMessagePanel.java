@@ -1,4 +1,4 @@
-package de.glasergl.appointmentMessage;
+package de.glasergl.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

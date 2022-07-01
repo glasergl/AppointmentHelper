@@ -1,4 +1,4 @@
-package de.glasergl.appointmentMessage;
+package de.glasergl.ui;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
@@ -10,6 +10,7 @@ import java.util.function.Predicate;
 import javax.swing.JPanel;
 
 import de.glasergl.appointment.Appointment;
+import de.glasergl.model.AppointmentMessageModel;
 import de.glasergl.standard.swing.entity.ColorType;
 import de.glasergl.standard.swing.eventListener.ColorChangerOnHover;
 import de.glasergl.standard.swing.eventListener.SiblingPopUpDisplayerOnHover;
@@ -28,11 +29,11 @@ public final class AppointmentMessagePanel extends JPanel {
     private static final Color BACKGROUND_COLOR_OF_POP_UP = Colors.getBlue(0);
 
     private final List<MyLabel> allLabels = new ArrayList<>();
-    private final AppointmentMessage appointmentMessage;
+    private final AppointmentMessageModel appointmentMessage;
 
     public AppointmentMessagePanel(final String timeDescription, final Predicate<Appointment> timeCondition, final List<Appointment> allAppointments) {
 	super();
-	this.appointmentMessage = new AppointmentMessage(timeDescription, timeCondition, allAppointments);
+	this.appointmentMessage = new AppointmentMessageModel(timeDescription, timeCondition, allAppointments);
 	setup();
     }
 

@@ -1,4 +1,4 @@
-package de.glasergl.ui.test.appointmentField;
+package de.glasergl.ui.appointmentField.test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -6,11 +6,13 @@ import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import static de.glasergl.appointment.ExampleAppointmentFactory.TEST_APPOINTMENT_1;
+
 import org.junit.Test;
 
 import de.glasergl.appointment.Appointment;
 import de.glasergl.appointment.InvalidAppointmentException;
-import de.glasergl.appointmentField.AppointmentField;
+import de.glasergl.ui.appointmentField.AppointmentField;
 
 /**
  * @author Gabriel Glaser
@@ -20,7 +22,7 @@ public class TestAppointmentField {
 
     @Test
     public void testRepresentsValidAppointmentWithInitialAppointment() {
-	AppointmentField appointmentField = new AppointmentField(Tests.testAppointment1);
+	AppointmentField appointmentField = new AppointmentField(TEST_APPOINTMENT_1);
 	assertTrue(appointmentField.representsValidAppointment());
 	appointmentField.setName("");
 	assertFalse(appointmentField.representsValidAppointment());
@@ -35,9 +37,9 @@ public class TestAppointmentField {
     @Test
     public void testGetAppointmentWithInitialAppointment() {
 	try {
-	    AppointmentField appointmentField = new AppointmentField(Tests.testAppointment1);
+	    AppointmentField appointmentField = new AppointmentField(TEST_APPOINTMENT_1);
 	    Appointment result = appointmentField.getAppointment();
-	    assertEquals(Tests.testAppointment1, result);
+	    assertEquals(TEST_APPOINTMENT_1, result);
 	} catch (InvalidAppointmentException e) {
 	    e.printStackTrace();
 	    fail("Couldn't retrieve Appointment from AppointmentField, but should have been able to");
@@ -58,7 +60,7 @@ public class TestAppointmentField {
 
     @Test
     public void testErrorWithGetAppointmentWithInitialAppointment() throws InvalidAppointmentException {
-	AppointmentField appointmentField = new AppointmentField(Tests.testAppointment1);
+	AppointmentField appointmentField = new AppointmentField(TEST_APPOINTMENT_1);
 	appointmentField.setName("");
 	assertThrows(InvalidAppointmentException.class, () -> {
 	    appointmentField.getAppointment();

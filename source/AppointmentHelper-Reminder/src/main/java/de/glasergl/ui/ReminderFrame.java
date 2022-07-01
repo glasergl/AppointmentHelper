@@ -6,7 +6,6 @@ import java.awt.Image;
 import java.util.List;
 
 import de.glasergl.appointment.Appointment;
-import de.glasergl.appointmentMessage.TodayTomorrowAppointmentMessagePanel;
 import de.glasergl.standard.swing.container.MyFrame;
 import de.glasergl.standard.swing.general.SwingFunctions;
 import de.glasergl.standard.swing.settings.Colors;

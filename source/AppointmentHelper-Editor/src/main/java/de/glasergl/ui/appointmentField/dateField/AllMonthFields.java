@@ -1,4 +1,4 @@
-package de.glasergl.appointmentField.dateField;
+package de.glasergl.ui.appointmentField.dateField;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

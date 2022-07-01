@@ -1,25 +1,18 @@
 package de.glasergl.main;
 
-import java.util.List;
-
 import javax.swing.SwingUtilities;
 
-import de.glasergl.standard.errors.DefaultErrorHandling;
-import de.glasergl.appointment.Appointment;
-import de.glasergl.configuration.AppointmentsConfigurationHandler;
 import de.glasergl.configuration.ConfigurationHandler;
+import de.glasergl.standard.errors.DefaultErrorHandling;
 import de.glasergl.ui.EditorFrame;
 
 /**
  * Entry-Point for the Editor.
  *
  * @author Gabriel Glaser
- * @version 11.2.2022
+ * @version 1.7.2022
  */
 public class EditorMain {
-
-    public static final ConfigurationHandler CONFIGURATION_HANDLER = new ConfigurationHandler();
-    public static final AppointmentsConfigurationHandler APPOINTMENTS_HANDLER = CONFIGURATION_HANDLER.getAppointmentsHandler();
 
     /**
      * The Editor depicts all stored Appointments of the default Appointment-File
@@ -32,13 +25,9 @@ public class EditorMain {
      */
     public static void main(final String[] args) {
 	DefaultErrorHandling.activateDefaultExceptionHandling();
-	createAndShowGUI();
-    }
-
-    private static void createAndShowGUI() {
-	final List<Appointment> initialAppointments = APPOINTMENTS_HANDLER.getAppointments();
+	final ConfigurationHandler configurationHandler = new ConfigurationHandler();
 	SwingUtilities.invokeLater(() -> {
-	    new EditorFrame(initialAppointments);
+	    new EditorFrame(configurationHandler);
 	});
     }
 

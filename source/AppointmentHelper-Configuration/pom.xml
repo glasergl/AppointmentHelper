@@ -13,7 +13,6 @@
 	</properties>
 
 	<dependencies>
-
 		<dependency>
 			<groupId>glasergl</groupId>
 			<artifactId>AppointmentHelper-Entities</artifactId>
