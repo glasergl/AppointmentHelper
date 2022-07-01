@@ -22,7 +22,7 @@ Reminder | Shows appointments which occur today or tomorrow (at the time the pro
 4. Run *build-script.bat*.
 5. The output-Folder contains the three .exe-files for the **Editor**, **Calendar** and **Reminder**.
 
-### Workflow:
+## How to use:
 1. Put a shortcut to the **Reminder** in the autostart folder of Windows.
 2. Enter your appointments with the **Editor**.
 3. A window will show if an appointment occurs today or will occur tomorrow.
