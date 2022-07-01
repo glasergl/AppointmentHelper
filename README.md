@@ -12,9 +12,9 @@ Reminder | Shows appointments which occur today or tomorrow (at the time the pro
 ### Requirements:
 - Operating System: *Windows*
 - *JDK-Version* atleast 1.8.9_301
-- *Apache Maven* installed
-- *launch4j* installed
-- *7zip* (optional)
+- *Apache Maven* installed (.exe in PATH-variable)
+- *launch4j* installed (.exe in PATH-variable)
+- *7zip* (.exe in PATH-variable) (optional)
 
 ### Build-process:
 1. Install https://github.com/glasergl/StandardGlaserGl (via Maven).
