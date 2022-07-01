@@ -29,5 +29,5 @@ Reminder | Shows appointments which occur today or tomorrow (at the time the pro
 4. You can always look at an overview of all appointments with the **Calendar**.
   
 ## Important!
-- The file *appointments.json* needs to be in the same folder as the three .exe-files
-- Don't modify the file *appointments.json* directly!
+- The file *AppointmentHelper_Configuration.json* needs to be in the same folder as the three .exe-files.
+- Don't modify the file *AppointmentHelper_Configuration.json* on your own.
