@@ -11,7 +11,8 @@ import de.glasergl.appointment.Appointment;
 import de.glasergl.appointment.InvalidAppointmentException;
 import de.glasergl.simpleDate.SimpleDate;
 import de.glasergl.standard.swing.eventListener.emptyImplementation.MyDocumentListener;
-import de.glasergl.standard.swing.myComponent.button.MyJButton;
+import de.glasergl.standard.swing.myComponent.button.CustomTextButton;
+import de.glasergl.standard.swing.settings.Colors;
 
 /**
  * Class which controls a single AppointmentField.
@@ -27,7 +28,7 @@ public final class AppointmentFieldController extends JPanel {
 
     private final AppointmentFieldControllerList appointmentFieldList;
     private final AppointmentField appointmentField;
-    private final MyJButton deleteButton = new MyJButton("Löschen");
+    private final CustomTextButton deleteButton = new CustomTextButton("Löschen", Colors.getBlue(4), Color.WHITE);
 
     private int currentIndex;
     private Color defaultBackground = Color.WHITE;

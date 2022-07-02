@@ -29,9 +29,9 @@ import de.glasergl.standard.swing.settings.Colors;
 public final class AppointmentFieldControllerList extends JPanel {
 
     private static final int MAX_NUMBER_OF_SHOWN_APPOINTMENTS = 10;
-    private static final Color DEFAULT_BACKGROUND = Color.WHITE;
-    private static final Color BACKGROUND_OF_APPOINTMENT_FIELD_0 = Colors.getBlue(1);
-    private static final Color BACKGROUND_OF_APPOINTMENT_FIELD_1 = Colors.getBlue(0);
+    private static final Color DEFAULT_BACKGROUND = Colors.getBlue(0);
+    private static final Color BACKGROUND_OF_APPOINTMENT_FIELD_0 = Colors.getBlue(3);
+    private static final Color BACKGROUND_OF_APPOINTMENT_FIELD_1 = Colors.getBlue(2);
     private static final int SPACE_BETWEEN_APPOINTMENTS = 1;
 
     private final ConfigurationHandler configurationHandler;

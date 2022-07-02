@@ -27,7 +27,7 @@ import de.glasergl.standard.swing.settings.Fonts;
 public class SimpleDateField extends CustomTextButton {
 
     private static final float DATE_TEXT_SIZE = 23.0f;
-    private static final Dimension PREFERRED_SIZE = new Dimension(70, 40);
+    private static final Dimension PREFERRED_SIZE = new Dimension(90, 40);
 
     private final SiblingPopUpDisplayerOnClick monthPopUpController;
     private final AllMonthFields monthsInput;
