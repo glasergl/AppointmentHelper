@@ -25,7 +25,7 @@ public final class MonthField extends JPanel {
     private static final Color BACKGROUND_COLOR = Colors.getBlue(1);
     private static final Color BACKGROUND_COLOR_OF_DAY = Colors.getBlue(2);
     private static final int WIDTH_BETWEEN_DAY_LABELS = 2;
-    private static final int SIZE_OF_DAY_LABEL = 40;
+    private static final int SIZE_OF_DAY_LABEL = 50;
 
     private final SimpleDateField toSetSelectedDateOf;
     private final int monthToDepict;

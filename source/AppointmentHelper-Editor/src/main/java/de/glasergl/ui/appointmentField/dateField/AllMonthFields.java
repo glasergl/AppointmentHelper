@@ -18,14 +18,13 @@ import de.glasergl.standard.swing.settings.Colors;
  * controlling them with Buttons.
  *
  * @author Gabriel Glaser
- * @version 13.03.2022
+ * @version 04.07.2022
  */
 public class AllMonthFields extends JPanel {
 
     private static final Color BACKGROUND_COLOR = Colors.getBlue(1);
     private static final int WIDTH_OF_CLOSE_BUTTON = 40;
-    private static final int DISTANCE_BETWEEN_MONTH_CONTROL_BUTTONS = 4;
-    private static final Dimension SIZE_OF_MONTH_CONTROL_BUTTONS = new Dimension(35, 35);
+    private static final Dimension SIZE_OF_MONTH_CONTROL_BUTTONS = new Dimension(60, 60);
 
     private final SimpleDateField dateField;
 
@@ -70,8 +69,7 @@ public class AllMonthFields extends JPanel {
 
 	closeButton.setBackgroundWhileHovered(new Color(209, 63, 52));
 	closeButton.setForegroundWhileHovered(Color.WHITE);
-	middleButtons.setBorderOfChildren(new EmptyBorder(DISTANCE_BETWEEN_MONTH_CONTROL_BUTTONS / 2, DISTANCE_BETWEEN_MONTH_CONTROL_BUTTONS / 2, DISTANCE_BETWEEN_MONTH_CONTROL_BUTTONS / 2, DISTANCE_BETWEEN_MONTH_CONTROL_BUTTONS / 2));
-
+	closeButton.setBorder(new EmptyBorder(0, 0, 0, 0));
 	closeButton.setPreferredSize(new Dimension(WIDTH_OF_CLOSE_BUTTON, (int) closeButton.getPreferredSize().getHeight()));
 	closeButton.setBackground(BACKGROUND_COLOR);
 
