@@ -227,7 +227,7 @@ public final class AppointmentFieldControllerList extends JPanel {
     public Dimension getPreferredViewSize() {
 	final AppointmentFieldController dummy = new AppointmentFieldController(this, 0);
 	final Dimension preferredSizeOfDummy = dummy.getPreferredSize();
-	return new Dimension(preferredSizeOfDummy.width, (int) (MAX_NUMBER_OF_SHOWN_APPOINTMENTS - 0.5) * preferredSizeOfDummy.height);
+	return new Dimension((int)(preferredSizeOfDummy.width*1.05), (int) (MAX_NUMBER_OF_SHOWN_APPOINTMENTS - 0.5) * preferredSizeOfDummy.height);
     }
 
     /**

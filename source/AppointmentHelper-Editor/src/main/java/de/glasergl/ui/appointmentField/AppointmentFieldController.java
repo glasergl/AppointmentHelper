@@ -10,6 +10,7 @@ import javax.swing.event.ChangeListener;
 import de.glasergl.appointment.Appointment;
 import de.glasergl.appointment.InvalidAppointmentException;
 import de.glasergl.simpleDate.SimpleDate;
+import de.glasergl.standard.swing.border.LeftRightRoundBorder;
 import de.glasergl.standard.swing.eventListener.emptyImplementation.MyDocumentListener;
 import de.glasergl.standard.swing.myComponent.button.CustomTextButton;
 import de.glasergl.standard.swing.settings.Colors;
@@ -51,6 +52,7 @@ public final class AppointmentFieldController extends JPanel {
 	if (!initialDisplay.isPresent()) {
 	    setBackground(UNSTORED_BACKGROUND);
 	}
+	setBorder(new LeftRightRoundBorder(20,15));
 	setup();
     }
 
