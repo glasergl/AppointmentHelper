@@ -11,7 +11,7 @@ Reminder | Shows appointments which occur today or tomorrow (at the time the pro
 1. Install https://github.com/glasergl/StandardGlaserGl (via Maven, i.e., run *mvn install* with a console in the folder of the cloned repository).
 1. Clone this repository.
 1. Run *mvn package*.
-1. Each target folder of the modules Editor, Calendar and Reminder contains an .exe file which wraps the jar. (jar can be used, too)
+1. Each target folder of the modules Editor, Calendar and Reminder contains an .exe file which wraps the jar. (jar can be used equivalently)
 1. Move the .exe files to a common folder.
 
 ## Usage
@@ -21,6 +21,6 @@ Reminder | Shows appointments which occur today or tomorrow (at the time the pro
 1. You can always look at an overview of all appointments with the **Calendar**.
   
 ## Notes
-- If there is no *AppointmentHelper_Configuration.json* file, running the Editor will create an empty one.
+- If there is no *AppointmentHelper_Configuration.json* file, running any of the .exe will create an empty one.
 - The file *AppointmentHelper_Configuration.json* has to be in the same folder as the three .exe-files.
 - Do not modify the file *AppointmentHelper_Configuration.json* on your own.
