@@ -61,17 +61,41 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<groupId>com.akathist.maven.plugins.launch4j</groupId>
+				<artifactId>launch4j-maven-plugin</artifactId>
+				<version>2.4.1</version>
+				<configuration>
+					<headerType>gui</headerType>
+					<jar>${project.build.directory}/${project.build.finalName}-jar-with-dependencies.jar</jar>
+					<outfile>${project.build.directory}/${project.artifactId}.exe</outfile>
+					<icon>${project.basedir}${file.separator}src${file.separator}main${file.separator}resources${file.separator}EditorIcon.ico</icon>
+					<jre>
+						<minVersion>17</minVersion>
+						<path>%PATH%</path>
+					</jre>
+				</configuration>
+				<executions>
+					<execution>
+						<id>launch4j</id>
+						<phase>package</phase>
+						<goals>
+							<goal>launch4j</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 
 		<resources>
 			<resource>
-				<directory>src/main/gimp</directory>
+				<directory>src${file.separator}main${file.separator}gimp</directory>
 				<excludes>
 					<exclude>*.xcf</exclude>
 				</excludes>
 			</resource>
 			<resource>
-				<directory>src/main/resources</directory>
+				<directory>src${file.separator}main${file.separator}resources</directory>
 				<includes>
 					<include>*.*</include>
 				</includes>
