@@ -2,4 +2,4 @@
 target/
 .classpath
 .project
-appointments.json
+AppointmentHelper_Configuration.json
