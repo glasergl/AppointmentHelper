@@ -25,11 +25,11 @@ public final class AppointmentFieldController extends JPanel {
 
     private static final int HORIZONTAL_GAP_OF_SUPCOMPONENTS = 20;
     private static final int VERTICAL_GAP_OF_SUPCOMPONENTS = 10;
-    private static final Color UNSTORED_BACKGROUND = new Color(245, 240, 86);
+    private static final Color UNSTORED_BACKGROUND = new Color(170, 227, 159);
 
     private final AppointmentFieldControllerList appointmentFieldList;
     private final AppointmentField appointmentField;
-    private final CustomTextButton deleteButton = new CustomTextButton("Löschen", Colors.getBlue(4), Color.WHITE);
+    private final CustomTextButton deleteButton = new CustomTextButton("Löschen", Colors.getBlue(3), Color.WHITE);
 
     private int currentIndex;
     private Color defaultBackground = Color.WHITE;

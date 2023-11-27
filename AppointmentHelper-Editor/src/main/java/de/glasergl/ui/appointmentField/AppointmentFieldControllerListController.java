@@ -1,6 +1,7 @@
 package de.glasergl.ui.appointmentField;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 
 import javax.swing.JPanel;
@@ -11,7 +12,6 @@ import javax.swing.border.EmptyBorder;
 
 import de.glasergl.configuration.ConfigurationHandler;
 import de.glasergl.standard.swing.myComponent.MyLabel;
-import de.glasergl.standard.swing.settings.Colors;
 import de.glasergl.standard.swing.settings.Fonts;
 
 /**
@@ -79,7 +79,7 @@ public class AppointmentFieldControllerListController extends JPanel {
 
 	public ColumnDescription() {
 	    super(new FlowLayout(FlowLayout.LEFT, 0, 0));
-	    setBackground(Colors.getBlue(2));
+	    setBackground(new Color(255,255,255));
 	    date.setOpaque(false);
 	    name.setOpaque(false);
 	    description.setOpaque(false);

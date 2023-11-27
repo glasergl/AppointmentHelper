@@ -21,12 +21,12 @@ import de.glasergl.ui.appointmentField.AppointmentFieldControllerListController;
 public class Header extends RowOfJComponent {
 
     private static final int DISTANCE_TO_EDGE = 5;
-    private static final Color BACKGROUND = Colors.getBlue(3);
+    private static final Color BACKGROUND = new Color(220, 220, 220);
 
     private final AppointmentFieldControllerListController appointmentInputFields;
 
-    private final CustomTextButton saveButton = new CustomTextButton("Alle Speichern", Colors.getBlue(4), Color.WHITE);
-    private final CustomTextButton restoreDeletedButton = new CustomTextButton("Zuletzt gelöscht wiederherstellen", Colors.getBlue(4), Color.WHITE);
+    private final CustomTextButton saveButton = new CustomTextButton("Alle Speichern", Colors.getBlue(3), Color.WHITE);
+    private final CustomTextButton restoreDeletedButton = new CustomTextButton("Zuletzt gelöscht wiederherstellen", Colors.getBlue(3), Color.WHITE);
 
     public Header(final AppointmentFieldControllerListController appointmentFields) {
 	super(DISTANCE_TO_EDGE, DISTANCE_TO_EDGE);

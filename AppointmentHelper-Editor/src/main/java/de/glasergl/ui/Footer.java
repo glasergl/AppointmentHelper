@@ -20,11 +20,11 @@ import de.glasergl.ui.appointmentField.AppointmentFieldControllerListController;
 public class Footer extends RowOfJComponent {
 
     private static final int DISTANCE_TO_EDGE = 5;
-    private static final Color BACKGROUND = Colors.getBlue(3);
+    private static final Color BACKGROUND = new Color(220, 220, 220);
     private static final float ADD_BUTTON_PLUS_SIZE = 80.0f;
 
     private final AppointmentFieldControllerListController appointmentInputFields;
-    private final CustomTextButton addAppointmentButton = new CustomTextButton("+", Colors.getBlue(4), Color.WHITE);
+    private final CustomTextButton addAppointmentButton = new CustomTextButton("+", Colors.getBlue(3), Color.WHITE);
 
     public Footer(final AppointmentFieldControllerListController appointmentInputFields) {
 	super(DISTANCE_TO_EDGE, DISTANCE_TO_EDGE);
