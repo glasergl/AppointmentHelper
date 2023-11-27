@@ -18,37 +18,37 @@ import de.glasergl.simpleDate.SimpleDate;
  */
 public class TestSimpleDateJSONTransformer {
 
-    @Test
-    public void testRepresentsSimpleDate() {
-	final JSONObject json = new JSONObject();
-	json.put("day", 10);
+	@Test
+	public void testRepresentsSimpleDate() {
+		final JSONObject json = new JSONObject();
+		json.put("day", 10);
 
-	assertFalse(SimpleDateJSONTransformer.representsSimpleDate(json));
-	json.put("month", 11);
-	assertTrue(SimpleDateJSONTransformer.representsSimpleDate(json));
-    }
+		assertFalse(SimpleDateJSONTransformer.representsSimpleDate(json));
+		json.put("month", 11);
+		assertTrue(SimpleDateJSONTransformer.representsSimpleDate(json));
+	}
 
-    @Test
-    public void testSimpleDateToJSON() {
-	final SimpleDate date = new SimpleDate(12, 3);
-	final JSONObject jsonOfA = SimpleDateJSONTransformer.simpleDateToJSON(date);
+	@Test
+	public void testSimpleDateToJSON() {
+		final SimpleDate date = new SimpleDate(12, 3);
+		final JSONObject jsonOfA = SimpleDateJSONTransformer.simpleDateToJSON(date);
 
-	assertTrue(jsonOfA.has("day"));
-	assertTrue(jsonOfA.has("month"));
+		assertTrue(jsonOfA.has("day"));
+		assertTrue(jsonOfA.has("month"));
 
-	assertEquals(12, jsonOfA.getInt("day"));
-	assertEquals(3, jsonOfA.getInt("month"));
-    }
+		assertEquals(12, jsonOfA.getInt("day"));
+		assertEquals(3, jsonOfA.getInt("month"));
+	}
 
-    @Test
-    public void testJSONToSimpleDate() {
-	final JSONObject json = new JSONObject();
-	json.put("day", 10);
-	json.put("month", 11);
-	final SimpleDate date = SimpleDateJSONTransformer.jsonToSimpleDate(json);
+	@Test
+	public void testJSONToSimpleDate() {
+		final JSONObject json = new JSONObject();
+		json.put("day", 10);
+		json.put("month", 11);
+		final SimpleDate date = SimpleDateJSONTransformer.jsonToSimpleDate(json);
 
-	assertEquals(10, date.getDay());
-	assertEquals(11, date.getMonth());
-    }
+		assertEquals(10, date.getDay());
+		assertEquals(11, date.getMonth());
+	}
 
 }

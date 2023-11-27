@@ -24,56 +24,57 @@ import de.glasergl.simpleDate.SimpleDates;
  */
 public final class AllCells extends JPanel {
 
-    private final List<Appointment> allAppointments;
+	private final List<Appointment> allAppointments;
 
-    /**
-     * Constructs a grid of Cells which contains all valid dates of the year the
-     * constructor is called.
-     *
-     * @param allAppointments
-     */
-    public AllCells(final List<Appointment> allAppointments) {
-	super();
-	this.allAppointments = allAppointments;
-	setLayout(new GridLayout(31, 12, CalendarAttributes.MARGIN_BETWEEN_CELLS, CalendarAttributes.MARGIN_BETWEEN_CELLS));
-	setBackground(CalendarAttributes.CALENDAR_BACKGROUND);
-	addCells();
-    }
-
-    /**
-     * Adds a cell for each possible combination of day and month.
-     */
-    private void addCells() {
-	for (int day = 1; day <= 31; day++) {
-	    for (int month = 1; month <= 12; month++) {
-		addCell(day, month);
-	    }
+	/**
+	 * Constructs a grid of Cells which contains all valid dates of the year the
+	 * constructor is called.
+	 *
+	 * @param allAppointments
+	 */
+	public AllCells(final List<Appointment> allAppointments) {
+		super();
+		this.allAppointments = allAppointments;
+		setLayout(new GridLayout(31, 12, CalendarAttributes.MARGIN_BETWEEN_CELLS,
+				CalendarAttributes.MARGIN_BETWEEN_CELLS));
+		setBackground(CalendarAttributes.CALENDAR_BACKGROUND);
+		addCells();
 	}
-    }
 
-    /**
-     * Adds a Cell if day.month is a valid date, else, adds an empty, invisible
-     * JLabel.
-     *
-     * Furthermore, the background of a Cell which represents the day this is
-     * constructed is emphasized.
-     *
-     * @param day
-     * @param month
-     */
-    private void addCell(int day, int month) {
-	if (SimpleDates.isValidDate(day, month) && !(day == 29 && month == 2 && !SimpleDates.isSwitchingYear())) {
-	    final SimpleDate date = new SimpleDate(day, month);
-	    final Cell cell = new Cell(new SimpleDate(day, month), allAppointments);
-	    if (date.isToday()) {
-		cell.setBackground(CalendarAttributes.BACKGROUND_COLOR_OF_TODAY);
-	    }
-	    add(cell);
-	} else {
-	    final JLabel empty = new JLabel();
-	    empty.setBackground(new Color(0, 0, 0, 0));
-	    add(empty);
+	/**
+	 * Adds a cell for each possible combination of day and month.
+	 */
+	private void addCells() {
+		for (int day = 1; day <= 31; day++) {
+			for (int month = 1; month <= 12; month++) {
+				addCell(day, month);
+			}
+		}
 	}
-    }
+
+	/**
+	 * Adds a Cell if day.month is a valid date, else, adds an empty, invisible
+	 * JLabel.
+	 *
+	 * Furthermore, the background of a Cell which represents the day this is
+	 * constructed is emphasized.
+	 *
+	 * @param day
+	 * @param month
+	 */
+	private void addCell(int day, int month) {
+		if (SimpleDates.isValidDate(day, month) && !(day == 29 && month == 2 && !SimpleDates.isSwitchingYear())) {
+			final SimpleDate date = new SimpleDate(day, month);
+			final Cell cell = new Cell(new SimpleDate(day, month), allAppointments);
+			if (date.isToday()) {
+				cell.setBackground(CalendarAttributes.BACKGROUND_COLOR_OF_TODAY);
+			}
+			add(cell);
+		} else {
+			final JLabel empty = new JLabel();
+			empty.setBackground(new Color(0, 0, 0, 0));
+			add(empty);
+		}
+	}
 
 }

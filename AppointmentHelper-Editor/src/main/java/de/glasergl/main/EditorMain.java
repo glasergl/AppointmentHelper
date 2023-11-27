@@ -14,21 +14,21 @@ import de.glasergl.ui.EditorFrame;
  */
 public class EditorMain {
 
-    /**
-     * The Editor depicts all stored Appointments of the default Appointment-File
-     * and allows to edit them.
-     *
-     * If the Appointment-File doesn't exist, the user is asked whether he wants to
-     * create a new, empty Appointment-File.
-     *
-     * @param args - unused
-     */
-    public static void main(final String[] args) {
-	DefaultErrorHandling.activateDefaultExceptionHandling();
-	final ConfigurationHandler configurationHandler = new ConfigurationHandler();
-	SwingUtilities.invokeLater(() -> {
-	    new EditorFrame(configurationHandler);
-	});
-    }
+	/**
+	 * The Editor depicts all stored Appointments of the default Appointment-File
+	 * and allows to edit them.
+	 *
+	 * If the Appointment-File doesn't exist, the user is asked whether he wants to
+	 * create a new, empty Appointment-File.
+	 *
+	 * @param args - unused
+	 */
+	public static void main(final String[] args) {
+		DefaultErrorHandling.activateDefaultExceptionHandling();
+		final ConfigurationHandler configurationHandler = new ConfigurationHandler();
+		SwingUtilities.invokeLater(() -> {
+			new EditorFrame(configurationHandler);
+		});
+	}
 
 }

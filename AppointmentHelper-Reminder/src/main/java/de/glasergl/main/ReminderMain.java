@@ -18,20 +18,20 @@ import de.glasergl.ui.ReminderFrame;
  */
 public final class ReminderMain {
 
-    public static final ConfigurationHandler CONFIGURATION_HANDLER = new ConfigurationHandler();
+	public static final ConfigurationHandler CONFIGURATION_HANDLER = new ConfigurationHandler();
 
-    /**
-     * Reminder program which shows the appointments of today and tomorrow.
-     *
-     * @param args - unused.
-     */
-    public static void main(final String[] args) {
-	DefaultErrorHandling.activateDefaultExceptionHandling();
-	final AppointmentsConfigurationHandler appointmentsHandler = CONFIGURATION_HANDLER.getAppointmentsHandler();
-	final List<Appointment> allAppointments = appointmentsHandler.getAppointments();
-	SwingUtilities.invokeLater(() -> {
-	    new ReminderFrame(allAppointments);
-	});
-    }
+	/**
+	 * Reminder program which shows the appointments of today and tomorrow.
+	 *
+	 * @param args - unused.
+	 */
+	public static void main(final String[] args) {
+		DefaultErrorHandling.activateDefaultExceptionHandling();
+		final AppointmentsConfigurationHandler appointmentsHandler = CONFIGURATION_HANDLER.getAppointmentsHandler();
+		final List<Appointment> allAppointments = appointmentsHandler.getAppointments();
+		SwingUtilities.invokeLater(() -> {
+			new ReminderFrame(allAppointments);
+		});
+	}
 
 }

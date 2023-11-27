@@ -26,73 +26,73 @@ import de.glasergl.standard.swing.settings.Fonts;
  */
 public class SimpleDateField extends CustomTextButton {
 
-    private static final float DATE_TEXT_SIZE = 23.0f;
-    private static final Dimension PREFERRED_SIZE = new Dimension(90, 40);
+	private static final float DATE_TEXT_SIZE = 23.0f;
+	private static final Dimension PREFERRED_SIZE = new Dimension(90, 40);
 
-    private final SiblingPopUpDisplayerOnClick monthPopUpController;
-    private final AllMonthFields monthsInput;
-    private final List<ChangeListener> changeListeners = new ArrayList<>();
+	private final SiblingPopUpDisplayerOnClick monthPopUpController;
+	private final AllMonthFields monthsInput;
+	private final List<ChangeListener> changeListeners = new ArrayList<>();
 
-    private SimpleDate currentlySelectedDate;
+	private SimpleDate currentlySelectedDate;
 
-    /**
-     * @param initialDate which is displayed.
-     */
-    public SimpleDateField(final SimpleDate initialDate) {
-	super(initialDate.toStringWithLeadingZeros(), false);
-	this.currentlySelectedDate = initialDate;
-	this.monthsInput = new AllMonthFields(this);
-	this.monthPopUpController = new SiblingPopUpDisplayerOnClick(monthsInput, this);
-	setFont(Fonts.resizedStandard(DATE_TEXT_SIZE));
-	setPreferredSize(PREFERRED_SIZE);
-    }
-
-    /**
-     * Initially displays today.
-     */
-    public SimpleDateField() {
-	this(SimpleDates.getToday());
-    }
-
-    /**
-     * Adds the given ChangeListener to a List of ChangeListener's.
-     *
-     * They are called when any date is set on this input field.
-     */
-    @Override
-    public void addChangeListener(final ChangeListener toAdd) {
-	changeListeners.add(toAdd);
-    }
-
-    /**
-     * Sets the date to the given date and displays it. Furthermore, notifies all
-     * added ChangeListeners.
-     *
-     * @param dateToSet
-     */
-    public void setDate(final SimpleDate dateToSet) {
-	currentlySelectedDate = dateToSet;
-	setText(dateToSet.toStringWithLeadingZeros());
-	final ChangeEvent dateChange = new ChangeEvent(this);
-	for (final ChangeListener changeListener : changeListeners) {
-	    changeListener.stateChanged(dateChange);
+	/**
+	 * @param initialDate which is displayed.
+	 */
+	public SimpleDateField(final SimpleDate initialDate) {
+		super(initialDate.toStringWithLeadingZeros(), false);
+		this.currentlySelectedDate = initialDate;
+		this.monthsInput = new AllMonthFields(this);
+		this.monthPopUpController = new SiblingPopUpDisplayerOnClick(monthsInput, this);
+		setFont(Fonts.resizedStandard(DATE_TEXT_SIZE));
+		setPreferredSize(PREFERRED_SIZE);
 	}
-    }
 
-    /**
-     * Sets the visibility of the pop up date input according to the argument.
-     *
-     * @param inputShouldBeVisible
-     */
-    public void setDateInputVisible(final boolean inputShouldBeVisible) {
-	if (monthPopUpController.popUpHasBeenCreated()) {
-	    final MySiblingPopUp dateInput = monthPopUpController.getPopUp();
-	    dateInput.setVisible(inputShouldBeVisible);
+	/**
+	 * Initially displays today.
+	 */
+	public SimpleDateField() {
+		this(SimpleDates.getToday());
 	}
-    }
 
-    public SimpleDate getDate() {
-	return currentlySelectedDate;
-    }
+	/**
+	 * Adds the given ChangeListener to a List of ChangeListener's.
+	 *
+	 * They are called when any date is set on this input field.
+	 */
+	@Override
+	public void addChangeListener(final ChangeListener toAdd) {
+		changeListeners.add(toAdd);
+	}
+
+	/**
+	 * Sets the date to the given date and displays it. Furthermore, notifies all
+	 * added ChangeListeners.
+	 *
+	 * @param dateToSet
+	 */
+	public void setDate(final SimpleDate dateToSet) {
+		currentlySelectedDate = dateToSet;
+		setText(dateToSet.toStringWithLeadingZeros());
+		final ChangeEvent dateChange = new ChangeEvent(this);
+		for (final ChangeListener changeListener : changeListeners) {
+			changeListener.stateChanged(dateChange);
+		}
+	}
+
+	/**
+	 * Sets the visibility of the pop up date input according to the argument.
+	 *
+	 * @param inputShouldBeVisible
+	 */
+	public void setDateInputVisible(final boolean inputShouldBeVisible) {
+		if (monthPopUpController.popUpHasBeenCreated()) {
+			final MySiblingPopUp dateInput = monthPopUpController.getPopUp();
+			dateInput.setVisible(inputShouldBeVisible);
+		}
+	}
+
+	public SimpleDate getDate() {
+		return currentlySelectedDate;
+	}
 
 }

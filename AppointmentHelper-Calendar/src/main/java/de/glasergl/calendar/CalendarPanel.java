@@ -17,20 +17,20 @@ import de.glasergl.calendar.cell.AllCells;
  */
 public final class CalendarPanel extends JPanel {
 
-    private final MonthRow months = new MonthRow();
-    private final AllCells cells;
+	private final MonthRow months = new MonthRow();
+	private final AllCells cells;
 
-    public CalendarPanel(final List<Appointment> allAppointments) {
-	super();
-	cells = new AllCells(allAppointments);
-	setup();
+	public CalendarPanel(final List<Appointment> allAppointments) {
+		super();
+		cells = new AllCells(allAppointments);
+		setup();
 
-    }
+	}
 
-    private void setup() {
-	setLayout(new BorderLayout());
-	add(months, BorderLayout.NORTH);
-	add(cells, BorderLayout.CENTER);
-    }
+	private void setup() {
+		setLayout(new BorderLayout());
+		add(months, BorderLayout.NORTH);
+		add(cells, BorderLayout.CENTER);
+	}
 
 }

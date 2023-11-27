@@ -17,41 +17,41 @@ import de.glasergl.standard.swing.myComponent.MyLabel;
  */
 public final class SimpleDateDayPanel extends JPanel {
 
-    private final MyLabel visualSimpleDate = new MyLabel();
+	private final MyLabel visualSimpleDate = new MyLabel();
 
-    public SimpleDateDayPanel(final SimpleDate dateToDepict) {
-	super();
-	visualSimpleDate.setText(dateToDepict.getDay() + ".");
-	setup();
-    }
-
-    private void setup() {
-	setLayout(new BorderLayout());
-	add(visualSimpleDate, BorderLayout.CENTER);
-    }
-
-    @Override
-    public void setBackground(final Color newBackground) {
-	super.setBackground(newBackground);
-	if (visualSimpleDate != null) {
-	    visualSimpleDate.setBackground(newBackground);
+	public SimpleDateDayPanel(final SimpleDate dateToDepict) {
+		super();
+		visualSimpleDate.setText(dateToDepict.getDay() + ".");
+		setup();
 	}
-    }
 
-    @Override
-    public void setForeground(final Color newForeground) {
-	super.setForeground(newForeground);
-	if (visualSimpleDate != null) {
-	    visualSimpleDate.setForeground(newForeground);
+	private void setup() {
+		setLayout(new BorderLayout());
+		add(visualSimpleDate, BorderLayout.CENTER);
 	}
-    }
 
-    @Override
-    public void setFont(final Font newFont) {
-	super.setFont(newFont);
-	if (visualSimpleDate != null) {
-	    visualSimpleDate.setFont(newFont);
+	@Override
+	public void setBackground(final Color newBackground) {
+		super.setBackground(newBackground);
+		if (visualSimpleDate != null) {
+			visualSimpleDate.setBackground(newBackground);
+		}
 	}
-    }
+
+	@Override
+	public void setForeground(final Color newForeground) {
+		super.setForeground(newForeground);
+		if (visualSimpleDate != null) {
+			visualSimpleDate.setForeground(newForeground);
+		}
+	}
+
+	@Override
+	public void setFont(final Font newFont) {
+		super.setFont(newFont);
+		if (visualSimpleDate != null) {
+			visualSimpleDate.setFont(newFont);
+		}
+	}
 
 }

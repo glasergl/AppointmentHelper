@@ -30,25 +30,27 @@ import static de.glasergl.configuration.test.PathToTestResources.BASE_TEST_RESOU
  */
 public final class TestRemove {
 
-    /**
-     * Tests whether removing one works properly and the resulting appointments
-     * don't change their order.
-     */
-    @Test
-    public void testRemoveOne() {
-	final String path = BASE_TEST_RESOURCE_PATH + "testRemoveOne-Configuration.json";
-	final ConfigurationHandler configurationHandler = new ConfigurationHandler(path);
-	final AppointmentsConfigurationHandler appointmentsConfigurationHandler = configurationHandler.getAppointmentsHandler();
-	appointmentsConfigurationHandler.updateAppointments(Arrays.asList(TEST_APPOINTMENT_0, TEST_APPOINTMENT_1, TEST_APPOINTMENT_2, TEST_APPOINTMENT_3));
-	appointmentsConfigurationHandler.delete(1);
-	final List<Appointment> appointments = appointmentsConfigurationHandler.getAppointments();
-	assertFalse(appointments.contains(TEST_APPOINTMENT_1));
-	assertEquals(3, appointments.size());
-	try {
-	    Files.delete(Paths.get(path));
-	} catch (final IOException e) {
-	    fail("Couldn't delete test file.");
+	/**
+	 * Tests whether removing one works properly and the resulting appointments
+	 * don't change their order.
+	 */
+	@Test
+	public void testRemoveOne() {
+		final String path = BASE_TEST_RESOURCE_PATH + "testRemoveOne-Configuration.json";
+		final ConfigurationHandler configurationHandler = new ConfigurationHandler(path);
+		final AppointmentsConfigurationHandler appointmentsConfigurationHandler = configurationHandler
+				.getAppointmentsHandler();
+		appointmentsConfigurationHandler.updateAppointments(
+				Arrays.asList(TEST_APPOINTMENT_0, TEST_APPOINTMENT_1, TEST_APPOINTMENT_2, TEST_APPOINTMENT_3));
+		appointmentsConfigurationHandler.delete(1);
+		final List<Appointment> appointments = appointmentsConfigurationHandler.getAppointments();
+		assertFalse(appointments.contains(TEST_APPOINTMENT_1));
+		assertEquals(3, appointments.size());
+		try {
+			Files.delete(Paths.get(path));
+		} catch (final IOException e) {
+			fail("Couldn't delete test file.");
+		}
 	}
-    }
 
 }

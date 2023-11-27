@@ -10,8 +10,8 @@ package de.glasergl.appointment;
  */
 public final class InvalidAppointmentException extends RuntimeException {
 
-    public InvalidAppointmentException() {
-	super();
-    }
+	public InvalidAppointmentException() {
+		super();
+	}
 
 }

@@ -18,25 +18,25 @@ import de.glasergl.ui.CalendarFrame;
  */
 public final class CalendarMain {
 
-    public static final ConfigurationHandler CONFIGURATION_HANDLER = new ConfigurationHandler();
+	public static final ConfigurationHandler CONFIGURATION_HANDLER = new ConfigurationHandler();
 
-    /**
-     * Creates a Window with an overview of all Appointments which are stored in the
-     * configurationFile.
-     *
-     * @param args - unused
-     */
-    public static void main(final String[] args) {
-	DefaultErrorHandling.activateDefaultExceptionHandling();
-	createAndShowGUI();
-    }
+	/**
+	 * Creates a Window with an overview of all Appointments which are stored in the
+	 * configurationFile.
+	 *
+	 * @param args - unused
+	 */
+	public static void main(final String[] args) {
+		DefaultErrorHandling.activateDefaultExceptionHandling();
+		createAndShowGUI();
+	}
 
-    private static void createAndShowGUI() {
-	final AppointmentsConfigurationHandler appointmentsHandler = CONFIGURATION_HANDLER.getAppointmentsHandler();
-	final List<Appointment> allAppointments = appointmentsHandler.getAppointments();
-	SwingUtilities.invokeLater(() -> {
-	    new CalendarFrame(allAppointments);
-	});
-    }
+	private static void createAndShowGUI() {
+		final AppointmentsConfigurationHandler appointmentsHandler = CONFIGURATION_HANDLER.getAppointmentsHandler();
+		final List<Appointment> allAppointments = appointmentsHandler.getAppointments();
+		SwingUtilities.invokeLater(() -> {
+			new CalendarFrame(allAppointments);
+		});
+	}
 
 }

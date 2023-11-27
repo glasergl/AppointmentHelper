@@ -27,69 +27,75 @@ import de.glasergl.ui.appointmentField.AppointmentFieldControllerList;
  */
 public final class TestAddEmpty {
 
-    /**
-     * Tests whether the AppointmentFieldControllerList updates its state correctly
-     * after adding an empty appointment field to an empty configuration.
-     */
-    @Test
-    public void testAddEmptyOnEmptyConfiguration() {
-	final String path = BASE_TEST_RESOURCE_PATH + "testAddEmptyOnEmptyConfiguration-Configuration.json";
-	final ConfigurationHandler configurationHandler = new ConfigurationHandler(path);
-	final AppointmentFieldControllerList appointmentFieldList = new AppointmentFieldControllerList(configurationHandler);
-	appointmentFieldList.addEmptyAppointmentField();
+	/**
+	 * Tests whether the AppointmentFieldControllerList updates its state correctly
+	 * after adding an empty appointment field to an empty configuration.
+	 */
+	@Test
+	public void testAddEmptyOnEmptyConfiguration() {
+		final String path = BASE_TEST_RESOURCE_PATH + "testAddEmptyOnEmptyConfiguration-Configuration.json";
+		final ConfigurationHandler configurationHandler = new ConfigurationHandler(path);
+		final AppointmentFieldControllerList appointmentFieldList = new AppointmentFieldControllerList(
+				configurationHandler);
+		appointmentFieldList.addEmptyAppointmentField();
 
-	assertEquals(1, appointmentFieldList.getNumberOfShownAppointments());
-	assertEquals(0, appointmentFieldList.getNumberOfAppointmentsInConfiguration());
+		assertEquals(1, appointmentFieldList.getNumberOfShownAppointments());
+		assertEquals(0, appointmentFieldList.getNumberOfAppointmentsInConfiguration());
 
-	try {
-	    Files.delete(Paths.get(path));
-	} catch (final IOException e) {
-	    fail("Couldn't delete test-file");
+		try {
+			Files.delete(Paths.get(path));
+		} catch (final IOException e) {
+			fail("Couldn't delete test-file");
+		}
 	}
-    }
 
-    /**
-     * Tests whether the AppointmentFieldControllerList updates its state correctly
-     * after adding an empty appointment field to an existing configuration.
-     * 
-     */
-    @Test
-    public void testAddEmptyOnNonEmptyConfiguration() {
-	final String path = BASE_TEST_RESOURCE_PATH + "testAddEmptyOnNonEmptyConfiguration-Configuration.json";
-	final ConfigurationHandler configurationHandler = new ConfigurationHandler(path);
-	final AppointmentsConfigurationHandler appointmentsConfigurationHandler = configurationHandler.getAppointmentsHandler();
-	appointmentsConfigurationHandler.updateAppointments(Arrays.asList(TEST_APPOINTMENT_1, TEST_APPOINTMENT_2, TEST_APPOINTMENT_3));
-	final AppointmentFieldControllerList appointmentFieldList = new AppointmentFieldControllerList(configurationHandler);
-	appointmentFieldList.addEmptyAppointmentField();
+	/**
+	 * Tests whether the AppointmentFieldControllerList updates its state correctly
+	 * after adding an empty appointment field to an existing configuration.
+	 * 
+	 */
+	@Test
+	public void testAddEmptyOnNonEmptyConfiguration() {
+		final String path = BASE_TEST_RESOURCE_PATH + "testAddEmptyOnNonEmptyConfiguration-Configuration.json";
+		final ConfigurationHandler configurationHandler = new ConfigurationHandler(path);
+		final AppointmentsConfigurationHandler appointmentsConfigurationHandler = configurationHandler
+				.getAppointmentsHandler();
+		appointmentsConfigurationHandler
+				.updateAppointments(Arrays.asList(TEST_APPOINTMENT_1, TEST_APPOINTMENT_2, TEST_APPOINTMENT_3));
+		final AppointmentFieldControllerList appointmentFieldList = new AppointmentFieldControllerList(
+				configurationHandler);
+		appointmentFieldList.addEmptyAppointmentField();
 
-	assertEquals(4, appointmentFieldList.getNumberOfShownAppointments());
-	assertEquals(3, appointmentFieldList.getNumberOfAppointmentsInConfiguration());
+		assertEquals(4, appointmentFieldList.getNumberOfShownAppointments());
+		assertEquals(3, appointmentFieldList.getNumberOfAppointmentsInConfiguration());
 
-	try {
-	    Files.delete(Paths.get(path));
-	} catch (final IOException e) {
-	    fail("Couldn't delete test-file");
+		try {
+			Files.delete(Paths.get(path));
+		} catch (final IOException e) {
+			fail("Couldn't delete test-file");
+		}
 	}
-    }
 
-    /**
-     * Tests whether the indices of the appointment input fields are adapted
-     * correctly after adding a new input field.
-     */
-    @Test
-    public void testIndicesAfterAddEmpty() {
-	final String path = BASE_TEST_RESOURCE_PATH + "testAddEmptyOnNonEmptyConfiguration-Configuration.json";
-	final ConfigurationHandler configurationHandler = new ConfigurationHandler(path);
-	final AppointmentsConfigurationHandler appointmentsConfigurationHandler = configurationHandler.getAppointmentsHandler();
-	appointmentsConfigurationHandler.updateAppointments(Arrays.asList(TEST_APPOINTMENT_1, TEST_APPOINTMENT_2));
-	final AppointmentFieldControllerList appointmentFieldList = new AppointmentFieldControllerList(configurationHandler);
-	final AppointmentFieldController appointmentFieldController0 = appointmentFieldList.getAppointmentField(0);
-	final AppointmentFieldController appointmentFieldController1 = appointmentFieldList.getAppointmentField(1);
-	appointmentFieldList.addEmptyAppointmentField();
-	final AppointmentFieldController appointmentFieldController2 = appointmentFieldList.getAppointmentField(2);
+	/**
+	 * Tests whether the indices of the appointment input fields are adapted
+	 * correctly after adding a new input field.
+	 */
+	@Test
+	public void testIndicesAfterAddEmpty() {
+		final String path = BASE_TEST_RESOURCE_PATH + "testAddEmptyOnNonEmptyConfiguration-Configuration.json";
+		final ConfigurationHandler configurationHandler = new ConfigurationHandler(path);
+		final AppointmentsConfigurationHandler appointmentsConfigurationHandler = configurationHandler
+				.getAppointmentsHandler();
+		appointmentsConfigurationHandler.updateAppointments(Arrays.asList(TEST_APPOINTMENT_1, TEST_APPOINTMENT_2));
+		final AppointmentFieldControllerList appointmentFieldList = new AppointmentFieldControllerList(
+				configurationHandler);
+		final AppointmentFieldController appointmentFieldController0 = appointmentFieldList.getAppointmentField(0);
+		final AppointmentFieldController appointmentFieldController1 = appointmentFieldList.getAppointmentField(1);
+		appointmentFieldList.addEmptyAppointmentField();
+		final AppointmentFieldController appointmentFieldController2 = appointmentFieldList.getAppointmentField(2);
 
-	assertEquals(0, appointmentFieldController0.getCurrentIndex());
-	assertEquals(1, appointmentFieldController1.getCurrentIndex());
-	assertEquals(2, appointmentFieldController2.getCurrentIndex());
-    }
+		assertEquals(0, appointmentFieldController0.getCurrentIndex());
+		assertEquals(1, appointmentFieldController1.getCurrentIndex());
+		assertEquals(2, appointmentFieldController2.getCurrentIndex());
+	}
 }

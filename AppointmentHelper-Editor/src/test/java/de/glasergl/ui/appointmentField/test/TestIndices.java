@@ -28,29 +28,32 @@ import de.glasergl.ui.appointmentField.AppointmentFieldControllerList;
  */
 public final class TestIndices {
 
-    @Test
-    public void testInitialIndices() {
-	final String path = BASE_TEST_RESOURCE_PATH + "testInitialIndices-Configuration.json";
-	final ConfigurationHandler configurationHandler = new ConfigurationHandler(path);
-	final AppointmentsConfigurationHandler appointmentsConfigurationHandler = configurationHandler.getAppointmentsHandler();
-	appointmentsConfigurationHandler.updateAppointments(Arrays.asList(TEST_APPOINTMENT_2, TEST_APPOINTMENT_3, TEST_APPOINTMENT_1));
-	final AppointmentFieldControllerList appointmentFieldList = new AppointmentFieldControllerList(configurationHandler);
-	final AppointmentFieldController appointmentFieldController0 = appointmentFieldList.getAppointmentField(0);
-	final AppointmentFieldController appointmentFieldController1 = appointmentFieldList.getAppointmentField(1);
-	final AppointmentFieldController appointmentFieldController2 = appointmentFieldList.getAppointmentField(2);
+	@Test
+	public void testInitialIndices() {
+		final String path = BASE_TEST_RESOURCE_PATH + "testInitialIndices-Configuration.json";
+		final ConfigurationHandler configurationHandler = new ConfigurationHandler(path);
+		final AppointmentsConfigurationHandler appointmentsConfigurationHandler = configurationHandler
+				.getAppointmentsHandler();
+		appointmentsConfigurationHandler
+				.updateAppointments(Arrays.asList(TEST_APPOINTMENT_2, TEST_APPOINTMENT_3, TEST_APPOINTMENT_1));
+		final AppointmentFieldControllerList appointmentFieldList = new AppointmentFieldControllerList(
+				configurationHandler);
+		final AppointmentFieldController appointmentFieldController0 = appointmentFieldList.getAppointmentField(0);
+		final AppointmentFieldController appointmentFieldController1 = appointmentFieldList.getAppointmentField(1);
+		final AppointmentFieldController appointmentFieldController2 = appointmentFieldList.getAppointmentField(2);
 
-	assertEquals(0, appointmentFieldController0.getCurrentIndex());
-	assertEquals(1, appointmentFieldController1.getCurrentIndex());
-	assertEquals(2, appointmentFieldController2.getCurrentIndex());
-	assertEquals(TEST_APPOINTMENT_2, appointmentFieldController0.getAppointment());
-	assertEquals(TEST_APPOINTMENT_3, appointmentFieldController1.getAppointment());
-	assertEquals(TEST_APPOINTMENT_1, appointmentFieldController2.getAppointment());
+		assertEquals(0, appointmentFieldController0.getCurrentIndex());
+		assertEquals(1, appointmentFieldController1.getCurrentIndex());
+		assertEquals(2, appointmentFieldController2.getCurrentIndex());
+		assertEquals(TEST_APPOINTMENT_2, appointmentFieldController0.getAppointment());
+		assertEquals(TEST_APPOINTMENT_3, appointmentFieldController1.getAppointment());
+		assertEquals(TEST_APPOINTMENT_1, appointmentFieldController2.getAppointment());
 
-	try {
-	    Files.delete(Paths.get(path));
-	} catch (final IOException e) {
-	    fail("Couldn't delete test-file");
+		try {
+			Files.delete(Paths.get(path));
+		} catch (final IOException e) {
+			fail("Couldn't delete test-file");
+		}
 	}
-    }
 
 }

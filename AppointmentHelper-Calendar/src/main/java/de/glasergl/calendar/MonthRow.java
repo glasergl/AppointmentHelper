@@ -17,30 +17,30 @@ import de.glasergl.standard.swing.myComponent.MyLabel;
  */
 public final class MonthRow extends JPanel {
 
-    private final List<MyLabel> monthLabels = getMonthLabels();
+	private final List<MyLabel> monthLabels = getMonthLabels();
 
-    public MonthRow() {
-	super();
-	setup();
-    }
-
-    private void setup() {
-	setLayout(new GridLayout(1, 12, 1, 1));
-	setBackground(CalendarAttributes.CALENDAR_BACKGROUND);
-	for (final MyLabel monthLabel : monthLabels) {
-	    add(monthLabel);
+	public MonthRow() {
+		super();
+		setup();
 	}
-    }
 
-    private List<MyLabel> getMonthLabels() {
-	final List<MyLabel> monthLabels = new ArrayList<>(12);
-	for (final String month : SimpleDates.MONTHS) {
-	    final MyLabel monthLabel = new MyLabel(month);
-	    monthLabel.setBackground(CalendarAttributes.CALENDAR_BACKGROUND);
-	    monthLabel.setFont(CalendarAttributes.FONT.deriveFont(Font.BOLD));
-	    monthLabel.setHorizontalAlignment(SwingConstants.CENTER);
-	    monthLabels.add(monthLabel);
+	private void setup() {
+		setLayout(new GridLayout(1, 12, 1, 1));
+		setBackground(CalendarAttributes.CALENDAR_BACKGROUND);
+		for (final MyLabel monthLabel : monthLabels) {
+			add(monthLabel);
+		}
 	}
-	return monthLabels;
-    }
+
+	private List<MyLabel> getMonthLabels() {
+		final List<MyLabel> monthLabels = new ArrayList<>(12);
+		for (final String month : SimpleDates.MONTHS) {
+			final MyLabel monthLabel = new MyLabel(month);
+			monthLabel.setBackground(CalendarAttributes.CALENDAR_BACKGROUND);
+			monthLabel.setFont(CalendarAttributes.FONT.deriveFont(Font.BOLD));
+			monthLabel.setHorizontalAlignment(SwingConstants.CENTER);
+			monthLabels.add(monthLabel);
+		}
+		return monthLabels;
+	}
 }

@@ -18,33 +18,33 @@ import de.glasergl.standard.swing.settings.Colors;
  */
 public final class ReminderFrame extends MyFrame {
 
-    private static final String FRAME_NAME = "TerminReminder";
-    private static final Image ICON = SwingFunctions.getImage("ReminderIcon.png", ReminderFrame.class);
-    private static final Color BACKGROUND_COLOR_OF_APPOINTMENT_MESSAGES = Colors.getBlue(0);
+	private static final String FRAME_NAME = "TerminReminder";
+	private static final Image ICON = SwingFunctions.getImage("ReminderIcon.png", ReminderFrame.class);
+	private static final Color BACKGROUND_COLOR_OF_APPOINTMENT_MESSAGES = Colors.getBlue(0);
 
-    private final TodayTomorrowAppointmentMessagePanel appointmentMessages;
+	private final TodayTomorrowAppointmentMessagePanel appointmentMessages;
 
-    public ReminderFrame(final List<Appointment> allAppointments) {
-	super(FRAME_NAME, ICON);
-	this.appointmentMessages = new TodayTomorrowAppointmentMessagePanel(allAppointments);
-	setup();
-	if (anyIsTodayOrTomorrow(allAppointments)) {
-	    start();
+	public ReminderFrame(final List<Appointment> allAppointments) {
+		super(FRAME_NAME, ICON);
+		this.appointmentMessages = new TodayTomorrowAppointmentMessagePanel(allAppointments);
+		setup();
+		if (anyIsTodayOrTomorrow(allAppointments)) {
+			start();
+		}
 	}
-    }
 
-    private void setup() {
-	appointmentMessages.setBackground(BACKGROUND_COLOR_OF_APPOINTMENT_MESSAGES);
-	add(appointmentMessages, BorderLayout.CENTER);
-    }
-
-    private boolean anyIsTodayOrTomorrow(final List<Appointment> appointmentsToTest) {
-	for (final Appointment appointment : appointmentsToTest) {
-	    if (appointment.isToday() || appointment.isTomorrow()) {
-		return true;
-	    }
+	private void setup() {
+		appointmentMessages.setBackground(BACKGROUND_COLOR_OF_APPOINTMENT_MESSAGES);
+		add(appointmentMessages, BorderLayout.CENTER);
 	}
-	return false;
-    }
+
+	private boolean anyIsTodayOrTomorrow(final List<Appointment> appointmentsToTest) {
+		for (final Appointment appointment : appointmentsToTest) {
+			if (appointment.isToday() || appointment.isTomorrow()) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 }
