@@ -22,8 +22,8 @@ import de.glasergl.standard.swing.settings.Colors;
  */
 public final class MonthField extends JPanel {
 
-	private static final Color BACKGROUND_COLOR = Colors.getBlue(1);
-	private static final Color BACKGROUND_COLOR_OF_DAY = Colors.getBlue(2);
+	private static final Color BACKGROUND_COLOR = Color.WHITE;
+	private static final Color BACKGROUND_COLOR_OF_DAY = new Color(215, 215, 215);
 	private static final int WIDTH_BETWEEN_DAY_LABELS = 2;
 	private static final int SIZE_OF_DAY_LABEL = 50;
 

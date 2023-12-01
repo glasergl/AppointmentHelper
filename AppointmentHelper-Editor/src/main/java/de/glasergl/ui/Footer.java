@@ -3,10 +3,11 @@ package de.glasergl.ui;
 import java.awt.Color;
 import java.awt.Dimension;
 
+import javax.swing.JButton;
+
 import de.glasergl.standard.swing.container.RowOfJComponent;
-import de.glasergl.standard.swing.myComponent.button.CustomTextButton;
-import de.glasergl.standard.swing.settings.Colors;
 import de.glasergl.standard.swing.settings.Fonts;
+import de.glasergl.swing.DefaultJComponentFactory;
 import de.glasergl.ui.appointmentField.AppointmentFieldControllerListController;
 
 /**
@@ -24,7 +25,7 @@ public class Footer extends RowOfJComponent {
 	private static final float ADD_BUTTON_PLUS_SIZE = 80.0f;
 
 	private final AppointmentFieldControllerListController appointmentInputFields;
-	private final CustomTextButton addAppointmentButton = new CustomTextButton("+", Colors.getBlue(3), Color.WHITE);
+	private final JButton addAppointmentButton = DefaultJComponentFactory.getDefaultJButton();
 
 	public Footer(final AppointmentFieldControllerListController appointmentInputFields) {
 		super(DISTANCE_TO_EDGE, DISTANCE_TO_EDGE);
@@ -40,6 +41,7 @@ public class Footer extends RowOfJComponent {
 	}
 
 	private void setupAddButton() {
+		addAppointmentButton.setText("+");
 		addAppointmentButton.setFont(Fonts.resizedStandard(ADD_BUTTON_PLUS_SIZE));
 		addAppointmentButton.setPreferredSize(new Dimension(300, 100));
 		addAppointmentButton.addActionListener((event) -> {

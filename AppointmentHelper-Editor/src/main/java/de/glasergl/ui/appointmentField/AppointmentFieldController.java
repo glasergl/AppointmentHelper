@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.util.Optional;
 
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.event.ChangeListener;
 
@@ -12,8 +13,7 @@ import de.glasergl.appointment.InvalidAppointmentException;
 import de.glasergl.simpleDate.SimpleDate;
 import de.glasergl.standard.swing.border.LeftRightRoundBorder;
 import de.glasergl.standard.swing.eventListener.emptyImplementation.MyDocumentListener;
-import de.glasergl.standard.swing.myComponent.button.CustomTextButton;
-import de.glasergl.standard.swing.settings.Colors;
+import de.glasergl.swing.DefaultJComponentFactory;
 
 /**
  * Class which controls a single AppointmentField.
@@ -29,7 +29,7 @@ public final class AppointmentFieldController extends JPanel {
 
 	private final AppointmentFieldControllerList appointmentFieldList;
 	private final AppointmentField appointmentField;
-	private final CustomTextButton deleteButton = new CustomTextButton("Löschen", Colors.getBlue(3), Color.WHITE);
+	private final JButton deleteButton = DefaultJComponentFactory.getDefaultJButton();
 
 	private int currentIndex;
 	private Color defaultBackground = Color.WHITE;
@@ -114,6 +114,7 @@ public final class AppointmentFieldController extends JPanel {
 	private void setup() {
 		setLayout(new FlowLayout(FlowLayout.LEFT, HORIZONTAL_GAP_OF_SUPCOMPONENTS, VERTICAL_GAP_OF_SUPCOMPONENTS));
 		addListenersForInputChanges();
+		deleteButton.setText("Löschen");
 		deleteButton.addActionListener(click -> {
 			delete();
 		});
@@ -130,8 +131,8 @@ public final class AppointmentFieldController extends JPanel {
 			setBackground(UNSTORED_BACKGROUND);
 			appointmentFieldList.changeHappened();
 		};
-		appointmentField.getNameField().addDocumentListener(documentListener);
-		appointmentField.getDescriptionField().addDocumentListener(documentListener);
+		appointmentField.getNameField().getDocument().addDocumentListener(documentListener);
+		appointmentField.getDescriptionField().getDocument().addDocumentListener(documentListener);
 		appointmentField.getDateField().addChangeListener(changeListener);
 		appointmentField.getIsBirthdayField().addChangeListener(changeListener);
 	}

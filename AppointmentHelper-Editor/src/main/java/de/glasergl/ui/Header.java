@@ -2,11 +2,11 @@ package de.glasergl.ui;
 
 import java.awt.Color;
 
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 import de.glasergl.standard.swing.container.RowOfJComponent;
-import de.glasergl.standard.swing.myComponent.button.CustomTextButton;
-import de.glasergl.standard.swing.settings.Colors;
+import de.glasergl.swing.DefaultJComponentFactory;
 import de.glasergl.ui.appointmentField.AppointmentFieldControllerListController;
 
 /**
@@ -25,9 +25,8 @@ public class Header extends RowOfJComponent {
 
 	private final AppointmentFieldControllerListController appointmentInputFields;
 
-	private final CustomTextButton saveButton = new CustomTextButton("Alle Speichern", Colors.getBlue(3), Color.WHITE);
-	private final CustomTextButton restoreDeletedButton = new CustomTextButton("Zuletzt gelöscht wiederherstellen",
-			Colors.getBlue(3), Color.WHITE);
+	private final JButton saveButton = DefaultJComponentFactory.getDefaultJButton();
+	private final JButton restoreDeletedButton = DefaultJComponentFactory.getDefaultJButton();
 
 	public Header(final AppointmentFieldControllerListController appointmentFields) {
 		super(DISTANCE_TO_EDGE, DISTANCE_TO_EDGE);
@@ -38,6 +37,8 @@ public class Header extends RowOfJComponent {
 	private void setup() {
 		setBackground(BACKGROUND);
 		setupActionListeners();
+		saveButton.setText("Speichern");
+		restoreDeletedButton.setText("Zuletzt gelöscht wiederherstellen");
 		addToRight(restoreDeletedButton);
 		addToRight(saveButton);
 	}

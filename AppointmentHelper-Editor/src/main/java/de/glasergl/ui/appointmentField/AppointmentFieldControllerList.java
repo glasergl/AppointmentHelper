@@ -30,8 +30,8 @@ public final class AppointmentFieldControllerList extends JPanel {
 	private static final int MAX_NUMBER_OF_SHOWN_APPOINTMENTS = 10;
 	private static final Color DEFAULT_BACKGROUND = Color.WHITE;
 	private static final Color BACKGROUND_OF_APPOINTMENT_FIELD_0 = new Color(235, 235, 235);
-	private static final Color BACKGROUND_OF_APPOINTMENT_FIELD_1 = new Color(225, 225, 225);
-	private static final int SPACE_BETWEEN_APPOINTMENTS = 1;
+	private static final Color BACKGROUND_OF_APPOINTMENT_FIELD_1 = new Color(215, 215, 215);
+	private static final int SPACE_BETWEEN_APPOINTMENTS = 3;
 
 	private final ConfigurationHandler configurationHandler;
 	private final AppointmentsConfigurationHandler appointmentConfigurationHandler;

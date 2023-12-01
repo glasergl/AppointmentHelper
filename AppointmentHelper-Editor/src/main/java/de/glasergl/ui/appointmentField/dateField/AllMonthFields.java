@@ -11,7 +11,6 @@ import javax.swing.border.EmptyBorder;
 import de.glasergl.simpleDate.SimpleDate;
 import de.glasergl.standard.swing.container.RowOfJComponent;
 import de.glasergl.standard.swing.myComponent.button.CustomTextButton;
-import de.glasergl.standard.swing.settings.Colors;
 
 /**
  * This JPanel visualizes all months as individual MonthField's and allows
@@ -22,7 +21,7 @@ import de.glasergl.standard.swing.settings.Colors;
  */
 public class AllMonthFields extends JPanel {
 
-	private static final Color BACKGROUND_COLOR = Colors.getBlue(1);
+	private static final Color BACKGROUND_COLOR = Color.WHITE;
 	private static final int WIDTH_OF_CLOSE_BUTTON = 40;
 	private static final Dimension SIZE_OF_MONTH_CONTROL_BUTTONS = new Dimension(60, 60);
 

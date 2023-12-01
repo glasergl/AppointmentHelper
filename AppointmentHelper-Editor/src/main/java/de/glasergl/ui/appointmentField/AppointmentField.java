@@ -5,13 +5,14 @@ import java.awt.FlowLayout;
 import java.util.Optional;
 
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import de.glasergl.appointment.Appointment;
 import de.glasergl.appointment.InvalidAppointmentException;
 import de.glasergl.simpleDate.SimpleDate;
 import de.glasergl.standard.swing.eventListener.emptyImplementation.MyDocumentListener;
 import de.glasergl.standard.swing.myComponent.MyCheckBox;
-import de.glasergl.standard.swing.myComponent.textField.MyTextField;
+import de.glasergl.swing.DefaultJComponentFactory;
 import de.glasergl.ui.appointmentField.dateField.SimpleDateField;
 
 /**
@@ -31,8 +32,8 @@ public class AppointmentField extends JPanel {
 	private static final boolean STANDARD_IS_BIRTHDAY = true;
 
 	private final SimpleDateField dateField = new SimpleDateField();
-	private final MyTextField nameField = new MyTextField();
-	private final MyTextField descriptionField = new MyTextField();
+	private final JTextField nameField = DefaultJComponentFactory.getDefaultJTextField();
+	private final JTextField descriptionField= DefaultJComponentFactory.getDefaultJTextField();
 	private final MyCheckBox isBirthdayField = new MyCheckBox("ist Geburtstag", STANDARD_IS_BIRTHDAY);
 
 	/**
@@ -95,7 +96,7 @@ public class AppointmentField extends JPanel {
 	private void setup() {
 		setLayout(new FlowLayout(FlowLayout.LEFT, DISTANCE_BETWEEN_SUB_COMPONENTS, 0));
 		nameField.setColumns(NAME_WIDTH);
-		nameField.addDocumentListener(new MyDocumentListener() {
+		nameField.getDocument().addDocumentListener(new MyDocumentListener() {
 			private Optional<Color> oldBackground = Optional.of(nameField.getBackground());
 
 			@Override
@@ -129,11 +130,11 @@ public class AppointmentField extends JPanel {
 		return dateField;
 	}
 
-	public MyTextField getNameField() {
+	public JTextField getNameField() {
 		return nameField;
 	}
 
-	public MyTextField getDescriptionField() {
+	public JTextField getDescriptionField() {
 		return descriptionField;
 	}
 
