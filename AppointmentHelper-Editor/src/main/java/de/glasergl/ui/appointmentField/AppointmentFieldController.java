@@ -19,7 +19,6 @@ import de.glasergl.swing.DefaultJComponentFactory;
  * Class which controls a single AppointmentField.
  *
  * @author Gabriel Glaser
- * @version 30.6.2022
  */
 public final class AppointmentFieldController extends JPanel {
 

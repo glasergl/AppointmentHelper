@@ -27,7 +27,6 @@ import static de.glasergl.configuration.test.PathToTestResources.BASE_TEST_RESOU
  * Tests whether creating a valid new configuration file is possible.
  * 
  * @author Gabriel Glaser
- * @version 30.06.2022
  */
 public class TestCreateConfigurationFile {
 	/**

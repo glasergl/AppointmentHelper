@@ -16,7 +16,6 @@ import de.glasergl.ui.appointmentField.AppointmentFieldControllerListController;
  * Main-Frame for the Editor.
  *
  * @author Gabriel Glaser
- * @version 30.3.2022
  */
 public final class EditorFrame extends MyFrame {
 

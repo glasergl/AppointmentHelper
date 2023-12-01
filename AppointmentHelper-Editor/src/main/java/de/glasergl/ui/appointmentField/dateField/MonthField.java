@@ -18,7 +18,6 @@ import de.glasergl.standard.swing.settings.Colors;
  * Representation of a Month with each respective day.
  *
  * @author Gabriel Glaser
- * @version 20.01.2022
  */
 public final class MonthField extends JPanel {
 

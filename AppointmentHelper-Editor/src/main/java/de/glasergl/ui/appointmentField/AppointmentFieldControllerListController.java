@@ -19,7 +19,6 @@ import de.glasergl.standard.swing.settings.Fonts;
  * the header.
  *
  * @author Gabriel Glaser
- * @version 13.3.2022
  */
 public class AppointmentFieldControllerListController extends JPanel {
 

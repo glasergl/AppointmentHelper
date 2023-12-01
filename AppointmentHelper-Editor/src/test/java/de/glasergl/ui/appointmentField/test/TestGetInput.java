@@ -27,7 +27,6 @@ import de.glasergl.ui.appointmentField.AppointmentFieldControllerList;
  * Tests the getInput method of AppointmentFieldControllerList.
  * 
  * @author Gabriel Glaser
- * @version 01.07.2022
  */
 public final class TestGetInput {
 

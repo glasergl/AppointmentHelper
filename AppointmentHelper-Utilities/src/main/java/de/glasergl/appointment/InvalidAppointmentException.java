@@ -6,7 +6,6 @@ package de.glasergl.appointment;
  * An Appointment is considered as invalid if the name has a length of zero.
  *
  * @author Gabriel Glaser
- * @version 29.03.2022
  */
 public final class InvalidAppointmentException extends RuntimeException {
 

@@ -21,7 +21,6 @@ import de.glasergl.ui.appointmentField.AppointmentFieldControllerList;
  * Tests common things about the TestAppointmentFieldControllerList.
  * 
  * @author Gabriel Glaser
- * @version 01.07.2022
  */
 public final class TestAppointmentFieldControllerList {
 

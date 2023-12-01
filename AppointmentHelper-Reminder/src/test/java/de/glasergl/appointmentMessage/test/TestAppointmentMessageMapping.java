@@ -15,7 +15,6 @@ import de.glasergl.simpleDate.SimpleDates;
 
 /**
  * @author Gabriel Glaser
- * @version 03.04.2022
  */
 public class TestAppointmentMessageMapping {
 

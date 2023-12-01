@@ -9,7 +9,6 @@ import java.util.List;
  * Class which contains function about simple dates.
  *
  * @author Gabriel Glaser
- * @version 29.3.2022
  */
 public final class SimpleDates {
 

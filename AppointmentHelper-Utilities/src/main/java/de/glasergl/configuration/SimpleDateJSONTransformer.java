@@ -9,7 +9,6 @@ import de.glasergl.simpleDate.SimpleDate;
  * and back.
  *
  * @author Gabriel Glaser
- * @version 30.6.2022
  */
 public final class SimpleDateJSONTransformer {
 

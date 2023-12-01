@@ -14,7 +14,6 @@ import de.glasergl.standard.swing.settings.Fonts;
  * Class which shows the appointments of today and tomorrow.
  *
  * @author Gabriel Glaser
- * @version 3.4.2022
  */
 public final class TodayTomorrowAppointmentMessagePanel extends JPanel {
 

@@ -13,7 +13,6 @@ import de.glasergl.standard.swing.general.SwingFunctions;
  * Frame which shows the CalendarPanel containing all Appointments.
  *
  * @author Gabriel Glaser
- * @version 30.03.2022
  */
 public final class CalendarFrame extends MyFrame {
 

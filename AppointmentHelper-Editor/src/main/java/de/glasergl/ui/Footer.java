@@ -16,7 +16,6 @@ import de.glasergl.ui.appointmentField.AppointmentFieldControllerListController;
  * Contains a button to add an empty appointment.
  *
  * @author Gabriel Glaser
- * @version 30.3.2022
  */
 public class Footer extends RowOfJComponent {
 

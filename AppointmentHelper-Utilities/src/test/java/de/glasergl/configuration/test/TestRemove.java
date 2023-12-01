@@ -26,7 +26,6 @@ import static de.glasergl.configuration.test.PathToTestResources.BASE_TEST_RESOU
  * Test whether removing appointments from a configuration works.
  * 
  * @author Gabriel Glaser
- * @version 30.06.2022
  */
 public final class TestRemove {
 

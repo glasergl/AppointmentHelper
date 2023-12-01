@@ -10,7 +10,6 @@ import de.glasergl.simpleDate.SimpleDate;
  * Class which contains functions about Appointments.
  *
  * @author Gabriel Glaser
- * @version 29.03.2022
  */
 public final class Appointments {
 

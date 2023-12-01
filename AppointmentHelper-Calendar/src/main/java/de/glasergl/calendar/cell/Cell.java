@@ -17,7 +17,6 @@ import de.glasergl.simpleDate.SimpleDate;
  * summary of a list of appointments at the given date.
  *
  * @author Gabriel Glaser
- * @version 30.3.2022
  */
 public final class Cell extends JPanel {
 

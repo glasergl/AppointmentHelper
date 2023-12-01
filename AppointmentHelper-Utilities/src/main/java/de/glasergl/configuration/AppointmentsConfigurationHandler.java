@@ -16,7 +16,6 @@ import de.glasergl.appointment.Appointments;
  * ConfigurationHandler.
  * 
  * @author Gabriel Glaser
- * @version 01.07.2022
  */
 public final class AppointmentsConfigurationHandler {
 

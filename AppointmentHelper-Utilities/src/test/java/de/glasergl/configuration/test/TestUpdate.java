@@ -31,7 +31,6 @@ import static de.glasergl.configuration.test.PathToTestResources.BASE_TEST_RESOU
  * Tests the update function of AppointmentsConfigurationHandler.
  * 
  * @author Gabriel Glaser
- * @version 30.06.2022
  */
 public class TestUpdate {
 

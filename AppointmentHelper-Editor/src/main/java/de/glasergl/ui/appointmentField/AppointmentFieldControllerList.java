@@ -23,7 +23,6 @@ import de.glasergl.standard.swing.general.SwingFunctions;
  * configuration with storeAll().
  * 
  * @author Gabriel Glaser
- * @version 01.07.2022
  */
 public final class AppointmentFieldControllerList extends JPanel {
 

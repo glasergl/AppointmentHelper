@@ -20,7 +20,6 @@ import de.glasergl.simpleDate.SimpleDates;
  * switching years.
  *
  * @author Gabriel Glaser
- * @version 30.03.2022
  */
 public final class AllCells extends JPanel {
 

@@ -14,7 +14,6 @@ import de.glasergl.ui.ReminderFrame;
  * Entry class for the Reminder.
  *
  * @author Gabriel Glaser
- * @version 27.06.2022
  */
 public final class ReminderMain {
 

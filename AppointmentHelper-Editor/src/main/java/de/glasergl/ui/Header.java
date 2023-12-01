@@ -16,7 +16,6 @@ import de.glasergl.ui.appointmentField.AppointmentFieldControllerListController;
  * to restore the last deleted button.
  *
  * @author Gabriel Glaser
- * @version 30.3.2022
  */
 public class Header extends RowOfJComponent {
 

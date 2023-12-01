@@ -13,7 +13,6 @@ import de.glasergl.calendar.cell.AllCells;
  * year. Furthermore, Appointments on a given day are visualized, too.
  *
  * @author Gabriel Glaser
- * @version 30.3.2022
  */
 public final class CalendarPanel extends JPanel {
 

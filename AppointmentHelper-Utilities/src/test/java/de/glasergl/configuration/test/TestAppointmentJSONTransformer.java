@@ -17,7 +17,6 @@ import de.glasergl.configuration.SimpleDateJSONTransformer;
  * Tests the transforming of JSONObjects to Appointments and back.
  * 
  * @author Gabriel Glaser
- * @version 30.06.2022
  */
 public class TestAppointmentJSONTransformer {
 

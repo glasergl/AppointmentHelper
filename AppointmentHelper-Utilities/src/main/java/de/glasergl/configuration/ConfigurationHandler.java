@@ -22,7 +22,6 @@ import org.json.JSONTokener;
  * storeConfiguration() is called.
  *
  * @author Gabriel Glaser
- * @version 30.6.2022
  */
 public final class ConfigurationHandler {
 

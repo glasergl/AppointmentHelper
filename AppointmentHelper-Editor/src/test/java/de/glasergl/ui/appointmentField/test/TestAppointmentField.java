@@ -16,7 +16,6 @@ import de.glasergl.ui.appointmentField.AppointmentField;
 
 /**
  * @author Gabriel Glaser
- * @version 12.03.2022
  */
 public class TestAppointmentField {
 

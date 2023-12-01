@@ -24,7 +24,6 @@ import de.glasergl.ui.appointmentField.AppointmentFieldControllerList;
  * test classes will test the adaption of the indices respectively.
  * 
  * @author Gabriel Glaser
- * @version 01.07.2022
  */
 public final class TestIndices {
 

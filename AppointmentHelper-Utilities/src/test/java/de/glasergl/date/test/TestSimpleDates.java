@@ -9,7 +9,6 @@ import de.glasergl.simpleDate.SimpleDates;
 
 /**
  * @author Gabriel Glaser
- * @version 19.01.2022
  */
 public class TestSimpleDates {
 

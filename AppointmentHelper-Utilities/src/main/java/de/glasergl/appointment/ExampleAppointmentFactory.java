@@ -6,7 +6,6 @@ import de.glasergl.simpleDate.SimpleDate;
  * Class which contains some example Appointments.
  * 
  * @author Gabriel Glaser
- * @version 30.06.2022
  */
 public final class ExampleAppointmentFactory {
 

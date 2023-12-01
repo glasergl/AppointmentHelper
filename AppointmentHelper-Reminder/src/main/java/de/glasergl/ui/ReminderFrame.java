@@ -14,7 +14,6 @@ import de.glasergl.standard.swing.settings.Colors;
  * Main Frame for the Reminder.
  *
  * @author Gabriel Glaser
- * @version 3.4.2022
  */
 public final class ReminderFrame extends MyFrame {
 

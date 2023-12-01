@@ -17,7 +17,6 @@ import de.glasergl.standard.swing.myComponent.button.CustomTextButton;
  * controlling them with Buttons.
  *
  * @author Gabriel Glaser
- * @version 04.07.2022
  */
 public class AllMonthFields extends JPanel {
 

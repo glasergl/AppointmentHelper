@@ -24,7 +24,6 @@ import de.glasergl.ui.appointmentField.AppointmentFieldControllerList;
  * Tests the delete method of AppointmentFieldControllerList.
  * 
  * @author Gabriel Glaser
- * @version 01.07.2022
  */
 public final class TestDelete {
 

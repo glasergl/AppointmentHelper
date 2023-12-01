@@ -14,7 +14,6 @@ import de.glasergl.ui.CalendarFrame;
  * Entry point for the Calendar.
  *
  * @author Gabriel Glaser
- * @version 18.06.2022
  */
 public final class CalendarMain {
 

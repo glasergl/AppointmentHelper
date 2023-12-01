@@ -13,7 +13,6 @@ import de.glasergl.standard.swing.myComponent.MyLabel;
  * Visual representation of all Months in a horizontal row.
  *
  * @author Gabriel Glaser
- * @version 30.03.2022
  */
 public final class MonthRow extends JPanel {
 

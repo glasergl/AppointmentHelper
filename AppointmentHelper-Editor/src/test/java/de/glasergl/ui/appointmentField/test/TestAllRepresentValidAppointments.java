@@ -26,7 +26,6 @@ import de.glasergl.ui.appointmentField.AppointmentFieldControllerList;
  * AppointmentFieldControllerList.
  * 
  * @author Gabriel Glaser
- * @version 01.07.2022
  */
 public final class TestAllRepresentValidAppointments {
 

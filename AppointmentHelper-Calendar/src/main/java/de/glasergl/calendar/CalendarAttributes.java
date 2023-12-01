@@ -9,7 +9,6 @@ import de.glasergl.standard.swing.settings.Fonts;
  * Class which contains the attributes for the Calendar.
  *
  * @author Gabriel Glaser
- * @version 30.03.2022
  */
 public final class CalendarAttributes {
 

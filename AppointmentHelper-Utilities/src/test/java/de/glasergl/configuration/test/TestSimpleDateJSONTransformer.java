@@ -14,7 +14,6 @@ import de.glasergl.simpleDate.SimpleDate;
  * Tests the transforming of JSONObjects to SimpleDates and back.
  * 
  * @author Gabriel Glaser
- * @version 30.06.2022
  */
 public class TestSimpleDateJSONTransformer {
 

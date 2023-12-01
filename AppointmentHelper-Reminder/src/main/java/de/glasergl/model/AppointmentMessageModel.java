@@ -19,7 +19,6 @@ import de.glasergl.appointment.Appointment;
  * Appointment, to the respective Appointment.
  *
  * @author Gabriel Glaser
- * @version 03.04.2022
  */
 public final class AppointmentMessageModel {
 

@@ -4,7 +4,6 @@ package de.glasergl.simpleDate;
  * Class which contains some example SimpleDates.
  * 
  * @author Gabriel Glaser
- * @version 30.06.2022
  */
 public class ExampleSimpleDateFactory {
 

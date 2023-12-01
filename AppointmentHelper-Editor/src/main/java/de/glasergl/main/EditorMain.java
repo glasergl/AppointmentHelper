@@ -10,7 +10,6 @@ import de.glasergl.ui.EditorFrame;
  * Entry-Point for the Editor.
  *
  * @author Gabriel Glaser
- * @version 1.7.2022
  */
 public class EditorMain {
 

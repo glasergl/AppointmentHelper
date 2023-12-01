@@ -22,7 +22,6 @@ import de.glasergl.ui.appointmentField.dateField.SimpleDateField;
  * indicate it being in an illegal state.
  *
  * @author Gabriel Glaser
- * @version 13.3.2022
  */
 public class AppointmentField extends JPanel {
 

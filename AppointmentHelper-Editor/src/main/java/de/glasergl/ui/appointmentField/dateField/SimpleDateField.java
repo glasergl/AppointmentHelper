@@ -22,7 +22,6 @@ import de.glasergl.standard.swing.settings.Fonts;
  * lets the user decide for a date.
  *
  * @author Gabriel Glaser
- * @version 20.01.2022
  */
 public class SimpleDateField extends CustomTextButton {
 

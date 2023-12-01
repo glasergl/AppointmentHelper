@@ -7,7 +7,6 @@ import de.glasergl.simpleDate.SimpleDates;
  * Immutable class which contains all necessary attributes for an appointment.
  *
  * @author Gabriel Glaser
- * @version 29.3.2022
  */
 public final class Appointment implements Comparable<Appointment> {
 
