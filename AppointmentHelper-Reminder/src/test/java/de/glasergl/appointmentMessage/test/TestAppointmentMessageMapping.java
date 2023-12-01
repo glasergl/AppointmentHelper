@@ -17,13 +17,10 @@ import de.glasergl.simpleDate.SimpleDates;
  * @author Gabriel Glaser
  */
 public class TestAppointmentMessageMapping {
-
-	static Appointment appointmentToday1 = new Appointment(SimpleDates.getToday(), "Sam", "beschreibung1", true);
-	static Appointment appointmentToday2 = new Appointment(SimpleDates.getToday(), "Frodo", "beschreibung2", true);
-	static Appointment appointmentTomorrow1 = new Appointment(SimpleDates.getTomorrow(), "Besprechung", "beschreibung3",
-			false);
-	static Appointment appointmentTomorrow2 = new Appointment(SimpleDates.getTomorrow(), "Party", "beschreibung4",
-			false);
+	static Appointment appointmentToday1 = new Appointment(SimpleDates.getToday(), "Sam", true);
+	static Appointment appointmentToday2 = new Appointment(SimpleDates.getToday(), "Frodo", true);
+	static Appointment appointmentTomorrow1 = new Appointment(SimpleDates.getTomorrow(), "Besprechung", false);
+	static Appointment appointmentTomorrow2 = new Appointment(SimpleDates.getTomorrow(), "Party", false);
 
 	@Test
 	public void testMappingWithBirthdays() {

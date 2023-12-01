@@ -11,11 +11,7 @@ import javax.swing.JPanel;
 
 import de.glasergl.appointment.Appointment;
 import de.glasergl.model.AppointmentMessageModel;
-import de.glasergl.standard.swing.entity.ColorType;
-import de.glasergl.standard.swing.eventListener.ColorChangerOnHover;
-import de.glasergl.standard.swing.eventListener.SiblingPopUpDisplayerOnHover;
 import de.glasergl.standard.swing.myComponent.MyLabel;
-import de.glasergl.standard.swing.settings.Colors;
 
 /**
  * Class which calculates the sentence which contains the appointments of today
@@ -24,9 +20,6 @@ import de.glasergl.standard.swing.settings.Colors;
  * @author Gabriel Glaser
  */
 public final class AppointmentMessagePanel extends JPanel {
-
-	private static final Color BACKGROUND_COLOR_OF_POP_UP = Colors.getBlue(0);
-
 	private final List<MyLabel> allLabels = new ArrayList<>();
 	private final AppointmentMessageModel appointmentMessage;
 
@@ -47,28 +40,8 @@ public final class AppointmentMessagePanel extends JPanel {
 		final List<String> messageComponents = appointmentMessage.getComponents();
 		for (int i = 0; i < messageComponents.size(); i++) {
 			final MyLabel component = new MyLabel(messageComponents.get(i));
-			if (appointmentMessage.isName(i)) {
-				setupAppointmentLabel(component, appointmentMessage.getAppointment(i));
-			}
 			allLabels.add(component);
 			add(component);
-		}
-	}
-
-	/**
-	 * Adds a PopUp with the appointments' description under the MyLabel with the
-	 * respective name.
-	 *
-	 * @param appointmentNameLabel
-	 * @param appointment
-	 */
-	private void setupAppointmentLabel(final MyLabel appointmentNameLabel, final Appointment appointment) {
-		appointmentNameLabel.addMouseListener(new ColorChangerOnHover(Colors.ofFocus(), ColorType.BACKGROUND));
-		final String description = appointment.getDescription();
-		final MyLabel withDescription = new MyLabel(description);
-		withDescription.setBackground(BACKGROUND_COLOR_OF_POP_UP);
-		if (!description.equals("")) {
-			new SiblingPopUpDisplayerOnHover(withDescription, appointmentNameLabel);
 		}
 	}
 
@@ -100,5 +73,4 @@ public final class AppointmentMessagePanel extends JPanel {
 			}
 		}
 	}
-
 }

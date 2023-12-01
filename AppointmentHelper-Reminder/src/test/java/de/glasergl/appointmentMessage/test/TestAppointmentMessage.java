@@ -16,7 +16,6 @@ import de.glasergl.simpleDate.SimpleDates;
  * @author Gabriel Glaser
  */
 public class TestAppointmentMessage {
-
 	@Test
 	public void test00() {
 		List<Appointment> appointments = getTestAppointmentsWithDates(SimpleDates.getDateIn(122),
@@ -91,11 +90,10 @@ public class TestAppointmentMessage {
 	}
 
 	private List<Appointment> getTestAppointmentsWithDates(SimpleDate d1, SimpleDate d2, SimpleDate d3, SimpleDate d4) {
-		Appointment appointment1 = new Appointment(d1, "Sam", "beschreibung1", true);
-		Appointment appointment2 = new Appointment(d2, "Frodo", "beschreibung2", true);
-		Appointment appointment3 = new Appointment(d3, "Besprechung", "beschreibung3", false);
-		Appointment appointment4 = new Appointment(d4, "Party", "beschreibung4", false);
+		Appointment appointment1 = new Appointment(d1, "Sam", true);
+		Appointment appointment2 = new Appointment(d2, "Frodo", true);
+		Appointment appointment3 = new Appointment(d3, "Besprechung", false);
+		Appointment appointment4 = new Appointment(d4, "Party", false);
 		return Arrays.asList(appointment1, appointment2, appointment3, appointment4);
 	}
-
 }

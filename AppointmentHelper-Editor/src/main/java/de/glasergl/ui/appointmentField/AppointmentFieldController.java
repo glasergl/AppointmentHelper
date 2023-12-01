@@ -131,7 +131,6 @@ public final class AppointmentFieldController extends JPanel {
 			appointmentFieldList.changeHappened();
 		};
 		appointmentField.getNameField().getDocument().addDocumentListener(documentListener);
-		appointmentField.getDescriptionField().getDocument().addDocumentListener(documentListener);
 		appointmentField.getDateField().addChangeListener(changeListener);
 		appointmentField.getIsBirthdayField().addChangeListener(changeListener);
 	}
@@ -157,10 +156,6 @@ public final class AppointmentFieldController extends JPanel {
 		return appointmentField.getName();
 	}
 
-	public String getDescription() {
-		return appointmentField.getDescription();
-	}
-
 	public boolean isBirthday() {
 		return appointmentField.isBirthday();
 	}
@@ -176,10 +171,6 @@ public final class AppointmentFieldController extends JPanel {
 	@Override
 	public void setName(final String newName) {
 		appointmentField.setName(newName);
-	}
-
-	public void setDescription(final String newDescription) {
-		appointmentField.setDescription(newDescription);
 	}
 
 	public void setIsBirthday(final boolean newIsBirthday) {

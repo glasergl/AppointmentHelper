@@ -24,7 +24,7 @@ public final class AppointmentJSONTransformer {
 			throw new IllegalArgumentException(jsonToTransform + " is not a representation of an appointment.");
 		} else {
 			final SimpleDate ofJSON = SimpleDateJSONTransformer.jsonToSimpleDate(jsonToTransform.getJSONObject("date"));
-			return new Appointment(ofJSON, jsonToTransform.getString("name"), jsonToTransform.getString("description"),
+			return new Appointment(ofJSON, jsonToTransform.getString("name"),
 					jsonToTransform.getBoolean("isABirthday"));
 		}
 	}
@@ -39,7 +39,6 @@ public final class AppointmentJSONTransformer {
 		JSONObject json = new JSONObject();
 		json.put("date", SimpleDateJSONTransformer.simpleDateToJSON(appointmentToTransform.getDate()));
 		json.put("name", appointmentToTransform.getName());
-		json.put("description", appointmentToTransform.getDescription());
 		json.put("isABirthday", appointmentToTransform.isBirthday());
 		return json;
 	}
@@ -52,8 +51,7 @@ public final class AppointmentJSONTransformer {
 	 */
 	public static boolean representsAppointment(final JSONObject jsonToTest) {
 		final int numberOfKeys = jsonToTest.keySet().size();
-		return jsonToTest.has("date") && jsonToTest.has("name") && jsonToTest.has("description")
-				&& jsonToTest.has("isABirthday") && numberOfKeys == 4;
+		return jsonToTest.has("date") && jsonToTest.has("name") && jsonToTest.has("isABirthday") && numberOfKeys == 3;
 	}
 
 }

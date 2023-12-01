@@ -1,8 +1,6 @@
 package de.glasergl.ui.appointmentField;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.FlowLayout;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
@@ -11,8 +9,6 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EmptyBorder;
 
 import de.glasergl.configuration.ConfigurationHandler;
-import de.glasergl.standard.swing.myComponent.MyLabel;
-import de.glasergl.standard.swing.settings.Fonts;
 
 /**
  * Top-Level Parent for all AppointmentFields which controls the JScrollPane and
@@ -23,7 +19,6 @@ import de.glasergl.standard.swing.settings.Fonts;
 public class AppointmentFieldControllerListController extends JPanel {
 
 	private final AppointmentFieldControllerList appointmentFields;
-	private final ColumnDescription columnDescription = new ColumnDescription();
 	private final JScrollPane jScrollPane;
 
 	public AppointmentFieldControllerListController(final ConfigurationHandler configurationHandler) {
@@ -35,7 +30,6 @@ public class AppointmentFieldControllerListController extends JPanel {
 	}
 
 	public void addEmptyAppointmentField() {
-//	jScrollPane.validate();
 		appointmentFields.addEmptyAppointmentField();
 		final JScrollBar verticalScrollBar = jScrollPane.getVerticalScrollBar();
 		verticalScrollBar.setValue(verticalScrollBar.getMaximum());
@@ -62,7 +56,6 @@ public class AppointmentFieldControllerListController extends JPanel {
 	private void setup() {
 		setLayout(new BorderLayout());
 		setupJScrollPane();
-		add(columnDescription, BorderLayout.NORTH);
 		add(jScrollPane, BorderLayout.CENTER);
 	}
 
@@ -71,28 +64,4 @@ public class AppointmentFieldControllerListController extends JPanel {
 		jScrollPane.setPreferredSize(appointmentFields.getPreferredViewSize());
 		jScrollPane.getVerticalScrollBar().setUnitIncrement(10);
 	}
-
-	private final class ColumnDescription extends JPanel {
-		private final MyLabel date = new MyLabel("Datum");
-		private final MyLabel name = new MyLabel("Name");
-		private final MyLabel description = new MyLabel("Beschreibung");
-
-		public ColumnDescription() {
-			super(new FlowLayout(FlowLayout.LEFT, 0, 0));
-			setBackground(new Color(255, 255, 255));
-			date.setOpaque(false);
-			name.setOpaque(false);
-			description.setOpaque(false);
-			date.setFont(Fonts.resizedStandard(16.0f));
-			name.setFont(Fonts.resizedStandard(16.0f));
-			description.setFont(Fonts.resizedStandard(16.0f));
-			date.setBorder(new EmptyBorder(0, 37, 0, 0));
-			name.setBorder(new EmptyBorder(0, 27, 0, 0));
-			description.setBorder(new EmptyBorder(0, 249, 0, 0));
-			add(date);
-			add(name);
-			add(description);
-		}
-	}
-
 }

@@ -9,45 +9,24 @@ import de.glasergl.simpleDate.SimpleDates;
  * @author Gabriel Glaser
  */
 public final class Appointment implements Comparable<Appointment> {
-
-	private static final String DEFAULT_DESCRIPTION = "";
-	private static final SimpleDate DEFAULT_DATE = SimpleDates.getToday();
-	private static final boolean DEFAULT_IS_BIRTHDAY = true;
-
 	private final SimpleDate date;
 	private final String name;
-	private final String description;
 	private final boolean isBirthday;
 
 	/**
 	 * @param date
 	 * @param name
-	 * @param description
 	 * @param isBirthday
-	 * @throws IllegalArgumentException - If name is an empty String.
+	 * @throws IllegalArgumentException If "name" is an empty String.
 	 */
-	public Appointment(final SimpleDate date, final String name, final String description, final boolean isBirthday)
+	public Appointment(final SimpleDate date, final String name, final boolean isBirthday)
 			throws IllegalArgumentException {
 		if (name.length() == 0) {
 			throw new IllegalArgumentException("The name has to contain atleast one character.");
 		}
 		this.date = date;
 		this.name = name;
-		this.description = description;
 		this.isBirthday = isBirthday;
-	}
-
-	/**
-	 * Constructor with default empty description.
-	 *
-	 * @param date
-	 * @param name
-	 * @param isBirthday
-	 * @throws IllegalArgumentException - If name is an empty String.
-	 */
-	public Appointment(final SimpleDate date, final String name, final boolean isBirthday)
-			throws IllegalArgumentException {
-		this(date, name, DEFAULT_DESCRIPTION, isBirthday);
 	}
 
 	/**
@@ -58,7 +37,7 @@ public final class Appointment implements Comparable<Appointment> {
 	 * @throws IllegalArgumentException - If name is an empty String.
 	 */
 	public Appointment(final String name, final boolean isBirthday) throws IllegalArgumentException {
-		this(DEFAULT_DATE, name, isBirthday);
+		this(SimpleDates.getToday(), name, isBirthday);
 	}
 
 	/**
@@ -69,7 +48,7 @@ public final class Appointment implements Comparable<Appointment> {
 	 * @throws IllegalArgumentException - If name is an empty String.
 	 */
 	public Appointment(final SimpleDate date, final String name) throws IllegalArgumentException {
-		this(date, name, DEFAULT_IS_BIRTHDAY);
+		this(date, name, true);
 	}
 
 	/**
@@ -79,7 +58,7 @@ public final class Appointment implements Comparable<Appointment> {
 	 * @throws IllegalArgumentException - If name is an empty String.
 	 */
 	public Appointment(final String name) throws IllegalArgumentException {
-		this(name, DEFAULT_IS_BIRTHDAY);
+		this(name, true);
 	}
 
 	public boolean isToday() {
@@ -99,7 +78,7 @@ public final class Appointment implements Comparable<Appointment> {
 	 */
 	@Override
 	public String toString() {
-		return date + ": " + name + ", " + description;
+		return date + ": " + name;
 	}
 
 	@Override
@@ -109,7 +88,6 @@ public final class Appointment implements Comparable<Appointment> {
 		}
 		final Appointment appointmentToCompare = (Appointment) objectToCompare;
 		return date.equals(appointmentToCompare.date) && name.equals(appointmentToCompare.name)
-				&& description.equals(appointmentToCompare.description)
 				&& isBirthday == appointmentToCompare.isBirthday;
 	}
 
@@ -132,17 +110,12 @@ public final class Appointment implements Comparable<Appointment> {
 			if (nameCompareValue != 0) {
 				return nameCompareValue;
 			} else {
-				final int descriptionCompareValue = description.compareTo(toCompare.description);
-				if (descriptionCompareValue != 0) {
-					return descriptionCompareValue;
+				if (isBirthday && !toCompare.isBirthday) {
+					return 1;
+				} else if (!isBirthday && toCompare.isBirthday) {
+					return -1;
 				} else {
-					if (isBirthday && !toCompare.isBirthday) {
-						return 1;
-					} else if (!isBirthday && toCompare.isBirthday) {
-						return -1;
-					} else {
-						return 0;
-					}
+					return 0;
 				}
 			}
 		}
@@ -156,12 +129,7 @@ public final class Appointment implements Comparable<Appointment> {
 		return name;
 	}
 
-	public String getDescription() {
-		return description;
-	}
-
 	public boolean isBirthday() {
 		return isBirthday;
 	}
-
 }

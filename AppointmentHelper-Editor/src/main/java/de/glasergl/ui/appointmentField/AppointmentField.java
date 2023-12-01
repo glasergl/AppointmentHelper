@@ -26,13 +26,11 @@ import de.glasergl.ui.appointmentField.dateField.SimpleDateField;
 public class AppointmentField extends JPanel {
 
 	private static final int NAME_WIDTH = 16;
-	private static final int DESCRIPTION_WIDTH = 30;
 	private static final int DISTANCE_BETWEEN_SUB_COMPONENTS = 10;
 	private static final boolean STANDARD_IS_BIRTHDAY = true;
 
 	private final SimpleDateField dateField = new SimpleDateField();
 	private final JTextField nameField = DefaultJComponentFactory.getDefaultJTextField();
-	private final JTextField descriptionField= DefaultJComponentFactory.getDefaultJTextField();
 	private final MyCheckBox isBirthdayField = new MyCheckBox("ist Geburtstag", STANDARD_IS_BIRTHDAY);
 
 	/**
@@ -42,7 +40,6 @@ public class AppointmentField extends JPanel {
 		super();
 		dateField.setDate(initialDisplay.getDate());
 		nameField.setText(initialDisplay.getName());
-		descriptionField.setText(initialDisplay.getDescription());
 		isBirthdayField.setSelected(initialDisplay.isBirthday());
 		setup();
 	}
@@ -76,7 +73,7 @@ public class AppointmentField extends JPanel {
 		if (!representsValidAppointment()) {
 			throw new InvalidAppointmentException();
 		} else {
-			return new Appointment(getDate(), getName(), getDescription(), isBirthday());
+			return new Appointment(getDate(), getName(), isBirthday());
 		}
 	}
 
@@ -88,7 +85,6 @@ public class AppointmentField extends JPanel {
 	public void setAppointment(final Appointment newAppointment) {
 		setDate(newAppointment.getDate());
 		setName(newAppointment.getName());
-		setDescription(newAppointment.getDescription());
 		setIsBirthday(newAppointment.isBirthday());
 	}
 
@@ -109,10 +105,8 @@ public class AppointmentField extends JPanel {
 				}
 			}
 		});
-		descriptionField.setColumns(DESCRIPTION_WIDTH);
 		add(dateField);
 		add(nameField);
-		add(descriptionField);
 		add(isBirthdayField);
 	}
 
@@ -133,10 +127,6 @@ public class AppointmentField extends JPanel {
 		return nameField;
 	}
 
-	public JTextField getDescriptionField() {
-		return descriptionField;
-	}
-
 	public MyCheckBox getIsBirthdayField() {
 		return isBirthdayField;
 	}
@@ -150,10 +140,6 @@ public class AppointmentField extends JPanel {
 		return nameField.getText();
 	}
 
-	public String getDescription() {
-		return descriptionField.getText();
-	}
-
 	public boolean isBirthday() {
 		return isBirthdayField.isSelected();
 	}
@@ -165,10 +151,6 @@ public class AppointmentField extends JPanel {
 	@Override
 	public void setName(final String newName) {
 		nameField.setText(newName);
-	}
-
-	public void setDescription(final String newDescription) {
-		descriptionField.setText(newDescription);
 	}
 
 	public void setIsBirthday(final boolean newIsBirthday) {
