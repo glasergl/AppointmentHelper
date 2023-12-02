@@ -1,19 +1,16 @@
 package de.glasergl.simpleDate;
 
-import java.util.Arrays;
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.List;
 
 /**
- * Class which contains function about simple dates.
+ * Class which contains generally applicable function about simple dates.
  *
  * @author Gabriel Glaser
  */
 public final class SimpleDates {
-
-	public static final List<String> MONTHS = Collections.unmodifiableList(Arrays.asList("Januar", "Februar", "März",
-			"April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"));
+	public static final List<String> MONTHS = List.of("Januar", "Februar", "März", "April", "Mai", "Juni", "Juli",
+			"August", "September", "Oktober", "November", "Dezember");
 
 	/**
 	 * @param day
@@ -134,5 +131,4 @@ public final class SimpleDates {
 	public static SimpleDate calendarToDate(final Calendar toTransform) {
 		return new SimpleDate(toTransform.get(Calendar.DAY_OF_MONTH), toTransform.get(Calendar.MONTH) + 1);
 	}
-
 }

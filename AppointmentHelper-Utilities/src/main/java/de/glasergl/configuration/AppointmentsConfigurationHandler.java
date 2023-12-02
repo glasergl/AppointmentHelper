@@ -1,6 +1,7 @@
 package de.glasergl.configuration;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -8,7 +9,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import de.glasergl.appointment.Appointment;
-import de.glasergl.appointment.Appointments;
 
 /**
  * Handler for the appointments of the AppointmentHelper stored in the
@@ -34,7 +34,7 @@ public final class AppointmentsConfigurationHandler {
 		super();
 		this.appointmentsAsJSON = configuration.getJSONArray(JSON_KEY);
 		final List<Appointment> initialAppointments = getAppointments();
-		Appointments.sortAppointments(initialAppointments);
+		Collections.sort(initialAppointments);
 		updateAppointments(initialAppointments);
 	}
 

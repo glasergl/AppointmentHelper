@@ -1,12 +1,11 @@
 package de.glasergl.simpleDate;
 
 /**
- * Immutable class to store a simple date with just day and month.
+ * Immutable class to store a simple date with day and month.
  *
  * @author Gabriel Glaser
  */
 public final class SimpleDate implements Comparable<SimpleDate> {
-
 	private final int day;
 	private final int month;
 
@@ -52,11 +51,11 @@ public final class SimpleDate implements Comparable<SimpleDate> {
 	}
 
 	@Override
-	public boolean equals(final Object toCompare) {
-		if (!(toCompare instanceof SimpleDate)) {
+	public boolean equals(final Object object) {
+		if (!(object instanceof SimpleDate)) {
 			return false;
 		} else {
-			return equals((SimpleDate) toCompare, SimpleDates.getCurrentYear());
+			return equals((SimpleDate) object, SimpleDates.getCurrentYear());
 		}
 	}
 
@@ -67,17 +66,17 @@ public final class SimpleDate implements Comparable<SimpleDate> {
 	 * equal. If one date is the 29th of February and the other is the 1st of March,
 	 * they are considered equal, too, if the given year is no switching year.
 	 *
-	 * @param toCompare
+	 * @param date
 	 * @param year
 	 * @return Equality of this an toCompare.
 	 */
-	public boolean equals(final SimpleDate toCompare, final int year) {
-		if (day == toCompare.day && month == toCompare.month) {
+	public boolean equals(final SimpleDate date, final int year) {
+		if (day == date.day && month == date.month) {
 			return true;
 		} else {
 			if (day == 29 && month == 2) {
-				return toCompare.day == 1 && toCompare.month == 3 && !SimpleDates.isSwitchingYear(year);
-			} else if (toCompare.day == 29 && toCompare.month == 2) {
+				return date.day == 1 && date.month == 3 && !SimpleDates.isSwitchingYear(year);
+			} else if (date.day == 29 && date.month == 2) {
 				return day == 1 && month == 3 && !SimpleDates.isSwitchingYear(year);
 			} else {
 				return false;
@@ -108,5 +107,4 @@ public final class SimpleDate implements Comparable<SimpleDate> {
 	public int getMonth() {
 		return month;
 	}
-
 }

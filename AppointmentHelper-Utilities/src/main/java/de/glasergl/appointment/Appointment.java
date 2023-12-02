@@ -30,34 +30,35 @@ public final class Appointment implements Comparable<Appointment> {
 	}
 
 	/**
-	 * Constructor with default date (today) and empty description.
-	 *
+	 * Constructor with date as the date the constructor is called.
+	 * 
 	 * @param name
 	 * @param isBirthday
-	 * @throws IllegalArgumentException - If name is an empty String.
+	 * @throws IllegalArgumentException If "name" is an empty String.
 	 */
 	public Appointment(final String name, final boolean isBirthday) throws IllegalArgumentException {
 		this(SimpleDates.getToday(), name, isBirthday);
 	}
 
 	/**
-	 * Constructor with default empty description and is a birthday.
+	 * Constructor which sets "isBirthday" to true.
 	 *
 	 * @param date
 	 * @param name
-	 * @throws IllegalArgumentException - If name is an empty String.
+	 * @throws IllegalArgumentException If "name" is an empty String.
 	 */
 	public Appointment(final SimpleDate date, final String name) throws IllegalArgumentException {
 		this(date, name, true);
 	}
 
 	/**
-	 * Constructor with default date (today), empty description and is a birthday.
-	 *
+	 * Constructor which sets "isBirthday" to true and uses the date of today (at
+	 * the time the constructor is called).
+	 * 
 	 * @param name
-	 * @throws IllegalArgumentException - If name is an empty String.
+	 * @throws IllegalArgumentException If "name" is an empty String.
 	 */
-	public Appointment(final String name) throws IllegalArgumentException {
+	public Appointment(final String name) {
 		this(name, true);
 	}
 
@@ -69,8 +70,8 @@ public final class Appointment implements Comparable<Appointment> {
 		return date.isTomorrow();
 	}
 
-	public boolean isAt(final SimpleDate toTest) {
-		return date.equals(toTest);
+	public boolean occursAt(final SimpleDate date) {
+		return this.date.equals(date);
 	}
 
 	/**
@@ -82,37 +83,36 @@ public final class Appointment implements Comparable<Appointment> {
 	}
 
 	@Override
-	public boolean equals(final Object objectToCompare) {
-		if (!(objectToCompare instanceof Appointment)) {
+	public boolean equals(final Object object) {
+		if (!(object instanceof Appointment)) {
 			return false;
 		}
-		final Appointment appointmentToCompare = (Appointment) objectToCompare;
-		return date.equals(appointmentToCompare.date) && name.equals(appointmentToCompare.name)
-				&& isBirthday == appointmentToCompare.isBirthday;
+		final Appointment appointment = (Appointment) object;
+		return date.equals(appointment.date) && name.equals(appointment.name) && isBirthday == appointment.isBirthday;
 	}
 
 	/**
 	 * Calculates the order of this in comparison to toCompare.
 	 *
-	 * It is sorted by the compareTo() results of date > name > description >
-	 * isBirthday
+	 * It is sorted by the compareTo() results of date > name > isBirthday
 	 *
-	 * @param toCompare
-	 * @return The value representing the order of this and toCompare.
+	 * @param appointment
+	 * @return The value representing the order of this and the other given
+	 *         appointment.
 	 */
 	@Override
-	public int compareTo(final Appointment toCompare) {
-		final int dateCompareValue = date.compareTo(toCompare.date);
+	public int compareTo(final Appointment appointment) {
+		final int dateCompareValue = date.compareTo(appointment.date);
 		if (dateCompareValue != 0) {
 			return dateCompareValue;
 		} else {
-			final int nameCompareValue = name.compareTo(toCompare.name);
+			final int nameCompareValue = name.compareTo(appointment.name);
 			if (nameCompareValue != 0) {
 				return nameCompareValue;
 			} else {
-				if (isBirthday && !toCompare.isBirthday) {
+				if (isBirthday && !appointment.isBirthday) {
 					return 1;
-				} else if (!isBirthday && toCompare.isBirthday) {
+				} else if (!isBirthday && appointment.isBirthday) {
 					return -1;
 				} else {
 					return 0;
