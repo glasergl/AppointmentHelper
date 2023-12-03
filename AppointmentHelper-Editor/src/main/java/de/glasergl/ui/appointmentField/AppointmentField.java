@@ -2,7 +2,6 @@ package de.glasergl.ui.appointmentField;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
-import java.util.Optional;
 
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -10,7 +9,6 @@ import javax.swing.JTextField;
 import de.glasergl.appointment.Appointment;
 import de.glasergl.appointment.InvalidAppointmentException;
 import de.glasergl.simpleDate.SimpleDate;
-import de.glasergl.standard.swing.eventListener.emptyImplementation.MyDocumentListener;
 import de.glasergl.standard.swing.myComponent.MyCheckBox;
 import de.glasergl.swing.DefaultJComponentFactory;
 import de.glasergl.ui.appointmentField.dateField.SimpleDateField;
@@ -18,15 +16,12 @@ import de.glasergl.ui.appointmentField.dateField.SimpleDateField;
 /**
  * Visual Input-Field for an Appointment.
  *
- * Furthermore, if the TextField for the name is empty, it gets colored red to
- * indicate it being in an illegal state.
- *
  * @author Gabriel Glaser
  */
 public class AppointmentField extends JPanel {
-
 	private static final int NAME_WIDTH = 16;
 	private static final int DISTANCE_BETWEEN_SUB_COMPONENTS = 10;
+	private static final int TOP_BOTTOM_MARGIN = 5;
 	private static final boolean STANDARD_IS_BIRTHDAY = true;
 
 	private final SimpleDateField dateField = new SimpleDateField();
@@ -37,23 +32,19 @@ public class AppointmentField extends JPanel {
 	 * @param initialDisplay - Appointment which is initially displayed by this.
 	 */
 	public AppointmentField(final Appointment initialDisplay) {
-		super();
-		dateField.setDate(initialDisplay.getDate());
-		nameField.setText(initialDisplay.getName());
-		isBirthdayField.setSelected(initialDisplay.isBirthday());
-		setup();
+		this();
+		setDate(initialDisplay.getDate());
+		setAppointmentName(initialDisplay.getName());
+		setIsBirthday(initialDisplay.isBirthday());
 	}
 
 	/**
-	 * Depicts standard values: Date of today, empty name, empty description and
-	 * isBirthday set to true.
-	 *
-	 * Calling getAppointment() right after calling this constructor will lead to an
-	 * InvalidAppointmentException.
+	 * Depicts standard values: Date of today, empty name and isBirthday set to
+	 * true.
 	 */
 	public AppointmentField() {
 		super();
-		setup();
+		setupInputComponents();
 	}
 
 	/**
@@ -73,7 +64,7 @@ public class AppointmentField extends JPanel {
 		if (!representsValidAppointment()) {
 			throw new InvalidAppointmentException();
 		} else {
-			return new Appointment(getDate(), getName(), isBirthday());
+			return new Appointment(getDate(), getAppointmentName(), isBirthday());
 		}
 	}
 
@@ -84,27 +75,13 @@ public class AppointmentField extends JPanel {
 	 */
 	public void setAppointment(final Appointment newAppointment) {
 		setDate(newAppointment.getDate());
-		setName(newAppointment.getName());
+		setAppointmentName(newAppointment.getName());
 		setIsBirthday(newAppointment.isBirthday());
 	}
 
-	private void setup() {
-		setLayout(new FlowLayout(FlowLayout.LEFT, DISTANCE_BETWEEN_SUB_COMPONENTS, 0));
+	private void setupInputComponents() {
+		setLayout(new FlowLayout(FlowLayout.CENTER, DISTANCE_BETWEEN_SUB_COMPONENTS, TOP_BOTTOM_MARGIN));
 		nameField.setColumns(NAME_WIDTH);
-		nameField.getDocument().addDocumentListener(new MyDocumentListener() {
-			private Optional<Color> oldBackground = Optional.of(nameField.getBackground());
-
-			@Override
-			public void update() {
-				final String currentText = nameField.getText();
-				if (currentText.length() == 0) {
-					oldBackground = Optional.of(nameField.getBackground());
-					nameField.setBackground(new Color(255, 115, 122));
-				} else {
-					nameField.setBackground(oldBackground.get());
-				}
-			}
-		});
 		add(dateField);
 		add(nameField);
 		add(isBirthdayField);
@@ -135,8 +112,7 @@ public class AppointmentField extends JPanel {
 		return dateField.getDate();
 	}
 
-	@Override
-	public String getName() {
+	public String getAppointmentName() {
 		return nameField.getText();
 	}
 
@@ -148,13 +124,11 @@ public class AppointmentField extends JPanel {
 		dateField.setDate(newDate);
 	}
 
-	@Override
-	public void setName(final String newName) {
+	public void setAppointmentName(final String newName) {
 		nameField.setText(newName);
 	}
 
 	public void setIsBirthday(final boolean newIsBirthday) {
 		isBirthdayField.setSelected(newIsBirthday);
 	}
-
 }

@@ -86,9 +86,11 @@ public final class Appointment implements Comparable<Appointment> {
 	public boolean equals(final Object object) {
 		if (!(object instanceof Appointment)) {
 			return false;
+		} else {
+			final Appointment appointment = (Appointment) object;
+			return date.equals(appointment.date) && name.equals(appointment.name)
+					&& isBirthday == appointment.isBirthday;
 		}
-		final Appointment appointment = (Appointment) object;
-		return date.equals(appointment.date) && name.equals(appointment.name) && isBirthday == appointment.isBirthday;
 	}
 
 	/**

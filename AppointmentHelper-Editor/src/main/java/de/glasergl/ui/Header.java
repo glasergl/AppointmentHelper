@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 
 import de.glasergl.standard.swing.container.RowOfJComponent;
 import de.glasergl.swing.DefaultJComponentFactory;
-import de.glasergl.ui.appointmentField.AppointmentFieldControllerListController;
+import de.glasergl.ui.appointmentField.AppointmentFieldWrapperList;
 
 /**
  * Header for the whole frame.
@@ -18,16 +18,15 @@ import de.glasergl.ui.appointmentField.AppointmentFieldControllerListController;
  * @author Gabriel Glaser
  */
 public class Header extends RowOfJComponent {
-
 	private static final int DISTANCE_TO_EDGE = 5;
-	private static final Color BACKGROUND = new Color(220, 220, 220);
+	private static final Color BACKGROUND = new Color(247, 247, 247);
 
-	private final AppointmentFieldControllerListController appointmentInputFields;
+	private final AppointmentFieldWrapperList appointmentInputFields;
 
 	private final JButton saveButton = DefaultJComponentFactory.getDefaultJButton();
 	private final JButton restoreDeletedButton = DefaultJComponentFactory.getDefaultJButton();
 
-	public Header(final AppointmentFieldControllerListController appointmentFields) {
+	public Header(final AppointmentFieldWrapperList appointmentFields) {
 		super(DISTANCE_TO_EDGE, DISTANCE_TO_EDGE);
 		this.appointmentInputFields = appointmentFields;
 		setup();
@@ -48,7 +47,7 @@ public class Header extends RowOfJComponent {
 
 	private void setupActionListeners() {
 		saveButton.addActionListener(click -> {
-			if (appointmentInputFields.allRepresentValidAppointment()) {
+			if (appointmentInputFields.allRepresentValidAppointments()) {
 				appointmentInputFields.storeAll();
 			} else {
 				final String title = "Ungültiger Termin";

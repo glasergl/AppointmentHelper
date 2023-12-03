@@ -6,6 +6,12 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+/**
+ * Factory class which provides the basic JComponents which will be used across
+ * each tool.
+ * 
+ * @author Gabriel Glaser
+ */
 public class DefaultJComponentFactory {
 	private static final Font DEFAULT_FONT = new Font(Font.SANS_SERIF, Font.PLAIN, 18);
 

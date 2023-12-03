@@ -3,14 +3,16 @@ package de.glasergl.ui;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Image;
-import java.awt.Point;
 
 import javax.swing.JOptionPane;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
+import javax.swing.border.EmptyBorder;
 
-import de.glasergl.configuration.ConfigurationHandler;
+import de.glasergl.fileConfiguration.AppointmentsConfigurationHandler;
 import de.glasergl.standard.swing.container.MyFrame;
 import de.glasergl.standard.swing.general.SwingFunctions;
-import de.glasergl.ui.appointmentField.AppointmentFieldControllerListController;
+import de.glasergl.ui.appointmentField.AppointmentFieldWrapperList;
 
 /**
  * Main-Frame for the Editor.
@@ -22,19 +24,17 @@ public final class EditorFrame extends MyFrame {
 	private static final String FRAME_NAME = "TerminEditor";
 	private static final Image ICON = SwingFunctions.getImage("EditorIcon.png", EditorFrame.class);
 
-	private final AppointmentFieldControllerListController appointmentsFields;
+	private final AppointmentFieldWrapperList appointmentsFields;
 	private final Header header;
 	private final Footer footer;
 
-	public EditorFrame(final ConfigurationHandler configurationHandler) {
+	public EditorFrame(final AppointmentsConfigurationHandler handler) {
 		super(FRAME_NAME, ICON);
-		appointmentsFields = new AppointmentFieldControllerListController(configurationHandler);
-		header = new Header(appointmentsFields);
-		footer = new Footer(appointmentsFields);
+		this.appointmentsFields = new AppointmentFieldWrapperList(handler);
+		this.header = new Header(appointmentsFields);
+		this.footer = new Footer(appointmentsFields);
 		setup();
 		start();
-		final Point currentLocation = getLocation();
-		setLocation(new Point(currentLocation.x, currentLocation.y - 90));
 		footer.requestFocusForAddButton();
 	}
 
@@ -44,9 +44,21 @@ public final class EditorFrame extends MyFrame {
 
 	private void setup() {
 		final Container contentPane = getContentPane();
+		final JScrollPane scrollWrapper = wrapInJScrollPane(appointmentsFields);
 		contentPane.add(header, BorderLayout.NORTH);
-		contentPane.add(appointmentsFields, BorderLayout.CENTER);
+		contentPane.add(scrollWrapper, BorderLayout.CENTER);
 		contentPane.add(footer, BorderLayout.SOUTH);
+	}
+
+	private JScrollPane wrapInJScrollPane(final AppointmentFieldWrapperList appointmentsFields) {
+		final JScrollPane scrollWrapper = new JScrollPane(appointmentsFields, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+				JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		appointmentsFields.setParentScrollWrapper(scrollWrapper);
+		scrollWrapper.setBorder(new EmptyBorder(0, 0, 0, 0));
+		scrollWrapper.setPreferredSize(appointmentsFields.getPreferredViewSize());
+		final JScrollBar verticalScrollBar = scrollWrapper.getVerticalScrollBar();
+		verticalScrollBar.setUnitIncrement(10);
+		return scrollWrapper;
 	}
 
 	/**
@@ -57,7 +69,7 @@ public final class EditorFrame extends MyFrame {
 	 */
 	@Override
 	public void dispose() {
-		if (appointmentsFields.isStored()) {
+		if (appointmentsFields.matchesConfiguration()) {
 			super.dispose();
 		} else {
 			final String title = "Zustand nicht gespeichert";
@@ -65,7 +77,7 @@ public final class EditorFrame extends MyFrame {
 			final int answerOfUser = JOptionPane.showConfirmDialog(this, message, title,
 					JOptionPane.YES_NO_CANCEL_OPTION);
 			if (answerOfUser == JOptionPane.YES_OPTION) {
-				if (appointmentsFields.allRepresentValidAppointment()) {
+				if (appointmentsFields.allRepresentValidAppointments()) {
 					appointmentsFields.storeAll();
 					super.dispose();
 				} else {

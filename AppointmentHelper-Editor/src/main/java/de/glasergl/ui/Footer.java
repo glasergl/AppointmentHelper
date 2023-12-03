@@ -8,7 +8,7 @@ import javax.swing.JButton;
 import de.glasergl.standard.swing.container.RowOfJComponent;
 import de.glasergl.standard.swing.settings.Fonts;
 import de.glasergl.swing.DefaultJComponentFactory;
-import de.glasergl.ui.appointmentField.AppointmentFieldControllerListController;
+import de.glasergl.ui.appointmentField.AppointmentFieldWrapperList;
 
 /**
  * Footer for the whole frame.
@@ -18,15 +18,14 @@ import de.glasergl.ui.appointmentField.AppointmentFieldControllerListController;
  * @author Gabriel Glaser
  */
 public class Footer extends RowOfJComponent {
-
 	private static final int DISTANCE_TO_EDGE = 5;
-	private static final Color BACKGROUND = new Color(220, 220, 220);
+	private static final Color BACKGROUND = new Color(247, 247, 247);
 	private static final float ADD_BUTTON_PLUS_SIZE = 80.0f;
 
-	private final AppointmentFieldControllerListController appointmentInputFields;
+	private final AppointmentFieldWrapperList appointmentInputFields;
 	private final JButton addAppointmentButton = DefaultJComponentFactory.getDefaultJButton();
 
-	public Footer(final AppointmentFieldControllerListController appointmentInputFields) {
+	public Footer(final AppointmentFieldWrapperList appointmentInputFields) {
 		super(DISTANCE_TO_EDGE, DISTANCE_TO_EDGE);
 		this.appointmentInputFields = appointmentInputFields;
 		setup();
@@ -51,5 +50,4 @@ public class Footer extends RowOfJComponent {
 	public void requestFocusForAddButton() {
 		addAppointmentButton.requestFocusInWindow();
 	}
-
 }

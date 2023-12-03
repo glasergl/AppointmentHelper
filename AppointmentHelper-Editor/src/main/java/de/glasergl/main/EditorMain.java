@@ -2,7 +2,7 @@ package de.glasergl.main;
 
 import javax.swing.SwingUtilities;
 
-import de.glasergl.configuration.ConfigurationHandler;
+import de.glasergl.fileConfiguration.AppointmentsConfigurationHandler;
 import de.glasergl.standard.errors.DefaultErrorHandling;
 import de.glasergl.ui.EditorFrame;
 
@@ -12,22 +12,17 @@ import de.glasergl.ui.EditorFrame;
  * @author Gabriel Glaser
  */
 public class EditorMain {
-
 	/**
-	 * The Editor depicts all stored Appointments of the default Appointment-File
-	 * and allows to edit them.
-	 *
-	 * If the Appointment-File doesn't exist, the user is asked whether he wants to
-	 * create a new, empty Appointment-File.
+	 * The Editor depicts all currently stored Appointments of the default
+	 * Appointment-File and allows to edit them.
 	 *
 	 * @param args - unused
 	 */
 	public static void main(final String[] args) {
 		DefaultErrorHandling.activateDefaultExceptionHandling();
-		final ConfigurationHandler configurationHandler = new ConfigurationHandler();
+		final AppointmentsConfigurationHandler handler = new AppointmentsConfigurationHandler();
 		SwingUtilities.invokeLater(() -> {
-			new EditorFrame(configurationHandler);
+			new EditorFrame(handler);
 		});
 	}
-
 }
