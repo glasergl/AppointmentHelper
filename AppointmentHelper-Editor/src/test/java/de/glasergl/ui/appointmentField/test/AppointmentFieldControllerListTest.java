@@ -29,7 +29,6 @@ public final class AppointmentFieldControllerListTest {
 		final AppointmentsConfigurationHandler handler = new AppointmentsConfigurationHandler(path);
 		final AppointmentFieldWrapperList appointmentFieldList = new AppointmentFieldWrapperList(handler);
 
-		assertEquals(0, appointmentFieldList.getNumberOfDeletedAppointments());
 		assertEquals(0, appointmentFieldList.getNumberOfShownAppointments());
 		assertEquals(0, appointmentFieldList.getNumberOfAppointmentsInConfiguration());
 
@@ -47,7 +46,6 @@ public final class AppointmentFieldControllerListTest {
 		handler.updateAppointments(Arrays.asList(TEST_APPOINTMENT_1, TEST_APPOINTMENT_2));
 		final AppointmentFieldWrapperList appointmentFieldList = new AppointmentFieldWrapperList(handler);
 
-		assertEquals(0, appointmentFieldList.getNumberOfDeletedAppointments());
 		assertEquals(2, appointmentFieldList.getNumberOfShownAppointments());
 		assertEquals(2, appointmentFieldList.getNumberOfAppointmentsInConfiguration());
 

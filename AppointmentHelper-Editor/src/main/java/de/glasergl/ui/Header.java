@@ -22,9 +22,7 @@ public class Header extends RowOfJComponent {
 	private static final Color BACKGROUND = new Color(247, 247, 247);
 
 	private final AppointmentFieldWrapperList appointmentInputFields;
-
 	private final JButton saveButton = DefaultJComponentFactory.getDefaultJButton();
-	private final JButton restoreDeletedButton = DefaultJComponentFactory.getDefaultJButton();
 
 	public Header(final AppointmentFieldWrapperList appointmentFields) {
 		super(DISTANCE_TO_EDGE, DISTANCE_TO_EDGE);
@@ -36,13 +34,7 @@ public class Header extends RowOfJComponent {
 		setBackground(BACKGROUND);
 		setupActionListeners();
 		saveButton.setText("Speichern");
-		restoreDeletedButton.setText("Zuletzt gelöscht wiederherstellen");
-		addToRight(restoreDeletedButton);
 		addToRight(saveButton);
-	}
-
-	public void requestFocusForRestoreDeletedButton() {
-		restoreDeletedButton.requestFocusInWindow();
 	}
 
 	private void setupActionListeners() {
@@ -54,9 +46,6 @@ public class Header extends RowOfJComponent {
 				final String message = "Mindestens ein Termin ist ungültig.\nBitte geben Sie jedem Termin einen Namen und versuchen es erneut.";
 				JOptionPane.showMessageDialog(null, message, title, JOptionPane.ERROR_MESSAGE);
 			}
-		});
-		restoreDeletedButton.addActionListener(click -> {
-			appointmentInputFields.restoreLastDeleted();
 		});
 	}
 }

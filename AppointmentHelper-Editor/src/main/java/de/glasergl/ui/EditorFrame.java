@@ -38,10 +38,6 @@ public final class EditorFrame extends MyFrame {
 		footer.requestFocusForAddButton();
 	}
 
-	public void requestFocusForRestoreDeletedButtonButton() {
-		header.requestFocusForRestoreDeletedButton();
-	}
-
 	private void setup() {
 		final Container contentPane = getContentPane();
 		final JScrollPane scrollWrapper = wrapInJScrollPane(appointmentsFields);

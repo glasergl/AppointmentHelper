@@ -98,27 +98,4 @@ public final class GetInputTest {
 
 		GeneralTestElements.deleteTestFileRepresentedBy(handler);
 	}
-
-	/**
-	 * Tests whether restoring a previously deleted appointment field adapts the
-	 * resulting input list accordingly.
-	 */
-	@Test
-	public void testGetInputOnUpdatedInputWithRestoreLastDeleted() {
-		final String path = BASE_TEST_RESOURCE_PATH
-				+ "testGetInputOnUpdatedInputWithRestoreLastDeleted-Configuration.json";
-		final AppointmentsConfigurationHandler handler = new AppointmentsConfigurationHandler(path);
-		handler.updateAppointments(Arrays.asList(TEST_APPOINTMENT_1, TEST_APPOINTMENT_2, TEST_APPOINTMENT_3));
-		final AppointmentFieldWrapperList appointmentFieldList = new AppointmentFieldWrapperList(handler);
-		appointmentFieldList.delete(1);
-		appointmentFieldList.restoreLastDeleted();
-		final List<Appointment> input = appointmentFieldList.getInput();
-
-		assertEquals(TEST_APPOINTMENT_1, input.get(0));
-		assertEquals(TEST_APPOINTMENT_3, input.get(1));
-		assertEquals(TEST_APPOINTMENT_2, input.get(2));
-		assertEquals(3, input.size());
-
-		GeneralTestElements.deleteTestFileRepresentedBy(handler);
-	}
 }

@@ -62,13 +62,17 @@ public final class AllRepresentValidAppointmentsTest {
 		final AppointmentsConfigurationHandler handler = new AppointmentsConfigurationHandler(path);
 		handler.updateAppointments(Arrays.asList(TEST_APPOINTMENT_1, TEST_APPOINTMENT_2, TEST_APPOINTMENT_3));
 		final AppointmentFieldWrapperList appointmentFieldList = new AppointmentFieldWrapperList(handler);
+		assertTrue(appointmentFieldList.allRepresentValidAppointments());
+		
 		appointmentFieldList.delete(0);
 		appointmentFieldList.delete(0);
+		assertTrue(appointmentFieldList.allRepresentValidAppointments());
+		
 		appointmentFieldList.addEmptyAppointmentField();
 		final AppointmentFieldWrapper appointmentField = appointmentFieldList.getAppointmentField(1);
 		appointmentField.setInputAppointment(TEST_APPOINTMENT_0);
-		appointmentFieldList.restoreLastDeleted();
 		assertTrue(appointmentFieldList.allRepresentValidAppointments());
+		
 		GeneralTestElements.deleteTestFileRepresentedBy(handler);
 	}
 

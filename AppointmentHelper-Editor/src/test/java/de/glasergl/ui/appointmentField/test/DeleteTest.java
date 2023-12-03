@@ -36,7 +36,6 @@ public final class DeleteTest {
 		final AppointmentFieldWrapper appointmentField1 = appointmentFieldList.getAppointmentField(0);
 		final AppointmentFieldWrapper appointmentField3 = appointmentFieldList.getAppointmentField(1);
 
-		assertEquals(1, appointmentFieldList.getNumberOfDeletedAppointments());
 		assertEquals(2, appointmentFieldList.getNumberOfShownAppointments());
 		assertEquals(2, appointmentFieldList.getNumberOfAppointmentsInConfiguration());
 		assertEquals(TEST_APPOINTMENT_1, appointmentField1.getAppointment());
@@ -57,13 +56,11 @@ public final class DeleteTest {
 				Arrays.asList(TEST_APPOINTMENT_0, TEST_APPOINTMENT_1, TEST_APPOINTMENT_2, TEST_APPOINTMENT_3));
 		final AppointmentFieldWrapperList appointmentFieldList = new AppointmentFieldWrapperList(handler);
 		final AppointmentFieldWrapper appointmentField0 = appointmentFieldList.getAppointmentField(0);
-		final AppointmentFieldWrapper appointmentField1 = appointmentFieldList.getAppointmentField(1);
 		final AppointmentFieldWrapper appointmentField2 = appointmentFieldList.getAppointmentField(2);
 		final AppointmentFieldWrapper appointmentField3 = appointmentFieldList.getAppointmentField(3);
 		appointmentFieldList.delete(1);
 
 		assertEquals(0, appointmentField0.getCurrentIndex());
-		assertEquals(-1, appointmentField1.getCurrentIndex());
 		assertEquals(1, appointmentField2.getCurrentIndex());
 		assertEquals(2, appointmentField3.getCurrentIndex());
 

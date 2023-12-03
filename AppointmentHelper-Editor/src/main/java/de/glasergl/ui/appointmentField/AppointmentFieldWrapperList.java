@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
-import java.util.Stack;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
@@ -38,7 +37,6 @@ public final class AppointmentFieldWrapperList extends JPanel {
 
 	private final AppointmentsConfigurationHandler handler;
 	private final List<AppointmentFieldWrapper> appointmentFields;
-	private final Stack<AppointmentFieldWrapper> deletedAppointmentFields;
 
 	private boolean matchesConfiguration = true;
 	private Optional<JScrollPane> scrollWrapper = Optional.empty();
@@ -46,7 +44,6 @@ public final class AppointmentFieldWrapperList extends JPanel {
 	public AppointmentFieldWrapperList(final AppointmentsConfigurationHandler handler) {
 		super();
 		this.appointmentFields = new LinkedList<>();
-		this.deletedAppointmentFields = new Stack<>();
 		this.handler = handler;
 		setup(handler.getAppointments());
 		setAlternateBackgroundsForAll();
@@ -129,29 +126,10 @@ public final class AppointmentFieldWrapperList extends JPanel {
 			appointmentFields.get(i).setIndex(i - 1);
 		}
 		appointmentFields.remove(indexToDelete);
-		appointmentField.setIndex(-1);
 		remove(appointmentField);
-		deletedAppointmentFields.push(appointmentField);
 		setAlternateBackgroundsForAll();
 		changeHappened();
 		SwingFunctions.updateJComponent(this);
-	}
-
-	/**
-	 * Restores the last deleted appointmentField. Does nothing if there is no
-	 * deleted appointment.
-	 */
-	public void restoreLastDeleted() {
-		if (!deletedAppointmentFields.isEmpty()) {
-			final AppointmentFieldWrapper restoredAppointmentField = deletedAppointmentFields.pop();
-			appointmentFields.add(restoredAppointmentField);
-			add(restoredAppointmentField);
-			restoredAppointmentField.setIndex(appointmentFields.size() - 1);
-			setAlternateBackgroundsForAll();
-			changeHappened();
-			setScrollBarToBottom();
-			SwingFunctions.updateJComponent(this);
-		}
 	}
 
 	private void setScrollBarToBottom() {
@@ -201,16 +179,6 @@ public final class AppointmentFieldWrapperList extends JPanel {
 	 */
 	public int getNumberOfShownAppointments() {
 		return appointmentFields.size();
-	}
-
-	/**
-	 * Method for testing the inner state of this instance.
-	 * 
-	 * @return The number of deleted appointments which could be restored by
-	 *         restoreLastDeleted().
-	 */
-	public int getNumberOfDeletedAppointments() {
-		return deletedAppointmentFields.size();
 	}
 
 	/**
