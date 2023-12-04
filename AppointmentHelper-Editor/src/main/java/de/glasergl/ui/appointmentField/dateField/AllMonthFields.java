@@ -19,7 +19,6 @@ import de.glasergl.standard.swing.myComponent.button.CustomTextButton;
  * @author Gabriel Glaser
  */
 public class AllMonthFields extends JPanel {
-
 	private static final Color BACKGROUND_COLOR = Color.WHITE;
 	private static final int WIDTH_OF_CLOSE_BUTTON = 40;
 	private static final Dimension SIZE_OF_MONTH_CONTROL_BUTTONS = new Dimension(60, 60);
@@ -113,5 +112,4 @@ public class AllMonthFields extends JPanel {
 		add(displayOfCurrentMonth, BorderLayout.SOUTH);
 		revalidate();
 	}
-
 }

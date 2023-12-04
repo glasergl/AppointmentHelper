@@ -3,6 +3,7 @@ package de.glasergl.swing;
 import java.awt.Font;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
@@ -27,5 +28,12 @@ public class DefaultJComponentFactory {
 		jButton.setFont(DEFAULT_FONT);
 		jButton.setFocusPainted(false);
 		return jButton;
+	}
+
+	public static final JLabel getDefaultJLabel() {
+		final JLabel jLabel = new JLabel();
+		jLabel.setFont(DEFAULT_FONT);
+		jLabel.setOpaque(true);
+		return jLabel;
 	}
 }

@@ -24,7 +24,6 @@ import de.glasergl.standard.swing.settings.Fonts;
  * @author Gabriel Glaser
  */
 public class SimpleDateField extends CustomTextButton {
-
 	private static final float DATE_TEXT_SIZE = 23.0f;
 	private static final Dimension PREFERRED_SIZE = new Dimension(90, 40);
 
@@ -93,5 +92,4 @@ public class SimpleDateField extends CustomTextButton {
 	public SimpleDate getDate() {
 		return currentlySelectedDate;
 	}
-
 }

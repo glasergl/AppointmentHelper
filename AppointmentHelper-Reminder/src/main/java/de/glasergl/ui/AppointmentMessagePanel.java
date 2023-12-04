@@ -7,11 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import de.glasergl.appointment.Appointment;
 import de.glasergl.model.AppointmentMessageModel;
-import de.glasergl.standard.swing.myComponent.MyLabel;
+import de.glasergl.swing.DefaultJComponentFactory;
 
 /**
  * Class which calculates the sentence which contains the appointments of today
@@ -20,7 +21,7 @@ import de.glasergl.standard.swing.myComponent.MyLabel;
  * @author Gabriel Glaser
  */
 public final class AppointmentMessagePanel extends JPanel {
-	private final List<MyLabel> allLabels = new ArrayList<>();
+	private final List<JLabel> allLabels = new ArrayList<>();
 	private final AppointmentMessageModel appointmentMessage;
 
 	public AppointmentMessagePanel(final String timeDescription, final Predicate<Appointment> timeCondition,
@@ -39,7 +40,8 @@ public final class AppointmentMessagePanel extends JPanel {
 		setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
 		final List<String> messageComponents = appointmentMessage.getComponents();
 		for (int i = 0; i < messageComponents.size(); i++) {
-			final MyLabel component = new MyLabel(messageComponents.get(i));
+			final JLabel component = DefaultJComponentFactory.getDefaultJLabel();
+			component.setText(messageComponents.get(i));
 			allLabels.add(component);
 			add(component);
 		}
@@ -48,7 +50,7 @@ public final class AppointmentMessagePanel extends JPanel {
 	@Override
 	public void setBackground(final Color newBackground) {
 		if (allLabels != null) {
-			for (final MyLabel label : allLabels) {
+			for (final JLabel label : allLabels) {
 				label.setBackground(newBackground);
 			}
 		}
@@ -58,7 +60,7 @@ public final class AppointmentMessagePanel extends JPanel {
 	public void setForeground(final Color newForeground) {
 		super.setForeground(newForeground);
 		if (allLabels != null) {
-			for (final MyLabel label : allLabels) {
+			for (final JLabel label : allLabels) {
 				label.setForeground(newForeground);
 			}
 		}
@@ -68,7 +70,7 @@ public final class AppointmentMessagePanel extends JPanel {
 	public void setFont(final Font newFont) {
 		super.setFont(newFont);
 		if (allLabels != null) {
-			for (final MyLabel label : allLabels) {
+			for (final JLabel label : allLabels) {
 				label.setFont(newFont);
 			}
 		}

@@ -4,10 +4,10 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import de.glasergl.simpleDate.SimpleDate;
-import de.glasergl.standard.swing.myComponent.MyLabel;
 
 /**
  * Visual representation of a SimpleDate.
@@ -15,8 +15,7 @@ import de.glasergl.standard.swing.myComponent.MyLabel;
  * @author Gabriel Glaser
  */
 public final class SimpleDateDayPanel extends JPanel {
-
-	private final MyLabel visualSimpleDate = new MyLabel();
+	private final JLabel visualSimpleDate = new JLabel();
 
 	public SimpleDateDayPanel(final SimpleDate dateToDepict) {
 		super();
@@ -52,5 +51,4 @@ public final class SimpleDateDayPanel extends JPanel {
 			visualSimpleDate.setFont(newFont);
 		}
 	}
-
 }

@@ -4,13 +4,13 @@ import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Image;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
 import de.glasergl.fileConfiguration.AppointmentsConfigurationHandler;
-import de.glasergl.standard.swing.container.MyFrame;
 import de.glasergl.standard.swing.general.SwingFunctions;
 import de.glasergl.ui.appointmentField.AppointmentFieldWrapperList;
 
@@ -19,7 +19,7 @@ import de.glasergl.ui.appointmentField.AppointmentFieldWrapperList;
  *
  * @author Gabriel Glaser
  */
-public final class EditorFrame extends MyFrame {
+public final class EditorFrame extends JFrame {
 
 	private static final String FRAME_NAME = "TerminEditor";
 	private static final Image ICON = SwingFunctions.getImage("EditorIcon.png", EditorFrame.class);
@@ -29,12 +29,16 @@ public final class EditorFrame extends MyFrame {
 	private final Footer footer;
 
 	public EditorFrame(final AppointmentsConfigurationHandler handler) {
-		super(FRAME_NAME, ICON);
+		super(FRAME_NAME);
+		setIconImage(ICON);
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.appointmentsFields = new AppointmentFieldWrapperList(handler);
 		this.header = new Header(appointmentsFields);
 		this.footer = new Footer(appointmentsFields);
 		setup();
-		start();
+		pack();
+		setLocationRelativeTo(null);
+		setVisible(true);
 		footer.requestFocusForAddButton();
 	}
 

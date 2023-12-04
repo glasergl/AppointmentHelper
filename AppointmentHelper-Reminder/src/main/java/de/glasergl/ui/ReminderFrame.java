@@ -5,8 +5,9 @@ import java.awt.Color;
 import java.awt.Image;
 import java.util.List;
 
+import javax.swing.JFrame;
+
 import de.glasergl.appointment.Appointment;
-import de.glasergl.standard.swing.container.MyFrame;
 import de.glasergl.standard.swing.general.SwingFunctions;
 import de.glasergl.standard.swing.settings.Colors;
 
@@ -15,7 +16,7 @@ import de.glasergl.standard.swing.settings.Colors;
  *
  * @author Gabriel Glaser
  */
-public final class ReminderFrame extends MyFrame {
+public final class ReminderFrame extends JFrame {
 
 	private static final String FRAME_NAME = "TerminReminder";
 	private static final Image ICON = SwingFunctions.getImage("ReminderIcon.png", ReminderFrame.class);
@@ -24,11 +25,15 @@ public final class ReminderFrame extends MyFrame {
 	private final TodayTomorrowAppointmentMessagePanel appointmentMessages;
 
 	public ReminderFrame(final List<Appointment> allAppointments) {
-		super(FRAME_NAME, ICON);
+		super(FRAME_NAME);
+		setIconImage(ICON);
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.appointmentMessages = new TodayTomorrowAppointmentMessagePanel(allAppointments);
 		setup();
 		if (anyIsTodayOrTomorrow(allAppointments)) {
-			start();
+			pack();
+			setLocationRelativeTo(null);
+			setVisible(true);
 		}
 	}
 

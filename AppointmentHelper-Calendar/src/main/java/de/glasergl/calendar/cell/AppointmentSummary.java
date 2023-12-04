@@ -2,9 +2,12 @@ package de.glasergl.calendar.cell;
 
 import java.awt.FontMetrics;
 import java.util.List;
+
+import javax.swing.JLabel;
+
 import de.glasergl.appointment.Appointment;
 import de.glasergl.calendar.CalendarAttributes;
-import de.glasergl.standard.swing.myComponent.MyLabel;
+import de.glasergl.swing.DefaultJComponentFactory;
 
 /**
  * Class which contains the calculation of a summary-String of given
@@ -13,7 +16,6 @@ import de.glasergl.standard.swing.myComponent.MyLabel;
  * @author Gabriel Glaser
  */
 public final class AppointmentSummary {
-
 	/**
 	 * @return A Summary representing the given Appointments.
 	 */
@@ -85,9 +87,8 @@ public final class AppointmentSummary {
 	 * @return The width of the text in pixel.
 	 */
 	public static int pixelWidthOf(final String text) {
-		final MyLabel label = new MyLabel();
+		final JLabel label = DefaultJComponentFactory.getDefaultJLabel();
 		final FontMetrics fontMetrics = label.getFontMetrics(CalendarAttributes.FONT);
 		return fontMetrics.stringWidth(text);
 	}
-
 }

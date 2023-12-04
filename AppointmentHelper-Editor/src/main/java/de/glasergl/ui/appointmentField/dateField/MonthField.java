@@ -5,14 +5,15 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import de.glasergl.simpleDate.SimpleDate;
 import de.glasergl.simpleDate.SimpleDates;
-import de.glasergl.standard.swing.myComponent.MyLabel;
 import de.glasergl.standard.swing.myComponent.button.CustomTextButton;
 import de.glasergl.standard.swing.settings.Colors;
+import de.glasergl.swing.DefaultJComponentFactory;
 
 /**
  * Representation of a Month with each respective day.
@@ -20,7 +21,6 @@ import de.glasergl.standard.swing.settings.Colors;
  * @author Gabriel Glaser
  */
 public final class MonthField extends JPanel {
-
 	private static final Color BACKGROUND_COLOR = Color.WHITE;
 	private static final Color BACKGROUND_COLOR_OF_DAY = new Color(215, 215, 215);
 	private static final int WIDTH_BETWEEN_DAY_LABELS = 2;
@@ -28,14 +28,15 @@ public final class MonthField extends JPanel {
 
 	private final SimpleDateField toSetSelectedDateOf;
 	private final int monthToDepict;
-	private final MyLabel nameOfMonth;
+	private final JLabel nameOfMonth;
 	private final JPanel days = new JPanel(new GridLayout(5, 7, WIDTH_BETWEEN_DAY_LABELS, WIDTH_BETWEEN_DAY_LABELS));
 
 	public MonthField(final SimpleDateField toSetSelectedDateOf, final int monthToDepict) {
 		super(new BorderLayout());
 		this.toSetSelectedDateOf = toSetSelectedDateOf;
 		this.monthToDepict = monthToDepict;
-		this.nameOfMonth = new MyLabel(getMonthName());
+		this.nameOfMonth = DefaultJComponentFactory.getDefaultJLabel();
+		nameOfMonth.setText(getMonthName());
 		setup();
 	}
 
@@ -58,8 +59,7 @@ public final class MonthField extends JPanel {
 			addDayLabel(day);
 		}
 		for (int filler = daysOfMonth + 1; filler <= 35; filler++) {
-			final MyLabel empty = new MyLabel();
-			empty.setBackground(BACKGROUND_COLOR);
+			final JLabel empty = new JLabel();
 			days.add(empty);
 		}
 	}
@@ -82,5 +82,4 @@ public final class MonthField extends JPanel {
 	public String getMonthName() {
 		return SimpleDates.MONTHS.get(monthToDepict - 1);
 	}
-
 }

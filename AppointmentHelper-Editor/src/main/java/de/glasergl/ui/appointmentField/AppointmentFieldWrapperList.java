@@ -16,7 +16,6 @@ import javax.swing.JScrollPane;
 import de.glasergl.appointment.Appointment;
 import de.glasergl.appointment.InvalidAppointmentException;
 import de.glasergl.fileConfiguration.AppointmentsConfigurationHandler;
-import de.glasergl.standard.swing.general.SwingFunctions;
 
 /**
  * Class which controls a list of appointment field controllers.
@@ -60,7 +59,8 @@ public final class AppointmentFieldWrapperList extends JPanel {
 		setAlternateBackgroundsForAll();
 		changeHappened();
 		setScrollBarToBottom();
-		SwingFunctions.updateJComponent(this);
+		revalidate();
+		repaint();
 	}
 
 	/**
@@ -129,7 +129,8 @@ public final class AppointmentFieldWrapperList extends JPanel {
 		remove(appointmentField);
 		setAlternateBackgroundsForAll();
 		changeHappened();
-		SwingFunctions.updateJComponent(this);
+		revalidate();
+		repaint();
 	}
 
 	private void setScrollBarToBottom() {
