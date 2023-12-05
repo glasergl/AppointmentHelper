@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -12,6 +14,7 @@ import java.util.Optional;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
+import javax.swing.Timer;
 
 import de.glasergl.appointment.Appointment;
 import de.glasergl.appointment.InvalidAppointmentException;
@@ -133,15 +136,41 @@ public final class AppointmentFieldWrapperList extends JPanel {
 		repaint();
 	}
 
+	/**
+	 * Implements an animation such that the scrollbar is moved smoothly to its
+	 * maximum value (bottom).
+	 */
 	private void setScrollBarToBottom() {
 		if (scrollWrapper.isPresent()) {
 			final JScrollPane scrollWrapper = this.scrollWrapper.get();
 			final Component parentOfScrollWrapper = scrollWrapper.getParent();
 			parentOfScrollWrapper.validate();
 			final JScrollBar verticalScrollBar = scrollWrapper.getVerticalScrollBar();
-			verticalScrollBar.setValue(verticalScrollBar.getMaximum());
-			parentOfScrollWrapper.revalidate();
-			parentOfScrollWrapper.repaint();
+			final int animationDurationMS = 150;
+			final int numberOfSteps = 25;
+			final int durationBetweenStep = animationDurationMS / numberOfSteps;
+			final int scrollBarValueIncreasePerStep = (verticalScrollBar.getMaximum() - verticalScrollBar.getValue())
+					/ numberOfSteps;
+			final Timer timer = new Timer(durationBetweenStep, null);
+			timer.setInitialDelay(0);
+			timer.setRepeats(true);
+			timer.addActionListener(new ActionListener() {
+				int currentStep = 0;
+
+				@Override
+				public void actionPerformed(final ActionEvent e) {
+					if (currentStep < numberOfSteps) {
+						currentStep++;
+						verticalScrollBar.setValue(verticalScrollBar.getValue() + scrollBarValueIncreasePerStep);
+						parentOfScrollWrapper.revalidate();
+						parentOfScrollWrapper.repaint();
+					} else {
+						timer.stop();
+					}
+				}
+
+			});
+			timer.start();
 		}
 	}
 
