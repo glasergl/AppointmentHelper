@@ -27,7 +27,6 @@ import de.glasergl.swing.DefaultJComponentFactory;
 public final class AppointmentFieldWrapper extends JPanel {
 	private static final int HORIZONTAL_GAP_OF_SUPCOMPONENTS = 20;
 	private static final Color UNSTORED_BACKGROUND = new Color(170, 227, 159);
-	private static final Color ILLEGAL_STATE_BACKGROUND = new Color(255, 115, 122);
 
 	private final AppointmentFieldWrapperList appointmentFieldList;
 	private final AppointmentField appointmentField;
@@ -168,14 +167,7 @@ public final class AppointmentFieldWrapper extends JPanel {
 			setBackground(UNSTORED_BACKGROUND);
 			appointmentFieldList.changeHappened();
 		};
-		final MyDocumentListener documentListenerForIllegalState = () -> {
-			final String appointmentName = getAppointmentName();
-			if (appointmentName.length() == 0) {
-				setBackground(ILLEGAL_STATE_BACKGROUND);
-			}
-		};
 		appointmentField.getNameField().getDocument().addDocumentListener(documentListenerForChange);
-		appointmentField.getNameField().getDocument().addDocumentListener(documentListenerForIllegalState);
 		appointmentField.getDateField().addChangeListener(changeListener);
 		appointmentField.getIsBirthdayField().addChangeListener(changeListener);
 	}
