@@ -17,7 +17,7 @@ Reminder | Shows appointments which occur today or tomorrow (at the time the pro
 ## Usage
 1. Put a shortcut to the `Reminder` in the autostart folder of your operating system.
 1. Enter your appointments with the `Editor`.
-1. A window will become visible if an appointment occurs today or will occur tomorrow (at the time the `Reminder` is executed at the start of your computer).
+1. A window will become visible if an appointment occurs today or will occur tomorrow (at the time the `Reminder` is executed, e.g., at the start of your computer).
 1. You can always look at an overview of all appointments with the `Calendar`.
   
 ## Notes
