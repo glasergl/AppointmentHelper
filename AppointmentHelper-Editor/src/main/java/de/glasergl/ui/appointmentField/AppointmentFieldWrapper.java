@@ -139,7 +139,6 @@ public final class AppointmentFieldWrapper extends JPanel {
 				for (final AppointmentFieldWrapper appointmentFieldWrapper : appointmentFieldList
 						.getAllAppointmentFieldWrappers()) {
 					appointmentFieldWrapper.setDeleteButtonVisible(false);
-					System.out.println("falseEnter");
 				}
 			}
 
@@ -148,7 +147,6 @@ public final class AppointmentFieldWrapper extends JPanel {
 				for (final AppointmentFieldWrapper appointmentFieldWrapper : appointmentFieldList
 						.getAllAppointmentFieldWrappers()) {
 					appointmentFieldWrapper.setDeleteButtonVisible(false);
-					System.out.println("falseExit");
 				}
 			}
 		});
