@@ -1,24 +1,20 @@
 package de.glasergl.ui.appointmentField;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
 import javax.swing.JPanel;
-import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
-import javax.swing.Timer;
 
 import de.glasergl.appointment.Appointment;
 import de.glasergl.appointment.InvalidAppointmentException;
 import de.glasergl.fileConfiguration.AppointmentsConfigurationHandler;
+import de.glasergl.standard.swing.general.ScrollJScrollPaneToBottom;
 
 /**
  * Class which controls a list of appointment field controllers.
@@ -61,7 +57,10 @@ public final class AppointmentFieldWrapperList extends JPanel {
 		add(appointmentFieldController);
 		setAlternateBackgroundsForAll();
 		changeHappened();
-		setScrollBarToBottom();
+		if (scrollWrapper.isPresent()) {
+			final JScrollPane scrollPane = scrollWrapper.get();
+			new ScrollJScrollPaneToBottom(scrollPane);
+		}
 		revalidate();
 		repaint();
 	}
@@ -134,44 +133,6 @@ public final class AppointmentFieldWrapperList extends JPanel {
 		changeHappened();
 		revalidate();
 		repaint();
-	}
-
-	/**
-	 * Implements an animation such that the scrollbar is moved smoothly to its
-	 * maximum value (bottom).
-	 */
-	private void setScrollBarToBottom() {
-		if (scrollWrapper.isPresent()) {
-			final JScrollPane scrollWrapper = this.scrollWrapper.get();
-			final Component parentOfScrollWrapper = scrollWrapper.getParent();
-			parentOfScrollWrapper.validate();
-			final JScrollBar verticalScrollBar = scrollWrapper.getVerticalScrollBar();
-			final int animationDurationMS = 150;
-			final int numberOfSteps = 25;
-			final int durationBetweenStep = animationDurationMS / numberOfSteps;
-			final int scrollBarValueIncreasePerStep = (verticalScrollBar.getMaximum() - verticalScrollBar.getValue())
-					/ numberOfSteps;
-			final Timer timer = new Timer(durationBetweenStep, null);
-			timer.setInitialDelay(0);
-			timer.setRepeats(true);
-			timer.addActionListener(new ActionListener() {
-				int currentStep = 0;
-
-				@Override
-				public void actionPerformed(final ActionEvent e) {
-					if (currentStep < numberOfSteps) {
-						currentStep++;
-						verticalScrollBar.setValue(verticalScrollBar.getValue() + scrollBarValueIncreasePerStep);
-						parentOfScrollWrapper.revalidate();
-						parentOfScrollWrapper.repaint();
-					} else {
-						timer.stop();
-					}
-				}
-
-			});
-			timer.start();
-		}
 	}
 
 	/**
@@ -293,5 +254,9 @@ public final class AppointmentFieldWrapperList extends JPanel {
 			appointmentField.setDefaultBackground(
 					i % 2 == 0 ? BACKGROUND_OF_APPOINTMENT_FIELD_0 : BACKGROUND_OF_APPOINTMENT_FIELD_1);
 		}
+	}
+
+	public List<AppointmentFieldWrapper> getAllAppointmentFieldWrappers() {
+		return appointmentFields;
 	}
 }
