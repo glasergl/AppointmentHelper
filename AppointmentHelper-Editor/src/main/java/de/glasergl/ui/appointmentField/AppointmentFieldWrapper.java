@@ -1,7 +1,9 @@
 package de.glasergl.ui.appointmentField;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.event.MouseEvent;
 import java.util.Optional;
 
 import javax.swing.JButton;
@@ -13,6 +15,7 @@ import de.glasergl.appointment.InvalidAppointmentException;
 import de.glasergl.simpleDate.SimpleDate;
 import de.glasergl.standard.swing.border.LeftRightRoundBorder;
 import de.glasergl.standard.swing.eventListener.emptyImplementation.MyDocumentListener;
+import de.glasergl.standard.swing.eventListener.emptyImplementation.MyMouseListener;
 import de.glasergl.swing.DefaultJComponentFactory;
 
 /**
@@ -110,15 +113,49 @@ public final class AppointmentFieldWrapper extends JPanel {
 	}
 
 	private void setup() {
-		setLayout(new FlowLayout(FlowLayout.CENTER, HORIZONTAL_GAP_OF_SUPCOMPONENTS, 0));
+		setLayout(new FlowLayout(FlowLayout.LEFT, HORIZONTAL_GAP_OF_SUPCOMPONENTS, 0));
 		setBorder(new LeftRightRoundBorder(20, 15));
 		addListenersForInputChanges();
 		deleteButton.setText("Löschen");
+		deleteButton.setVisible(false);
 		deleteButton.addActionListener(click -> {
 			delete();
 		});
 		add(appointmentField);
 		add(deleteButton);
+		addMouseListener(new MyMouseListener() {
+			@Override
+			public void mouseEntered(final MouseEvent mouseEnterEvent) {
+				for (final AppointmentFieldWrapper appointmentFieldWrapper : appointmentFieldList
+						.getAllAppointmentFieldWrappers()) {
+					appointmentFieldWrapper.setDeleteButtonVisible(false);
+				}
+				setDeleteButtonVisible(true);
+			}
+		});
+		appointmentFieldList.addMouseListener(new MyMouseListener() {
+			@Override
+			public void mouseEntered(MouseEvent mouseExitEvent) {
+				for (final AppointmentFieldWrapper appointmentFieldWrapper : appointmentFieldList
+						.getAllAppointmentFieldWrappers()) {
+					appointmentFieldWrapper.setDeleteButtonVisible(false);
+					System.out.println("falseEnter");
+				}
+			}
+
+			@Override
+			public void mouseExited(MouseEvent mouseExitEvent) {
+				for (final AppointmentFieldWrapper appointmentFieldWrapper : appointmentFieldList
+						.getAllAppointmentFieldWrappers()) {
+					appointmentFieldWrapper.setDeleteButtonVisible(false);
+					System.out.println("falseExit");
+				}
+			}
+		});
+	}
+
+	public void setDeleteButtonVisible(final boolean deleteButtonShouldBeVisible) {
+		deleteButton.setVisible(deleteButtonShouldBeVisible);
 	}
 
 	private void addListenersForInputChanges() {
@@ -151,6 +188,11 @@ public final class AppointmentFieldWrapper extends JPanel {
 		if (appointmentField != null) {
 			appointmentField.setBackground(newBackground);
 		}
+	}
+
+	@Override
+	public Dimension getPreferredSize() {
+		return new Dimension(750, 50);
 	}
 
 	public Appointment getAppointment() throws InvalidAppointmentException {
