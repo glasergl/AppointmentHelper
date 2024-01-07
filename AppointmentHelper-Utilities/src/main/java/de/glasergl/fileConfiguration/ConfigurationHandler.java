@@ -8,6 +8,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 import org.json.JSONObject;
 import org.json.JSONTokener;
@@ -35,6 +37,7 @@ public abstract class ConfigurationHandler {
 		super();
 		this.configurationFile = new File(configurationFilePath);
 		if (!configurationFile.exists()) {
+			createEmptyFileInstance(configurationFile);
 			this.configuration = createEmptyJSONConfiguration();
 			storeConfiguration();
 		} else {
@@ -60,6 +63,7 @@ public abstract class ConfigurationHandler {
 				StandardCharsets.UTF_8)) {
 			configuration.write(writer, DEFAULT_JSON_INDENT_FACTOR, DEFAULT_TOP_LEVEL_JSON_INDENT);
 		} catch (final IOException e) {
+			e.printStackTrace();
 			throw new RuntimeException(
 					"Couldn't store configuration to the file at <" + configurationFile.getAbsolutePath() + ">");
 		}
@@ -84,6 +88,21 @@ public abstract class ConfigurationHandler {
 
 	public JSONObject getConfigurationJSON() {
 		return configuration;
+	}
+
+	private void createEmptyFileInstance(final File file) {
+		try {
+			final File parent = file.getParentFile();
+			if (parent != null) {
+				parent.mkdirs();
+			}
+			final boolean fileCreatedSuccessfully = file.createNewFile();
+			if (!fileCreatedSuccessfully) {
+				throw new RuntimeException("Couldn't create file at \"" + file.getAbsolutePath() + "\".");
+			}
+		} catch (final IOException e) {
+			e.printStackTrace();
+		}
 	}
 //	/**
 //	 * @param pathOfNewConfigurationFile
