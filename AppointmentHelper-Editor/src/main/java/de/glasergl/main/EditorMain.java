@@ -11,7 +11,7 @@ import de.glasergl.ui.EditorFrame;
  *
  * @author Gabriel Glaser
  */
-public class EditorMain {
+public final class EditorMain {
 	/**
 	 * The Editor depicts all currently stored Appointments of the default
 	 * Appointment-File and allows to edit them.

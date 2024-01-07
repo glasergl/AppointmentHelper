@@ -15,12 +15,11 @@ import de.glasergl.standard.swing.general.SwingFunctions;
 import de.glasergl.ui.appointmentField.AppointmentFieldWrapperList;
 
 /**
- * Main-Frame for the Editor.
+ * Frame for the Editor.
  *
  * @author Gabriel Glaser
  */
 public final class EditorFrame extends JFrame {
-
 	private static final String FRAME_NAME = "TerminEditor";
 	private static final Image ICON = SwingFunctions.getImage("EditorIcon.png", EditorFrame.class);
 

@@ -42,7 +42,7 @@ public class Footer extends RowOfJComponent {
 		addAppointmentButton.setText("+");
 		addAppointmentButton.setFont(Fonts.resizedStandard(ADD_BUTTON_PLUS_SIZE));
 		addAppointmentButton.setPreferredSize(new Dimension(300, 100));
-		addAppointmentButton.addActionListener((event) -> {
+		addAppointmentButton.addActionListener((click) -> {
 			appointmentInputFields.addEmptyAppointmentField();
 		});
 	}
