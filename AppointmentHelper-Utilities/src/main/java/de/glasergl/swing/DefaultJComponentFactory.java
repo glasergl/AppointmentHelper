@@ -5,6 +5,7 @@ import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 /**
@@ -14,7 +15,7 @@ import javax.swing.border.EmptyBorder;
  * @author Gabriel Glaser
  */
 public class DefaultJComponentFactory {
-	private static final Font DEFAULT_FONT = new Font(Font.SANS_SERIF, Font.PLAIN, 18);
+	public static final Font DEFAULT_FONT = new Font(Font.SANS_SERIF, Font.PLAIN, 18);
 
 	public static JTextField getDefaultJTextField() {
 		final JTextField jTextField = new JTextField();
@@ -31,9 +32,13 @@ public class DefaultJComponentFactory {
 	}
 
 	public static final JLabel getDefaultJLabel() {
-		final JLabel jLabel = new JLabel();
+		return getDefaultJLabel("");
+	}
+
+	public static final JLabel getDefaultJLabel(final String labelText) {
+		final JLabel jLabel = new JLabel(labelText);
 		jLabel.setFont(DEFAULT_FONT);
-		jLabel.setOpaque(true);
+		jLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		return jLabel;
 	}
 }

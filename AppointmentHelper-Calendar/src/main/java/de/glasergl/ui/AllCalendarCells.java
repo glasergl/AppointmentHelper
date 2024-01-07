@@ -1,4 +1,4 @@
-package de.glasergl.calendar.cell;
+package de.glasergl.ui;
 
 import java.awt.Color;
 import java.awt.GridLayout;
@@ -8,7 +8,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import de.glasergl.appointment.Appointment;
-import de.glasergl.calendar.CalendarAttributes;
 import de.glasergl.simpleDate.SimpleDate;
 import de.glasergl.simpleDate.SimpleDates;
 
@@ -21,9 +20,10 @@ import de.glasergl.simpleDate.SimpleDates;
  *
  * @author Gabriel Glaser
  */
-public final class AllCells extends JPanel {
-
+public final class AllCalendarCells extends JPanel {
 	private final List<Appointment> allAppointments;
+	private final Color highlightColorOfToday = new Color(190, 190, 190);
+	private final int marginBetweenCells = 2;
 
 	/**
 	 * Constructs a grid of Cells which contains all valid dates of the year the
@@ -31,12 +31,10 @@ public final class AllCells extends JPanel {
 	 *
 	 * @param allAppointments
 	 */
-	public AllCells(final List<Appointment> allAppointments) {
+	public AllCalendarCells(final List<Appointment> allAppointments) {
 		super();
 		this.allAppointments = allAppointments;
-		setLayout(new GridLayout(31, 12, CalendarAttributes.MARGIN_BETWEEN_CELLS,
-				CalendarAttributes.MARGIN_BETWEEN_CELLS));
-		setBackground(CalendarAttributes.CALENDAR_BACKGROUND);
+		setLayout(new GridLayout(31, 12, marginBetweenCells, marginBetweenCells));
 		addCells();
 	}
 
@@ -64,9 +62,9 @@ public final class AllCells extends JPanel {
 	private void addCell(int day, int month) {
 		if (SimpleDates.isValidDate(day, month) && !(day == 29 && month == 2 && !SimpleDates.isSwitchingYear())) {
 			final SimpleDate date = new SimpleDate(day, month);
-			final Cell cell = new Cell(new SimpleDate(day, month), allAppointments);
+			final CalendarCell cell = new CalendarCell(new SimpleDate(day, month), allAppointments);
 			if (date.isToday()) {
-				cell.setBackground(CalendarAttributes.BACKGROUND_COLOR_OF_TODAY);
+				cell.setBackground(highlightColorOfToday);
 			}
 			add(cell);
 		} else {
@@ -75,5 +73,4 @@ public final class AllCells extends JPanel {
 			add(empty);
 		}
 	}
-
 }
