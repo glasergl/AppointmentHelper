@@ -102,26 +102,4 @@ public abstract class ConfigurationHandler {
 			e.printStackTrace();
 		}
 	}
-//	/**
-//	 * @param pathOfNewConfigurationFile
-//	 * @throws IllegalArgumentException If the configurationFile already exists.
-//	 * @return The created configurationFile.
-//	 */
-//	public static File createConfigurationFile(final String pathOfNewConfigurationFile)
-//			throws IllegalArgumentException {
-//		final File newConfigurationFile = new File(pathOfNewConfigurationFile);
-//		if (newConfigurationFile.exists()) {
-//			throw new IllegalArgumentException(
-//					"ConfigurationFile at " + pathOfNewConfigurationFile + " already exists.");
-//		}
-//		final JSONObject newConfiguration = new JSONObject();
-//		try (final OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(newConfigurationFile),
-//				StandardCharsets.UTF_8);) {
-//			newConfiguration.write(writer, DEFAULT_JSON_INDENT_FACTOR, DEFAULT_TOP_LEVEL_JSON_INDENT);
-//		} catch (final IOException e) {
-//			throw new RuntimeException(
-//					"Couldn't create configurationFile at <" + newConfigurationFile.getAbsolutePath() + ">");
-//		}
-//		return newConfigurationFile;
-//	}
 }
