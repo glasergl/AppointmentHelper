@@ -8,12 +8,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import appointment.Appointment;
-import de.glasergl.standard.swing.container.LineOfJComponent;
-import de.glasergl.standard.swing.entity.Alignment;
-import de.glasergl.standard.swing.entity.ColorType;
-import de.glasergl.standard.swing.eventListener.ColorChangerOnHover;
-import de.glasergl.standard.swing.eventListener.SiblingPopUpDisplayerOnHover;
-import de.glasergl.standard.swing.settings.Colors;
+import standardGlaserGl.swing.container.LineOfJComponent;
+import standardGlaserGl.swing.entity.Alignment;
+import standardGlaserGl.swing.entity.ColorType;
+import standardGlaserGl.swing.eventListener.ColorChangerOnHover;
+import standardGlaserGl.swing.eventListener.SiblingPopUpDisplayerOnHover;
+import standardGlaserGl.swing.settings.Colors;
 import swing.CustomizedSwing;
 
 /**

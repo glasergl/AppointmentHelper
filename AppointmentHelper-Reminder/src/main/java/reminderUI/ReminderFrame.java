@@ -7,7 +7,7 @@ import java.util.List;
 import javax.swing.JFrame;
 
 import appointment.Appointment;
-import de.glasergl.standard.swing.general.SwingFunctions;
+import standardGlaserGl.swing.general.SwingFunctions;
 
 /**
  * Main Frame for the Reminder.

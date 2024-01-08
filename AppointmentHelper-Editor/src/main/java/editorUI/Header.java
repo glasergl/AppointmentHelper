@@ -5,7 +5,7 @@ import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
-import de.glasergl.standard.swing.container.RowOfJComponent;
+import standardGlaserGl.swing.container.RowOfJComponent;
 import editorUI.appointmentField.AppointmentFieldWrapperList;
 import swing.CustomizedSwing;
 

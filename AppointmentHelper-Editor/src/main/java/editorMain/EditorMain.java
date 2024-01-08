@@ -2,7 +2,7 @@ package editorMain;
 
 import javax.swing.SwingUtilities;
 
-import de.glasergl.standard.errors.DefaultErrorHandling;
+import standardGlaserGl.errors.DefaultErrorHandling;
 import editorUI.EditorFrame;
 import fileConfiguration.AppointmentsConfigurationHandler;
 

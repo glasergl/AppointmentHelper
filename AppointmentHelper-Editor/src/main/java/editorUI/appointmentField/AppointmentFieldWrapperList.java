@@ -13,7 +13,7 @@ import javax.swing.JScrollPane;
 
 import appointment.Appointment;
 import appointment.InvalidAppointmentException;
-import de.glasergl.standard.swing.general.ScrollJScrollPaneToBottom;
+import standardGlaserGl.swing.general.ScrollJScrollPaneToBottom;
 import fileConfiguration.AppointmentsConfigurationHandler;
 
 /**

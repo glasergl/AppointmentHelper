@@ -8,7 +8,7 @@ import java.util.List;
 import javax.swing.JPanel;
 
 import appointment.Appointment;
-import de.glasergl.standard.swing.settings.Fonts;
+import standardGlaserGl.swing.settings.Fonts;
 
 /**
  * Class which shows the appointments of today and tomorrow.

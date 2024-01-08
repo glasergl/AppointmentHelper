@@ -12,9 +12,9 @@ import javax.swing.event.ChangeListener;
 
 import appointment.Appointment;
 import appointment.InvalidAppointmentException;
-import de.glasergl.standard.swing.border.LeftRightRoundBorder;
-import de.glasergl.standard.swing.eventListener.emptyImplementation.MyDocumentListener;
-import de.glasergl.standard.swing.eventListener.emptyImplementation.MyMouseListener;
+import standardGlaserGl.swing.border.LeftRightRoundBorder;
+import standardGlaserGl.swing.eventListener.emptyImplementation.MyDocumentListener;
+import standardGlaserGl.swing.eventListener.emptyImplementation.MyMouseListener;
 import simpleDate.SimpleDate;
 import swing.CustomizedSwing;
 

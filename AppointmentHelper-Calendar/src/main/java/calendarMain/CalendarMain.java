@@ -6,7 +6,7 @@ import javax.swing.SwingUtilities;
 
 import appointment.Appointment;
 import calendarUI.CalendarFrame;
-import de.glasergl.standard.errors.DefaultErrorHandling;
+import standardGlaserGl.errors.DefaultErrorHandling;
 import fileConfiguration.AppointmentsConfigurationHandler;
 
 /**

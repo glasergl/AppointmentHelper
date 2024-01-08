@@ -7,7 +7,7 @@ import java.util.List;
 import javax.swing.JFrame;
 
 import appointment.Appointment;
-import de.glasergl.standard.swing.general.SwingFunctions;
+import standardGlaserGl.swing.general.SwingFunctions;
 
 /**
  * Frame which shows the the list of months on top and below all calendar cells.

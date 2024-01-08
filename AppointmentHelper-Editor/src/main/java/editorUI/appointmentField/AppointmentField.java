@@ -8,7 +8,7 @@ import javax.swing.JTextField;
 
 import appointment.Appointment;
 import appointment.InvalidAppointmentException;
-import de.glasergl.standard.swing.myComponent.MyCheckBox;
+import standardGlaserGl.swing.myComponent.MyCheckBox;
 import editorUI.appointmentField.dateField.SimpleDateField;
 import simpleDate.SimpleDate;
 import swing.CustomizedSwing;

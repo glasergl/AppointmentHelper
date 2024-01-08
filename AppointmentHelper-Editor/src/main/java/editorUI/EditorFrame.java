@@ -10,7 +10,7 @@ import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
-import de.glasergl.standard.swing.general.SwingFunctions;
+import standardGlaserGl.swing.general.SwingFunctions;
 import editorUI.appointmentField.AppointmentFieldWrapperList;
 import fileConfiguration.AppointmentsConfigurationHandler;
 

@@ -5,8 +5,8 @@ import java.awt.Dimension;
 
 import javax.swing.JButton;
 
-import de.glasergl.standard.swing.container.RowOfJComponent;
-import de.glasergl.standard.swing.settings.Fonts;
+import standardGlaserGl.swing.container.RowOfJComponent;
+import standardGlaserGl.swing.settings.Fonts;
 import editorUI.appointmentField.AppointmentFieldWrapperList;
 import swing.CustomizedSwing;
 

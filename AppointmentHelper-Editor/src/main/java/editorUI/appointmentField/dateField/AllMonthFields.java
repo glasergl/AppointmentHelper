@@ -8,8 +8,8 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import de.glasergl.standard.swing.container.RowOfJComponent;
-import de.glasergl.standard.swing.myComponent.button.CustomTextButton;
+import standardGlaserGl.swing.container.RowOfJComponent;
+import standardGlaserGl.swing.myComponent.button.CustomTextButton;
 import simpleDate.SimpleDate;
 
 /**

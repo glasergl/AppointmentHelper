@@ -7,10 +7,10 @@ import java.util.List;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import de.glasergl.standard.swing.eventListener.SiblingPopUpDisplayerOnClick;
-import de.glasergl.standard.swing.myComponent.MySiblingPopUp;
-import de.glasergl.standard.swing.myComponent.button.CustomTextButton;
-import de.glasergl.standard.swing.settings.Fonts;
+import standardGlaserGl.swing.eventListener.SiblingPopUpDisplayerOnClick;
+import standardGlaserGl.swing.myComponent.MySiblingPopUp;
+import standardGlaserGl.swing.myComponent.button.CustomTextButton;
+import standardGlaserGl.swing.settings.Fonts;
 import simpleDate.SimpleDate;
 import simpleDate.SimpleDates;
 

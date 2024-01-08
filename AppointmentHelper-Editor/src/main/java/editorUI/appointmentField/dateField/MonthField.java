@@ -9,8 +9,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import de.glasergl.standard.swing.myComponent.button.CustomTextButton;
-import de.glasergl.standard.swing.settings.Colors;
+import standardGlaserGl.swing.myComponent.button.CustomTextButton;
+import standardGlaserGl.swing.settings.Colors;
 import simpleDate.SimpleDate;
 import simpleDate.SimpleDates;
 import swing.CustomizedSwing;

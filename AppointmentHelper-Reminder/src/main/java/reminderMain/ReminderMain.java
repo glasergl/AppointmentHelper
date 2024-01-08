@@ -5,7 +5,7 @@ import java.util.List;
 import javax.swing.SwingUtilities;
 
 import appointment.Appointment;
-import de.glasergl.standard.errors.DefaultErrorHandling;
+import standardGlaserGl.errors.DefaultErrorHandling;
 import fileConfiguration.AppointmentsConfigurationHandler;
 import reminderUI.ReminderFrame;
 

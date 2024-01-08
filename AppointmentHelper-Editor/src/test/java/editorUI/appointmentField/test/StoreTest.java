@@ -4,7 +4,7 @@ import static appointment.ExampleAppointmentFactory.TEST_APPOINTMENT_1;
 import static appointment.ExampleAppointmentFactory.TEST_APPOINTMENT_2;
 import static appointment.ExampleAppointmentFactory.TEST_APPOINTMENT_3;
 import static appointment.ExampleAppointmentFactory.TEST_APPOINTMENT_4;
-import static de.glasergl.standard.util.tests.GeneralTestUtilities.BASE_TEST_RESOURCE_PATH;
+import static standardGlaserGl.util.tests.GeneralTestUtilities.BASE_TEST_RESOURCE_PATH;
 
 import java.util.Arrays;
 
