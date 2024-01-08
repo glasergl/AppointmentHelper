@@ -43,7 +43,7 @@ public final class MonthField extends JPanel {
 	private void setup() {
 		days.setBackground(BACKGROUND_COLOR);
 		nameOfMonth.setHorizontalAlignment(SwingConstants.CENTER);
-		nameOfMonth.setBackground(BACKGROUND_COLOR);
+		setBackground(BACKGROUND_COLOR);
 		addDays();
 		add(nameOfMonth, BorderLayout.NORTH);
 		add(days, BorderLayout.CENTER);
