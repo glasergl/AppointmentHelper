@@ -1,4 +1,4 @@
-package de.glasergl.date.test;
+package date.test;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;

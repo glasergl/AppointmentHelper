@@ -1,4 +1,4 @@
-package de.glasergl.fileConfiguration.test;
+package fileConfiguration.test;
 
 import static org.junit.Assert.assertEquals;
 import static test.GeneralTestElements.BASE_TEST_RESOURCE_PATH;

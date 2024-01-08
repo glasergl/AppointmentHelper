@@ -1,4 +1,4 @@
-package de.glasergl.appointment.test;
+package appointment.test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;

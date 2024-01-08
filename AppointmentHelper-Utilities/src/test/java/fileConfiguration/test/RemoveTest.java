@@ -1,4 +1,4 @@
-package de.glasergl.fileConfiguration.test;
+package fileConfiguration.test;
 
 import static appointment.ExampleAppointmentFactory.TEST_APPOINTMENT_0;
 import static appointment.ExampleAppointmentFactory.TEST_APPOINTMENT_1;
