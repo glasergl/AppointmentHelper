@@ -7,7 +7,7 @@
 		<groupId>glasergl</groupId>
 		<artifactId>AppointmentHelper</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>../pom.xml</relativePath>
+		<relativePath>..${file.separator}pom.xml</relativePath>
 	</parent>
 
 	<dependencies>
@@ -38,7 +38,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>de.glasergl.main.CalendarMain</mainClass>
+							<mainClass>main.CalendarMain</mainClass>
 						</manifest>
 					</archive>
 					<descriptorRefs>
