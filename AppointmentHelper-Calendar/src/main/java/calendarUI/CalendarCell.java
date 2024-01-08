@@ -14,7 +14,7 @@ import javax.swing.SwingConstants;
 import appointment.Appointment;
 import appointment.Appointments;
 import simpleDate.SimpleDate;
-import swing.DefaultJComponentFactory;
+import swing.CustomizedSwing;
 
 /**
  * Representation of a single calendar cell which represents a date and a
@@ -33,7 +33,7 @@ public final class CalendarCell extends JPanel {
 		super();
 		final int day = date.getDay();
 		final String dayAsString = String.valueOf(day) + ".";
-		this.dayLabel = DefaultJComponentFactory.getDefaultJLabel(dayAsString);
+		this.dayLabel = CustomizedSwing.getDefaultJLabel(dayAsString);
 		this.summary = new AppointmentsSummaryPanel(Appointments.getAppointmentsAtDate(allAppointments, date));
 
 		setLayout(new BorderLayout(inBetweenMargin, 0));
@@ -63,7 +63,7 @@ public final class CalendarCell extends JPanel {
 	 * @return The width of the text in pixel.
 	 */
 	private static int pixelWidthOf(final String text) {
-		final JLabel label = DefaultJComponentFactory.getDefaultJLabel();
+		final JLabel label = CustomizedSwing.getDefaultJLabel();
 		final Font defaultFont = label.getFont();
 		final FontMetrics fontMetrics = label.getFontMetrics(defaultFont);
 		return fontMetrics.stringWidth(text);

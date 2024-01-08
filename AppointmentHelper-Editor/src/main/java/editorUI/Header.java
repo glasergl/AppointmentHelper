@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 
 import de.glasergl.standard.swing.container.RowOfJComponent;
 import editorUI.appointmentField.AppointmentFieldWrapperList;
-import swing.DefaultJComponentFactory;
+import swing.CustomizedSwing;
 
 /**
  * Header for the whole frame.
@@ -22,7 +22,7 @@ public class Header extends RowOfJComponent {
 	private static final Color BACKGROUND = new Color(247, 247, 247);
 
 	private final AppointmentFieldWrapperList appointmentInputFields;
-	private final JButton saveButton = DefaultJComponentFactory.getDefaultJButton();
+	private final JButton saveButton = CustomizedSwing.getDefaultJButton();
 
 	public Header(final AppointmentFieldWrapperList appointmentFields) {
 		super(DISTANCE_TO_EDGE, DISTANCE_TO_EDGE);

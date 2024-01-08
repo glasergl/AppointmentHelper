@@ -13,7 +13,7 @@ import de.glasergl.standard.swing.myComponent.button.CustomTextButton;
 import de.glasergl.standard.swing.settings.Colors;
 import simpleDate.SimpleDate;
 import simpleDate.SimpleDates;
-import swing.DefaultJComponentFactory;
+import swing.CustomizedSwing;
 
 /**
  * Representation of a Month with each respective day.
@@ -35,7 +35,7 @@ public final class MonthField extends JPanel {
 		super(new BorderLayout());
 		this.toSetSelectedDateOf = toSetSelectedDateOf;
 		this.monthToDepict = monthToDepict;
-		this.nameOfMonth = DefaultJComponentFactory.getDefaultJLabel();
+		this.nameOfMonth = CustomizedSwing.getDefaultJLabel();
 		nameOfMonth.setText(getMonthName());
 		setup();
 	}

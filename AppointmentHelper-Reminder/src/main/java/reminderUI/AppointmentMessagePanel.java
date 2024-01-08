@@ -11,7 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import appointment.Appointment;
-import swing.DefaultJComponentFactory;
+import swing.CustomizedSwing;
 
 /**
  * Class which calculates the sentence which contains the appointments of today
@@ -39,7 +39,7 @@ public final class AppointmentMessagePanel extends JPanel {
 		setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
 		final List<String> messageComponents = appointmentMessage.getComponents();
 		for (int i = 0; i < messageComponents.size(); i++) {
-			final JLabel component = DefaultJComponentFactory.getDefaultJLabel();
+			final JLabel component = CustomizedSwing.getDefaultJLabel();
 			component.setText(messageComponents.get(i));
 			allLabels.add(component);
 			add(component);

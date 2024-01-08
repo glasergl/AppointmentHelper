@@ -11,7 +11,7 @@ import appointment.InvalidAppointmentException;
 import de.glasergl.standard.swing.myComponent.MyCheckBox;
 import editorUI.appointmentField.dateField.SimpleDateField;
 import simpleDate.SimpleDate;
-import swing.DefaultJComponentFactory;
+import swing.CustomizedSwing;
 
 /**
  * Visual Input-Field for an Appointment.
@@ -25,7 +25,7 @@ public class AppointmentField extends JPanel {
 	private static final boolean STANDARD_IS_BIRTHDAY = true;
 
 	private final SimpleDateField dateField = new SimpleDateField();
-	private final JTextField nameField = DefaultJComponentFactory.getDefaultJTextField();
+	private final JTextField nameField = CustomizedSwing.getDefaultJTextField();
 	private final MyCheckBox isBirthdayField = new MyCheckBox("ist Geburtstag", STANDARD_IS_BIRTHDAY);
 
 	/**

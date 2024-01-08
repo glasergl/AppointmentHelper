@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import simpleDate.SimpleDates;
-import swing.DefaultJComponentFactory;
+import swing.CustomizedSwing;
 
 /**
  * Visual representation of all Months in a horizontal row.
@@ -31,9 +31,9 @@ public final class MonthRow extends JPanel {
 	private List<JLabel> getMonthLabels() {
 		final List<JLabel> monthLabels = new ArrayList<>();
 		for (final String month : SimpleDates.MONTHS) {
-			final JLabel monthLabel = DefaultJComponentFactory.getDefaultJLabel();
+			final JLabel monthLabel = CustomizedSwing.getDefaultJLabel();
 			monthLabel.setText(month);
-			final Font fontForMonthLabel = DefaultJComponentFactory.DEFAULT_FONT.deriveFont(Font.BOLD);
+			final Font fontForMonthLabel = CustomizedSwing.DEFAULT_FONT.deriveFont(Font.BOLD);
 			monthLabel.setFont(fontForMonthLabel);
 			monthLabels.add(monthLabel);
 		}

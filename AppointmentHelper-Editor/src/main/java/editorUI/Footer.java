@@ -8,7 +8,7 @@ import javax.swing.JButton;
 import de.glasergl.standard.swing.container.RowOfJComponent;
 import de.glasergl.standard.swing.settings.Fonts;
 import editorUI.appointmentField.AppointmentFieldWrapperList;
-import swing.DefaultJComponentFactory;
+import swing.CustomizedSwing;
 
 /**
  * Footer for the whole frame.
@@ -23,7 +23,7 @@ public class Footer extends RowOfJComponent {
 	private static final float ADD_BUTTON_PLUS_SIZE = 80.0f;
 
 	private final AppointmentFieldWrapperList appointmentInputFields;
-	private final JButton addAppointmentButton = DefaultJComponentFactory.getDefaultJButton();
+	private final JButton addAppointmentButton = CustomizedSwing.getDefaultJButton();
 
 	public Footer(final AppointmentFieldWrapperList appointmentInputFields) {
 		super(DISTANCE_TO_EDGE, DISTANCE_TO_EDGE);

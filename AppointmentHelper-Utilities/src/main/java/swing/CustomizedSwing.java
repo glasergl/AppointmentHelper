@@ -14,7 +14,7 @@ import javax.swing.border.EmptyBorder;
  * 
  * @author Gabriel Glaser
  */
-public class DefaultJComponentFactory {
+public class CustomizedSwing {
 	public static final Font DEFAULT_FONT = new Font(Font.SANS_SERIF, Font.PLAIN, 18);
 
 	public static JTextField getDefaultJTextField() {

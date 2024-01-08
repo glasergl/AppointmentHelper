@@ -16,7 +16,7 @@ import de.glasergl.standard.swing.border.LeftRightRoundBorder;
 import de.glasergl.standard.swing.eventListener.emptyImplementation.MyDocumentListener;
 import de.glasergl.standard.swing.eventListener.emptyImplementation.MyMouseListener;
 import simpleDate.SimpleDate;
-import swing.DefaultJComponentFactory;
+import swing.CustomizedSwing;
 
 /**
  * Class which wraps a single AppointmentField and provides more functionality
@@ -30,7 +30,7 @@ public final class AppointmentFieldWrapper extends JPanel {
 
 	private final AppointmentFieldWrapperList appointmentFieldList;
 	private final AppointmentField appointmentField;
-	private final JButton deleteButton = DefaultJComponentFactory.getDefaultJButton();
+	private final JButton deleteButton = CustomizedSwing.getDefaultJButton();
 
 	private int currentIndex;
 	private Color defaultBackground = Color.WHITE;
