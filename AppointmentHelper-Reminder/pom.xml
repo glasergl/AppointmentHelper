@@ -47,7 +47,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>main.ReminderMain</mainClass>
+							<mainClass>reminderMain.ReminderMain</mainClass>
 						</manifest>
 					</archive>
 					<descriptorRefs>

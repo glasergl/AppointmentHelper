@@ -47,7 +47,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>main.EditorMain</mainClass>
+							<mainClass>editorMain.EditorMain</mainClass>
 						</manifest>
 					</archive>
 					<descriptorRefs>

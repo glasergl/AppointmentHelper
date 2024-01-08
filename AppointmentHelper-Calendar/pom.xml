@@ -41,7 +41,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>main.CalendarMain</mainClass>
+							<mainClass>calendarMain.CalendarMain</mainClass>
 						</manifest>
 					</archive>
 					<descriptorRefs>
