@@ -1,10 +1,10 @@
 package de.glasergl.fileConfiguration.test;
 
-import static de.glasergl.test.GeneralTestElements.BASE_TEST_RESOURCE_PATH;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
+import static test.GeneralTestElements.BASE_TEST_RESOURCE_PATH;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -19,7 +19,7 @@ import org.json.JSONObject;
 import org.json.JSONTokener;
 import org.junit.Test;
 
-import de.glasergl.fileConfiguration.AppointmentsConfigurationHandler;
+import fileConfiguration.AppointmentsConfigurationHandler;
 
 /**
  * Tests whether creating a valid new configuration file is possible.

@@ -1,17 +1,16 @@
 package de.glasergl.fileConfiguration.test;
 
 import static org.junit.Assert.assertEquals;
-
-import static de.glasergl.appointment.ExampleAppointmentFactory.TEST_APPOINTMENT_0;
-import static de.glasergl.appointment.ExampleAppointmentFactory.TEST_APPOINTMENT_4;
-import static de.glasergl.test.GeneralTestElements.BASE_TEST_RESOURCE_PATH;
+import static test.GeneralTestElements.BASE_TEST_RESOURCE_PATH;
+import static appointment.ExampleAppointmentFactory.TEST_APPOINTMENT_0;
+import static appointment.ExampleAppointmentFactory.TEST_APPOINTMENT_4;
 
 import java.util.Arrays;
 
 import org.junit.Test;
 
-import de.glasergl.fileConfiguration.AppointmentsConfigurationHandler;
-import de.glasergl.test.GeneralTestElements;
+import fileConfiguration.AppointmentsConfigurationHandler;
+import test.GeneralTestElements;
 
 /**
  * Tests whether getSize returns the correct size.

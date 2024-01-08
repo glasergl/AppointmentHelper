@@ -3,15 +3,14 @@ package de.glasergl.fileConfiguration.test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-
-import static de.glasergl.simpleDate.ExampleSimpleDateFactory.TEST_DATE_0;
+import static simpleDate.ExampleSimpleDateFactory.TEST_DATE_0;
 
 import org.json.JSONObject;
 import org.junit.Test;
 
-import de.glasergl.appointment.Appointment;
-import de.glasergl.fileConfiguration.AppointmentJSONTransformer;
-import de.glasergl.fileConfiguration.SimpleDateJSONTransformer;
+import appointment.Appointment;
+import fileConfiguration.AppointmentJSONTransformer;
+import fileConfiguration.SimpleDateJSONTransformer;
 
 /**
  * Tests the transforming of JSONObjects to Appointments and back.

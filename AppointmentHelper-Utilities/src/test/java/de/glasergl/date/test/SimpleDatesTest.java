@@ -5,7 +5,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import de.glasergl.simpleDate.SimpleDates;
+import simpleDate.SimpleDates;
 
 /**
  * @author Gabriel Glaser

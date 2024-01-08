@@ -1,18 +1,17 @@
 package de.glasergl.fileConfiguration.test;
 
 import static org.junit.Assert.assertEquals;
-
-import static de.glasergl.appointment.ExampleAppointmentFactory.TEST_APPOINTMENT_1;
-import static de.glasergl.appointment.ExampleAppointmentFactory.TEST_APPOINTMENT_2;
-import static de.glasergl.appointment.ExampleAppointmentFactory.TEST_APPOINTMENT_3;
-import static de.glasergl.test.GeneralTestElements.BASE_TEST_RESOURCE_PATH;
+import static test.GeneralTestElements.BASE_TEST_RESOURCE_PATH;
+import static appointment.ExampleAppointmentFactory.TEST_APPOINTMENT_1;
+import static appointment.ExampleAppointmentFactory.TEST_APPOINTMENT_2;
+import static appointment.ExampleAppointmentFactory.TEST_APPOINTMENT_3;
 
 import java.util.Arrays;
 
 import org.junit.Test;
 
-import de.glasergl.fileConfiguration.AppointmentsConfigurationHandler;
-import de.glasergl.test.GeneralTestElements;
+import fileConfiguration.AppointmentsConfigurationHandler;
+import test.GeneralTestElements;
 
 /**
  * Tests the update function of AppointmentsConfigurationHandler.

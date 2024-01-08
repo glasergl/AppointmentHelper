@@ -1,21 +1,21 @@
 package de.glasergl.fileConfiguration.test;
 
-import static de.glasergl.appointment.ExampleAppointmentFactory.TEST_APPOINTMENT_0;
-import static de.glasergl.appointment.ExampleAppointmentFactory.TEST_APPOINTMENT_1;
-import static de.glasergl.appointment.ExampleAppointmentFactory.TEST_APPOINTMENT_2;
-import static de.glasergl.appointment.ExampleAppointmentFactory.TEST_APPOINTMENT_3;
-import static de.glasergl.test.GeneralTestElements.BASE_TEST_RESOURCE_PATH;
+import static appointment.ExampleAppointmentFactory.TEST_APPOINTMENT_0;
+import static appointment.ExampleAppointmentFactory.TEST_APPOINTMENT_1;
+import static appointment.ExampleAppointmentFactory.TEST_APPOINTMENT_2;
+import static appointment.ExampleAppointmentFactory.TEST_APPOINTMENT_3;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static test.GeneralTestElements.BASE_TEST_RESOURCE_PATH;
 
 import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Test;
 
-import de.glasergl.appointment.Appointment;
-import de.glasergl.fileConfiguration.AppointmentsConfigurationHandler;
-import de.glasergl.test.GeneralTestElements;
+import appointment.Appointment;
+import fileConfiguration.AppointmentsConfigurationHandler;
+import test.GeneralTestElements;
 
 /**
  * Test whether removing appointments from a configuration works.

@@ -7,8 +7,8 @@ import static org.junit.Assert.assertTrue;
 import org.json.JSONObject;
 import org.junit.Test;
 
-import de.glasergl.fileConfiguration.SimpleDateJSONTransformer;
-import de.glasergl.simpleDate.SimpleDate;
+import fileConfiguration.SimpleDateJSONTransformer;
+import simpleDate.SimpleDate;
 
 /**
  * Tests the transforming of JSONObjects to SimpleDates and back.

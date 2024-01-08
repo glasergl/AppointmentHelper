@@ -5,8 +5,8 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import de.glasergl.appointment.Appointment;
-import de.glasergl.simpleDate.SimpleDate;
+import appointment.Appointment;
+import simpleDate.SimpleDate;
 
 /**
  * @author Gabriel Glaser
