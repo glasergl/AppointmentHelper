@@ -11,6 +11,12 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	
+	<!-->for launch4j<-->
+	<organization>
+		<name>Gabriel Glaser</name>
+	</organization>
+	<inceptionYear>2024</inceptionYear>
+	
 	<modules>
 		<module>AppointmentHelper-Utilities</module>
 		<module>AppointmentHelper-Calendar</module>
