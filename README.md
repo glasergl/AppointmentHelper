@@ -7,6 +7,22 @@ Editor   | Add, change and delete appointments
 Calendar | Overview of all stored appointments
 Reminder | Shows appointments which occur today or tomorrow (at the time the program is executed)
 
+## Screenshots of example tool views
+Example view of the editor:
+<p align="center">
+  <img src="Example_Editor_View.PNG" width="60%">
+</p>
+
+Example view of the calendar:
+<p align="center">
+  <img src="Example_Calendar_View.PNG" width="80%">
+</p>
+
+Example view of the reminder:
+<p align="center">
+  <img src="Example_Reminder_View.PNG" width="60%">
+</p>
+
 ## Build
 1. Install https://github.com/glasergl/StandardGlaserGl.
 1. Clone this repository.
@@ -23,4 +39,3 @@ Reminder | Shows appointments which occur today or tomorrow (at the time the pro
 ## Notes
 - If there is no `AppointmentHelper_Configuration.json` file, running any of the `.exe` (or `.jar`) will create an empty one.
 - The file `AppointmentHelper_Configuration.json` has to be in the same folder as the three `.exe`-files.
-- Do not modify the file `AppointmentHelper_Configuration.json` on your own.
