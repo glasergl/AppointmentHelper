@@ -10,6 +10,9 @@
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
+	<!-->for launch4j<-->
+	<description>AppointmentHelper: Reminder of appointments.</description>
+
 	<dependencies>
 		<dependency>
 			<groupId>glasergl</groupId>
