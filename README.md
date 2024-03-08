@@ -39,4 +39,3 @@ Example view of the reminder:
 ## Notes
 - If there is no `AppointmentHelper_Configuration.json` file, running any of the `.exe` (or `.jar`) will create an empty one.
 - The file `AppointmentHelper_Configuration.json` has to be in the same folder as the three `.exe`-files.
-- Windows will likely flag the `.exe` files as not trustable. Therefore, in order to correctly run them, they need administrative rights.
