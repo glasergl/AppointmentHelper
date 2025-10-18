@@ -31,7 +31,7 @@ Example view of the reminder:
 1. Move all `.exe` files to a common folder (where u want to store them).
 
 ## Usage
-1. Put a shortcut to the `Reminder` in the autostart folder of your operating system.
+1. Put a shortcut to the `Reminder` in the autostart folder of your operating system OR use a task scheduler tool (e.g., Task Scheduler of Windows) to run the `Reminder.exe` on your desired schedule.
 1. Enter your appointments with the `Editor`.
 1. A window will become visible if an appointment occurs today or will occur tomorrow (at the time the `Reminder` is executed, e.g., at the start of your computer).
 1. You can always look at an overview of all appointments with the `Calendar`.
