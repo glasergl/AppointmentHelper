@@ -5,7 +5,7 @@ Tool     | What it does
 -------- | --------------------------------------------------------------------------------------
 Editor   | Add, change and delete appointments
 Calendar | Overview of all stored appointments
-Reminder | Shows appointments which occur today or tomorrow (at the time the program is executed)
+Reminder | Shows appointments which occur today or tomorrow (at the time the tool is executed)
 
 ## Screenshots of example tool views
 Example view of the editor:
@@ -31,11 +31,8 @@ Example view of the reminder:
 1. Move all `.exe` files to a common folder (where u want to store them).
 
 ## Usage
-1. Put a shortcut to the `Reminder` in the autostart folder of your operating system OR use a task scheduler tool (e.g., Task Scheduler of Windows) to run the `Reminder.exe` on your desired schedule.
-1. Enter your appointments with the `Editor`.
-1. A window will become visible if an appointment occurs today or will occur tomorrow (at the time the `Reminder` is executed, e.g., at the start of your computer).
-1. You can always look at an overview of all appointments with the `Calendar`.
-  
-## Notes
-- If there is no `AppointmentHelper_Configuration.json` file, running any of the `.exe` (or `.jar`) will create an empty one.
-- The file `AppointmentHelper_Configuration.json` has to be in the same folder as the three `.exe`-files.
+1. Add environment variable `APPOINTMENTS_FILE_PATH` and point it to a file where you would like to have your appointments stored, e.g., a location that is regularly backed up. The file does not need to exist, any `.exe` will create an empty config file at the configured location, if there is no file. For example, you could choose `C:\Users\<User>\OneDrive\appointments.json`.
+1. Configure the execution of the `Reminder` in the task scheduler tool of your OS to run the `Reminder.exe` on your desired schedule, e.g., when your computer starts and at 00:00 every day
+1. Enter your appointments with the `Editor`
+1. A window will become visible if an appointment occurs today or will occur tomorrow (at the time the `Reminder` is executed)
+1. You can always look at an overview of all appointments with the `Calendar`

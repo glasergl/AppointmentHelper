@@ -3,6 +3,7 @@ package fileConfiguration;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.NoSuchElementException;
 
 import org.json.JSONArray;
@@ -18,7 +19,7 @@ import appointment.Appointment;
  * @author Gabriel Glaser
  */
 public final class AppointmentsConfigurationHandler extends ConfigurationHandler {
-	public static final String DEFAULT_CONFIGURATION_FILE_PATH = "AppointmentHelper_Configuration.json";
+	private static final String APPOINTMENTS_FILE_PATH_ENVIRONMENT_VARIABLE_KEY = "APPOINTMENTS_FILE_PATH";
 	public static final String APPOINTMENTS_JSON_KEY = "appointments";
 
 	private final JSONArray appointmentsAsJSON;
@@ -32,17 +33,30 @@ public final class AppointmentsConfigurationHandler extends ConfigurationHandler
 	public AppointmentsConfigurationHandler(final String configurationFilePath) {
 		super(configurationFilePath);
 		this.appointmentsAsJSON = configuration.getJSONArray(APPOINTMENTS_JSON_KEY);
-//		final List<Appointment> initialAppointments = getAppointments();
-//		Collections.sort(initialAppointments);
-//		updateAppointments(initialAppointments);
 	}
 
 	/**
-	 * Creates an AppointmentsConfigurationHandler which access the underlying file
-	 * at a default location.
+	 * Creates an AppointmentsConfigurationHandler which accesses the file
+	 * configured via an environment variable.
 	 */
 	public AppointmentsConfigurationHandler() {
-		this(DEFAULT_CONFIGURATION_FILE_PATH);
+		this(getAppointmentsConfigFilePath());
+
+	}
+
+	/**
+	 * @return Content of environment variable
+	 *         APPOINTMENTS_FILE_PATH_ENVIRONMENT_VARIABLE_KEY
+	 * @throws IllegalStateException If this environment variable is not set
+	 */
+	private static String getAppointmentsConfigFilePath() {
+		final Map<String, String> environmentVariables = System.getenv();
+		if (environmentVariables.containsKey(APPOINTMENTS_FILE_PATH_ENVIRONMENT_VARIABLE_KEY)) {
+			return environmentVariables.get(APPOINTMENTS_FILE_PATH_ENVIRONMENT_VARIABLE_KEY);
+		} else {
+			throw new IllegalStateException(String.format("Need environment variable %s with path to config file",
+					APPOINTMENTS_FILE_PATH_ENVIRONMENT_VARIABLE_KEY));
+		}
 	}
 
 	@Override
