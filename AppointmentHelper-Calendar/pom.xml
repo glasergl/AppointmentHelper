@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>glasergl</groupId>
 		<artifactId>AppointmentHelper</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>1.0.0</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
@@ -17,13 +17,13 @@
 		<dependency>
 			<groupId>glasergl</groupId>
 			<artifactId>AppointmentHelper-Utilities</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>1.0.0</version>
 		</dependency>
 
 		<dependency>
 			<groupId>glasergl</groupId>
 			<artifactId>StandardGlaserGl</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>1.0.0</version>
 		</dependency>
 
 		<dependency>
