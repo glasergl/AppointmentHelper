@@ -1,0 +1,101 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>appointment-helper-editor</artifactId>
+	<parent>
+		<groupId>de.glasergl</groupId>
+		<artifactId>appointment-helper</artifactId>
+		<version>1.0.0</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+	
+	<description>Editor of appointments</description>
+
+	<dependencies>
+		<dependency>
+			<groupId>de.glasergl</groupId>
+			<artifactId>appointment-helper-util</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.13.2</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20210307</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>editorMain.EditorMain</mainClass>
+						</manifest>
+					</archive>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>com.akathist.maven.plugins.launch4j</groupId>
+				<artifactId>launch4j-maven-plugin</artifactId>
+				<version>2.4.1</version>
+				<configuration>
+					<headerType>gui</headerType>
+					<jar>${project.build.directory}/${project.build.finalName}-jar-with-dependencies.jar</jar>
+					<outfile>${project.build.directory}/${project.artifactId}.exe</outfile>
+					<icon>${project.basedir}${file.separator}src${file.separator}main${file.separator}resources${file.separator}EditorIcon.ico</icon>
+					<jre>
+						<minVersion>21</minVersion>
+						<path>%PATH%</path>
+					</jre>
+				</configuration>
+				<executions>
+					<execution>
+						<id>launch4j</id>
+						<phase>package</phase>
+						<goals>
+							<goal>launch4j</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+
+		<resources>
+			<resource>
+				<directory>src${file.separator}main${file.separator}gimp</directory>
+				<excludes>
+					<exclude>*.xcf</exclude>
+				</excludes>
+			</resource>
+			<resource>
+				<directory>src${file.separator}main${file.separator}resources</directory>
+				<includes>
+					<include>*.*</include>
+				</includes>
+			</resource>
+		</resources>
+	</build>
+</project>

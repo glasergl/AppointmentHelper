@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>glasergl</groupId>
-	<artifactId>AppointmentHelper</artifactId>
+	<groupId>de.glasergl</groupId>
+	<artifactId>appointment-helper</artifactId>
 	<version>1.0.0</version>
 	<packaging>pom</packaging>
 
@@ -11,16 +11,15 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	
-	<!-->for launch4j<-->
 	<organization>
-		<name>Gabriel Glaser</name>
+		<name>glasergl.de</name>
 	</organization>
-	<inceptionYear>2024</inceptionYear>
+	<inceptionYear>2026</inceptionYear>
 	
 	<modules>
-		<module>AppointmentHelper-Utilities</module>
-		<module>AppointmentHelper-Calendar</module>
-		<module>AppointmentHelper-Editor</module>
-		<module>AppointmentHelper-Reminder</module>
+		<module>appointment-helper-util</module>
+		<module>appointment-helper-calendar</module>
+		<module>appointment-helper-editor</module>
+		<module>appointment-helper-reminder</module>
 	</modules>
 </project>

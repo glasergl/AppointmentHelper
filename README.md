@@ -1,6 +1,8 @@
 # AppointmentHelper
 A set of tools to organize events which occur on the same day every year, e.g., birthdays, wedding days etc.
 
+This is my first ever programming project.
+
 Tool     | What it does
 -------- | --------------------------------------------------------------------------------------
 Editor   | Add, change and delete appointments
@@ -24,7 +26,6 @@ Example view of the reminder:
 </p>
 
 ## Build
-1. Install https://github.com/glasergl/StandardGlaserGl.
 1. Clone this repository.
 1. Run `mvn package`.
 1. Each target folder of the modules `Editor`, `Calendar` and `Reminder` contains an `.exe` file which wraps the Maven-generated `.jar`. (jar could be used equivalently, but has no custom icon)
