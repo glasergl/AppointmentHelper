@@ -67,7 +67,8 @@ public final class AppointmentsConfigurationHandler extends ConfigurationHandler
      * @param appointments
      */
     public void updateAppointments(final List<Appointment> appointments) {
-        Collections.sort(appointments);
+        final List<Appointment> copy = new ArrayList<>(appointments);
+        Collections.sort(copy);
         appointmentsAsJSON.clear();
         for (final Appointment appointment : appointments) {
             appointmentsAsJSON.put(AppointmentJSONTransformer.appointmentToJSON(appointment));

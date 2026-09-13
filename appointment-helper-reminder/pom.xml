@@ -27,7 +27,7 @@
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
-            <version>20251224</version>
+            <version>20260814</version>
         </dependency>
     </dependencies>
 
@@ -38,7 +38,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>reminderMain.ReminderMain</mainClass>
+                            <mainClass>de.glasergl.appointment.helper.reminder.Main</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>

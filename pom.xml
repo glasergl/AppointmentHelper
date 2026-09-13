@@ -12,11 +12,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <organization>
-        <name>glasergl.de</name>
-    </organization>
-    <inceptionYear>2026</inceptionYear>
-
     <modules>
         <module>appointment-helper-util</module>
         <module>appointment-helper-calendar</module>
