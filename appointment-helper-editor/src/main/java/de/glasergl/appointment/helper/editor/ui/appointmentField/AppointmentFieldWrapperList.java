@@ -52,8 +52,9 @@ public final class AppointmentFieldWrapperList extends JPanel {
         setAlternateBackgroundsForAll();
         changeHappened();
         if (scrollWrapper.isPresent()) {
+            System.out.println("g");
             final JScrollPane scrollPane = scrollWrapper.get();
-            scrollPane.getVerticalScrollBar().setUnitIncrement(scrollPane.getVerticalScrollBar().getMaximum());
+            scrollPane.getVerticalScrollBar().setValue(scrollPane.getVerticalScrollBar().getMaximum());
         }
         revalidate();
         repaint();
@@ -111,7 +112,7 @@ public final class AppointmentFieldWrapperList extends JPanel {
      * Deletes the given appointmentField. Will be called by a child
      * AppointmentFieldController if its delete-button is clicked.
      *
-     * @param appointmentField
+     * @param indexToDelete
      */
     public void delete(final int indexToDelete) {
         final AppointmentFieldWrapper appointmentField = appointmentFields.get(indexToDelete);
@@ -141,8 +142,6 @@ public final class AppointmentFieldWrapperList extends JPanel {
      * Should be called, if anything changed to the input in the appointment fields.
      * If this isn't called once after a change, the storeAll() method won't do
      * anything.
-     *
-     * @param matchesConfiguration
      */
     public void changeHappened() {
         matchesConfiguration = false;

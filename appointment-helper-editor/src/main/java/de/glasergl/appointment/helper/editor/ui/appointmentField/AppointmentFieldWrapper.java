@@ -30,8 +30,7 @@ public final class AppointmentFieldWrapper extends JPanel {
      * Initializes the controller for an AppointmentField and adding the given
      * Appointment as initial input of the AppointmentField.
      *
-     * @param storageModel   - which represents the logic of operating with
-     *                       appointments.
+     * @param appointmentFieldList
      * @param initialDisplay - the Appointment which is initially shown (it's
      *                       assumed this Appointment is already stored)
      * @param initialIndex   - the index in which this is initially in the list.
@@ -105,25 +104,17 @@ public final class AppointmentFieldWrapper extends JPanel {
     private void setup() {
         setLayout(new FlowLayout(FlowLayout.LEFT, HORIZONTAL_GAP_OF_SUPCOMPONENTS, 0));
         addListenersForInputChanges();
-        deleteButton.setText("Löschen");
-        deleteButton.setVisible(false);
-        deleteButton.addActionListener(click -> {
-            delete();
-        });
+        deleteButton.setText("-");
+        deleteButton.addActionListener(click -> delete());
         add(appointmentField);
         add(deleteButton);
     }
 
-    public void setDeleteButtonVisible(final boolean deleteButtonShouldBeVisible) {
-        deleteButton.setVisible(deleteButtonShouldBeVisible);
-    }
-
     private void addListenersForInputChanges() {
-        final ChangeListener changeListener = change -> {
+        appointmentField.getIsBirthdayField().addActionListener(click -> {
             setBackground(UNSTORED_BACKGROUND);
             appointmentFieldList.changeHappened();
-        };
-        appointmentField.getIsBirthdayField().addChangeListener(changeListener);
+        });
     }
 
     @Override

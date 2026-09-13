@@ -22,7 +22,7 @@ public class Header extends JPanel {
     private final JButton saveButton = CustomizedSwing.getDefaultJButton();
 
     public Header(final AppointmentFieldWrapperList appointmentFields) {
-        super();
+        super(new FlowLayout(FlowLayout.LEFT));
         this.appointmentInputFields = appointmentFields;
         setup();
     }

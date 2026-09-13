@@ -36,10 +36,9 @@ public class Footer extends JPanel {
 
     private void setupAddButton() {
         addAppointmentButton.setText("+");
+        addAppointmentButton.setFont(addAppointmentButton.getFont().deriveFont(ADD_BUTTON_PLUS_SIZE));
         addAppointmentButton.setPreferredSize(new Dimension(300, 100));
-        addAppointmentButton.addActionListener((click) -> {
-            appointmentInputFields.addEmptyAppointmentField();
-        });
+        addAppointmentButton.addActionListener((click) -> appointmentInputFields.addEmptyAppointmentField());
     }
 
     public void requestFocusForAddButton() {

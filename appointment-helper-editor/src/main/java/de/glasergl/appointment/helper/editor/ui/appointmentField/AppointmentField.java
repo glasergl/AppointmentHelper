@@ -14,13 +14,14 @@ import java.awt.*;
  */
 public class AppointmentField extends JPanel {
     private static final int NAME_WIDTH = 16;
+    private static final int DATE_WIDTH = 8;
     private static final int DISTANCE_BETWEEN_SUB_COMPONENTS = 10;
     private static final int TOP_BOTTOM_MARGIN = 5;
     private static final boolean STANDARD_IS_BIRTHDAY = true;
 
-    private final JTextField dateField = new JTextField(8);
+    private final JTextField dateField = CustomizedSwing.getDefaultJTextField();
     private final JTextField nameField = CustomizedSwing.getDefaultJTextField();
-    private final JCheckBox isBirthdayField = new JCheckBox("ist Geburtstag", STANDARD_IS_BIRTHDAY);
+    private final JCheckBox isBirthdayField = CustomizedSwing.getDefaultJCheckBox();
 
     /**
      * @param initialDisplay - Appointment which is initially displayed by this.
@@ -47,7 +48,7 @@ public class AppointmentField extends JPanel {
      */
     public boolean representsValidAppointment() {
         final String currentName = nameField.getText();
-        return currentName.length() > 0;
+        return !currentName.isEmpty();
     }
 
     /**
@@ -76,6 +77,9 @@ public class AppointmentField extends JPanel {
     private void setupInputComponents() {
         setLayout(new FlowLayout(FlowLayout.CENTER, DISTANCE_BETWEEN_SUB_COMPONENTS, TOP_BOTTOM_MARGIN));
         nameField.setColumns(NAME_WIDTH);
+        dateField.setColumns(DATE_WIDTH);
+        isBirthdayField.setSelected(STANDARD_IS_BIRTHDAY);
+        isBirthdayField.setText("ist Geburtstag");
         add(dateField);
         add(nameField);
         add(isBirthdayField);

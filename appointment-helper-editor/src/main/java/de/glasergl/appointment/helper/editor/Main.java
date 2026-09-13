@@ -24,7 +24,6 @@ public final class Main {
             try {
                 new EditorFrame(handler);
             } catch (IOException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         });

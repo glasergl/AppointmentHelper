@@ -27,7 +27,6 @@ public final class Main {
             try {
                 new CalendarFrame(allAppointments);
             } catch (IOException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         });

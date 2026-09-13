@@ -20,21 +20,29 @@ public class CustomizedSwing {
         return jTextField;
     }
 
-    public static final JButton getDefaultJButton() {
+    public static JButton getDefaultJButton() {
         final JButton jButton = new JButton();
         jButton.setFont(DEFAULT_FONT);
         jButton.setFocusPainted(false);
         return jButton;
     }
 
-    public static final JLabel getDefaultJLabel() {
+    public static JLabel getDefaultJLabel() {
         return getDefaultJLabel("");
     }
 
-    public static final JLabel getDefaultJLabel(final String labelText) {
+    public static JLabel getDefaultJLabel(final String labelText) {
         final JLabel jLabel = new JLabel(labelText);
         jLabel.setFont(DEFAULT_FONT);
         jLabel.setHorizontalAlignment(SwingConstants.CENTER);
         return jLabel;
+    }
+
+    public static JCheckBox getDefaultJCheckBox() {
+        final JCheckBox jCheckBox = new JCheckBox();
+        jCheckBox.setFont(DEFAULT_FONT);
+        jCheckBox.setFocusPainted(false);
+        jCheckBox.setBackground(null);
+        return jCheckBox;
     }
 }
