@@ -10,20 +10,20 @@ import java.util.List;
  * @author glasergl
  */
 public final class Appointments {
-	/**
-	 * @param appointments
-	 * @param date
-	 * @return A list of all appointments which are given and occur at the given
-	 *         date.
-	 */
-	public static List<Appointment> getAppointmentsAtDate(final Collection<Appointment> appointments,
-			final SimpleDate date) {
-		final List<Appointment> collection = new LinkedList<>();
-		for (final Appointment appointment : appointments) {
-			if (appointment.occursAt(date)) {
-				collection.add(appointment);
-			}
-		}
-		return collection;
-	}
+    /**
+     * @param appointments
+     * @param date
+     * @return A list of all appointments which are given and occur at the given
+     * date.
+     */
+    public static List<Appointment> getAppointmentsAtDate(final Collection<Appointment> appointments,
+                                                          final SimpleDate date) {
+        final List<Appointment> collection = new LinkedList<>();
+        for (final Appointment appointment : appointments) {
+            if (appointment.occursAt(date)) {
+                collection.add(appointment);
+            }
+        }
+        return collection;
+    }
 }
